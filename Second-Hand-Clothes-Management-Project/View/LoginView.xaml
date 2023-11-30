@@ -1,0 +1,78 @@
+﻿<Window x:Class="Second_Hand_Clothes_Management_Project.View.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Second_Hand_Clothes_Management_Project.View"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="LoginView" Height="1024" Width="1440"
+        WindowStyle="None" 
+        Background="Transparent"
+        AllowsTransparency="True" 
+        MouseDown="Window_MouseDown"
+        WindowStartupLocation="CenterScreen" 
+        ResizeMode="NoResize">
+    <Border Background="#CAA88A">
+        <Grid>
+            <Border CornerRadius="20" Width="1400" Height="970" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border.Background>
+                    <ImageBrush ImageSource="/ResourceXAML/Image/loginimg.jpg"/>
+                </Border.Background>
+                <Border.Effect>
+                    <DropShadowEffect Color="#9D795E" BlurRadius="20" ShadowDepth="4" Opacity="0.5" Direction="0" />
+                </Border.Effect>
+            </Border>
+            <Border  CornerRadius="20" Background="#FFFFFF" Width="688" Height="497" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border.Effect>
+                    <DropShadowEffect Color="#9D795E" BlurRadius="20" ShadowDepth="4" Opacity="0.5" Direction="0" />
+                </Border.Effect>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="99*"   />
+                        <RowDefinition Height="67*"   />
+                        <RowDefinition Height="69*"   />
+                        <RowDefinition Height="52*"   />
+                        <RowDefinition Height="45*"/>
+                        <RowDefinition Height="57*"   />
+                        <RowDefinition Height="109*"   />
+                    </Grid.RowDefinitions>
+
+                    <!-- First Row: Login Text -->
+                    <TextBlock
+                    Text ="Login"
+                    FontSize="40" Width="auto" Padding="30"
+                    Foreground="#000000"
+                    FontFamily="Roboto Mono" TextAlignment="Left" FontWeight="Bold" Margin="0,0,0,6"/>
+                    <!-- First Row: Login Text -->
+
+                    <TextBlock Grid.Row="1" Text="Your account" FontSize="25"  VerticalAlignment="Center"  Width="auto" Padding="30"
+                                    Foreground="#000000"
+                                    FontFamily="Roboto Mono" TextAlignment="Left" Height="90" />
+                    <TextBox  Grid.Row="2"  FontFamily="Roboto Mono" Margin="0,50,0,30"
+                                     Padding="20,15,0,0"
+                                    materialDesign:HintAssist.Hint="Username"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.RowSpan="2" />
+                    <!-- First Row: Login Text -->
+
+                    <TextBlock Grid.Row="3" Text="Password" FontSize="25"  VerticalAlignment="Top"  Width="auto" Padding="30"
+                                    Foreground="#000000"
+                                        FontFamily="Roboto Mono" TextAlignment="Left" Margin="0,8,0,0" Grid.RowSpan="3" Height="90" />
+                    <!-- First Row: Login Text -->
+                    <PasswordBox Grid.Row="5"  Margin="0,50,0,76"  FontFamily="Roboto Mono"
+                                            Padding="20,15,0,0"
+                                        x:Name="FloatingPasswordBox"
+                                         materialDesign:HintAssist.Hint="Password"
+                                        Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Grid.RowSpan="2" />
+                    <!-- First Row: Login Text -->
+                    <Button VerticalAlignment="Center" FontFamily="Roboto Mono" FontSize="23" Content="Log in" FontWeight="Medium" Grid.Row="6" Height="59" Background="#845831" Margin="118,0,118,0">
+                        <Button.Effect>
+                            <DropShadowEffect ShadowDepth="3" Direction="270" Opacity="0.5" BlurRadius="5" />
+                        </Button.Effect>
+                    </Button>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</Window>
