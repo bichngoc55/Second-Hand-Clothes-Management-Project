@@ -13,6 +13,7 @@
         MouseDown="Window_MouseDown"
         WindowStartupLocation="CenterScreen" 
         ResizeMode="NoResize">
+        DataContext="{StaticResource LoginVM}"
     <Border Background="#CAA88A">
         <Grid>
             <Border CornerRadius="20" Width="1400" Height="970" HorizontalAlignment="Center" VerticalAlignment="Center">
