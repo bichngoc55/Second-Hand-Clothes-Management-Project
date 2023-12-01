@@ -125,6 +125,7 @@
   <ItemGroup>
     <Folder Include="Model\" />
     <Folder Include="ResourceXAML\Avatar\" />
+    <Folder Include="ResourceXAML\Icon\" />
     <Folder Include="ResourceXAML\ImageProduct\" />
     <Folder Include="ResourceXAML\Image\" />
   </ItemGroup>
