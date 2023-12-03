@@ -6,49 +6,49 @@
         xmlns:local="clr-namespace:Second_Hand_Clothes_Management_Project.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="LoginView" Height="1024" Width="1440"
+        Title="LoginView" Height="700" Width="1000"
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True"
         MouseDown="Window_MouseDown"
-        WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        
+        WindowStartupLocation="CenterScreen">
     <Border Background="#CAA88A">
         <Grid>
-            <Border CornerRadius="20" Width="1400" Height="970" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border CornerRadius="20" Width="980" Height="680" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Border.Background>
-                    <ImageBrush ImageSource="/ResourceXAML/Image/loginimg.jpg"/>
+                    <ImageBrush ImageSource="\ResourceXAML\Image\loginimg.jpg"/>
                 </Border.Background>
                 <Border.Effect>
                     <DropShadowEffect Color="#9D795E" BlurRadius="20" ShadowDepth="4" Opacity="0.5" Direction="0" />
                 </Border.Effect>
             </Border>
-            <Border CornerRadius="20" Background="#FFFFFF" Width="688" Height="497" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border CornerRadius="20" Background="#FFFFFF" Width="600" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Border.Effect>
                     <DropShadowEffect Color="#9D795E" BlurRadius="20" ShadowDepth="4" Opacity="0.5" Direction="0" />
                 </Border.Effect>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="99*" />
-                        <RowDefinition Height="67*" />
-                        <RowDefinition Height="69*" />
-                        <RowDefinition Height="52*" />
-                        <RowDefinition Height="45*" />
-                        <RowDefinition Height="57*" />
-                        <RowDefinition Height="109*" />
+                        <RowDefinition Height="50*" />
+                        <RowDefinition Height="40*" />
+                        <RowDefinition Height="50*" />
+                        <RowDefinition Height="40*" />
+                        <RowDefinition Height="50*" />
+                        <RowDefinition Height="50*" />
+                        <RowDefinition Height="100*" />
                     </Grid.RowDefinitions>
 
                     <!-- First Row: Login Text -->
-                    <TextBlock Grid.Row="0" Text="Login" FontSize="40" Padding="30" Foreground="#000000" FontFamily="Roboto Mono" TextAlignment="Left" FontWeight="Bold" Margin="0,0,0,6" />
+                    <TextBlock Grid.Row="0" Text="Login" FontSize="40" Padding="30" Foreground="#000000" FontFamily="Roboto Mono" TextAlignment="Left" FontWeight="Bold"   />
 
                     <!-- Second Row: Your account Text -->
                     <TextBlock Grid.Row="1" Text="Your account" FontSize="25" Padding="30" Foreground="#000000" FontFamily="Roboto Mono" TextAlignment="Left" VerticalAlignment="Center" Height="90" />
 
                     <!-- Third Row: Username TextBox -->
-                    <TextBox Grid.Row="2" Grid.RowSpan="2" FontFamily="Roboto Mono" Margin="0,50,0,30" Padding="20,15,0,0" materialDesign:HintAssist.Hint="Username" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Grid.Row="1" Grid.RowSpan="3" FontFamily="Roboto Mono" Margin="0,53,0,30" Padding="20,15,0,0" materialDesign:HintAssist.Hint="Username" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
 
                     <!-- Fourth Row: Password TextBlock -->
-                    <TextBlock Grid.Row="3" Text="Password" FontSize="25" Padding="30" Foreground="#000000" FontFamily="Roboto Mono" TextAlignment="Left" Margin="0,8,0,0" Grid.RowSpan="3" Height="90" />
+                    <TextBlock Grid.Row="3" Text="Password" FontSize="25" Padding="30" Foreground="#000000" FontFamily="Roboto Mono" TextAlignment="Left" Margin="0,21,0,45" Grid.RowSpan="3" />
 
                     <!-- Fifth Row: PasswordBox -->
                     <PasswordBox Grid.Row="5" Grid.RowSpan="2" Margin="0,50,0,76" FontFamily="Roboto Mono" Padding="20,15,0,0" x:Name="FloatingPasswordBox" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
