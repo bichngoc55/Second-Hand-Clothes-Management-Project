@@ -1,12 +1,300 @@
 ﻿<Window x:Class="Second_Hand_Clothes_Management_Project.View.MainView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Second_Hand_Clothes_Management_Project.View"
-        mc:Ignorable="d"
-        Title="MainView" Height="450" Width="800">
-    <Grid>
         
-    </Grid>
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:view="clr-namespace:Second_Hand_Clothes_Management_Project.View"
+        xmlns:local="clr-namespace:Second_Hand_Clothes_Management_Project.ViewModel"
+        mc:Ignorable="d"
+        Title="Phần mềm quản lý bán secondhand" Height="700" Width="1000"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        Name="Mainview"
+        DataContext="{StaticResource MainVM}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction  Command="{Binding Loadwd}"
+                                CommandParameter="{Binding ElementName=Mainview}">
+
+            </i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="Mainview"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="0"
+                                 To="1"
+                                 Duration="0:0:0.1" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers >
+    <Window.Resources>
+        <FontFamily x:Key="Custom">ResourceXAML/Font/RobotoMono-Bold.ttf#Roboto Mono</FontFamily>
+
+    </Window.Resources>
+    <Border CornerRadius="50"  Background="#CAA88A">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Border CornerRadius="50"  Grid.Column="0"  Height="700" VerticalAlignment="Center" Margin="-13,0,0,0"  >
+                <Border.Background>
+                    <ImageBrush ImageSource="\ResourceXAML\Image\Rectangle5.png" Stretch="Fill" ></ImageBrush>
+                </Border.Background>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="530"></RowDefinition>
+                        <RowDefinition Height="60"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0"
+                              Margin="0,0,0,0">
+                        <TextBlock 
+                            Foreground="#000000"
+                            FontFamily="{StaticResource Custom}"
+                            FontSize="28"
+                            Margin="0,10,0,0"
+                            Padding="15 15"
+                            TextAlignment="Center" 
+                            FontWeight="Bold"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Panel.ZIndex="1" Text="TEN SHOP"></TextBlock>
+                        <Image Source="\ResourceXAML\Image\yellowleaf.png"
+                            Stretch="UniformToFill" 
+                            Opacity="0.5"
+                            Panel.ZIndex="0"
+                            RenderTransformOrigin="0.5,0.5" Margin="-32,-34,45,-43" 
+                              >
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-150.7"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                    </Grid>
+                    <Grid Grid.Row="1 " Margin="0">
+                        <DockPanel>
+                            <Border
+                                Height="40"
+                                Width="40"
+                                Background="White"
+                                CornerRadius="50"
+                                Margin="20,5,5,5">
+
+                                <Ellipse Height="40" Width="40" VerticalAlignment="Top" >
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="{Binding Ava}"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Border>
+                            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBlock x:Name="TenDangNhap" Text="Bich Ngoc" FontSize="13" FontFamily="{StaticResource Custom}" Foreground="White" FontWeight="Bold">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Loaded">
+                                            <i:InvokeCommandAction Command="{Binding Username_Loaded}" CommandParameter="{Binding ElementName=Mainview}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>       
+                                </TextBlock>
+                                <TextBlock x:Name="Quyen" Text="Owner" FontSize="13" Foreground="White" FontFamily="{StaticResource Custom}" FontWeight="Thin">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Loaded">
+                                            <i:InvokeCommandAction Command="{Binding Quyen_Loaded}" CommandParameter="{Binding ElementName=Mainview}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>           
+                                </TextBlock>
+                            </StackPanel>
+                        </DockPanel>
+                    </Grid>
+                    <Grid Grid.Row="2" Margin="0,10,0,10"  >
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="85"></RowDefinition>
+                            <RowDefinition Height="85"></RowDefinition>
+                            <RowDefinition Height="85"></RowDefinition>
+                            <RowDefinition Height="85"></RowDefinition>
+                            <RowDefinition Height="85"></RowDefinition>
+                            <RowDefinition Height="85"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <WrapPanel  Grid.Row="0"
+                           Margin="12,0,0,0"
+                            VerticalAlignment="Center">
+                            <Image Source="\ResourceXAML\Icon\second-hand.png"
+                                    Stretch="Uniform"
+                                    HorizontalAlignment="Center"
+                                    Width="50"
+                                    Height="35"
+                                    Margin="0 15"></Image>
+                            <TextBlock
+                                 FontFamily="{StaticResource Custom}"
+                                 FontSize="20"
+                                FontWeight="Medium"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Margin="0 15" Text="SẢN PHẨM" ></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel  Grid.Row="1"
+                           Margin="12,0,0,0"
+                            VerticalAlignment="Center">
+                            <Image Source="\ResourceXAML\Icon\pie-chart.png"
+                                    Stretch="Uniform"
+                                    HorizontalAlignment="Center"
+                                    Width="50"
+                                    Height="30"
+                                    Margin="0 15"></Image>
+                            <TextBlock
+                                 FontFamily="{StaticResource Custom}"
+                                 FontSize="20"
+                                FontWeight="Medium"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Margin="0 15" Text="THỐNG KÊ" ></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel  Grid.Row="2"
+                           Margin="12,0,0,0"
+                            VerticalAlignment="Center">
+                            <Image Source="\ResourceXAML\Icon\coupon (1).png"
+                                    Stretch="Uniform"
+                                    HorizontalAlignment="Center"
+                                    Width="50"
+                                    Height="30"
+                                    Margin="0 15"></Image>
+                            <TextBlock
+                                 FontFamily="{StaticResource Custom}"
+                                 FontSize="20"
+                                FontWeight="Medium"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Margin="0 15" Text="GIẢM GIÁ" ></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel  Grid.Row="3"
+                           Margin="12,0,0,0"
+                            VerticalAlignment="Center">
+                            <Image Source="\ResourceXAML\Icon\warehouse (1).png"
+                                    Stretch="Uniform"
+                                    HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                    Width="50"
+                                    Height="30"
+                                    Margin="0 15"></Image>
+                            <TextBlock
+                                 FontFamily="{StaticResource Custom}"
+                                 FontSize="20"
+                                FontWeight="Medium"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Margin="0 15" Text="NHẬP KHO" ></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel  Grid.Row="4"
+                           Margin="12,0,0,0"
+                            VerticalAlignment="Center">
+                            <Image Source="\ResourceXAML\Icon\employees.png"
+                                    Stretch="Uniform"
+                                    HorizontalAlignment="Center"
+                                    Width="50"
+                                    Height="30"
+                                    Margin="0 15"></Image>
+                            <TextBlock
+                                 FontFamily="{StaticResource Custom}"
+                                 FontSize="20"
+                                FontWeight="Medium"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Margin="0 15" Text="NHÂN VIÊN" ></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel  Grid.Row="5"
+                           Margin="12,0,0,0"
+                            VerticalAlignment="Center">
+                            <Image Source="\ResourceXAML\Icon\settings.png"
+                                    Stretch="Uniform"
+                                    HorizontalAlignment="Center"
+                                    Width="50"
+                                    Height="30"
+                                    Margin="0 15"></Image>
+                            <TextBlock
+                                 FontFamily="{StaticResource Custom}"
+                                 FontSize="20"
+                                FontWeight="Medium"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Margin="0 15" Text="CÀI ĐẶT" ></TextBlock>
+                        </WrapPanel>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <WrapPanel   
+                                Margin="12,0,0,0"
+                                 VerticalAlignment="Center">
+                            <Image Source="\ResourceXAML\Icon\logout.png"
+                                         Stretch="Uniform"
+                                         HorizontalAlignment="Center"
+                                         Width="50"
+                                         Height="30"
+                                         Margin="0 15"></Image>
+                            <TextBlock
+                                  FontFamily="{StaticResource Custom}"
+                                  FontSize="20"
+                                 FontWeight="Medium"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Margin="0 15" Text="ĐĂNG XUẤT" ></TextBlock>        
+                        </WrapPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="1" 
+                    CornerRadius="0,40,40,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0">
+                        <StackPanel
+                                Orientation="Horizontal" 
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Right"
+                                Margin="10 20 30 0">
+                            <materialDesign:PackIcon Kind="WindowMinimize" Foreground="#7E542E" Height="24" Width="24" MouseDown='PackIcon_MouseDown' Margin="0,0,15,0" />
+                            <materialDesign:PackIcon Kind="CloseThick" Foreground="#7E542E" Height="24" Width="24" MouseDown="PackIcon_MouseDown_1">
+                            </materialDesign:PackIcon>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Row="1" Height="605" Width="700" Background="#E2D5BF">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="10" Color="#986639" Opacity="0.5" BlurRadius="50" />
+                        </Border.Effect>
+                        <Frame x:Name="frame" NavigationUIVisibility="Hidden" DataContext="{StaticResource MainVM}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding LoadPageCM}" CommandParameter="{Binding ElementName=frame}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Frame>
+                    </Border>
+                </Grid>
+
+            </Border>
+        </Grid>
+
+    </Border>
 </Window>
