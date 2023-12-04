@@ -37,14 +37,141 @@
                     <ColumnDefinition Width="4*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
-                    <Image
-                        x:Name="AnhDaiDien"
-                        Height="200"
-                        Width="150"
-                        Source="C:\Users\Admin\source\repos\Second-Hand-Clothes-Management-Project\Second-Hand-Clothes-Management-Project\ResourceXAML\Avatar\mck.jpg"                         
-                        >
+                    <StackPanel Orientation="Vertical">
+                        <Image
+                            x:Name="AnhDaiDien"
+                            Height="250"
+                            Width="200"
+                            Source="C:\Users\Admin\source\repos\Second-Hand-Clothes-Management-Project\Second-Hand-Clothes-Management-Project\ResourceXAML\ImageProduct\ÁoThun.jpg" 
+                            Margin="0,50,0,0" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Top"/>
+                        <Button
+                            Height="40"
+                            Width="150"
+                            Margin="0 30 0 0"
+                            Background="#986639"
+                            Content="Thay đổi ảnh"
+                            FontSize="10"
+                            BorderBrush="Transparent">
+
+                        </Button>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <StackPanel Orientation="Vertical">
                         
-                    </Image>
+                        <TextBox
+                            x:Name="txbHoTen"
+                            Width="250"
+                            Height="35"
+                            Margin="50 50 50 0"
+                            Background="White"
+                            materialDesign:HintAssist.Hint="Họ tên"
+                            Padding="10"
+                            FontFamily="Roboto Mono"
+                            HorizontalAlignment="Center"
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
+                        <TextBox
+                            x:Name="txbDiaChi"
+                            Width="250"
+                            Height="35"
+                            Margin="50 15 50 0"
+                            Background="White"
+                            materialDesign:HintAssist.Hint="Địa chỉ"
+                            Padding="10"
+                            FontFamily="Roboto Mono"
+                            HorizontalAlignment="Center"
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
+                        <TextBox
+                            x:Name="txbSDT"
+                            Width="250"
+                            Height="35"
+                            Margin="50 15 50 0"
+                            Background="White"
+                            materialDesign:HintAssist.Hint="Số điện thoại"
+                            Padding="10"
+                            FontFamily="Roboto Mono"
+                            HorizontalAlignment="Center"
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
+                        <StackPanel 
+                            Orientation="Horizontal"
+                            Margin="50 15 50 0"
+                            Width="250"
+                            Height="35">
+                            <ComboBox
+                                Background="White"
+                                Height="35"
+                                Width="100"
+                                BorderBrush="Transparent"
+                                BorderThickness="0"
+                                SelectedIndex="0"
+                                materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"
+                                materialDesign:TextFieldAssist.TextFieldCornerRadius="5">
+                                <ComboBoxItem Content="Giới Tính"/>
+                                <ComboBoxItem Content="Nam"/>
+                                <ComboBoxItem Content="Nữ"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <TextBox
+                            x:Name="txbEmail"
+                            Width="250"
+                            Height="35"
+                            Margin="50 15 50 0"
+                            Background="White"
+                            materialDesign:HintAssist.Hint="Email"
+                            Padding="10"
+                            FontFamily="Roboto Mono"
+                            HorizontalAlignment="Center"
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
+                        <TextBox
+                            x:Name="txbPassword"
+                            Width="250"
+                            Height="35"
+                            Margin="50 15 50 0"
+                            Background="White"
+                            materialDesign:HintAssist.Hint="Password"
+                            Padding="10"
+                            FontFamily="Roboto Mono"
+                            HorizontalAlignment="Center"
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
+                        <StackPanel
+                            Orientation="Horizontal"
+                            Margin="50 15 50 0"
+                            Width="250"
+                            Height="35">
+                            <Button
+                                Background="#986639"
+                                Height="35"
+                                Width="130"
+                                Content="TẠO TÀI KHOẢN"
+                                FontSize="10"
+                                BorderBrush="Transparent">
+                                
+                            </Button>
+                            <Button
+                                Background="#986639"
+                                Height="35"
+                                Width="100"
+                                Margin="20 0 0 0"
+                                Content="CẬP NHẬP"
+                                FontSize="10"
+                                BorderBrush="Transparent">
+                                
+                            </Button>
+                        </StackPanel>
+                        <Button
+                            Background="#986639"
+                            Margin="70,15,50,0"
+                            Height="35"
+                            Width="130"
+                            Content="XOÁ TÀI KHOẢN"
+                            FontSize="10"
+                            BorderBrush="Transparent" 
+                            HorizontalAlignment="Left" 
+                            />
+                    </StackPanel>
                 </Grid>
             </Grid>
         </Grid>
