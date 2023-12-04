@@ -42,7 +42,7 @@
                             x:Name="AnhDaiDien"
                             Height="250"
                             Width="200"
-                            Source="C:\Users\Admin\source\repos\Second-Hand-Clothes-Management-Project\Second-Hand-Clothes-Management-Project\ResourceXAML\ImageProduct\ÁoThun.jpg" 
+                            Source="C:\Users\Admin\Source\Repos\Second-Hand-Clothes-Management-Project\Second-Hand-Clothes-Management-Project\ResourceXAML\ImageProduct\ÁoThun.jpg" 
                             Margin="0,50,0,0" 
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Top"/>
