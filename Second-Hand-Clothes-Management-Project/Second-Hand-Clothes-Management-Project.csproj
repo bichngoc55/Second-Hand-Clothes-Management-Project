@@ -159,11 +159,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
+    <Page Include="ResourceXAML\NavigationStyle.xaml">
     <Page Include="View\CaiDatView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\GiamGiaView.xaml">
+
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -218,6 +221,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="ResourceXAML\Font\RobotoMono-Thin.ttf" />
+    <Resource Include="ResourceXAML\Font\RobotoMono-Regular.ttf" />
+    <Resource Include="ResourceXAML\Font\RobotoMono-Medium.ttf" />
+    <Resource Include="ResourceXAML\Font\RobotoMono-Light.ttf" />
+    <Resource Include="ResourceXAML\Font\RobotoMono-ExtraLight.ttf" />
+    <Resource Include="ResourceXAML\Font\RobotoMono-Bold.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -313,10 +322,16 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+
+    <Resource Include="ResourceXAML\Image\Rectangle5.png" />
+    <Resource Include="ResourceXAML\Image\Rectangle3.png" />
+    <Resource Include="ResourceXAML\Image\Rectangle2.png" />
+    <Resource Include="ResourceXAML\Image\Rectangle 1.png" />
     <Resource Include="ResourceXAML\ImageProduct\Váy.jpg" />
     <Resource Include="ResourceXAML\ImageProduct\Trackpant.jpg" />
     <Resource Include="ResourceXAML\ImageProduct\Sweater.jpg" />
     <Resource Include="ResourceXAML\ImageProduct\ÁoThun.jpg" />
+
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
