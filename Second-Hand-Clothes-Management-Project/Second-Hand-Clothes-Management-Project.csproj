@@ -122,11 +122,23 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="View\CaiDatView.xaml.cs">
+      <DependentUpon>CaiDatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GiamGiaView.xaml.cs">
+      <DependentUpon>GiamGiaView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NhanVienView.xaml.cs">
+      <DependentUpon>NhanVienView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SanPhamView.xaml.cs">
+      <DependentUpon>SanPhamView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ThongKeView.xaml.cs">
       <DependentUpon>ThongKeView.xaml</DependentUpon>
@@ -147,7 +159,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
     <Page Include="ResourceXAML\NavigationStyle.xaml">
+    <Page Include="View\CaiDatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GiamGiaView.xaml">
+
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,6 +175,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NhanVienView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SanPhamView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -204,11 +231,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="ResourceXAML\Avatar\" />
-    <Folder Include="ResourceXAML\ImageProduct\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="ResourceXAML\Avatar\mck.jpg" />
     <Resource Include="ResourceXAML\Icon\add.png" />
   </ItemGroup>
   <ItemGroup>
@@ -297,10 +322,16 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+
     <Resource Include="ResourceXAML\Image\Rectangle5.png" />
     <Resource Include="ResourceXAML\Image\Rectangle3.png" />
     <Resource Include="ResourceXAML\Image\Rectangle2.png" />
     <Resource Include="ResourceXAML\Image\Rectangle 1.png" />
+    <Resource Include="ResourceXAML\ImageProduct\Váy.jpg" />
+    <Resource Include="ResourceXAML\ImageProduct\Trackpant.jpg" />
+    <Resource Include="ResourceXAML\ImageProduct\Sweater.jpg" />
+    <Resource Include="ResourceXAML\ImageProduct\ÁoThun.jpg" />
+
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
