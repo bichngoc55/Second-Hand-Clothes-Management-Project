@@ -121,7 +121,7 @@
                 </Border>
             </Grid>
 
-
+            <!--Show sản phẩm-->
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
