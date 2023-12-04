@@ -215,10 +215,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ResourceXAML\Avatar\" />
-    <Folder Include="ResourceXAML\ImageProduct\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="ResourceXAML\Icon\add.png" />
   </ItemGroup>
@@ -308,6 +305,11 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="ResourceXAML\ImageProduct\Váy.jpg" />
+    <Resource Include="ResourceXAML\ImageProduct\Trackpant.jpg" />
+    <Resource Include="ResourceXAML\ImageProduct\Sweater.jpg" />
+    <Resource Include="ResourceXAML\ImageProduct\ÁoThun.jpg" />
+    <Resource Include="ResourceXAML\Avatar\mck.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
