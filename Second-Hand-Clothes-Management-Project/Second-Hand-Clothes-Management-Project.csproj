@@ -161,6 +161,9 @@
     </Page>
 
     <Page Include="ResourceXAML\NavigationStyle.xaml">
+    <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      </Page>
     <Page Include="View\CaiDatView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
