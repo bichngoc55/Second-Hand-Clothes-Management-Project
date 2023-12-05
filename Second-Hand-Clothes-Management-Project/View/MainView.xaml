@@ -20,7 +20,7 @@
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction  Command="{Binding Loadwd}"
+            <i:InvokeCommandAction  Command="{Binding LoadPage}"
                                 CommandParameter="{Binding ElementName=Mainview}">
 
             </i:InvokeCommandAction>
@@ -98,7 +98,9 @@
                                 Background="White"
                                 CornerRadius="50"
                                 Margin="20,5,5,5">
-
+                                <Border.Effect>
+                                    <DropShadowEffect Color="#9D795E" BlurRadius="20" ShadowDepth="5" Opacity="0.8"   />
+                                </Border.Effect>
                                 <Ellipse Height="40" Width="40" VerticalAlignment="Top" >
                                     <Ellipse.Fill>
                                         <ImageBrush ImageSource="{Binding Ava}"/>
@@ -106,14 +108,14 @@
                                 </Ellipse>
                             </Border>
                             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
-                                <TextBlock x:Name="TenDangNhap" Text="Bich Ngoc" FontSize="13" FontFamily="{StaticResource Custom}" Foreground="White" FontWeight="Bold">
+                                <TextBlock x:Name="TenDangNhap" Text="Bich Ngoc" FontSize="13" FontFamily="{StaticResource Custom}" Foreground="Black" FontWeight="Bold">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Loaded">
                                             <i:InvokeCommandAction Command="{Binding Username_Loaded}" CommandParameter="{Binding ElementName=Mainview}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>       
                                 </TextBlock>
-                                <TextBlock x:Name="Quyen" Text="Owner" FontSize="13" Foreground="White" FontFamily="{StaticResource Custom}" FontWeight="Thin">
+                                <TextBlock x:Name="Quyen" Text="Owner" FontSize="13" Foreground="Black" FontFamily="{StaticResource Custom}" FontWeight="Thin">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Loaded">
                                             <i:InvokeCommandAction Command="{Binding Quyen_Loaded}" CommandParameter="{Binding ElementName=Mainview}" />
