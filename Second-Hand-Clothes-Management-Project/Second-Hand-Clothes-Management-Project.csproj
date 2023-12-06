@@ -110,6 +110,9 @@
     <Compile Include="View\SanPhamView.xaml.cs">
       <DependentUpon>SanPhamView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ThemSanPhamView.xaml.cs">
+      <DependentUpon>ThemSanPhamView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ThongKeView.xaml.cs">
       <DependentUpon>ThongKeView.xaml</DependentUpon>
     </Compile>
@@ -154,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SanPhamView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ThemSanPhamView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
