@@ -28,33 +28,33 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public Visibility SetQuanLy { get => _SetQuanLy; set { _SetQuanLy = value; OnPropertyChanged(); } }
 
 
-        public MainViewModel()
-        {
-            Quyen_Load = new RelayCommand<MainView>((p) => true, (p) => _LoadQuyen(p));
-            LoadPage = new RelayCommand<MainView>((p) => true, (p) => _LoadPage(p));
-        }
+        //public MainViewModel()
+        //{
+        //    Quyen_Load = new RelayCommand<MainView>((p) => true, (p) => _LoadQuyen(p));
+        //    LoadPage = new RelayCommand<MainView>((p) => true, (p) => _LoadPage(p));
+        //}
 
         private void _LoadQuyen(MainView p)
         {
             p.Quyen.Text = (bool)User.LOAITK ? "Quản lý" : "Nhân viên";
         }
 
-        private void _LoadPage(MainView p)
-        {
-            if (LoginViewModel.IsLogin)
-            {
-                string a = Const.TenDangNhap;
-                User = DataProvider.Ins.DB.NHANVIEN.Where(x => x.USERNAME == a).FirstOrDefault();
-                Const.NguoiDung = User;
-                SetQuanLy = (bool)User.LOAITK ? Visibility.Visible : Visibility.Collapsed;
-                Const.Admin = User.QTV;
-                LoadTenND(p);
-            }
-        }
+        //private void _LoadPage(MainView p)
+        //{
+        //    if (LoginViewModel.IsLogin)
+        //    {
+        //        string a = Const.TenDangNhap;
+        //        User = DataProvider.Ins.DB.NHANVIEN.Where(x => x.USERNAME == a).FirstOrDefault();
+        //        Const.NguoiDung = User;
+        //        SetQuanLy = (bool)User.LOAITK ? Visibility.Visible : Visibility.Collapsed;
+        //        Const.Admin = User.QTV;
+        //        LoadTenND(p);
+        //    }
+        //}
 
-        private void LoadTenND(MainView p)
-        {
-            p.TenDangNhap.Text = string.Join(" ", User.TENND.Split().Reverse().Take(2).Reverse());
-        }
+        //private void LoadTenND(MainView p)
+        //{
+        //    p.TenDangNhap.Text = string.Join(" ", User.TENND.Split().Reverse().Take(2).Reverse());
+        //}
     }
 }

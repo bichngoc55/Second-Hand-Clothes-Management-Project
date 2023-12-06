@@ -15,6 +15,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 {
     public class LoginViewModel : BaseViewModel
     {
+
         public static bool IsLogin { get; set; }
         private string _Username;
         public string Username { get => _Username; set { _Username = value; OnPropertyChanged(); } }
@@ -30,7 +31,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             Password = "";
             Username = "";
 
-            LoginCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { Login(p); });
+            LoginCommand = new RelayCommand<Window>((p) => { return true; }, p=>  { Login(p); });
             PasswordChangedCommand= new RelayCommand<PasswordBox> ((p) => { return true; }, (p) =>
             {
                 Password = p.Password;
@@ -38,31 +39,28 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         }
 
         private void Login(Window p)
-        {
-            var typedObject = (TAIKHOAN)obj;
-            var USERNAME = typedObject.USERNAME;
+        { 
             try {                 
                 if (p == null)
                      return;
                 string passEncode = Base64Encode(Password);
-                var accCount = DataProvider.Ins.DB.TAIKHOAN.Where(x => x.USERNAME == Username).Count();
-                if (accCount > 0)
-                {
-                    IsLogin = true;
-                    Const.TenDangNhap = Username;
-                    p.Close();
-                }
-                else
-                {
-                    IsLogin = false;
-                    MessageBox.Show("Sai tên tài khoản hoặc mật khẩu!");
-                }           
+                 //thieu
+                //if (accCount > 0)
+                //{
+                //    IsLogin = true;
+                //    Const.TenDangNhap = Username;
+                //    p.Close();
+                //}
+                //else
+                //{
+                //    IsLogin = false;
+                //    MessageBox.Show("Sai tên tài khoản hoặc mật khẩu!");
+                //}           
             }
             catch
             {
                 MessageBox.Show("Mất kết nối đến cơ sở dữ liệu!", "Thông báo", MessageBoxButton.OK);
-            }
-            p.
+            } 
         }
 
         private string MD5Hash(string value)
