@@ -85,7 +85,7 @@
                             VerticalAlignment="Center">
                                 <ComboBoxItem Content="Tìm Kiếm"/>
                                 <ComboBoxItem Content="Sơ mi"/>
-                                <ComboBoxItem Content="Thun"/>
+                                <ComboBoxItem Content="Áo Thun"/>
                                 <ComboBoxItem Content="Hoodie"/>
                                 <ComboBoxItem Content="Yếm"/>
                                 <ComboBoxItem Content="Váy"/>
