@@ -13,10 +13,11 @@
         Background="Transparent"
         AllowsTransparency="True"
         MouseDown="Window_MouseDown_1"
-        DataContext="{StaticResource loginVM}"
+        
+        DataContext="{StaticResource LoginVM}"
         Name="mainPage"
         WindowStartupLocation="CenterScreen">
- 
+
     <Border Background="#CAA88A" CornerRadius="45">
         <Grid>
             <Border CornerRadius="45" Width="980" Height="680" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -33,28 +34,30 @@
                 </Border.Effect>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="61.5" />
-                        <RowDefinition Height="61.5" />
+                        <RowDefinition Height="61" />
+                        <RowDefinition Height="61" />
                         <RowDefinition Height="82" />
-                        <RowDefinition Height="61.5" />
+                        <RowDefinition Height="61" />
                         <RowDefinition Height="82" />
-                        <RowDefinition Height="61.5" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="8"/>
+                        <RowDefinition Height="63" />
                     </Grid.RowDefinitions>
 
                     <!-- First Row: Login Text -->
                     <TextBlock Grid.Row="0"
                                Text="Login"
-                               FontSize="40" 
+                               FontSize="35" 
                                Foreground="#000000"
                                FontFamily="Roboto Mono" 
                                TextAlignment="Left" 
                                FontWeight="Bold" 
-                               Margin="35,10,0,0"   />
+                               Margin="35,10,0,61" Grid.RowSpan="2"   />
 
                     <!-- Second Row: Your account Text -->
                     <TextBlock Grid.Row="1"
                                Text="Your account"
-                               FontSize="25"  
+                               FontSize="22"  
                                Foreground="#000000" 
                                FontFamily="Roboto Mono"
                                TextAlignment="Left" 
@@ -65,9 +68,9 @@
 
                     <TextBox Grid.Row="2"   
                              FontFamily="Roboto Mono"
-                             Margin="-30,5,0,5"  
+                             Margin="35,5,65,5"  
                              Width="500"
-                             FontSize="18"
+                             FontSize="17"
                              materialDesign:HintAssist.Hint="Tên Đăng Nhập" 
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Text="{Binding Username}"/>
@@ -76,22 +79,23 @@
                     <TextBlock Grid.Row="3" 
                                Text="Password" 
                                
-                               FontSize="25"   
+                               FontSize="22"   
                                Foreground="#000000" 
                                FontFamily="Roboto Mono"
                                TextAlignment="Left" 
                                VerticalAlignment="Center" 
                                Margin="35,0,0,0"  >
-                        
+
                     </TextBlock>
 
                     <!-- Fifth Row: PasswordBox -->
                     <PasswordBox Grid.Row="4" 
                                  Width="500"  
-                                 Margin="-30,5,0,5" 
-                                 FontSize="18"
+                                 Margin="35,6,65,4" 
+                                 FontSize="17"
                                  FontFamily="Roboto Mono"
                                  x:Name="FloatingPasswordBox"
+                                  
                                  materialDesign:HintAssist.Hint="Password" 
                                  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
                         <i:Interaction.Triggers>
@@ -103,25 +107,31 @@
                         </i:Interaction.Triggers>
 
                     </PasswordBox>
-                                 
-                                 
+                    <TextBlock Grid.Row="5"  
+                           Foreground="#D7596D"
+                           FontSize="12" Text="{Binding ErrorMessage}"
+                           FontWeight="Medium"
+                           FontFamily="Roboto Mono"      
+                               Width="500"
+                               Margin="35,0,65,0"
+                           TextWrapping="Wrap" Grid.RowSpan="2"/>
+
 
                     <!-- Sixth Row: Log in Button -->
-                    <Button Grid.Row="5" 
-                            Width="400" 
-                            VerticalAlignment="Center" 
+                    <Button Grid.Row="7"
+                            Height="46"
+                            Width="350"
+                            VerticalAlignment="Top" 
                             FontFamily="Roboto Mono"
-                            FontSize="23" 
+                            FontSize="20" 
                             Command="{Binding LoginCommand}"
                             Content="Log in" 
-                            FontWeight="Medium" 
-                            Background="#845831"
-                            Margin="118,0,82,0">
-                        <Button.Effect>
-                            <DropShadowEffect ShadowDepth="4" Direction="0" Opacity="0.5" BlurRadius="25" />
-                        </Button.Effect>
-                    </Button>
+                            FontWeight="Light" 
+                            Background="#845831" Margin="125,2,125,0"
+                            />
+
                 </Grid>
+
             </Border>
         </Grid>
     </Border>

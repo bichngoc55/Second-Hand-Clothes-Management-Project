@@ -10,8 +10,8 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
-                        <Border   Width="155"
-                                    Height="60"
+                        <Border   Width="160"
+                                    Height="75"
                                  
                                 CornerRadius="10"
                                 HorizontalAlignment="Stretch"
@@ -57,8 +57,8 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                        Width="155"
-                        Height="85"
+                        Width="160"
+                        Height="75"
                         CornerRadius="10"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
@@ -106,8 +106,8 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                    Width="155"
-                    Height="85"
+                    Width="160"
+                    Height="75"
                     CornerRadius="10"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
@@ -155,8 +155,8 @@ x:Key="NhapKho">
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                 Width="155"
-                 Height="85"
+                 Width="160"
+                 Height="75"
                  CornerRadius="10"
                  HorizontalAlignment="Stretch"
                  VerticalAlignment="Stretch"
@@ -204,8 +204,8 @@ x:Key="NhanVien">
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                 Width="155"
-                 Height="85"
+                 Width="160"
+                 Height="75"
                  CornerRadius="10"
                  HorizontalAlignment="Stretch"
                  VerticalAlignment="Stretch"
@@ -254,8 +254,8 @@ x:Key="CaiDat">
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                 Width="155"
-                 Height="85"
+                 Width="160"
+                 Height="75"
                  CornerRadius="10"
                  HorizontalAlignment="Stretch"
                  VerticalAlignment="Stretch"
@@ -306,8 +306,8 @@ x:Key="CaiDat">
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                        Width="155"
-                        Height="85"
+                        Width="160"
+                          Height="75"
                         CornerRadius="10"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"

@@ -20,46 +20,67 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         private string _Username;
         public string Username { get => _Username; set { _Username = value; OnPropertyChanged(); } }
         private string _Password;
+        private string _errorMessage;
+
         public string Password { get => _Password; set { _Password = value; OnPropertyChanged(); } }
         //public Button LoginButton { get; set; }
-        public ICommand PasswordChangedCommand { get; set; }
-
+        public ICommand PasswordChangedCommand { get; set; } 
+        public ICommand RememberPasswordCommand { get; set; }
         public ICommand LoginCommand { get; set; }
         public LoginViewModel()
         {
             IsLogin = false;
             Password = "";
-            Username = "";
-
-            LoginCommand = new RelayCommand<Window>((p) => { return true; }, p=>  { Login(p); });
-            PasswordChangedCommand= new RelayCommand<PasswordBox> ((p) => { return true; }, (p) =>
+            Username = ""; 
+            LoginCommand = new RelayCommand<Window>(CanExecuteLoginCommand, p => Login(p));
+            PasswordChangedCommand = new RelayCommand<PasswordBox> ((p) => { return true; }, (p) =>
             {
                 Password = p.Password;
             }); 
         }
+ 
 
+        private bool CanExecuteLoginCommand(object obj)
+        {
+            bool validData;
+            if (string.IsNullOrWhiteSpace(Username) || Username.Length < 3 ||
+                Password == null || Password.Length < 3)
+                validData = false;
+            else
+                validData = true;
+            return validData;
+        }
+
+        public string ErrorMessage
+        {
+            get
+            {
+                return _errorMessage;
+            }
+            set
+            {
+                _errorMessage = value;
+                OnPropertyChanged(nameof(ErrorMessage));
+            }
+        }
         private void Login(Window p)
         { 
             try {                 
                 if (p == null)
                      return;
                 string passEncode = Base64Encode(Password);
-                 //thieu
-                //if (accCount > 0)
-                //{
-                //    IsLogin = true;
-                //    Const.TenDangNhap = Username;
-                //    p.Close();
-                //}
-                //else
-                //{
-                //    IsLogin = false;
-                //    MessageBox.Show("Sai tên tài khoản hoặc mật khẩu!");
-                //}           
+                IsLogin = true;
+                Const.TenDangNhap = Username;
+                Window oldWindow = App.Current.MainWindow;
+                MainView mainView = new MainView();
+                App.Current.MainWindow = oldWindow;
+                oldWindow.Close();
+                mainView.Show();
+                Username = "";
             }
             catch
             {
-                MessageBox.Show("Mất kết nối đến cơ sở dữ liệu!", "Thông báo", MessageBoxButton.OK);
+                ErrorMessage = "Tên đăng nhập hoặc mật khẩu không đúng";
             } 
         }
 
