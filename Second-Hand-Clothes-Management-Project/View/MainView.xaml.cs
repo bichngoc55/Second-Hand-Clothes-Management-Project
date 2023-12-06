@@ -33,5 +33,7 @@ namespace Second_Hand_Clothes_Management_Project.View
         {
             Close();
         }
+
+      
     }
 }
