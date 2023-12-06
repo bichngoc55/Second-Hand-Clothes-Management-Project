@@ -1,6 +1,8 @@
 ﻿<Window x:Class="Second_Hand_Clothes_Management_Project.View.LoginView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Second_Hand_Clothes_Management_Project.View"
@@ -10,12 +12,14 @@
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True"
-        MouseDown="Window_MouseDown"
-        
+        MouseDown="Window_MouseDown_1"
+        DataContext="{StaticResource loginVM}"
+        Name="mainPage"
         WindowStartupLocation="CenterScreen">
-    <Border Background="#CAA88A">
+ 
+    <Border Background="#CAA88A" CornerRadius="45">
         <Grid>
-            <Border CornerRadius="20" Width="980" Height="680" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border CornerRadius="45" Width="980" Height="680" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Border.Background>
                     <ImageBrush ImageSource="\ResourceXAML\Image\loginimg.jpg"/>
                 </Border.Background>
@@ -23,40 +27,98 @@
                     <DropShadowEffect Color="#9D795E" BlurRadius="20" ShadowDepth="4" Opacity="0.5" Direction="0" />
                 </Border.Effect>
             </Border>
-            <Border CornerRadius="20" Background="#FFFFFF" Width="600" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border CornerRadius="20" Background="#FFFFFF" Width="600" Height="430" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Border.Effect>
                     <DropShadowEffect Color="#9D795E" BlurRadius="20" ShadowDepth="4" Opacity="0.5" Direction="0" />
                 </Border.Effect>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50*" />
-                        <RowDefinition Height="40*" />
-                        <RowDefinition Height="50*" />
-                        <RowDefinition Height="40*" />
-                        <RowDefinition Height="50*" />
-                        <RowDefinition Height="50*" />
-                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="61.5" />
+                        <RowDefinition Height="61.5" />
+                        <RowDefinition Height="82" />
+                        <RowDefinition Height="61.5" />
+                        <RowDefinition Height="82" />
+                        <RowDefinition Height="61.5" />
                     </Grid.RowDefinitions>
 
                     <!-- First Row: Login Text -->
-                    <TextBlock Grid.Row="0" Text="Login" FontSize="40" Padding="30" Foreground="#000000" FontFamily="Roboto Mono" TextAlignment="Left" FontWeight="Bold"   />
+                    <TextBlock Grid.Row="0"
+                               Text="Login"
+                               FontSize="40" 
+                               Foreground="#000000"
+                               FontFamily="Roboto Mono" 
+                               TextAlignment="Left" 
+                               FontWeight="Bold" 
+                               Margin="35,10,0,0"   />
 
                     <!-- Second Row: Your account Text -->
-                    <TextBlock Grid.Row="1" Text="Your account" FontSize="25" Padding="30" Foreground="#000000" FontFamily="Roboto Mono" TextAlignment="Left" VerticalAlignment="Center" Height="90" />
+                    <TextBlock Grid.Row="1"
+                               Text="Your account"
+                               FontSize="25"  
+                               Foreground="#000000" 
+                               FontFamily="Roboto Mono"
+                               TextAlignment="Left" 
+                               VerticalAlignment="Center" 
+                               Margin="35,0,0,0"  />
 
                     <!-- Third Row: Username TextBox -->
-                    <TextBox Grid.Row="1" Grid.RowSpan="3" FontFamily="Roboto Mono" Margin="0,53,0,30" Padding="20,15,0,0" materialDesign:HintAssist.Hint="Username" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+                    <TextBox Grid.Row="2"   
+                             FontFamily="Roboto Mono"
+                             Margin="-30,5,0,5"  
+                             Width="500"
+                             FontSize="18"
+                             materialDesign:HintAssist.Hint="Tên Đăng Nhập" 
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             Text="{Binding Username}"/>
 
                     <!-- Fourth Row: Password TextBlock -->
-                    <TextBlock Grid.Row="3" Text="Password" FontSize="25" Padding="30" Foreground="#000000" FontFamily="Roboto Mono" TextAlignment="Left" Margin="0,21,0,45" Grid.RowSpan="3" />
+                    <TextBlock Grid.Row="3" 
+                               Text="Password" 
+                               
+                               FontSize="25"   
+                               Foreground="#000000" 
+                               FontFamily="Roboto Mono"
+                               TextAlignment="Left" 
+                               VerticalAlignment="Center" 
+                               Margin="35,0,0,0"  >
+                        
+                    </TextBlock>
 
                     <!-- Fifth Row: PasswordBox -->
-                    <PasswordBox Grid.Row="5" Grid.RowSpan="2" Margin="0,50,0,76" FontFamily="Roboto Mono" Padding="20,15,0,0" x:Name="FloatingPasswordBox" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                    <PasswordBox Grid.Row="4" 
+                                 Width="500"  
+                                 Margin="-30,5,0,5" 
+                                 FontSize="18"
+                                 FontFamily="Roboto Mono"
+                                 x:Name="FloatingPasswordBox"
+                                 materialDesign:HintAssist.Hint="Password" 
+                                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PasswordChanged">
+                                <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
+                               CommandParameter="{Binding ElementName=FloatingPasswordBox}">
+                                </i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                    </PasswordBox>
+                                 
+                                 
 
                     <!-- Sixth Row: Log in Button -->
-                    <Button Grid.Row="6" VerticalAlignment="Center" FontFamily="Roboto Mono" FontSize="23" Content="Log in" FontWeight="Medium" Height="59" Background="#845831" Margin="118,0,118,0">
+                    <Button Grid.Row="5" 
+                            Width="400" 
+                            VerticalAlignment="Center" 
+                            FontFamily="Roboto Mono"
+                            FontSize="23" 
+                            Command="{Binding LoginCommand}"
+                            Content="Log in" 
+                            FontWeight="Medium" 
+                            Background="#845831"
+                            Margin="118,0,82,0">
                         <Button.Effect>
-                            <DropShadowEffect ShadowDepth="3" Direction="270" Opacity="0.5" BlurRadius="5" />
+                            <DropShadowEffect ShadowDepth="4" Direction="0" Opacity="0.5" BlurRadius="25" />
                         </Button.Effect>
                     </Button>
                 </Grid>
