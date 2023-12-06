@@ -24,12 +24,14 @@ namespace Second_Hand_Clothes_Management_Project.View
             InitializeComponent();
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+ 
+
+        private void Window_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
-            if(e.LeftButton == MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DragMove();
-            }       
+            }
         }
     }
 }

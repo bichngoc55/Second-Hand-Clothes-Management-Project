@@ -40,8 +40,15 @@
         </EventTrigger>
     </Window.Triggers >
     <Window.Resources>
-        <FontFamily x:Key="Custom">ResourceXAML/Font/RobotoMono-Bold.ttf#Roboto Mono</FontFamily>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\ResourceXAML\NavigationStyle.xaml"/>
+                <!-- Other merged dictionaries, if any -->
+            </ResourceDictionary.MergedDictionaries>
 
+            <!-- Define FontFamily with a key -->
+            <FontFamily x:Key="Custom">ResourceXAML/Font/RobotoMono-Bold.ttf#Roboto Mono</FontFamily>
+        </ResourceDictionary>
     </Window.Resources>
     <Border CornerRadius="50"  Background="#CAA88A">
         <Grid>
@@ -113,131 +120,36 @@
                                         <i:EventTrigger EventName="Loaded">
                                             <i:InvokeCommandAction Command="{Binding Username_Loaded}" CommandParameter="{Binding ElementName=Mainview}" />
                                         </i:EventTrigger>
-                                    </i:Interaction.Triggers>       
+                                    </i:Interaction.Triggers>
                                 </TextBlock>
                                 <TextBlock x:Name="Quyen" Text="Owner" FontSize="13" Foreground="Black" FontFamily="{StaticResource Custom}" FontWeight="Thin">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Loaded">
                                             <i:InvokeCommandAction Command="{Binding Quyen_Loaded}" CommandParameter="{Binding ElementName=Mainview}" />
                                         </i:EventTrigger>
-                                    </i:Interaction.Triggers>           
+                                    </i:Interaction.Triggers>
                                 </TextBlock>
                             </StackPanel>
                         </DockPanel>
                     </Grid>
                     <Grid Grid.Row="2" Margin="0,10,0,10"  >
+                        <StackPanel>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="85"></RowDefinition>
-                            <RowDefinition Height="85"></RowDefinition>
-                            <RowDefinition Height="85"></RowDefinition>
-                            <RowDefinition Height="85"></RowDefinition>
-                            <RowDefinition Height="85"></RowDefinition>
-                            <RowDefinition Height="85"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <WrapPanel  Grid.Row="0"
-                           Margin="12,0,0,0"
-                            VerticalAlignment="Center">
-                            <Image Source="\ResourceXAML\Icon\second-hand.png"
-                                    Stretch="Uniform"
-                                    HorizontalAlignment="Center"
-                                    Width="50"
-                                    Height="35"
-                                    Margin="0 15"></Image>
-                            <TextBlock
-                                 FontFamily="{StaticResource Custom}"
-                                 FontSize="20"
-                                FontWeight="Medium"
-                                 HorizontalAlignment="Center"
-                                 VerticalAlignment="Center"
-                                 Margin="0 15" Text="SẢN PHẨM" ></TextBlock>
-                        </WrapPanel>
-                        <WrapPanel  Grid.Row="1"
-                           Margin="12,0,0,0"
-                            VerticalAlignment="Center">
-                            <Image Source="\ResourceXAML\Icon\pie-chart.png"
-                                    Stretch="Uniform"
-                                    HorizontalAlignment="Center"
-                                    Width="50"
-                                    Height="30"
-                                    Margin="0 15"></Image>
-                            <TextBlock
-                                 FontFamily="{StaticResource Custom}"
-                                 FontSize="20"
-                                FontWeight="Medium"
-                                 HorizontalAlignment="Center"
-                                 VerticalAlignment="Center"
-                                 Margin="0 15" Text="THỐNG KÊ" ></TextBlock>
-                        </WrapPanel>
-                        <WrapPanel  Grid.Row="2"
-                           Margin="12,0,0,0"
-                            VerticalAlignment="Center">
-                            <Image Source="\ResourceXAML\Icon\coupon (1).png"
-                                    Stretch="Uniform"
-                                    HorizontalAlignment="Center"
-                                    Width="50"
-                                    Height="30"
-                                    Margin="0 15"></Image>
-                            <TextBlock
-                                 FontFamily="{StaticResource Custom}"
-                                 FontSize="20"
-                                FontWeight="Medium"
-                                 HorizontalAlignment="Center"
-                                 VerticalAlignment="Center"
-                                 Margin="0 15" Text="GIẢM GIÁ" ></TextBlock>
-                        </WrapPanel>
-                        <WrapPanel  Grid.Row="3"
-                           Margin="12,0,0,0"
-                            VerticalAlignment="Center">
-                            <Image Source="\ResourceXAML\Icon\warehouse (1).png"
-                                    Stretch="Uniform"
-                                    HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                    Width="50"
-                                    Height="30"
-                                    Margin="0 15"></Image>
-                            <TextBlock
-                                 FontFamily="{StaticResource Custom}"
-                                 FontSize="20"
-                                FontWeight="Medium"
-                                 HorizontalAlignment="Center"
-                                 VerticalAlignment="Center"
-                                 Margin="0 15" Text="NHẬP KHO" ></TextBlock>
-                        </WrapPanel>
-                        <WrapPanel  Grid.Row="4"
-                           Margin="12,0,0,0"
-                            VerticalAlignment="Center">
-                            <Image Source="\ResourceXAML\Icon\employees.png"
-                                    Stretch="Uniform"
-                                    HorizontalAlignment="Center"
-                                    Width="50"
-                                    Height="30"
-                                    Margin="0 15"></Image>
-                            <TextBlock
-                                 FontFamily="{StaticResource Custom}"
-                                 FontSize="20"
-                                FontWeight="Medium"
-                                 HorizontalAlignment="Center"
-                                 VerticalAlignment="Center"
-                                 Margin="0 15" Text="NHÂN VIÊN" ></TextBlock>
-                        </WrapPanel>
-                        <WrapPanel  Grid.Row="5"
-                           Margin="12,0,0,0"
-                            VerticalAlignment="Center">
-                            <Image Source="\ResourceXAML\Icon\settings.png"
-                                    Stretch="Uniform"
-                                    HorizontalAlignment="Center"
-                                    Width="50"
-                                    Height="30"
-                                    Margin="0 15"></Image>
-                            <TextBlock
-                                 FontFamily="{StaticResource Custom}"
-                                 FontSize="20"
-                                FontWeight="Medium"
-                                 HorizontalAlignment="Center"
-                                 VerticalAlignment="Center"
-                                 Margin="0 15" Text="CÀI ĐẶT" ></TextBlock>
-                        </WrapPanel>
+                            <RadioButton
+                                    x:Name="btnHome"
+                                    Style="{StaticResource BtnHome}"
+                                    IsChecked="True"  
+                                    FontFamily="{StaticResource Custom}"
+                                    Uid="0"
+                                    Command="{Binding HomeCM}"/>
+
+                            <RadioButton
+                                    Style="{StaticResource ThongKe}"
+                                    Uid="1"
+                                    FontFamily="{StaticResource Custom}"
+                                    x:Name="ThongKe"
+                                    Command="{Binding ThongKeCM}"/>
+                        </StackPanel>
                     </Grid>
                     <Grid Grid.Row="3">
                         <WrapPanel   
@@ -255,7 +167,7 @@
                                  FontWeight="Medium"
                                   HorizontalAlignment="Center"
                                   VerticalAlignment="Center"
-                                  Margin="0 15" Text="ĐĂNG XUẤT" ></TextBlock>        
+                                  Margin="0 15" Text="ĐĂNG XUẤT" ></TextBlock>
                         </WrapPanel>
                     </Grid>
                 </Grid>

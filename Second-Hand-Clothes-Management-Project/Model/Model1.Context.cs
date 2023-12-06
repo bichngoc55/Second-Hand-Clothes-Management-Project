@@ -10,6 +10,7 @@
 namespace Second_Hand_Clothes_Management_Project.Model
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
@@ -34,5 +35,7 @@ namespace Second_Hand_Clothes_Management_Project.Model
         public virtual DbSet<NHAP> NHAPs { get; set; }
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
         public virtual DbSet<TAIKHOAN> TAIKHOANs { get; set; }
+        public IEnumerable<object> NHANVIEN { get; internal set; }
+        public IEnumerable<object> TAIKHOAN { get; internal set; }
     }
 }
