@@ -9,5 +9,6 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 {
     public class SanPhamViewModel : BaseViewModel
     {
+
     }
 }

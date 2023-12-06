@@ -165,6 +165,10 @@ namespace Second_Hand_Clothes_Management_Project.Model
             modelBuilder.Entity<TAIKHOAN>()
                 .Property(e => e.EMAIL)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<TAIKHOAN>()
+                .Property(e => e.AVATAR)
+                .IsUnicode(false);
         }
     }
 }

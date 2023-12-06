@@ -23,5 +23,7 @@ namespace Second_Hand_Clothes_Management_Project.Model
         public string EMAIL { get; set; }
 
         public bool? LOAITK { get; set; }
+
+        public string AVATAR { get; set; }
     }
 }
