@@ -17,7 +17,6 @@
             </ImageBrush>
         </Border.Background>
         <StackPanel>
-            <
             <Image
                 Height="200"
                 Width="250"

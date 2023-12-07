@@ -96,6 +96,9 @@
     <Compile Include="View\CaiDatView.xaml.cs">
       <DependentUpon>CaiDatView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ChiTietSanPham.xaml.cs">
+      <DependentUpon>ChiTietSanPham.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\GiamGiaView.xaml.cs">
       <DependentUpon>GiamGiaView.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CaiDatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChiTietSanPham.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
