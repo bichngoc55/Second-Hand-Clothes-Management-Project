@@ -24,33 +24,67 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 
         public string Password { get => _Password; set { _Password = value; OnPropertyChanged(); } }
         //public Button LoginButton { get; set; }
-        public ICommand PasswordChangedCommand { get; set; } 
-        public ICommand RememberPasswordCommand { get; set; }
+        public ICommand PasswordChangedCommand { get; set; }
+        public ICommand LoadLoginPageCM { get; set; }
+        public Button LoginButton { get; set; }
+
+        //public ICommand ForgotPassCM { get; set; }
+        //public static Frame MainFrame { get; set; }
+        //public ICommand RememberPasswordCommand { get; set; }
         public ICommand LoginCommand { get; set; }
         public LoginViewModel()
         {
             IsLogin = false;
             Password = "";
-            Username = ""; 
-            LoginCommand = new RelayCommand<Window>(CanExecuteLoginCommand, p => Login(p));
-            PasswordChangedCommand = new RelayCommand<PasswordBox> ((p) => { return true; }, (p) =>
+            Username = "";
+
+            //LoadLoginPageCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
+            //{
+            //    MainFrame = p;
+            //    p.Content = new LoginView();
+            //});
+
+            //ForgotPassCM = new RelayCommand<object>((p) => { return true; }, (p) =>
+            //{
+            //    MainFrame.Content = new ForgetPassView();
+            //});
+
+
+
+            PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
             {
                 Password = p.Password;
-            }); 
-        }
- 
+            });
+            LoginCommand = new RelayCommand<Window>((p) => { return true; }, p =>
+            {
+                try
+                {
+                    string PassEncode = MD5Hash(Base64Encode(Password));
+                    var accCount = DataProvider.Ins.DB.TAIKHOANs.Where(x => x.USERNAME == Username && x.PASSWORD == PassEncode ).Count();
+                    if (accCount > 0)
+                    {
+                        IsLogin = true;
+                        Const.TenDangNhap = Username;
+                        Window oldWindow = App.Current.MainWindow;
+                        MainView mainView = new MainView();
+                        App.Current.MainWindow = oldWindow;
+                        oldWindow.Close();
+                        mainView.Show();
+                        Username = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo", MessageBoxButton.OK);
+                    }
+                }
+                catch
+                {
+                    ErrorMessage = "Lỗi kết nối đến cơ sở dữ liệu!";
+                }
+            });
 
-        private bool CanExecuteLoginCommand(object obj)
-        {
-            bool validData;
-            if (string.IsNullOrWhiteSpace(Username) || Username.Length < 3 ||
-                Password == null || Password.Length < 3)
-                validData = false;
-            else
-                validData = true;
-            return validData;
         }
-
+  
         public string ErrorMessage
         {
             get
@@ -63,26 +97,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                 OnPropertyChanged(nameof(ErrorMessage));
             }
         }
-        private void Login(Window p)
-        { 
-            try {                 
-                if (p == null)
-                     return;
-                string passEncode = Base64Encode(Password);
-                IsLogin = true;
-                Const.TenDangNhap = Username;
-                Window oldWindow = App.Current.MainWindow;
-                MainView mainView = new MainView();
-                App.Current.MainWindow = oldWindow;
-                oldWindow.Close();
-                mainView.Show();
-                Username = "";
-            }
-            catch
-            {
-                ErrorMessage = "Tên đăng nhập hoặc mật khẩu không đúng";
-            } 
-        }
+         
 
         private string MD5Hash(string value)
         {
