@@ -27,6 +27,15 @@
                 <Border.Effect>
                     <DropShadowEffect Color="#9D795E" BlurRadius="20" ShadowDepth="4" Opacity="0.5" Direction="0" />
                 </Border.Effect>
+                <StackPanel
+         Orientation="Horizontal" 
+         VerticalAlignment="Top"
+         HorizontalAlignment="Right"
+         Margin="10 20 30 0">
+                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="White" Height="24" Width="24" MouseDown="PackIcon_MouseDown"  Margin="0,0,15,0" />
+                    <materialDesign:PackIcon Kind="CloseThick" Foreground="White" Height="24" Width="24" MouseDown="PackIcon_MouseDown_1">
+                    </materialDesign:PackIcon>
+                </StackPanel>
             </Border>
             <Border CornerRadius="20" Background="#FFFFFF" Width="600" Height="430" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Border.Effect>
@@ -118,21 +127,22 @@
 
 
                     <!-- Sixth Row: Log in Button -->
-                    <Button Grid.Row="7"
-                            Height="46"
-                            Width="350"
-                            VerticalAlignment="Top" 
-                            FontFamily="Roboto Mono"
-                            FontSize="20" 
-                            Command="{Binding LoginCommand}"
-                            Content="Log in" 
-                            FontWeight="Light" 
-                            Background="#845831" Margin="125,2,125,0"
-                            />
 
+                    <Button Grid.Row="7"
+                                Command="{Binding LoginCommand}"
+                        materialDesign:ButtonAssist.CornerRadius="25"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                    Margin="0,11,0,12" Width="350" Height="40"
+                                    Background="#845831" HorizontalAlignment="Center" VerticalContentAlignment="Center" >
+                        <TextBlock
+                          Text="Đăng nhập" x:Name="LoginButton" VerticalAlignment="Center" FontWeight="Bold" FontSize="18"
+                            FontFamily="Josefin Sans"/>
+                    </Button>
                 </Grid>
 
             </Border>
         </Grid>
+
     </Border>
 </Window>

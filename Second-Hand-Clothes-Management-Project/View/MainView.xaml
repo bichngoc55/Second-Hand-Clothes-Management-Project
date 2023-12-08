@@ -144,13 +144,7 @@
                                     Uid="0"
                                     Command="{Binding HomeCM}" Width="161"/>
 
-                            <RadioButton
-                                    Style="{StaticResource ThongKe}"
-                                    Uid="1"
-                                    FontFamily="{StaticResource Custom}"
-                                    Visibility="{Binding SetQuanLy}"
-                                    x:Name="ThongKe"
-                                    Command="{Binding ThongKeCM}" Width="161"/>
+                            
                             <RadioButton
                                     Style="{StaticResource GiamGia}"
                                     Uid="2"
@@ -176,7 +170,14 @@
                                     Uid="5"
                                     FontFamily="{StaticResource Custom}"
                                     x:Name="CaiDat"
-                                    Command="{Binding CaiDatCM}" Width="161"/>    
+                                    Command="{Binding CaiDatCM}" Width="161"/>
+                            <RadioButton
+                                     Style="{StaticResource ThongKe}"
+                                     Uid="1"
+                                     FontFamily="{StaticResource Custom}"
+                                     Visibility="{Binding SetQuanLy}"
+                                     x:Name="ThongKe"
+                                     Command="{Binding ThongKeCM}" Width="161"/>    
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="3" >
