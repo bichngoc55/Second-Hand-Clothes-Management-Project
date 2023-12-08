@@ -24,11 +24,11 @@ namespace Second_Hand_Clothes_Management_Project.Model
             }
         }
 
-        public QLBH1Entities DB { get; set; }
+        public Model1 DB { get; set; }
 
         private DataProvider()
         {
-            DB = new QLBH1Entities();
+            DB = new Model1();
         }
     }
 }
