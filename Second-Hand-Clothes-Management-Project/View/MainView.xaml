@@ -16,7 +16,8 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         Name="Mainview"
-        DataContext="{StaticResource MainVM}">
+        DataContext="{StaticResource MainVM}"
+        >
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
