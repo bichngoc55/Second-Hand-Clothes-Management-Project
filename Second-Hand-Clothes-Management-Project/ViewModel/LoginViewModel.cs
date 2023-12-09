@@ -60,7 +60,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                 try
                 {
                     string PassEncode = MD5Hash(Base64Encode(Password));
-                    var accCount = DataProvider.Ins.DB.TAIKHOANs.Where(x => x.USERNAME == Username && x.PASSWORD == PassEncode ).Count();
+                    var accCount = DataProvider.Ins.DB.NGUOIDUNGs.Where(x => x.USERNAME == Username && x.PASS == PassEncode ).Count();
                     if (accCount > 0)
                     {
                         IsLogin = true;

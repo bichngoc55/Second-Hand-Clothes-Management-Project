@@ -16,8 +16,8 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
     public class MainViewModel : BaseViewModel
     {
         //field
-        private NHANVIEN _NhanVien;
-        private TAIKHOAN _User;
+        private NGUOIDUNG _NhanVien;
+        private NGUOIDUNG _User;
         private string _Ava;
         public static Frame MainFrame { get; set; }
         //Command 
@@ -34,9 +34,9 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public ICommand ThanhToanCM { get; set; }
         public ICommand Loadwd { get; set; }
         //property
-        public TAIKHOAN User { get => _User; set { _User = value; OnPropertyChanged(); } }
+        public NGUOIDUNG User { get => _User; set { _User = value; OnPropertyChanged(); } }
         public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
-        public NHANVIEN NhanVien { get => _NhanVien; set { _NhanVien = value; OnPropertyChanged(); } }
+        public NGUOIDUNG NhanVien { get => _NhanVien; set { _NhanVien = value; OnPropertyChanged(); } }
 
         private Visibility _SetQuanLy;
         public Visibility SetQuanLy { get => _SetQuanLy; set { _SetQuanLy = value; OnPropertyChanged(); } }
@@ -106,13 +106,13 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             if (LoginViewModel.IsLogin)
             {
                 string a = Const.TenDangNhap;
-                User = DataProvider.Ins.DB.TAIKHOANs.Where(x => x.USERNAME == a).FirstOrDefault();
+                User = DataProvider.Ins.DB.NGUOIDUNGs.Where(x => x.USERNAME == a).FirstOrDefault();
                 Const.ND = User;
-                if (User.LOAITK == true)
+                if (User.QTV == true)
                 { SetQuanLy = Visibility.Visible; }
                 else
                 { SetQuanLy = Visibility.Collapsed; }
-                Ava = User.AVATAR;
+                Ava = User.AVA;
                 _LoadUsername(p);
             }
         }
@@ -130,7 +130,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             if (User != null)
                 p.Quyen.Text = "HEHE";
             else
-            p.Quyen.Text = (bool)User.LOAITK ? "1" : "0";
+            p.Quyen.Text = (bool)User.QTV ? "1" : "0";
         }
     }
 }
