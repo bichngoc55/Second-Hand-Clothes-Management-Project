@@ -55,7 +55,9 @@
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.77\lib\net462\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
@@ -85,18 +87,22 @@
     <Compile Include="Model\KHO.cs" />
     <Compile Include="Model\Model1.cs" />
     <Compile Include="Model\MUAHANG.cs" />
+    <Compile Include="Model\NGUOIDUNG.cs" />
     <Compile Include="Model\NHACUNGCAP.cs" />
-    <Compile Include="Model\NHANVIEN.cs" />
     <Compile Include="Model\NHAP.cs" />
     <Compile Include="Model\SANPHAM.cs" />
-    <Compile Include="Model\TAIKHOAN.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\ChiTietSanPhamViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\SanPhamViewModel.cs" />
+    <Compile Include="ViewModel\ThemSanPhamViewModel.cs" />
     <Compile Include="View\CaiDatView.xaml.cs">
       <DependentUpon>CaiDatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChiTietNhanVien.xaml.cs">
+      <DependentUpon>ChiTietNhanVien.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ChiTietSanPham.xaml.cs">
       <DependentUpon>ChiTietSanPham.xaml</DependentUpon>
@@ -115,6 +121,12 @@
     </Compile>
     <Compile Include="View\SanPhamView.xaml.cs">
       <DependentUpon>SanPhamView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TaoTaiKhoanView.xaml.cs">
+      <DependentUpon>TaoTaiKhoanView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ThemNhanVien.xaml.cs">
+      <DependentUpon>ThemNhanVien.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ThemSanPhamView.xaml.cs">
       <DependentUpon>ThemSanPhamView.xaml</DependentUpon>
@@ -146,6 +158,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ChiTietNhanVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ChiTietSanPham.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,6 +183,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SanPhamView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TaoTaiKhoanView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ThemNhanVien.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
