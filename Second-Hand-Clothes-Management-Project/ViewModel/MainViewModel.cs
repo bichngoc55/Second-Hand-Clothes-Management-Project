@@ -33,6 +33,8 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public ICommand LoadPageCM { get; set; }
         public ICommand ThanhToanCM { get; set; }
         public ICommand Loadwd { get; set; }
+        public ICommand ProductDetailsCM { get; set; }
+        public ICommand AddProductCM { get; set; }
         //property
         public NGUOIDUNG User { get => _User; set { _User = value; OnPropertyChanged(); } }
         public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
@@ -60,6 +62,16 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             {
                 MainFrame = p;
                 p.Content = new GiamGiaView();
+            });
+            AddProductCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
+            {
+                MainFrame = p;
+                p.Content = new ThemSanPhamView();
+            });
+            ProductDetailsCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
+            {
+                MainFrame = p;
+                p.Content = new ChiTietSanPham();
             });
             //NhapKhoCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             //{
