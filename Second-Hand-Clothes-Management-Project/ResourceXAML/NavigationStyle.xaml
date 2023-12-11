@@ -11,7 +11,7 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Border   Width="160"
-                                    Height="75"
+                                    Height="70"
                                  
                                 CornerRadius="10"
                                 HorizontalAlignment="Stretch"
@@ -49,54 +49,7 @@
         </Style.Triggers>
     </Style>
     
-    <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
-       TargetType="RadioButton"
-       x:Key="ThongKe">
-        <Style.Setters>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Border
-                        Width="160"
-                        Height="75"
-                        CornerRadius="10"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        Background="{TemplateBinding Background}"
- 
-                        >
-                            <DockPanel>
-                                <Image Source="\ResourceXAML\Icon\pie-chart.png"
-                                        Stretch="Uniform"
-                                        HorizontalAlignment="Center"
-                                        Width="50"
-                                        Height="30"
-                                       VerticalAlignment="Center"
-                                       Margin="0,0,0,0"
-                                         ></Image>  
-                                <TextBlock  
-                                    FontFamily="Roboto Mono"
-                                    FontSize="20"
-                                    Foreground="Black"
-                                    FontWeight="Medium"                  
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Margin="0,0,10,0" Text="THỐNG KÊ"     />
-                            </DockPanel>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-        </Style.Setters>
-        <Style.Triggers>
-            <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="White"></Setter>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
+     
 
     <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
    TargetType="RadioButton"
@@ -107,7 +60,7 @@
                     <ControlTemplate>
                         <Border
                     Width="160"
-                    Height="75"
+                    Height="70"
                     CornerRadius="10"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
@@ -156,7 +109,7 @@ x:Key="NhapKho">
                     <ControlTemplate>
                         <Border
                  Width="160"
-                 Height="75"
+                 Height="70"
                  CornerRadius="10"
                  HorizontalAlignment="Stretch"
                  VerticalAlignment="Stretch"
@@ -196,6 +149,59 @@ x:Key="NhapKho">
     </Style>
 
 
+
+    <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
+   TargetType="RadioButton"
+   x:Key="ThanhToan">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border
+                    Width="160"
+                    Height="70"
+                    CornerRadius="10"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="{TemplateBinding Background}"
+ 
+                    >
+                            <DockPanel>
+                                <Image Source="\ResourceXAML\Icon\bill.png"
+                                    Stretch="Uniform"
+                                    HorizontalAlignment="Center"
+                                    Width="50"
+                                    Height="30"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,0,0"
+                                     ></Image>
+                                <TextBlock  
+                                FontFamily="Roboto Mono"
+                                FontSize="20"
+                                Foreground="Black"
+                                FontWeight="Medium"                  
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Margin="-10,0,-10,0" Text="THANH TOÁN"     />
+                            </DockPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="White"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    
+    
+    
+
     <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
 TargetType="RadioButton"
 x:Key="NhanVien">
@@ -205,7 +211,7 @@ x:Key="NhanVien">
                     <ControlTemplate>
                         <Border
                  Width="160"
-                 Height="75"
+                 Height="70"
                  CornerRadius="10"
                  HorizontalAlignment="Stretch"
                  VerticalAlignment="Stretch"
@@ -255,7 +261,7 @@ x:Key="CaiDat">
                     <ControlTemplate>
                         <Border
                  Width="160"
-                 Height="75"
+                 Height="70"
                  CornerRadius="10"
                  HorizontalAlignment="Stretch"
                  VerticalAlignment="Stretch"
@@ -295,7 +301,56 @@ x:Key="CaiDat">
         </Style.Triggers>
     </Style>
 
-
+    <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
+   TargetType="RadioButton"
+   x:Key="ThongKe">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border
+                    Width="160"
+                    Height="70"
+                    CornerRadius="10"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="{TemplateBinding Background}"
+ 
+                    >
+                            <DockPanel>
+                                <Image Source="\ResourceXAML\Icon\pie-chart.png"
+                                    Stretch="Uniform"
+                                    HorizontalAlignment="Center"
+                                    Width="50"
+                                    Height="30"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,0,0"
+                                     ></Image>
+                                <TextBlock  
+                                FontFamily="Roboto Mono"
+                                FontSize="20"
+                                Foreground="Black"
+                                FontWeight="Medium"                  
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Margin="0,0,10,0" Text="THỐNG KÊ"     />
+                            </DockPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="White"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+ 
+    
+    
 
     <Style 
     x:Key="BtnLogOut"
@@ -307,7 +362,7 @@ x:Key="CaiDat">
                     <ControlTemplate>
                         <Border
                         Width="160"
-                          Height="75"
+                          Height="70"
                         CornerRadius="10"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
