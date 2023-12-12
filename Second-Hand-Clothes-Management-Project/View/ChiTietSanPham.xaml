@@ -4,15 +4,38 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Second_Hand_Clothes_Management_Project.View"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
       x:Name="ChiTietSanPhamwd"
+      DataContext="{StaticResource ChiTietSanPhamVM}"
       d:DesignHeight="500" d:DesignWidth="600"
       Title="ChiTietSanPham">
-
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loadwd}"
+                               CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Border
         Background="White"
         CornerRadius="5">
+        <Border.BorderBrush>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
+                <GradientStop Color="Transparent" Offset="0"/>
+                <GradientStop Color="Transparent" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseLeftButtonDown">
+                <i:InvokeCommandAction Command="{Binding MoveWindow}"
+                               CommandParameter="{Binding ElementName=ChiTietSanPhamwd}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding GetName}"
+                               CommandParameter="{Binding ElementName=ChiTietSanPhamwd}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -22,7 +45,7 @@
                 <Image
                     x:Name="HinhAnh"
                     VerticalAlignment="Center"
-                    Source="/ResourceXAML/ImageProduct/ÁoThun.jpg"
+                    Source="/ResourceXAML/ImageProduct/Sơ mi.jpg"
                     Width="200">
                     
                 </Image>
@@ -181,19 +204,29 @@
                             HorizontalAlignment="Right" 
                             Margin="0,10,0,0"
                             BorderBrush="Transparent">
-
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding DeleteProduct}"
+                               CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         </Button>
                         <Button
                             x:Name="btncapnhat"
                             Width="105"
                             Height="20"
-                            Content="THÊM SẢN PHẨM"
+                            Content="CẬP NHẬP"
                             FontSize="9"
                             Background="#986639" 
                             HorizontalAlignment="Right" 
                             Margin="70,10,0,0"
                             BorderBrush="Transparent">
-
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding UpdateProduct}"
+                               CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         </Button>
                     </StackPanel>
                 </StackPanel>
