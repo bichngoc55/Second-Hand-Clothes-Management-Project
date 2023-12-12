@@ -11,6 +11,6 @@ namespace Second_Hand_Clothes_Management_Project.Model
     {
         public static string TenDangNhap { get; set; }
         public static bool Admin { get; set; }
-        public static TAIKHOAN ND { get; set; }
+        public static NGUOIDUNG ND { get; set; }
     }
 }

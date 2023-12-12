@@ -130,18 +130,12 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         }
 
         private void _LoadUsername(MainView p)
-        {
-            if(User != null)
-            { p.TenDangNhap.Text = "HEHE";}
-            else
+        { 
             p.TenDangNhap.Text = string.Join(" ", User.USERNAME.Split().Reverse().Take(2).Reverse());
         }
 
         private void _LoadQuyen(MainView p)
-        {
-            if (User != null)
-                p.Quyen.Text = "HEHE";
-            else
+        { 
             p.Quyen.Text = (bool)User.QTV ? "1" : "0";
         }
     }

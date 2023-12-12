@@ -4,11 +4,248 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Second_Hand_Clothes_Management_Project.View"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+       x:Name="Reportwd"
+      xmlns:syncfusion="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"      
       mc:Ignorable="d" 
-      d:DesignHeight="1000" d:DesignWidth="1000"
+      d:DesignHeight="605" d:DesignWidth="700"
       Title="ThongKeView">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loadwd}"
+                                                       CommandParameter="{Binding ElementName=Reportwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid >
+        <Border Background="#EDE2D0">
+        </Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="110"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--Tiêu đề Sản phẩm-->
+            <TextBlock Grid.Row="0"
+               FontWeight="Bold"
+               FontFamily="Roboto Mono"
+               FontSize="48"
+               VerticalAlignment="Center"
+               Margin="25 0"
+                       Text="THỐNG KÊ">
 
-    <Grid Width="1000" Height="1000">
-        <!-- Your content here -->
+            </TextBlock>
+            <Grid Grid.Row="1" >
+                <Border   CornerRadius="5" Background="#D7BEA2" Margin="20 0 20 20" >
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.5" BlurRadius="20"/>
+                    </Border.Effect>
+                    <DockPanel>
+                        <Border CornerRadius="5" Width="250" Background="#986639" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,10,15,10 " Height="50">
+                            <TextBlock Text="Tổng Quan"
+       FontFamily="Roboto Mono"
+       Foreground =" White"
+       FontSize="22"
+       TextAlignment="Center"
+       VerticalAlignment="Center"
+       FontWeight="Thin"></TextBlock>
+                        </Border>
+                    </DockPanel>
+
+                </Border>
+
+            </Grid>
+            <Grid Grid.Row="2" Background="#EDE2D0">
+                <!-- Donut Chart Border -->
+                <Border x:Name="DonutChart" Height="290"
+                    Width="320"
+                    Visibility="{Binding SetMain}"
+                    Margin="10"
+                    Background="#BDAB97"
+                    CornerRadius="25"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top" >
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.5" BlurRadius="20"/>
+                    </Border.Effect>
+                    <syncfusion:SfChart x:Name="DChart" Header="Top 5 sản phẩm bán chạy nhất trong tháng" Margin="5">
+                        <syncfusion:SfChart.Resources>
+                            <ItemsPanelTemplate x:Key="itemPanelTemplate">
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </syncfusion:SfChart.Resources>
+                        <syncfusion:SfChart.Legend>
+                            <syncfusion:ChartLegend DockPosition="Bottom" ItemsPanel="{StaticResource itemPanelTemplate}"/>
+                        </syncfusion:SfChart.Legend>
+                        <syncfusion:SfChart.Series>
+                            <syncfusion:DoughnutSeries x:Name="Donut" LegendIcon="Diamond" EnableAnimation="True" 
+                        ItemsSource="{Binding Reviews}" EnableSmartLabels="True"
+                        XBindingPath="Type" YBindingPath="Num" CapStyle="BothCurve" SegmentSpacing="0"
+                        DoughnutCoefficient="0.7"  
+                        VerticalAlignment="Stretch" LabelPosition="OutsideExtended"
+                        Palette="Custom">
+                                <syncfusion:DoughnutSeries.ColorModel>
+                                    <syncfusion:ChartColorModel>
+                                        <syncfusion:ChartColorModel.CustomBrushes>
+                                            <SolidColorBrush Color="#BDAB97"/>
+                                            <SolidColorBrush Color="#957DAD"/>
+                                            <SolidColorBrush Color="#D291BC"/>
+                                            <SolidColorBrush Color="#FEC8D8"/>
+                                            <SolidColorBrush Color="#FFDFD3"/>
+                                        </syncfusion:ChartColorModel.CustomBrushes>
+                                    </syncfusion:ChartColorModel>
+                                </syncfusion:DoughnutSeries.ColorModel>
+                            </syncfusion:DoughnutSeries>
+                        </syncfusion:SfChart.Series>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadDonut}"
+                                           CommandParameter="{Binding ElementName=Reportwd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </syncfusion:SfChart>
+
+                </Border>
+                <!-- Pie Chart Border -->
+                <Border x:Name="PieChart" Height="290"
+                    Width="320"
+            Visibility="{Binding SetMain}"
+            Margin="10"
+                    Background="#BDAB97"
+                    CornerRadius="25"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" >
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.5" BlurRadius="20"/>
+                    </Border.Effect>
+                    <syncfusion:SfChart x:Name="PChart" Background="Transparent" Header="Số lượng loại sản phẩm bán ra" Margin="5">
+                        <syncfusion:SfChart.Resources>
+
+                            <ItemsPanelTemplate x:Key="itemPanelTemplate">
+
+                                <WrapPanel/>
+
+                            </ItemsPanelTemplate>
+
+                        </syncfusion:SfChart.Resources>
+                        <syncfusion:SfChart.Legend>
+                            <syncfusion:ChartLegend DockPosition="Bottom" ItemsPanel="{StaticResource itemPanelTemplate}"/>
+                        </syncfusion:SfChart.Legend>
+                        <syncfusion:SfChart.Series>
+                            <syncfusion:PieSeries x:Name="Pie" LegendIcon="Diamond" EnableAnimation="True" 
+                                           ItemsSource="{Binding Reviews}" EnableSmartLabels="True"
+                                           XBindingPath="Type" YBindingPath="Num" ExplodeOnMouseClick="False"
+                                           VerticalAlignment="Stretch" LabelPosition="OutsideExtended"
+                                           ExplodeRadius="5" ExplodeAll="True"
+                                           Palette="Custom">
+                                <syncfusion:PieSeries.ColorModel>
+                                    <syncfusion:ChartColorModel>
+                                        <syncfusion:ChartColorModel.CustomBrushes>
+                                            <SolidColorBrush Color="#C3E9FF"/>
+                                            <SolidColorBrush Color="#c6f8e5"/>
+                                            <SolidColorBrush Color="#fbf7d5"/>
+                                            <SolidColorBrush Color="#f9ded7"/>
+                                            <SolidColorBrush Color="#f5cdde "/>
+                                            <SolidColorBrush Color="#e2bef1"/>
+                                            <SolidColorBrush Color="#D5B9FC"/>
+                                        </syncfusion:ChartColorModel.CustomBrushes>
+                                    </syncfusion:ChartColorModel>
+                                </syncfusion:PieSeries.ColorModel>
+                            </syncfusion:PieSeries>
+                        </syncfusion:SfChart.Series>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadPie}"
+                                           CommandParameter="{Binding ElementName=Reportwd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </syncfusion:SfChart>
+                </Border>
+
+
+
+
+                <!-- Column Chart Border -->
+
+            </Grid>
+            <Grid Grid.Row="3" Margin="10,0,10,20" >
+                 
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="320"/>
+                    <ColumnDefinition Width="320"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Border Background="#BDAB97" CornerRadius="25"></Border>
+                    <TextBlock Text="Nhân viên đạt nhiều KPI nhất:"
+                   FontFamily="Roboto Mono"
+                   FontSize="16"
+                               Margin="10,10,0,0"
+                   Foreground="Black" TextWrapping="Wrap" Height="50" VerticalAlignment="Top"/>
+                    <materialDesign:PackIcon
+            Kind="AccountStar"
+            Foreground="Black"
+            Margin="10,-10,0,7"
+            Height="40" VerticalAlignment="Bottom"
+            Width="40"/>
+                    <TextBlock x:Name="NVBest"
+                   Text="NV00"
+                   FontWeight="Bold"
+                   FontSize="25" Foreground="Black"
+                   FontFamily="Roboto Mono" Margin="70,0,0,10" VerticalAlignment="Bottom" Height="30" Width="Auto">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Loaded">
+                    <i:InvokeCommandAction Command="{Binding LoadNV}"
+                                           CommandParameter="{Binding ElementName=Reportwd}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+                    </TextBlock>
+                    <TextBlock x:Name="NVName"
+                   Text="Tên" FontSize="24"
+                   Foreground="Black"
+                   FontFamily="Roboto Mono"
+                   VerticalAlignment="Bottom"
+                               Width="Auto"
+                   Margin="140,0,0,8"
+                   Height="Auto"/>
+                </Grid>
+
+                <Grid Grid.Column="1" Margin="42,0,-40,0">
+                    <Border Background="#BDAB97" CornerRadius="25"></Border>
+                    <TextBlock Text="Nhân viên đạt nhiều KPI nhất:"
+                               FontFamily="Roboto Mono"
+                               FontSize="16"
+                                           Margin="10,10,0,0"
+                               Foreground="Black" TextWrapping="Wrap" Height="50" VerticalAlignment="Top"/>
+                    <materialDesign:PackIcon Kind="Crown"
+                        Foreground="Black"
+                        Margin="10,-10,0,7"
+                        Height="40" VerticalAlignment="Bottom"
+                        Width="40"/>
+                    <TextBlock x:Name="MaxKH"
+                               Text="Mã"
+                               FontWeight="Bold"
+                               FontSize="25" Foreground="Black"
+                               FontFamily="Roboto Mono" Margin="70,0,0,10" VerticalAlignment="Bottom" Height="30" Width="Auto">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadKH}"
+                                                       CommandParameter="{Binding ElementName=Reportwd}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                                            </TextBlock>
+                                <TextBlock x:Name="KHName" 
+                               Text="Tên" FontSize="24"
+                               Foreground="Black"
+                               FontFamily="Roboto Mono"
+                               VerticalAlignment="Bottom"
+                                 Width="Auto"
+                               Margin="120,0,0,8"
+                               Height="Auto"/>
+                </Grid>
+        </Grid>
+        </Grid>
     </Grid>
 </Page>

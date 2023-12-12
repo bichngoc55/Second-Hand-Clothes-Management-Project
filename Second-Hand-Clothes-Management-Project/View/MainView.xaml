@@ -54,7 +54,7 @@
     <Border CornerRadius="50"  Background="#CAA88A">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="245"/>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
@@ -136,6 +136,7 @@
                     <Grid Grid.Row="2" Margin="0,20,0,30" Grid.RowSpan="2"  >
                         <StackPanel>
 
+
                             <RadioButton
                                     x:Name="btnHome"
                                     Style="{StaticResource BtnHome}"
@@ -144,7 +145,7 @@
                                     Uid="0"
                                     Command="{Binding HomeCM}" Width="161" />
 
-                            
+
                             <RadioButton
                                     Style="{StaticResource GiamGia}"
                                     Uid="1"
@@ -162,7 +163,7 @@
                                       Uid="3"
                                       FontFamily="{StaticResource Custom}" 
                                       x:Name="ThanhToan"
-                                      Command="{Binding ThanhToanCM}" Width="174"/>   
+                                      Command="{Binding ThanhToanCM}" Width="174"/>
                             <RadioButton
                                     Style="{StaticResource NhanVien}"
                                     Uid="4"
@@ -195,7 +196,7 @@
                                     FontFamily="{StaticResource Custom}"  
                                     Command="{Binding SignoutCM}"
                                     CommandParameter="{Binding ElementName=Mainview}" Margin="26,0,26,0"  >
-                        ></Button>
+                            ></Button>
                     </Grid>
                 </Grid>
             </Border>
