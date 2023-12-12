@@ -11,8 +11,8 @@ namespace Second_Hand_Clothes_Management_Project.Model
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(20)]
-        public string MANV { get; set; }
+        [StringLength(50)]
+        public string MAND { get; set; }
 
         [Key]
         [Column(Order = 1)]
@@ -31,7 +31,7 @@ namespace Second_Hand_Clothes_Management_Project.Model
 
         public virtual KHACHHANG KHACHHANG { get; set; }
 
-        public virtual NHANVIEN NHANVIEN { get; set; }
+        public virtual NGUOIDUNG NGUOIDUNG { get; set; }
 
         public virtual SANPHAM SANPHAM { get; set; }
     }

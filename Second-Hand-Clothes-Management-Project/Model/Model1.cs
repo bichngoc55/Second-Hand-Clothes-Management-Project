@@ -16,11 +16,10 @@ namespace Second_Hand_Clothes_Management_Project.Model
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
         public virtual DbSet<KHO> KHOes { get; set; }
         public virtual DbSet<MUAHANG> MUAHANGs { get; set; }
+        public virtual DbSet<NGUOIDUNG> NGUOIDUNGs { get; set; }
         public virtual DbSet<NHACUNGCAP> NHACUNGCAPs { get; set; }
-        public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<NHAP> NHAPs { get; set; }
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
-        public virtual DbSet<TAIKHOAN> TAIKHOANs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -63,7 +62,7 @@ namespace Second_Hand_Clothes_Management_Project.Model
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<MUAHANG>()
-                .Property(e => e.MANV)
+                .Property(e => e.MAND)
                 .IsUnicode(false);
 
             modelBuilder.Entity<MUAHANG>()
@@ -73,6 +72,37 @@ namespace Second_Hand_Clothes_Management_Project.Model
             modelBuilder.Entity<MUAHANG>()
                 .Property(e => e.MAKH)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<NGUOIDUNG>()
+                .Property(e => e.MAND)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<NGUOIDUNG>()
+                .Property(e => e.NGSINH)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<NGUOIDUNG>()
+                .Property(e => e.SDT)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<NGUOIDUNG>()
+                .Property(e => e.USERNAME)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<NGUOIDUNG>()
+                .Property(e => e.AVA)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<NGUOIDUNG>()
+                .Property(e => e.MAIL)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<NGUOIDUNG>()
+                .HasMany(e => e.MUAHANGs)
+                .WithRequired(e => e.NGUOIDUNG)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<NHACUNGCAP>()
                 .Property(e => e.MANHACUNGCAP)
@@ -89,23 +119,6 @@ namespace Second_Hand_Clothes_Management_Project.Model
             modelBuilder.Entity<NHACUNGCAP>()
                 .HasMany(e => e.NHAPs)
                 .WithRequired(e => e.NHACUNGCAP)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<NHANVIEN>()
-                .Property(e => e.MANV)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<NHANVIEN>()
-                .Property(e => e.SDT)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<NHANVIEN>()
-                .Property(e => e.EMAIL)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<NHANVIEN>()
-                .HasMany(e => e.MUAHANGs)
-                .WithRequired(e => e.NHANVIEN)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<NHAP>()
@@ -149,26 +162,6 @@ namespace Second_Hand_Clothes_Management_Project.Model
                 .HasMany(e => e.NHAPs)
                 .WithRequired(e => e.SANPHAM)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<TAIKHOAN>()
-                .Property(e => e.MATAIKHOAN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TAIKHOAN>()
-                .Property(e => e.USERNAME)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TAIKHOAN>()
-                .Property(e => e.PASSWORD)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TAIKHOAN>()
-                .Property(e => e.EMAIL)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TAIKHOAN>()
-                .Property(e => e.AVATAR)
-                .IsUnicode(false);
         }
     }
 }

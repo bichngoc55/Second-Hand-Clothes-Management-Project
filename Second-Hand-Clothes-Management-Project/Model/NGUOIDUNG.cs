@@ -6,38 +6,49 @@ namespace Second_Hand_Clothes_Management_Project.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("NHANVIEN")]
-    public partial class NHANVIEN
+    [Table("NGUOIDUNG")]
+    public partial class NGUOIDUNG
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NHANVIEN()
+        public NGUOIDUNG()
         {
             MUAHANGs = new HashSet<MUAHANG>();
         }
 
         [Key]
-        [StringLength(20)]
-        public string MANV { get; set; }
+        [StringLength(50)]
+        public string MAND { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string TENNV { get; set; }
+        public string TENND { get; set; }
 
-        [Column(TypeName = "smalldatetime")]
-        public DateTime? NGSINH { get; set; }
+        [StringLength(50)]
+        public string NGSINH { get; set; }
 
         [StringLength(5)]
         public string GIOITINH { get; set; }
 
         [Required]
-        [StringLength(200)]
-        public string DIACHI { get; set; }
-
-        [StringLength(20)]
+        [StringLength(50)]
         public string SDT { get; set; }
 
-        [StringLength(30)]
-        public string EMAIL { get; set; }
+        [StringLength(50)]
+        public string DIACHI { get; set; }
+
+        [StringLength(50)]
+        public string USERNAME { get; set; }
+
+        public string PASS { get; set; }
+
+        public bool QTV { get; set; }
+
+        public bool TTND { get; set; }
+
+        public string AVA { get; set; }
+
+        [StringLength(100)]
+        public string MAIL { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MUAHANG> MUAHANGs { get; set; }
