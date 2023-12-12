@@ -237,7 +237,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ResourceXAML\ImageProduct\Yếm.jpg" />
+    <Resource Include="ResourceXAML\ImageProduct\Yem.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ResourceXAML\Avatar\mck.jpg" />
@@ -325,19 +325,19 @@
     <Resource Include="ResourceXAML\Image\Rectangle 1.png" />
     <Resource Include="ResourceXAML\ImageProduct\Trackpant.jpg" />
     <Resource Include="ResourceXAML\ImageProduct\Sweater.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\ÁoThun.jpg" />
+    <Resource Include="ResourceXAML\ImageProduct\AoThun.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ResourceXAML\ImageProduct\Sơ mi.jpg" />
+    <Resource Include="ResourceXAML\ImageProduct\SoMi.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ResourceXAML\ImageProduct\Hoodie.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ResourceXAML\ImageProduct\Váy.jpg" />
+    <Resource Include="ResourceXAML\ImageProduct\Vay.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ResourceXAML\Avatar\anhtu.jpg" />
