@@ -21,7 +21,9 @@
             <Grid Grid.Column="0">
                 <Image
                     x:Name="HinhAnh"
-                    VerticalAlignment="Center">
+                    VerticalAlignment="Center"
+                    Source="/ResourceXAML/ImageProduct/ÁoThun.jpg"
+                    Width="200">
                     
                 </Image>
             </Grid>
