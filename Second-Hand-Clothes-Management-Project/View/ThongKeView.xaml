@@ -9,6 +9,7 @@
        x:Name="Reportwd"
       xmlns:syncfusion="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"      
       mc:Ignorable="d" 
+      DataContext="{StaticResource ThongKeVM}"
       d:DesignHeight="605" d:DesignWidth="700"
       Title="ThongKeView">
     <i:Interaction.Triggers>
