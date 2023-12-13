@@ -4,10 +4,12 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Second_Hand_Clothes_Management_Project.View"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
       d:DesignHeight="605" d:DesignWidth="350"
       x:Name="ThemSanPhamwd"
+      DataContext="{StaticResource ThemSanPhamVM}"
       Title="ThemSanPhamView">
     <Border>
         <Border.Background>
@@ -19,11 +21,18 @@
         </Border.Background>
         <StackPanel>
             <Image
+                Source="{Binding linkimage}"
                 x:Name="HinhAnh"
                 Height="200"
                 Width="250"
                 Margin="30" 
                 VerticalAlignment="Top">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding AddImage}"
+                                                       CommandParameter="{Binding ElementName=HinhAnh}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
 
             </Image>
             <TextBox
@@ -115,7 +124,12 @@
                 FontSize="9"
                 Background="#986639" HorizontalAlignment="Right" Margin="0,0,50,0"
                 BorderBrush="Transparent">
-                
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding AddProduct}"
+                                                       CommandParameter="{Binding ElementName=ThemSanPhamwd}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </Button>
         </StackPanel>
     </Border>

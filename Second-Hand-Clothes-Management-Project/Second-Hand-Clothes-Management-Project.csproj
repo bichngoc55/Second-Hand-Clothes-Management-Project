@@ -244,7 +244,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="ResourceXAML\ImageProduct\Yem.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="ResourceXAML\Avatar\mck.jpg" />
     <Resource Include="ResourceXAML\Icon\add.png" />
@@ -329,13 +331,32 @@
     <Resource Include="ResourceXAML\Image\Rectangle3.png" />
     <Resource Include="ResourceXAML\Image\Rectangle2.png" />
     <Resource Include="ResourceXAML\Image\Rectangle 1.png" />
-    <Resource Include="ResourceXAML\ImageProduct\Váy.jpg" />
     <Resource Include="ResourceXAML\ImageProduct\Trackpant.jpg" />
     <Resource Include="ResourceXAML\ImageProduct\Sweater.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\ÁoThun.jpg" />
+    <Resource Include="ResourceXAML\ImageProduct\AoThun.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\ImageProduct\SoMi.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\ImageProduct\Hoodie.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\ImageProduct\Vay.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\Avatar\anhtu.jpg" />
+    <Resource Include="ResourceXAML\Avatar\bichngoc.jpg" />
+    <Resource Include="ResourceXAML\Avatar\huuthien.jpg" />
+    <Resource Include="ResourceXAML\Avatar\quoctuan.jpg" />
+    <Resource Include="ResourceXAML\Avatar\saomai.png" />
+    <Resource Include="ResourceXAML\Avatar\xuanha.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\Image\add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />

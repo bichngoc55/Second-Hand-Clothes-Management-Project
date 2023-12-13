@@ -7,4 +7,5 @@
     <viewmodel:ThongKeViewModel x:Key="ThongKeVM"></viewmodel:ThongKeViewModel>
     <!--<viewmodel:ThemSanPhamViewModel></viewmodel:ThemSanPhamViewModel>
     <viewmodel:ChiTietSanPhamViewModel x:Key="ChiTietSanPhamVM"></viewmodel:ChiTietSanPhamViewModel>-->
+
 </ResourceDictionary>

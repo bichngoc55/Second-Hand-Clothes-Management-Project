@@ -32,7 +32,6 @@
             </TextBlock>
 
             <!--Thanh ComboBox và Tìm kiếm, Button Add-->
-
             <Grid Grid.Row="1">
                 <Border
                     CornerRadius="5" 
@@ -57,19 +56,19 @@
                             materialDesign:TextFieldAssist.UnderlineBrush="#F5E9D9" 
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Center">
-                                <ComboBoxItem Content="Loại SP"/>
-                                <ComboBoxItem Content="Sơ mi"/>
-                                <ComboBoxItem Content="Thun"/>
-                                <ComboBoxItem Content="Hoodie"/>
-                                <ComboBoxItem Content="Yếm"/>
-                                <ComboBoxItem Content="Váy"/>
-                                <ComboBoxItem Content="Trackpant"/>
-                               <i:Interaction.Triggers>
-                                   <i:EventTrigger EventName="SelectionChanged">
-                                       <i:InvokeCommandAction Command="{Binding Filter}"
-                                                          CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
-                                   </i:EventTrigger>
-                               </i:Interaction.Triggers>
+                            <ComboBoxItem Content="Loại SP"/>
+                            <ComboBoxItem Content="Sơ mi"/>
+                            <ComboBoxItem Content="Thun"/>
+                            <ComboBoxItem Content="Hoodie"/>
+                            <ComboBoxItem Content="Yếm"/>
+                            <ComboBoxItem Content="Váy"/>
+                            <ComboBoxItem Content="Trackpant"/>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding Filter}"
+                                                          CommandParameter="{Binding ElementName=SanPhamwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         </ComboBox>
                         <!--ComboBox2-->
                         <ComboBox
@@ -90,20 +89,13 @@
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Center"
                             ItemsSource="{Binding listTK}">
-                                <ComboBoxItem Content="Tìm Kiếm"/>
-                                <ComboBoxItem Content="Sơ mi"/>
-                                <ComboBoxItem Content="Áo Thun"/>
-                                <ComboBoxItem Content="Hoodie"/>
-                                <ComboBoxItem Content="Yếm"/>
-                                <ComboBoxItem Content="Váy"/>
-                                <ComboBoxItem Content="Trackpant"/>
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding}"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
                         </ComboBox>
                         <!--TextBox-->
                         <TextBox
@@ -121,7 +113,7 @@
                             <i:Interaction.Triggers >
                                 <i:EventTrigger EventName = "TextChanged" >
                                     <i:InvokeCommandAction Command = "{Binding SearchCommand}"
-                                                       CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction >
+                                                       CommandParameter="{Binding ElementName=SanPhamwd}"></i:InvokeCommandAction >
                                 </i:EventTrigger >
                             </i:Interaction.Triggers >
                         </TextBox>
@@ -138,7 +130,7 @@
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding AddPdPdCommand}"
-                                                       CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=SanPhamwd}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </Button>
@@ -151,12 +143,16 @@
                 Grid.Row="2"
                 Margin="0 0 0 0"
                 Background="#E2D5BF">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="339*"/>
+                    <ColumnDefinition Width="11*"/>
+                </Grid.ColumnDefinitions>
                 <ListView 
                         ItemsSource="{Binding listSP}"
                         x:Name="ListViewProduct"
                         SelectionMode="Single"
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                        ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                        ScrollViewer.VerticalScrollBarVisibility="Hidden" Grid.ColumnSpan="2">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Border
@@ -170,15 +166,11 @@
                                 </Border.Effect>
                                 <StackPanel>
                                     <Image 
-                                            HorizontalAlignment="Right"
-                                            Source="{Binding HINHSP,StringFormat={}}"
-                                            Width="45"
-                                            Height="30"/>
-                                    <Image  
-                                            Margin="0,-10,0,0"
-                                            Source="C:\Users\Admin\source\repos\Second-Hand-Clothes-Management-Project\Second-Hand-Clothes-Management-Project\ResourceXAML\ImageProduct\ÁoThun.jpg" 
-                                            Height="150" 
-                                            Width="150"/>
+                                            Margin="10"
+                                            HorizontalAlignment="Center"
+                                            Source="{Binding HINHSP, StringFormat={}}"
+                                            Width="150"
+                                            Height="150"/>
                                     <TextBlock
                                             FontFamily="Roboto Mono"
                                             FontSize="14"
@@ -201,7 +193,7 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding DetailPdCommand}"
-                                                       CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=SanPhamwd}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </ListView>
