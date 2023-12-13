@@ -14,12 +14,14 @@
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding Loadwd}"
-                               CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
+                                   CommandParameter="{Binding ElementName=ChiTietSanPhamwd}"></i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Border
         Background="White"
-        CornerRadius="5">
+        CornerRadius="5"
+        BorderThickness="3"
+        >
         <Border.BorderBrush>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
                 <GradientStop Color="Transparent" Offset="0"/>
@@ -29,207 +31,176 @@
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseLeftButtonDown">
                 <i:InvokeCommandAction Command="{Binding MoveWindow}"
-                               CommandParameter="{Binding ElementName=ChiTietSanPhamwd}"></i:InvokeCommandAction>
+                                       CommandParameter="{Binding ElementName=ChiTietSanPhamwd}"></i:InvokeCommandAction>
             </i:EventTrigger>
             <i:EventTrigger EventName="Loaded">
                 <i:InvokeCommandAction Command="{Binding GetName}"
-                               CommandParameter="{Binding ElementName=ChiTietSanPhamwd}"></i:InvokeCommandAction>
+                                       CommandParameter="{Binding ElementName=ChiTietSanPhamwd}"></i:InvokeCommandAction>
             </i:EventTrigger>
         </i:Interaction.Triggers>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <Image
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="350"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0"
                     x:Name="HinhAnh"
-                    VerticalAlignment="Center"
-                    Source="/ResourceXAML/ImageProduct/Sơ mi.jpg"
-                    Width="200">
-                    
-                </Image>
+                    VerticalAlignment="Center"/>
+                <Canvas Grid.Row="1">
+                    <Button Content="CẬP NHẬT"
+                                Width="125"
+                                Height="30"
+                                materialDesign:ButtonAssist.CornerRadius = "15"
+                                BorderThickness="0"
+                                x:Name="btncapnhat"
+                                Background="#986639"
+                                Foreground="White"
+                                
+                                HorizontalAlignment="Left" Canvas.Left="46" Canvas.Top="26"
+                                >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding UpdateProduct}"
+                                                       CommandParameter="{Binding ElementName=ChiTietSanPhamwd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                    <Button Content="XÓA"
+                                Width="85"
+                                Height="30"
+                                BorderThickness="0"
+                                x:Name="btnxoa"
+                                Background="#986639"
+                                Foreground="White"
+                                materialDesign:ButtonAssist.CornerRadius="15"
+                                HorizontalAlignment="Left" Canvas.Left="203" Canvas.Top="26"
+                                >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding DeleteProduct}"
+                                                       CommandParameter="{Binding ElementName=ChiTietSanPhamwd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </Canvas>
             </Grid>
             <Grid Grid.Column="1">
-                <StackPanel
-                    Margin="10,50,10,0">
-                    <TextBox
-                        x:Name="TenSP"
-                        FontFamily="Roboto Mono"
-                        FontSize="25" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    <Button
+                        Height="30"
+                        Width="100" 
+                        Margin="23,10,10,10"
+                        Content="Quay lại"
+                        Foreground="White"
+                        Background="#986639"
                         
-                    </TextBox>
-                    <TextBlock
-                        x:Name="GiaSP"
-                        FontFamily="Roboto Mono"
-                        FontSize="20" Margin="0,10,0,0" HorizontalAlignment="Center">
-                        </TextBlock>
-                    <StackPanel
-                        Height="30" Margin="0,10,0,0"
-                        Orientation="Horizontal">
-                        <TextBlock
-                            Width="140"
+                        >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding Back}"
+                                                       CommandParameter="{Binding ElementName=ChiTietSanPhamwd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="0" Background="Transparent">
+                    <StackPanel Orientation="Vertical"
+                                Margin="15,20,0,0"
+                                >
+                        <TextBox 
+                                    HorizontalAlignment="Left"
+                                   FontSize="28"
+                                   materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                   BorderThickness="0"
+                                   FontFamily="Roboto Mono"
+                                   
+                                   x:Name="TenSP"
+                                   />
+                        <TextBlock 
+                                   FontSize="20"
+                                   FontFamily="Roboto Mono"
+                                   x:Name="GiaSP"
+                                   />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                FontFamily="Roboto Mono"
+                                FontSize="14"
+                                VerticalAlignment="Center"
+                                Text="Loại sản phẩm: "
+                                />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                   FontSize="14"
+                                   materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                   FontFamily="Roboto Mono"
+                                   x:Name="LoaiSP"
+                                   />
+                        </StackPanel>
+                        <TextBlock 
+                                   FontSize="14"
+                                   FontFamily="Roboto Mono"
+                                   Margin="0,0,0,10"
+                                   x:Name="SLSP"
+                                   />
+                        <StackPanel>
+                            <TextBlock  
+                                        Margin="0,-10,0,0"
+                                        FontSize="14"
+                                        FontFamily="Roboto Mono"
+                                        x:Name="Size"
+                                        Text="Kích cỡ"
+                                   />
+                            <ItemsControl x:Name="kichco">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border
+                                        Margin="2"
+                                        Height="20"
+                                        Width="50"
+                                        Background="White"
+                                        CornerRadius="10"
+                                        >
+                                            <TextBlock Text="{Binding SIZE}"
+                                                       FontFamily="Roboto Mono"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalAlignment="Center"
+                                                       />
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                        </StackPanel>
+                        <Expander
+                            x:Name="Info"
+                            Background="Transparent"
+                            Header="Chi tiết sản phẩm"
                             FontFamily="Roboto Mono"
-                            FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            Loại sản phẩm
-                        </TextBlock>
-                        <ComboBox
-                            x:Name="LoaiSP"
-                            Width="140"
-                            Height="30"
-                            Style="{StaticResource MaterialDesignFilledComboBox}"
-                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                            materialDesign:TextFieldAssist.UnderlineBrush="#F5E9D9"
-                            Background="#F5E9D9"
-                            BorderThickness="0"
-                            FontFamily="Roboto Mono"
-                            FontWeight="Thin"
-                            FontSize="8"
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Center">
-                            
-                        </ComboBox>
+                            >
+                            <TextBox x:Name="Mota"
+                                     Height="80"
+                                     TextWrapping="Wrap"
+                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                     BorderThickness="0"
+                                     AcceptsReturn="True"
+                                     VerticalScrollBarVisibility="Visible"
+                                     />
+                        </Expander>
                     </StackPanel>
-                    <StackPanel
-                        Height="30" Margin="0,10,0,0"
-                        Orientation="Horizontal">
-                        <TextBlock
-                            Width="140"
-                            FontFamily="Roboto Mono"
-                            FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            Số lượng
-                        </TextBlock>
-                        <TextBox
-                            x:Name="SLSP"
-                            Width="70"
-                            Height="30"
-                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                            materialDesign:TextFieldAssist.UnderlineBrush="#F5E9D9"
-                            Background="#F5E9D9"
-                            BorderThickness="0"
-                            FontFamily="Roboto Mono"
-                            FontWeight="Thin"
-                            FontSize="8"
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Center">
-                            
-                        </TextBox>
-                    </StackPanel>
-                    <StackPanel
-                        Height="30" Margin="0,10,0,0"
-                        Orientation="Horizontal">
-                        <TextBlock
-                            Width="140"
-                            FontFamily="Roboto Mono"
-                            FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            Kích cỡ
-                        </TextBlock>
-                        <ComboBox
-                            x:Name="Size"
-                            Width="70"
-                            Height="30"
-                            Style="{StaticResource MaterialDesignFilledComboBox}"
-                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                            materialDesign:TextFieldAssist.UnderlineBrush="#F5E9D9"
-                            Background="#F5E9D9"
-                            BorderThickness="0"
-                            FontFamily="Roboto Mono"
-                            FontWeight="Thin"
-                            FontSize="8"
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Center">
-
-                        </ComboBox>
-                    </StackPanel>
-                    <StackPanel
-                        Height="30" Margin="0,10,0,0"
-                        Orientation="Horizontal">
-                        <TextBlock
-                            Width="140"
-                            FontFamily="Roboto Mono"
-                            FontSize="15" 
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Center">
-                            Voucher
-                        </TextBlock>
-                        <ComboBox
-                            Width="140"
-                            Height="30"
-                            Style="{StaticResource MaterialDesignFilledComboBox}"
-                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                            materialDesign:TextFieldAssist.UnderlineBrush="#F5E9D9"
-                            Background="#F5E9D9"
-                            BorderThickness="0"
-                            FontFamily="Roboto Mono"
-                            FontWeight="Thin"
-                            FontSize="8"
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Center">
-
-                        </ComboBox>
-                    </StackPanel>
-                    <TextBlock
-                        x:Name="Info"
-                        Width="140"
-                        FontFamily="Roboto Mono"
-                        FontSize="15" HorizontalAlignment="Left" 
-                        Margin="0,10,0,0">
-                        Mô tả sản phẩm
-                    </TextBlock>
-                    <TextBox
-                        x:Name="Mota"
-                        Margin="0,10,0,0"
-                        Height="138"
-                        Width="280"
-                        materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                        materialDesign:TextFieldAssist.UnderlineBrush="#F5E9D9"
-                        Background="#F5E9D9"
-                        BorderThickness="0"
-                        FontFamily="Roboto Mono"
-                        FontWeight="Thin"
-                        FontSize="8"
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center">
-                        
-                    </TextBox>
-                    <StackPanel
-                        Orientation="Horizontal">
-                        <Button
-                            x:Name="btnxoa"
-                            Width="105"
-                            Height="20"
-                            Content="XOÁ"
-                            FontSize="9"
-                            Background="#986639" 
-                            HorizontalAlignment="Right" 
-                            Margin="0,10,0,0"
-                            BorderBrush="Transparent">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding DeleteProduct}"
-                               CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </Button>
-                        <Button
-                            x:Name="btncapnhat"
-                            Width="105"
-                            Height="20"
-                            Content="CẬP NHẬP"
-                            FontSize="9"
-                            Background="#986639" 
-                            HorizontalAlignment="Right" 
-                            Margin="70,10,0,0"
-                            BorderBrush="Transparent">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding UpdateProduct}"
-                               CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </Button>
-                    </StackPanel>
-                </StackPanel>
+                </Grid>
             </Grid>
         </Grid>
     </Border>

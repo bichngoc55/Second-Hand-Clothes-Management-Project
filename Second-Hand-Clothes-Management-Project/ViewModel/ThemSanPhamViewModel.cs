@@ -25,14 +25,14 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public ICommand Loadwd { get; set; }
         public ThemSanPhamViewModel()
         {
-            linkimage = "/Resource/Image/add.png";
+            linkimage = "/ResourceXAML/Image/add.png";
             AddImage = new RelayCommand<Image>((p) => true, (p) => _AddImage(p));
             AddProduct = new RelayCommand<ThemSanPhamView>((p) => true, (p) => _AddProduct(p));
             Loadwd = new RelayCommand<ThemSanPhamView>((p) => true, (p) => _Loadwd(p));
         }
         void _Loadwd(ThemSanPhamView paramater)
         {
-            linkimage = "/Resource/Image/add.png";
+            linkimage = "/ResourceXAML/Image/add.png";
         }
         void _AddImage(Image img)
         {
@@ -42,7 +42,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             {
                 linkimage = open.FileName;
             };
-            if (linkimage == "/Resource/Image/add.png")
+            if (linkimage == "/ResourceXAML/Image/add.png")
             {
                 Uri fileUri = new Uri(linkimage, UriKind.Relative);
                 img.Source = new BitmapImage(fileUri);
@@ -125,7 +125,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                         a.HINHSP = "/Resource/ImgProduct/" + "product_" + paramater.MaSp.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
                         try
                         {
-                            File.Copy(linkimage, _localLink + @"Resource\ImgProduct\" + "product_" + paramater.MaSp.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+                            File.Copy(linkimage, _localLink + @"ResourceXAML\ImageProduct\" + "product_" + paramater.MaSp.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
                         }
                         catch { }
                         MessageBox.Show("Thêm sản phẩm mới thành công !", "THÔNG BÁO");
