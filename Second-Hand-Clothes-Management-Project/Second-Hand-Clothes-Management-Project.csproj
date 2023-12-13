@@ -354,6 +354,9 @@
     <Resource Include="ResourceXAML\Avatar\saomai.png" />
     <Resource Include="ResourceXAML\Avatar\xuanha.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\Image\add.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
