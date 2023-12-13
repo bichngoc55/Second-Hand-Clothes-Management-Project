@@ -25,20 +25,19 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public ICommand GiamGiaCM { get; set; }
         public ICommand NhapKhoCM { get; set; }
         public ICommand NhanVienCM { get; set; }
+        public ICommand ThanhToanCM { get; set; }
         public ICommand CaiDatCM { get; set; }
-        public ICommand ChiTietNhanVienCM { get; set; }
+       // public ICommand ChiTietNhanVienCM { get; set; }
         public ICommand LoadPage { get; set; }
         public ICommand Quyen_Loaded { get; set; }
         public ICommand Username_Loaded { get; set; }
         public ICommand SignoutCM { get; set; }
-        public ICommand CreateAccountCM { get; set; }
-        public ICommand LoadPageCM { get; set; }
-        public ICommand ThanhToanCM { get; set; }
+        //public ICommand CreateAccountCM { get; set; }
+        public ICommand LoadPageCM { get; set; } 
         public ICommand Loadwd { get; set; }
-        public ICommand ThemNhanVienCM { get; set; }
-        public ICommand SanPhamCM { get; set; }
-        public ICommand ProductDetailsCM { get; set; }
-        public ICommand AddProductCM { get; set; }
+        
+        public ICommand HomeCM { get; set; }
+        
         //property
         public NGUOIDUNG User { get => _User; set { _User = value; OnPropertyChanged(); } }
         public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
@@ -54,9 +53,12 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             Loadwd = new RelayCommand<MainView>((p) => true, (p) => _Loadwd(p));
             LoadPageCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
-                MainFrame.Content =   new SanPhamView();
+                MainFrame.Content =  new SanPhamView();
             });
-
+            HomeCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
+            {
+                MainFrame.Content =  new SanPhamView();
+            });
             ThongKeCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
                 MainFrame.Content =  new ThongKeView();
@@ -65,44 +67,19 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             {
                 MainFrame.Content =  new GiamGiaView();
             });
-            AddProductCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
-            {
-                MainFrame = p;
-                p.Content = new ThemSanPhamView();
-            });
-            ProductDetailsCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
-            {
-                MainFrame.Content = new ChiTietSanPham();
-            });
-            SanPhamCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
-            {
-                MainFrame.Content = new SanPhamView();
-            });
-            //NhapKhoCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
-            //{
-            //    MainFrame = p;
-            //    p.Content = new NhapKhoView();
-            //});
+             
+             
             NhanVienCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
                 MainFrame.Content =   new NhanVienView();
             });
-            ThemNhanVienCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
-            {
-                MainFrame.Content = new ThemNhanVien();
-            });
-            ChiTietNhanVienCM= new RelayCommand<Frame>((p) => { return true; }, (p) =>
-            {
-                MainFrame.Content = new ChiTietNhanVien();
-            });
+             
+             
             CaiDatCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
                 MainFrame.Content = new CaiDatView();
             });
-            CreateAccountCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
-            {
-                MainFrame.Content = new TaoTaiKhoanView();
-            });
+             
             SignoutCM = new RelayCommand<FrameworkElement>((p) => { return p == null ? false : true; }, (p) =>
             {
                 FrameworkElement window = GetParentWindow(p);
