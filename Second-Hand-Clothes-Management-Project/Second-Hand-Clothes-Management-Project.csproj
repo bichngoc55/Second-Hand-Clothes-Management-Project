@@ -97,6 +97,7 @@
     <Compile Include="Model\NHACUNGCAP.cs" />
     <Compile Include="Model\NHAP.cs" />
     <Compile Include="Model\SANPHAM.cs" />
+    <Compile Include="Model\sysdiagram.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ChiTietSanPhamViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />

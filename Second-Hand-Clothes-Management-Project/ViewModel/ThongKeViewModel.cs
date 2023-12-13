@@ -31,11 +31,13 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
     } 
     public class ThongKeViewModel : BaseViewModel
     {
+        public DateTime Ngay { get; set; }
         public string TenSP { get; set; }
         public string MaSP { get; set; }
         public int SL { get; set; }
         public int MaxSell { get; set; }
         public string BestKH { get; set; }
+
         public string KHName { get; set; }
         public int MaxNV { get; set; }
         public string NVName { get; set; }
@@ -108,20 +110,20 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         private void PieChart(ThongKeView p)
         {
             int hoodie = 0, vay = 0, at = 0, yem = 0, sh = 0, quan = 0, sw = 0;
-            if (DataProvider.Ins.DB.SANPHAMs.Where(x => x.LOAISP == "Hoodie").Count() > 0)
-                hoodie = DataProvider.Ins.DB.SANPHAMs.Where(x => x.LOAISP == "Hoodie").Sum(x => x.SL);
-            if (DataProvider.Ins.DB.SANPHAMs.Where(x => x.LOAISP == "Váy").Count() > 0)
-                vay = DataProvider.Ins.DB.SANPHAMs.Where(x => x.LOAISP == "Váy").Sum(x => x.SL);
-            if (DataProvider.Ins.DB.SANPHAMs.Where(x => x.LOAISP == "Áo Thun").Count() > 0)
-                at = DataProvider.Ins.DB.SANPHAMs.Where(x => x.LOAISP == "Áo Thun").Sum(x => x.SL);
-            if (DataProvider.Ins.DB.SANPHAMs.Where(x => x.LOAISP == "Yếm").Count() > 0)
-                yem = DataProvider.Ins.DB.SANPHAMs.Where(x => x.LOAISP == "Yếm").Sum(x => x.SL);
-            if (DataProvider.Ins.DB.SANPHAMs.Where(x => x.LOAISP == "Sơ mi").Count() > 0)
-                sh = DataProvider.Ins.DB.SANPHAMs.Where(x => x.LOAISP == "Sơ mi").Sum(x => x.SL);
-            if (DataProvider.Ins.DB.SANPHAMs.Where(x => x.LOAISP == "Trackpant").Count() > 0)
-                quan = DataProvider.Ins.DB.SANPHAMs.Where(x => x.LOAISP == "Trackpant").Sum(x => x.SL);
-            if (DataProvider.Ins.DB.SANPHAMs.Where(x => x.LOAISP == "Sweater").Count() > 0)
-                sw = DataProvider.Ins.DB.SANPHAMs.Where(x => x.LOAISP == "Sweater").Sum(x => x.SL);
+            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Hoodie").Count() > 0)
+                hoodie = DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Hoodie").Sum(x => x.SANPHAM.SL);
+            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Váy").Count() > 0)
+                vay = DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Váy").Sum(x => x.SANPHAM.SL);
+            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Áo Thun").Count() > 0)
+                at = DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Áo Thun").Sum(x => x.SANPHAM.SL);
+            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Yếm").Count() > 0)
+                yem = DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Yếm").Sum(x => x.SANPHAM.SL);
+            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Sơ mi").Count() > 0)
+                sh = DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Sơ mi").Sum(x => x.SANPHAM.SL);
+            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Trackpant").Count() > 0)
+                quan = DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Trackpant").Sum(x => x.SANPHAM.SL);
+            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Sweater").Count() > 0)
+                sw = DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Sweater").Sum(x => x.SANPHAM.SL);
             Reviews = new List<Review>();
             Review r1 = new Review()
             {
@@ -176,7 +178,109 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 
         private void DonutChart(ThongKeView p)
         {
-            throw new NotImplementedException();
+            var query = from a in DataProvider.Ins.DB.MUAHANGs
+                        join b in DataProvider.Ins.DB.SANPHAMs on a.MASP equals b.MASP
+                        where a.MASP == b.MASP && a.NGAYBAN.Month == DateTime.Now.Month && a.NGAYBAN.Year == DateTime.Now.Year
+                        select new ThongKeViewModel()
+                        {
+                            SL = b.SL,
+                            MaSP = a.MASP,
+                            TenSP = b.TENSP,
+                            Ngay = a.NGAYBAN
+                        };
+            string sp1 = "", sp2 = "", sp3 = "", sp4 = "", sp5 = "";
+            int max1 = 0;
+            foreach (ThongKeViewModel obj in query)
+            {
+                int temp = query.Where(x => x.TenSP == obj.TenSP && x.Ngay.Month == DateTime.Now.Month && x.Ngay.Year == DateTime.Now.Year).Sum(x => x.SL);
+                if (max1 < temp)
+                {
+                    max1 = temp;
+                    sp1 = obj.TenSP;
+                }
+            }
+            int max2 = 0;
+            foreach (ThongKeViewModel obj in query)
+            {
+                if (obj.TenSP == sp1) continue;
+                int temp = query.Where(x => x.TenSP == obj.TenSP && x.Ngay.Month == DateTime.Now.Month && x.Ngay.Year == DateTime.Now.Year).Sum(x => x.SL);
+                if (max2 < temp)
+                {
+                    max2 = temp;
+                    sp2 = obj.TenSP;
+                }
+            }
+            int max3 = 0;
+            foreach( ThongKeViewModel obj in query)
+            {
+                if (obj.TenSP == sp1 || obj.TenSP == sp2) continue;
+                int temp = query.Where(x => x.TenSP == obj.TenSP && x.Ngay.Month == DateTime.Now.Month && x.Ngay.Year == DateTime.Now.Year).Sum(x => x.SL);
+                if (max3 < temp)
+                {
+                    max3 = temp;
+                    sp3 = obj.TenSP;
+                }
+            }
+            int max4 = 0;
+            foreach (ThongKeViewModel obj in query)
+            {
+                if (obj.TenSP == sp1 || obj.TenSP == sp2 || obj.TenSP == sp3) continue;
+                int temp = query.Where(x => x.TenSP == obj.TenSP && x.Ngay.Month == DateTime.Now.Month && x.Ngay.Year == DateTime.Now.Year).Sum(x => x.SL);
+                if (max4 < temp)
+                {
+                    max4 = temp;
+                    sp4 = obj.TenSP;
+                }
+            }
+            int max5 = 0;
+            foreach (ThongKeViewModel obj in query)
+            {
+                if (obj.TenSP == sp1 || obj.TenSP == sp2 || obj.TenSP == sp3 || obj.TenSP == sp4) continue;
+                int temp = query.Where(x => x.TenSP == obj.TenSP && x.Ngay.Month == DateTime.Now.Month && x.Ngay.Year == DateTime.Now.Year).Sum(x => x.SL);
+                if (max5 < temp)
+                {
+                    max5 = temp;
+                    sp5 = obj.TenSP;
+                }
+            }
+            Reviews = new List<Review>();
+            Review r1 = new Review()
+            {
+                Type = sp1,
+                Num = max1
+            };
+            Review r2 = new Review()
+            {
+                Type = sp2,
+                Num = max2
+            };
+            Review r3 = new Review()
+            {
+                Type = sp3,
+                Num = max3
+            };
+            Review r4 = new Review()
+            {
+                Type = sp4,
+                Num = max4
+            };
+            Review r5 = new Review()
+            {
+                Type = sp5,
+                Num = max5
+            };
+            Reviews.Add(r1);
+            Reviews.Add(r2);
+            Reviews.Add(r3);
+            Reviews.Add(r4);
+            Reviews.Add(r5);
+            p.Donut.ItemsSource = Reviews;
+            p.Donut.AdornmentsInfo = new Syncfusion.UI.Xaml.Charts.ChartAdornmentInfo()
+            {
+                ShowLabel = true,
+                ShowConnectorLine = true,
+                Margin = new Thickness(2)
+            };
         }
     }
 
