@@ -53,7 +53,8 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             Loadwd = new RelayCommand<MainView>((p) => true, (p) => _Loadwd(p));
             LoadPageCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
-                MainFrame.Content =  new SanPhamView();
+                MainFrame= p;
+                p.Content = new SanPhamView();
             });
             HomeCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
@@ -61,7 +62,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             });
             ThongKeCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
-                MainFrame.Content =  new ThongKeView();
+                MainFrame.Content = new ThongKeView();
             });
             GiamGiaCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
@@ -71,7 +72,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
              
             NhanVienCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
-                MainFrame.Content =   new NhanVienView();
+                MainFrame.Content  = new NhanVienView();
             });
              
              
