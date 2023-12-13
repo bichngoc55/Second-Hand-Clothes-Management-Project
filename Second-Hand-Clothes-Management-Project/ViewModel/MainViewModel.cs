@@ -91,7 +91,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             {
                 MainFrame.Content = new ThemNhanVien();
             });
-            ChiTietNhanVienCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
+            ChiTietNhanVienCM= new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
                 MainFrame.Content = new ChiTietNhanVien();
             });
