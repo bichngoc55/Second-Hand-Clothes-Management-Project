@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Second_Hand_Clothes_Management_Project.View
 {
     /// <summary>
-    /// Interaction logic for ThemNhanVien.xaml
+    /// Interaction logic for ThemNhanVienView.xaml
     /// </summary>
-    public partial class ThemNhanVien : Page
+    public partial class ThemNhanVienView : Page
     {
-        public ThemNhanVien()
+        public ThemNhanVienView()
         {
             InitializeComponent();
         }

@@ -5,7 +5,9 @@
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
     <viewmodel:SanPhamViewModel x:Key="SanPhamVM"></viewmodel:SanPhamViewModel>
     <viewmodel:ThongKeViewModel x:Key="ThongKeVM"></viewmodel:ThongKeViewModel>
-    <!--<viewmodel:ThemSanPhamViewModel></viewmodel:ThemSanPhamViewModel>
-    <viewmodel:ChiTietSanPhamViewModel x:Key="ChiTietSanPhamVM"></viewmodel:ChiTietSanPhamViewModel>-->
-
+    <viewmodel:ThemSanPhamViewModel x:Key="ThemSanPhamVM"></viewmodel:ThemSanPhamViewModel>
+    <viewmodel:ChiTietSanPhamViewModel x:Key="ChiTietSanPhamVM"></viewmodel:ChiTietSanPhamViewModel>
+    <viewmodel:NhanVienViewModel x:Key="NhanVienVM"></viewmodel:NhanVienViewModel>
+    <viewmodel:ThemNhanVienViewModel x:Key="ThemNhanVienVM"></viewmodel:ThemNhanVienViewModel>
+    <viewmodel:ChiTietNhanVienViewModel x:Key="ChiTietNhanVienVM"></viewmodel:ChiTietNhanVienViewModel>
 </ResourceDictionary>

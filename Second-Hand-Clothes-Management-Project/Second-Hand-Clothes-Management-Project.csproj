@@ -99,11 +99,14 @@
     <Compile Include="Model\SANPHAM.cs" />
     <Compile Include="Model\sysdiagram.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\ChiTietNhanVienViewModel.cs" />
     <Compile Include="ViewModel\ChiTietSanPhamViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\NhanVienViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\SanPhamViewModel.cs" />
+    <Compile Include="ViewModel\ThemNhanVienViewModel.cs" />
     <Compile Include="ViewModel\ThemSanPhamViewModel.cs" />
     <Compile Include="ViewModel\ThongKeViewModel.cs" />
     <Compile Include="View\CaiDatView.xaml.cs">
@@ -133,8 +136,8 @@
     <Compile Include="View\TaoTaiKhoanView.xaml.cs">
       <DependentUpon>TaoTaiKhoanView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ThemNhanVien.xaml.cs">
-      <DependentUpon>ThemNhanVien.xaml</DependentUpon>
+    <Compile Include="View\ThemNhanVienView.xaml.cs">
+      <DependentUpon>ThemNhanVienView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ThemSanPhamView.xaml.cs">
       <DependentUpon>ThemSanPhamView.xaml</DependentUpon>
@@ -198,7 +201,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ThemNhanVien.xaml">
+    <Page Include="View\ThemNhanVienView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -352,21 +355,26 @@
     <Resource Include="ResourceXAML\Avatar\bichngoc.jpg" />
     <Resource Include="ResourceXAML\Avatar\huuthien.jpg" />
     <Resource Include="ResourceXAML\Avatar\quoctuan.jpg" />
-    <Resource Include="ResourceXAML\Avatar\saomai.png" />
     <Resource Include="ResourceXAML\Avatar\xuanha.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ResourceXAML\Image\add.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\Avatar\saomai.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\Avatar\trantoan.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />
 </Project>

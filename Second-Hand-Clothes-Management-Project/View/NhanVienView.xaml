@@ -4,11 +4,19 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Second_Hand_Clothes_Management_Project.View"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
       d:DesignHeight="605" d:DesignWidth="700"
+      DataContext="{StaticResource NhanVienVM}"
+      x:Name="NhanVienwd"
       Title="NhanVienView">
-
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction  Command="{Binding LoadCsCommand}"
+                                    CommandParameter="{Binding ElementName=NhanVienwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <!--BACKGROUND-->
         <Border Background="#D7BEA2">
@@ -21,214 +29,148 @@
             </Grid.RowDefinitions>
             <!--Tiêu đề Sản phẩm-->
             <TextBlock Grid.Row="0"
-                   FontWeight="Bold"
-                   FontFamily="Roboto Mono"
-                   FontSize="48"
-                   VerticalAlignment="Center"
-                   Margin="25 0">
-                   NHÂN VIÊN
+                       FontWeight="Bold"
+                       FontFamily="Roboto Mono"
+                       FontSize="48"
+                       VerticalAlignment="Center"
+                       Margin="25 0">
+                       NHÂN VIÊN
             </TextBlock>
 
             <!--Thanh ComboBox và Tìm kiếm, Button Add-->
-
             <Grid Grid.Row="1">
                 <Border
-                CornerRadius="5" 
-                Background="#CAA88A" 
-                Margin="20 0 20 20">
+                    CornerRadius="5" 
+                    Background="#CAA88A" 
+                    Margin="20 0 20 20">
                     <StackPanel Orientation="Horizontal">
-                        <!--Combox1-->
-                        <ComboBox
-                        x:Name="cbxBoLoc"
-                        Style="{StaticResource MaterialDesignFilledComboBox}" 
-                        Height="50"
-                        Width="116"
-                        Margin="20,0,0,0"
-                        Background="#F5E9D9"
-                        BorderBrush="Transparent"
-                        BorderThickness="0"
-                        FontFamily="Roboto Mono"
-                        FontWeight="Thin"
-                        FontSize="14"
-                        SelectedIndex="0"
-                        materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                        materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"
-                        materialDesign:TextFieldAssist.UnderlineBrush="#F5E9D9" 
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center">
-                            <ComboBoxItem Content="Chức vụ"/>
-                            <ComboBoxItem Content="Nhân viên"/>
-                        </ComboBox>
                         <!--ComboBox2-->
                         <ComboBox
-                        x:Name="cbxTimKiem"
-                        Style="{StaticResource MaterialDesignFilledComboBox}" 
-                        Height="50"
-                        Width="116"
-                        Margin="20,0,0,0"
-                        Background="#F5E9D9"
-                        BorderBrush="Transparent"
-                        BorderThickness="0"
-                        FontFamily="Roboto Mono"
-                        FontWeight="Thin"
-                        FontSize="14"
-                        SelectedIndex="0"
-                        materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                        materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"
-                        materialDesign:TextFieldAssist.UnderlineBrush="#F5E9D9" 
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center">
-                            <ComboBoxItem Content="Tìm Kiếm"/>
-                            <ComboBoxItem Content="Sơ mi"/>
-                            <ComboBoxItem Content="Thun"/>
-                            <ComboBoxItem Content="Hoodie"/>
-                            <ComboBoxItem Content="Yếm"/>
-                            <ComboBoxItem Content="Váy"/>
-                            <ComboBoxItem Content="Trackpant"/>
+                            x:Name="cbxTimKiemNhanVien"
+                            Style="{StaticResource MaterialDesignFilledComboBox}" 
+                            Height="50"
+                            Width="116"
+                            Margin="20,0,0,0"
+                            Background="#F5E9D9"
+                            BorderThickness="0"
+                            FontFamily="Roboto Mono"
+                            FontWeight="Thin"
+                            FontSize="14"
+                            SelectedIndex="0"
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                            materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"
+                            materialDesign:TextFieldAssist.UnderlineBrush="#F5E9D9" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center"
+                            ItemsSource="{Binding listTK}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
                         </ComboBox>
                         <!--TextBox-->
                         <TextBox
-                        x:Name="tbxTimKiem"
-                        Height="50"
-                        Width="200"
-                        Background="#F5E9D9"
-                        Margin="20 0 0 0"
-                        VerticalAlignment="Center"
-                        AcceptsReturn="True"
-                        TextWrapping="Wrap"
-                        MaxWidth="400"
-                        materialDesign:HintAssist.Hint="Tìm Kiếm"
-                        Padding="70 15 15 15"
-                         />
+                            x:Name="tbxTimKiemNhanVien"
+                            Height="50"
+                            Width="250"
+                            Background="#F5E9D9"
+                            Margin="20 0 0 0"
+                            VerticalAlignment="Center"
+                            AcceptsReturn="True"
+                            TextWrapping="Wrap"
+                            MaxWidth="400"
+                            materialDesign:HintAssist.Hint="Tìm Kiếm"
+                            Padding="70 15 15 15">
+                            <i:Interaction.Triggers >
+                                <i:EventTrigger EventName = "TextChanged" >
+                                    <i:InvokeCommandAction Command = "{Binding SearchCommand}"
+                                                       CommandParameter="{Binding ElementName=NhanVienwd}"></i:InvokeCommandAction >
+                                </i:EventTrigger >
+                            </i:Interaction.Triggers >
+                        </TextBox>
                         <Button Style="{DynamicResource MaterialDesignToolForegroundButton}" Margin="-25 -6 8 -6" HorizontalAlignment="Right" RenderTransformOrigin="-0.792,0.586">
                             <materialDesign:PackIcon Kind="Magnify" />
                         </Button>
                         <Button 
-                        x:Name="btnAdd"
-                        Content="ADD+"
-                        Height="50"
-                        Width="125"
-                        Margin="15 0 0 0"
-                        Background="#986639">
-
+                            x:Name="btnAddNhanVien"
+                            Content="ADD+"
+                            Height="50"
+                            Width="125"
+                            Margin="100 0 0 0"
+                            Background="#986639">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding AddPdPdCommand}"
+                                                       CommandParameter="{Binding ElementName=NhanVienwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         </Button>
                     </StackPanel>
                 </Border>
             </Grid>
 
             <!--Show sản phẩm-->
-            <Grid Grid.Row="2">
+            <Grid 
+                Grid.Row="2"
+                Margin="0 0 0 0"
+                Background="#E2D5BF">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="339*"/>
+                    <ColumnDefinition Width="11*"/>
                 </Grid.ColumnDefinitions>
-                <Grid 
-                Grid.Column="0"
-                Margin="0 0 0 0"
-                Background="#E2D5BF">
-                    <ListView 
-                    d:ItemsSource="{d:SampleData ItemCount=5}"
-                    x:Name="ListViewProduct1"
-                    SelectionMode="Single"
-                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                    ScrollViewer.VerticalScrollBarVisibility="Hidden">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Border
-                                Height="210"
-                                Width="280"
-                                Margin="20"
-                                Background="#BDAB97"
-                                CornerRadius="5">
-                                    <Border.Effect>
-                                        <DropShadowEffect ShadowDepth="0" Opacity="0.8" BlurRadius="10" Color="Black"/>
-                                    </Border.Effect>
-                                    <StackPanel>
-                                        <Image 
-                                        Source="C:\Users\ADMIN\Source\Repos\Second-Hand-Clothes-Management-Project\Second-Hand-Clothes-Management-Project\ResourceXAML\Icon\minus.png"
-                                        HorizontalAlignment="Right"                        
-                                        Width="45"
-                                        Height="30"/>
-                                        <Image  
-                                        Margin="0,-10,0,0"
-                                        Source="C:\Users\Admin\source\repos\Second-Hand-Clothes-Management-Project\Second-Hand-Clothes-Management-Project\ResourceXAML\ImageProduct\ÁoThun.jpg" 
-                                        Height="150" 
-                                        Width="150"/>
-                                        <TextBlock
-                                        FontFamily="Roboto Mono"
-                                        FontSize="14"
-                                        HorizontalAlignment="Center"
-                                        Text="T456"/>
-                                        <TextBlock
-                                        FontFamily="Roboto Mono"
-                                        FontSize="14"
-                                        HorizontalAlignment="Center"
-                                        Text="200000"/>
-                                    </StackPanel>
-                                </Border>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                        <ListView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel/>
-                            </ItemsPanelTemplate>
-                        </ListView.ItemsPanel>
-                    </ListView>
-                </Grid>
-
-                <Grid 
-                Grid.Column="1"
-                Margin="0 0 0 0"
-                Background="#E2D5BF">
-                    <ListView 
-                    d:ItemsSource="{d:SampleData ItemCount=5}"
-                    x:Name="ListViewProduct2"
-                    SelectionMode="Single"
-                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                    ScrollViewer.VerticalScrollBarVisibility="Hidden">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Border
-                                Height="210"
-                                Width="280"
-                                Margin="20"
-                                Background="#BDAB97"
-                                CornerRadius="5">
-                                    <Border.Effect>
-                                        <DropShadowEffect ShadowDepth="0" Opacity="0.8" BlurRadius="10" Color="Black"/>
-                                    </Border.Effect>
-                                    <StackPanel>
-                                        <Image 
-                                        Source="C:\Users\ADMIN\Source\Repos\Second-Hand-Clothes-Management-Project\Second-Hand-Clothes-Management-Project\ResourceXAML\Icon\minus.png"
-                                        HorizontalAlignment="Right"                        
-                                        Width="45"
-                                        Height="30"/>
-                                        <Image  
-                                        Margin="0,-10,0,0"
-                                        Source="C:\Users\Admin\source\repos\Second-Hand-Clothes-Management-Project\Second-Hand-Clothes-Management-Project\ResourceXAML\ImageProduct\ÁoThun.jpg" 
-                                        Height="150" 
-                                        Width="150"/>
-                                        <TextBlock
-                                        FontFamily="Roboto Mono"
-                                        FontSize="14"
-                                        HorizontalAlignment="Center"
-                                        Text="T456"/>
-                                        <TextBlock
-                                        FontFamily="Roboto Mono"
-                                        FontSize="14"
-                                        HorizontalAlignment="Center"
-                                        Text="200000"/>
-                                    </StackPanel>
-                                </Border>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                        <ListView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel/>
-                            </ItemsPanelTemplate>
-                        </ListView.ItemsPanel>
-                    </ListView>
-                </Grid>
+                <ListView 
+                        ItemsSource="{Binding listND}"
+                        x:Name="ListViewNhanVien"
+                        SelectionMode="Single"
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        ScrollViewer.VerticalScrollBarVisibility="Hidden" Grid.ColumnSpan="2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                    Height="210"
+                                    Width="280"
+                                    Margin="20"
+                                    Background="#BDAB97"
+                                    CornerRadius="5">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" Opacity="0.8" BlurRadius="10" Color="Black"/>
+                                </Border.Effect>
+                                <StackPanel>
+                                    <Image 
+                                            Margin="10"
+                                            HorizontalAlignment="Center"
+                                            Source="{Binding AVA, StringFormat={}}"
+                                            Width="150"
+                                            Height="150"/>
+                                    <TextBlock
+                                            FontFamily="Roboto Mono"
+                                            FontSize="14"
+                                            HorizontalAlignment="Center"
+                                            Text="{Binding TENND}"/>
+                                    <TextBlock
+                                            FontFamily="Roboto Mono"
+                                            FontSize="14"
+                                            HorizontalAlignment="Center"
+                                            Text="{Binding MAND}"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding DetailPdCommand}"
+                                                       CommandParameter="{Binding ElementName=NhanVienwd}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListView>
             </Grid>
         </Grid>
     </Grid>

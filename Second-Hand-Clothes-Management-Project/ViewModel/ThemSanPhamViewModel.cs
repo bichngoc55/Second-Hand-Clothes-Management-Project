@@ -18,6 +18,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
     public class ThemSanPhamViewModel : BaseViewModel
     {
         private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
+        public ICommand Back { get; set; }
         public ICommand AddImage { get; set; }
         private string _linkimage;
         public string linkimage { get => _linkimage; set { _linkimage = value; OnPropertyChanged(); } }
@@ -26,6 +27,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public ThemSanPhamViewModel()
         {
             linkimage = "/ResourceXAML/Image/add.png";
+            Back = new RelayCommand<ThemSanPhamView>((p) => true, (p) => _Back(p));
             AddImage = new RelayCommand<Image>((p) => true, (p) => _AddImage(p));
             AddProduct = new RelayCommand<ThemSanPhamView>((p) => true, (p) => _AddProduct(p));
             Loadwd = new RelayCommand<ThemSanPhamView>((p) => true, (p) => _Loadwd(p));
@@ -33,6 +35,11 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         void _Loadwd(ThemSanPhamView paramater)
         {
             linkimage = "/ResourceXAML/Image/add.png";
+        }
+        void _Back(ThemSanPhamView p)
+        {
+            SanPhamView productViewPage = new SanPhamView();
+            MainViewModel.MainFrame.Content = productViewPage;
         }
         void _AddImage(Image img)
         {

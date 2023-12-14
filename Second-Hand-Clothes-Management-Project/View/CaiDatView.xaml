@@ -4,7 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Second_Hand_Clothes_Management_Project.View"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
       d:DesignHeight="605" d:DesignWidth="700"
       Title="CaiDatView">
@@ -46,15 +47,25 @@
                             Margin="0,50,0,0" 
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Top"/>
-                        <Button
-                            Height="40"
-                            Width="150"
-                            Margin="0 30 0 0"
-                            Background="#986639"
-                            Content="Thay đổi ảnh"
-                            FontSize="10"
-                            BorderBrush="Transparent">
-
+                        <Button 
+                            HorizontalAlignment="Center" 
+                            Margin="0,0,0,0" 
+                            VerticalAlignment="Center"
+                            Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                            Content="Thay đổi ảnh" 
+                            FontFamily="Roboto Mono"
+                            BorderThickness="0"
+                            Width="160" 
+                            Height="40" 
+                            Background="#986639" 
+                            Foreground="White"
+                            Grid.Row="1" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding AddImage}"
+                                                   CommandParameter="{Binding ElementName=ProfilePicture}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         </Button>
                     </StackPanel>
                 </Grid>
@@ -63,7 +74,7 @@
                     <StackPanel Orientation="Vertical">
                         
                         <TextBox
-                            x:Name="txbHoTen"
+                            x:Name="NameBox"
                             Width="250"
                             Height="35"
                             Margin="50 50 50 0"
@@ -85,7 +96,7 @@
                             HorizontalAlignment="Center"
                             materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
                         <TextBox
-                            x:Name="txbSDT"
+                            x:Name="SDTBox"
                             Width="250"
                             Height="35"
                             Margin="50 15 50 0"
@@ -101,9 +112,10 @@
                             Width="250"
                             Height="35">
                             <ComboBox
+                                x:Name="GTBox"
                                 Background="White"
                                 Height="35"
-                                Width="100"
+                                Width="120"
                                 BorderBrush="Transparent"
                                 BorderThickness="0"
                                 SelectedIndex="0"
@@ -113,9 +125,22 @@
                                 <ComboBoxItem Content="Nam"/>
                                 <ComboBoxItem Content="Nữ"/>
                             </ComboBox>
+                            <DatePicker
+                                x:Name="DateBox"
+                                Background="White"
+                                Height="35"
+                                Width="120"
+                                Margin="10 0 0 0"
+                                BorderBrush="Transparent"
+                                materialDesign:HintAssist.Hint="Ngày sinh"
+                                Padding="5"
+                                materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                                BorderThickness="0">
+                                
+                            </DatePicker>
                         </StackPanel>
                         <TextBox
-                            x:Name="txbEmail"
+                            x:Name="Mail"
                             Width="250"
                             Height="35"
                             Margin="50 15 50 0"
@@ -158,7 +183,12 @@
                                 Content="CẬP NHẬP"
                                 FontSize="10"
                                 BorderBrush="Transparent">
-                                
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding UpdateInfo}"
+                                                       CommandParameter="{Binding ElementName=SettingViewPage}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                             </Button>
                         </StackPanel>
                         <Button

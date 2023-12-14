@@ -9,6 +9,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="605" d:DesignWidth="350"
       x:Name="ThemSanPhamwd"
+      HorizontalAlignment="Right"
       DataContext="{StaticResource ThemSanPhamVM}"
       Title="ThemSanPhamView">
     <Border>
@@ -116,21 +117,40 @@
                 Margin="0,15,0,15">
                 
             </TextBox>
-            <Button
+            <StackPanel Orientation="Horizontal">
+                <Button
                 x:Name="btnadd"
                 Width="105"
                 Height="20"
                 Content="THÊM SẢN PHẨM"
                 FontSize="9"
-                Background="#986639" HorizontalAlignment="Right" Margin="0,0,50,0"
+                Background="#986639" HorizontalAlignment="Right" 
+                Margin="50,0,40,0"
                 BorderBrush="Transparent">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding AddProduct}"
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding AddProduct}"
                                                        CommandParameter="{Binding ElementName=ThemSanPhamwd}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <Button
+                x:Name="btnback"
+                Width="105"
+                Height="20"
+                Content="QUAY LẠI"
+                FontSize="9"
+                Background="#986639" HorizontalAlignment="Right" 
+                Margin="0,0,50,0"
+                BorderBrush="Transparent">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding Back}"
+                                                       CommandParameter="{Binding ElementName=ThemSanPhamwd}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </StackPanel>
         </StackPanel>
     </Border>
 </Page>
