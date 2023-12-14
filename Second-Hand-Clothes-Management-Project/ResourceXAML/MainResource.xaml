@@ -10,4 +10,6 @@
     <viewmodel:NhanVienViewModel x:Key="NhanVienVM"></viewmodel:NhanVienViewModel>
     <viewmodel:ThemNhanVienViewModel x:Key="ThemNhanVienVM"></viewmodel:ThemNhanVienViewModel>
     <viewmodel:ChiTietNhanVienViewModel x:Key="ChiTietNhanVienVM"></viewmodel:ChiTietNhanVienViewModel>
+    <viewmodel:CaiDatViewModel x:Key="CaiDatVM"></viewmodel:CaiDatViewModel>
+    <viewmodel:TaoTaiKhoanViewModel x:Key="TaoTaiKhoanVM"></viewmodel:TaoTaiKhoanViewModel>
 </ResourceDictionary>

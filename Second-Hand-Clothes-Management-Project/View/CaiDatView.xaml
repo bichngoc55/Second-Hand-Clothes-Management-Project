@@ -7,7 +7,10 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
-      d:DesignHeight="605" d:DesignWidth="700"
+      Name="CaiDat"
+      d:DesignHeight="605" 
+      d:DesignWidth="700"
+      DataContext="{StaticResource CaiDatVM}"
       Title="CaiDatView">
 
     <Grid>
@@ -39,17 +42,31 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <StackPanel Orientation="Vertical">
-                        <Image
-                            x:Name="AnhDaiDien"
-                            Height="250"
-                            Width="200"
-                            Source="C:\Users\Admin\Source\Repos\Second-Hand-Clothes-Management-Project\Second-Hand-Clothes-Management-Project\ResourceXAML\ImageProduct\ÁoThun.jpg" 
+                        <Border 
                             Margin="0,50,0,0" 
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Top"/>
+                            Grid.RowSpan="2">
+                            <Ellipse 
+                                Height="150" 
+                                Width="150" 
+                                VerticalAlignment="Top" 
+                                HorizontalAlignment="Center"
+                                Margin="30" 
+                                StrokeThickness="5">
+                                <Ellipse.Effect>
+                                    <DropShadowEffect 
+                                        ShadowDepth="0"
+                                        Color="Black"
+                                        Opacity="10"
+                                        BlurRadius="10"/>
+                                </Ellipse.Effect>
+                                <Ellipse.Fill>
+                                    <ImageBrush x:Name="ProfilePicture" ImageSource="{Binding Ava}"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
                         <Button 
                             HorizontalAlignment="Center" 
-                            Margin="0,0,0,0" 
+                            Margin="0,90,0,0" 
                             VerticalAlignment="Center"
                             Style="{StaticResource MaterialDesignFlatMidBgButton}"
                             Content="Thay đổi ảnh" 
@@ -83,9 +100,10 @@
                             Padding="10"
                             FontFamily="Roboto Mono"
                             HorizontalAlignment="Center"
-                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                            Text ="{Binding Name}"/>
                         <TextBox
-                            x:Name="txbDiaChi"
+                            x:Name="AddressBox"
                             Width="250"
                             Height="35"
                             Margin="50 15 50 0"
@@ -94,7 +112,8 @@
                             Padding="10"
                             FontFamily="Roboto Mono"
                             HorizontalAlignment="Center"
-                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                            Text="{Binding DiaChi}"/>
                         <TextBox
                             x:Name="SDTBox"
                             Width="250"
@@ -105,7 +124,8 @@
                             Padding="10"
                             FontFamily="Roboto Mono"
                             HorizontalAlignment="Center"
-                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                            Text="{Binding SDT}"/>
                         <StackPanel 
                             Orientation="Horizontal"
                             Margin="50 15 50 0"
@@ -135,7 +155,8 @@
                                 materialDesign:HintAssist.Hint="Ngày sinh"
                                 Padding="5"
                                 materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                                BorderThickness="0">
+                                BorderThickness="0"
+                                Text="{Binding DoB}">
                                 
                             </DatePicker>
                         </StackPanel>
@@ -149,9 +170,10 @@
                             Padding="10"
                             FontFamily="Roboto Mono"
                             HorizontalAlignment="Center"
-                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                            Text="{Binding Mail}"/>
                         <TextBox
-                            x:Name="txbPassword"
+                            x:Name="Password"
                             Width="250"
                             Height="35"
                             Margin="50 15 50 0"
@@ -160,7 +182,8 @@
                             Padding="10"
                             FontFamily="Roboto Mono"
                             HorizontalAlignment="Center"
-                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                            Text="{Binding PassWord}"/>
                         <StackPanel
                             Orientation="Horizontal"
                             Margin="50 15 50 0"
@@ -173,7 +196,7 @@
                                 Content="TẠO TÀI KHOẢN"
                                 FontSize="10"
                                 BorderBrush="Transparent">
-                                
+
                             </Button>
                             <Button
                                 Background="#986639"
@@ -186,24 +209,21 @@
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding UpdateInfo}"
-                                                       CommandParameter="{Binding ElementName=SettingViewPage}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=CaiDatView}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
                         </StackPanel>
-                        <Button
-                            Background="#986639"
-                            Margin="70,15,50,0"
-                            Height="35"
-                            Width="130"
-                            Content="XOÁ TÀI KHOẢN"
-                            FontSize="10"
-                            BorderBrush="Transparent" 
-                            HorizontalAlignment="Left" 
-                            />
                     </StackPanel>
                 </Grid>
             </Grid>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Loaded">
+                    <i:InvokeCommandAction  Command="{Binding Loadwd}"
+                        CommandParameter="{Binding ElementName=CaiDatView}">
+                    </i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </Grid>
     </Grid>
 </Page>

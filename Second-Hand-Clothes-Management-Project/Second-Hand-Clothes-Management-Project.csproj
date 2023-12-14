@@ -99,6 +99,7 @@
     <Compile Include="Model\SANPHAM.cs" />
     <Compile Include="Model\sysdiagram.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\CaiDatViewModel.cs" />
     <Compile Include="ViewModel\ChiTietNhanVienViewModel.cs" />
     <Compile Include="ViewModel\ChiTietSanPhamViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="ViewModel\NhanVienViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\SanPhamViewModel.cs" />
+    <Compile Include="ViewModel\TaoTaiKhoanViewModel.cs" />
     <Compile Include="ViewModel\ThemNhanVienViewModel.cs" />
     <Compile Include="ViewModel\ThemSanPhamViewModel.cs" />
     <Compile Include="ViewModel\ThongKeViewModel.cs" />
@@ -365,6 +367,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ResourceXAML\Avatar\trantoan.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\Image\addava.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

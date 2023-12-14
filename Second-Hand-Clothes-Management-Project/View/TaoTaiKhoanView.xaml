@@ -4,11 +4,26 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Second_Hand_Clothes_Management_Project.View"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
       d:DesignHeight="605" d:DesignWidth="700"
+      x:Name="TaoTaiKhoanwd"
+      DataContext="{StaticResource TaoTaiKhoanVM}"
       Title="TaoTaiKhoanView">
-
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ThicknessAnimation Storyboard.TargetName="TaoTaiKhoanwd"
+                                    Storyboard.TargetProperty="Margin"
+                                    From="426,0,0,0"
+                                    To="0"
+                                    Duration="0:0:0.2" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
     <Grid>
         <!--BACKGROUND-->
         <Border Background="#D7BEA2">
@@ -38,40 +53,68 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <StackPanel Orientation="Vertical">
-                        <Image
-                            Height="250"
-                            Width="200"
-                            Source="C:\Users\Admin\Source\Repos\Second-Hand-Clothes-Management-Project\Second-Hand-Clothes-Management-Project\ResourceXAML\ImageProduct\ÁoThun.jpg" 
-                            Margin="0,50,0,0" 
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Top"/>
+                        <Border Margin="0,50,0,0" Grid.RowSpan="2">
+                            <Ellipse 
+                                Height="150" Width="150" 
+                                VerticalAlignment="Top" 
+                                HorizontalAlignment="Center"
+                                Margin="30" StrokeThickness="5">
+                                <Ellipse.Effect>
+                                    <DropShadowEffect 
+                                        ShadowDepth="0"
+                                        Color="Black"
+                                        Opacity="10"
+                                        BlurRadius="10"/>
+                                </Ellipse.Effect>
+                                <Ellipse.Fill>
+                                    <ImageBrush x:Name="HinhAnh1" ImageSource="/ResourceXAML/Image/addava.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
                         <Button
                             Height="40"
                             Width="150"
                             Margin="0 30 0 0"
                             Background="#986639"
-                            Content="Thay đổi ảnh"
+                            Content="Thêm ảnh"
                             FontSize="10"
                             BorderBrush="Transparent">
-
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding AddImage}"
+                                        CommandParameter="{Binding ElementName=HinhAnh1}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         </Button>
                     </StackPanel>
                 </Grid>
 
                 <Grid Grid.Column="1">
                     <StackPanel Orientation="Vertical">
-
                         <TextBox
                             Width="250"
                             Height="35"
                             Margin="50 50 50 0"
                             Background="White"
+                            materialDesign:HintAssist.Hint="Mã NV"
+                            Padding="10"
+                            FontFamily="Roboto Mono"
+                            HorizontalAlignment="Center"
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                            x:Name="MaND"/>
+                        <TextBox
+                            Width="250"
+                            Height="35"
+                            Margin="50 15 50 0"
+                            Background="White"
                             materialDesign:HintAssist.Hint="Họ tên"
                             Padding="10"
                             FontFamily="Roboto Mono"
                             HorizontalAlignment="Center"
-                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                            x:Name="TenND"/>
                         <TextBox
+                            x:Name="DC"
                             Width="250"
                             Height="35"
                             Margin="50 15 50 0"
@@ -82,6 +125,7 @@
                             HorizontalAlignment="Center"
                             materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
                         <TextBox
+                            x:Name="SDT"
                             Width="250"
                             Height="35"
                             Margin="50 15 50 0"
@@ -91,12 +135,29 @@
                             FontFamily="Roboto Mono"
                             HorizontalAlignment="Center"
                             materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
+                        <ComboBox
+                            x:Name="QTV"
+                            Width="250"
+                            Height="35"
+                            Margin="50 15 50 0"
+                            Background="White"
+                            materialDesign:HintAssist.Hint="Chức vụ"
+                            Padding="10"
+                            FontFamily="Roboto Mono"
+                            HorizontalAlignment="Center"
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5">
+                            <ComboBoxItem
+                                Content="Quản lý" />
+                            <ComboBoxItem
+                                Content="Nhân viên" />
+                        </ComboBox>
                         <StackPanel 
                             Orientation="Horizontal"
                             Margin="50 15 50 0"
                             Width="250"
                             Height="35">
                             <ComboBox
+                                x:Name="GT"
                                 Height="35"
                                 Width="120"
                                 Background="White"
@@ -109,21 +170,21 @@
                                 <ComboBoxItem Content="Nam"/>
                                 <ComboBoxItem Content="Nữ"/>
                             </ComboBox>
-                            <ComboBox
+                            <DatePicker
+                                x:Name="NS"
                                 Height="35"
                                 Width="120"
                                 Background="White"
                                 materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                                SelectedIndex="0"
                                 Padding="5"
                                 HorizontalAlignment="Right" 
                                 VerticalAlignment="Top"
                                 Margin="10, 0, 0, 0"
                                 materialDesign:HintAssist.Hint="Ngày sinh">
-
-                            </ComboBox>
+                            </DatePicker>
                         </StackPanel>
                         <TextBox
+                            x:Name="Mail"
                             Width="250"
                             Height="35"
                             Margin="50 15 50 0"
@@ -133,16 +194,42 @@
                             FontFamily="Roboto Mono"
                             HorizontalAlignment="Center"
                             materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
-                        <Button
-                            Background="#986639"
-                            Margin="70,15,50,0"
-                            Height="35"
-                            Width="130"
-                            Content="TẠO TÀI KHOẢN"
-                            FontSize="10"
-                            BorderBrush="Transparent" 
-                            HorizontalAlignment="Left" 
-                            />
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Background="#986639"
+                                Margin="70,15,0,0"
+                                Height="35"
+                                Width="120"
+                                Content="TẠO TÀI KHOẢN"
+                                FontSize="10"
+                                BorderBrush="Transparent" 
+                                HorizontalAlignment="Left" 
+                                >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding AddNDCommand}"
+                                            CommandParameter="{Binding ElementName=TaoTaiKhoanwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <Button
+                                Background="#986639"
+                                Margin="10,15,50,0"
+                                Height="35"
+                                Width="120"
+                                Content="QUAY LẠI"
+                                FontSize="10"
+                                BorderBrush="Transparent" 
+                                HorizontalAlignment="Left" 
+                                >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding Back}"
+                                            CommandParameter="{Binding ElementName=TaoTaiKhoanwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
             </Grid>
