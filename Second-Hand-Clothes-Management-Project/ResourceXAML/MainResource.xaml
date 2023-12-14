@@ -5,6 +5,7 @@
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
     <viewmodel:SanPhamViewModel x:Key="SanPhamVM"></viewmodel:SanPhamViewModel>
     <viewmodel:ThongKeViewModel x:Key="ThongKeVM"></viewmodel:ThongKeViewModel>
+    <viewmodel:GiamGiaViewModel x:Key="GiamGiaVM"></viewmodel:GiamGiaViewModel>
     <!--<viewmodel:ThemSanPhamViewModel></viewmodel:ThemSanPhamViewModel>
     <viewmodel:ChiTietSanPhamViewModel x:Key="ChiTietSanPhamVM"></viewmodel:ChiTietSanPhamViewModel>-->
 
