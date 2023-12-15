@@ -10,7 +10,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
-                        <Border   Width="160"
+                        <Border   Width="175"
                                     Height="70"
                                  
                                 CornerRadius="10"
@@ -59,7 +59,7 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                    Width="160"
+                    Width="175"
                     Height="70"
                     CornerRadius="10"
                     HorizontalAlignment="Stretch"
@@ -108,7 +108,7 @@ x:Key="NhapKho">
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                 Width="160"
+                 Width="175"
                  Height="70"
                  CornerRadius="10"
                  HorizontalAlignment="Stretch"
@@ -158,7 +158,7 @@ x:Key="NhapKho">
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                    Width="160"
+                    Width="175"
                     Height="70"
                     CornerRadius="10"
                     HorizontalAlignment="Stretch"
@@ -210,7 +210,7 @@ x:Key="NhanVien">
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                 Width="160"
+                 Width="175"
                  Height="70"
                  CornerRadius="10"
                  HorizontalAlignment="Stretch"
@@ -260,7 +260,7 @@ x:Key="CaiDat">
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                 Width="160"
+                 Width="175"
                  Height="70"
                  CornerRadius="10"
                  HorizontalAlignment="Stretch"
@@ -309,7 +309,7 @@ x:Key="CaiDat">
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                    Width="160"
+                    Width="175"
                     Height="70"
                     CornerRadius="10"
                     HorizontalAlignment="Stretch"
@@ -361,7 +361,7 @@ x:Key="CaiDat">
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                        Width="160"
+                        Width="175"
                           Height="70"
                         CornerRadius="10"
                         HorizontalAlignment="Center"

@@ -124,12 +124,12 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 
         private void _LoadUsername(MainView p)
         { 
-            p.TenDangNhap.Text = string.Join(" ", User.USERNAME.Split().Reverse().Take(2).Reverse());
+            p.TenDangNhap.Text = string.Join(" ", User.TENND.Split().Reverse().Take(2).Reverse());
         }
 
         private void _LoadQuyen(MainView p)
-        { 
-            p.Quyen.Text = (bool)User.QTV ? "1" : "0";
+        {
+            p.Quyen.Text = User.QTV ? "Quản lý" : "Nhân viên";
         }
     }
 }

@@ -82,7 +82,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                 KHName = "(chưa có)";
             }
             p.MaxKH.Text = BestKH;
-            p.KHName.Text = KHName;
+            p.KHName.Text = string.Join(" ", KHName.Split().Reverse().Take(2).Reverse());
         }
 
         private void NVCount(ThongKeView p)

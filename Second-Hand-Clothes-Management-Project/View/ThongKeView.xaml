@@ -23,7 +23,7 @@
         </Border>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition  Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="4*" />
                 <RowDefinition Height="110"></RowDefinition>
@@ -44,7 +44,10 @@
                         <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.5" BlurRadius="20"/>
                     </Border.Effect>
                     <DockPanel>
-                        <Border CornerRadius="5" Width="250" Background="#986639" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,10,15,10 " Height="50">
+                        <Border CornerRadius="15" Width="250" Background="#986639" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,15,10 " Height="50">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.2" BlurRadius="20"/>
+                            </Border.Effect>
                             <TextBlock Text="Tổng Quan"
        FontFamily="Roboto Mono"
        Foreground =" White"
@@ -58,7 +61,7 @@
                 </Border>
 
             </Grid>
-            <Grid Grid.Row="2" Background="#EDE2D0">
+            <Grid Margin="10,0,10,0" Grid.Row="2" Background="#EDE2D0">
                 <!-- Donut Chart Border -->
                 <Border x:Name="DonutChart" Height="290"
                     Width="320"
@@ -90,11 +93,20 @@
                                 <syncfusion:DoughnutSeries.ColorModel>
                                     <syncfusion:ChartColorModel>
                                         <syncfusion:ChartColorModel.CustomBrushes>
-                                            <SolidColorBrush Color="#BDAB97"/>
-                                            <SolidColorBrush Color="#957DAD"/>
-                                            <SolidColorBrush Color="#D291BC"/>
-                                            <SolidColorBrush Color="#FEC8D8"/>
-                                            <SolidColorBrush Color="#FFDFD3"/>
+                                            <SolidColorBrush Color="#8B4513"/>
+                                            <!-- Brown -->
+                                            <SolidColorBrush Color="#CD853F"/>
+                                            <!-- Peru -->
+                                            <SolidColorBrush Color="#D2B48C"/>
+                                            <!-- Tan -->
+                                            <SolidColorBrush Color="#A0522D"/>
+                                            <!-- Sienna -->
+                                            <SolidColorBrush Color="#8B5A2B"/>
+                                            <!-- SaddleBrown -->
+                                            <SolidColorBrush Color="#DEB887"/>
+                                            <!-- BurlyWood -->
+                                            <SolidColorBrush Color="#BC8F8F"/>
+                                            <!-- RosyBrown -->
                                         </syncfusion:ChartColorModel.CustomBrushes>
                                     </syncfusion:ChartColorModel>
                                 </syncfusion:DoughnutSeries.ColorModel>
@@ -144,16 +156,24 @@
                                 <syncfusion:PieSeries.ColorModel>
                                     <syncfusion:ChartColorModel>
                                         <syncfusion:ChartColorModel.CustomBrushes>
-                                            <SolidColorBrush Color="#C3E9FF"/>
-                                            <SolidColorBrush Color="#c6f8e5"/>
-                                            <SolidColorBrush Color="#fbf7d5"/>
-                                            <SolidColorBrush Color="#f9ded7"/>
-                                            <SolidColorBrush Color="#f5cdde "/>
-                                            <SolidColorBrush Color="#e2bef1"/>
-                                            <SolidColorBrush Color="#D5B9FC"/>
+                                            <SolidColorBrush Color="#8B4513"/>
+                                            <!-- Brown -->
+                                            <SolidColorBrush Color="#CD853F"/>
+                                            <!-- Peru -->
+                                            <SolidColorBrush Color="#D2B48C"/>
+                                            <!-- Tan -->
+                                            <SolidColorBrush Color="#A0522D"/>
+                                            <!-- Sienna -->
+                                            <SolidColorBrush Color="#8B5A2B"/>
+                                            <!-- SaddleBrown -->
+                                            <SolidColorBrush Color="#DEB887"/>
+                                            <!-- BurlyWood -->
+                                            <SolidColorBrush Color="#BC8F8F"/>
+                                            <!-- RosyBrown -->
                                         </syncfusion:ChartColorModel.CustomBrushes>
                                     </syncfusion:ChartColorModel>
                                 </syncfusion:PieSeries.ColorModel>
+
                             </syncfusion:PieSeries>
                         </syncfusion:SfChart.Series>
                         <i:Interaction.Triggers>
@@ -171,7 +191,7 @@
                 <!-- Column Chart Border -->
 
             </Grid>
-            <Grid Grid.Row="3" Margin="10,0,10,20" >
+            <Grid Grid.Row="3" Margin="20,0,20,20" >
                  
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="320"/>
@@ -179,7 +199,11 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
-                    <Border Background="#BDAB97" CornerRadius="25"></Border>
+                    <Border Background="#BDAB97" CornerRadius="25">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.5" BlurRadius="20"/>
+                        </Border.Effect>
+                    </Border>
                     <TextBlock Text="Nhân viên đạt nhiều KPI nhất:"
                    FontFamily="Roboto Mono"
                    FontSize="16"
@@ -213,13 +237,18 @@
                    Height="Auto"/>
                 </Grid>
 
-                <Grid Grid.Column="1" Margin="42,0,-40,0">
-                    <Border Background="#BDAB97" CornerRadius="25"></Border>
-                    <TextBlock Text="Nhân viên đạt nhiều KPI nhất:"
+                <Grid Grid.Column="1" Margin="19,0,-20,0">
+                    <Border Background="#BDAB97" CornerRadius="25">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.5" BlurRadius="20"/>
+                        </Border.Effect>
+                    </Border>
+                    <TextBlock Text="Khách hàng mua hàng nhiều nhất:"
                                FontFamily="Roboto Mono"
                                FontSize="16"
                                            Margin="10,10,0,0"
                                Foreground="Black" TextWrapping="Wrap" Height="50" VerticalAlignment="Top"/>
+                    <DockPanel> 
                     <materialDesign:PackIcon Kind="Crown"
                         Foreground="Black"
                         Margin="10,-10,0,7"
@@ -229,7 +258,7 @@
                                Text="Mã"
                                FontWeight="Bold"
                                FontSize="25" Foreground="Black"
-                               FontFamily="Roboto Mono" Margin="70,0,0,10" VerticalAlignment="Bottom" Height="30" Width="Auto">
+                               FontFamily="Roboto Mono" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="30" Width="Auto">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Loaded">
                                 <i:InvokeCommandAction Command="{Binding LoadKH}"
@@ -240,11 +269,12 @@
                                 <TextBlock x:Name="KHName" 
                                Text="Tên" FontSize="24"
                                Foreground="Black"
-                               FontFamily="Roboto Mono"
+                               FontFamily="Roboto Mono" 
                                VerticalAlignment="Bottom"
                                  Width="Auto"
-                               Margin="120,0,0,8"
+                               Margin="10,0,0,7"
                                Height="Auto"/>
+                    </DockPanel>
                 </Grid>
         </Grid>
         </Grid>
