@@ -12,7 +12,19 @@
       d:DesignWidth="700"
       DataContext="{StaticResource CaiDatVM}"
       Title="CaiDatView">
-
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ThicknessAnimation Storyboard.TargetName="CaiDat"
+                                    Storyboard.TargetProperty="Margin"
+                                    From="426,0,0,0"
+                                    To="0"
+                                    Duration="0:0:0.2" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
     <Grid>
         <!--BACKGROUND-->
         <Border Background="#D7BEA2">
@@ -196,7 +208,12 @@
                                 Content="TẠO TÀI KHOẢN"
                                 FontSize="10"
                                 BorderBrush="Transparent">
-
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding AddNDCommand}"
+                                                       CommandParameter="{Binding ElementName=CaiDatView}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                             </Button>
                             <Button
                                 Background="#986639"

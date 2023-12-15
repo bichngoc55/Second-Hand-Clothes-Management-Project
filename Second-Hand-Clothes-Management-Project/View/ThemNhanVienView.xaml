@@ -12,7 +12,19 @@
       x:Name="ThemNhanVienwd"
       HorizontalAlignment="Right"
       Title="ThemNhanVienView">
-
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ThicknessAnimation Storyboard.TargetName="ThemNhanVienwd"
+                                    Storyboard.TargetProperty="Margin"
+                                    From="426,0,0,0"
+                                    To="0"
+                                    Duration="0:0:0.2" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
     <Border>
         <Border.Background>
             <ImageBrush

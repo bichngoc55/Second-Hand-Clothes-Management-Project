@@ -10,7 +10,19 @@
       d:DesignHeight="605" d:DesignWidth="700"
       DataContext="{StaticResource SanPhamVM}"
       Title="SanPhamView">
-
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ThicknessAnimation Storyboard.TargetName="SanPhamwd"
+                                    Storyboard.TargetProperty="Margin"
+                                    From="426,0,0,0"
+                                    To="0"
+                                    Duration="0:0:0.2" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
     <Grid>
         <!--BACKGROUND-->
         <Border Background="#D7BEA2">

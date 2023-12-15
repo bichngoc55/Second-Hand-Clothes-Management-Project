@@ -99,7 +99,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         }
          
 
-        private string MD5Hash(string value)
+        public static string MD5Hash(string value)
         {
             StringBuilder hash = new StringBuilder();
             MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
@@ -112,7 +112,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             return hash.ToString();
         }
 
-        private string Base64Encode(string password)
+        public static string Base64Encode(string password)
         {
             var plainTextBytes = Encoding.UTF8.GetBytes(password);
             return Convert.ToBase64String(plainTextBytes);

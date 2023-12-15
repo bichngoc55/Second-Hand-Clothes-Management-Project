@@ -13,6 +13,8 @@ using Microsoft.Win32;
 using Second_Hand_Clothes_Management_Project.View;
 using Second_Hand_Clothes_Management_Project.Model;
 using System;
+using System.Collections.ObjectModel;
+using System.Windows.Documents;
 
 namespace Second_Hand_Clothes_Management_Project.ViewModel
 {
@@ -43,10 +45,12 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public ICommand UpdateInfo { get; set; }
         public ICommand AddImage { get; set; }
         public ICommand ChangePass { get; set; }
+        public ICommand AddNDCommand { get; set; }
         public CaiDatViewModel()
         {
             Loadwd = new RelayCommand<CaiDatView>((p) => true, (p) => _Loadwd(p));
             AddImage = new RelayCommand<ImageBrush>((p) => true, (p) => _AddImage(p));
+            AddNDCommand = new RelayCommand<CaiDatView>((p) => true, (p) => _AddND(p));
             //UpdateInfo = new RelayCommand<CaiDatView>((p) => true, (p) => _UdpateInfo(p));
             //ChangePass = new RelayCommand<CaiDatView>((p) => true, (p) => _ChangePass());
         }
@@ -82,43 +86,43 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                 PassWord = User.PASS;
             }
         }
-        //void _UdpateInfo(CaiDatView p)
-        //{
-        //    foreach (NGUOIDUNG temp2 in DataProvider.Ins.DB.NGUOIDUNGs)
-        //    {
-        //        if (temp2.MAIL == p.Mail.Text && p.Mail.Text != Const.ND.MAIL)
-        //        {
-        //            MessageBox.Show("Email này đã được sử dụng !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
-        //            return;
-        //        }
-        //    }
-        //    string match = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
-        //    Regex reg = new Regex(match);
-        //    if (!reg.IsMatch(p.Mail.Text))
-        //    {
-        //        MessageBox.Show("Email không hợp lệ !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
-        //        return;
-        //    }
+        void _UdpateInfo(CaiDatView p)
+        {
+            foreach (NGUOIDUNG temp2 in DataProvider.Ins.DB.NGUOIDUNGs)
+            {
+                if (temp2.MAIL == p.Mail.Text && p.Mail.Text != Const.ND.MAIL)
+                {
+                    MessageBox.Show("Email này đã được sử dụng !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
+            string match = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
+            Regex reg = new Regex(match);
+            if (!reg.IsMatch(p.Mail.Text))
+            {
+                MessageBox.Show("Email không hợp lệ !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
-        //    var temp = DataProvider.Ins.DB.NGUOIDUNGs.Where(pa => pa.USERNAME == TenTK).FirstOrDefault();
-        //    temp.TENND = p.NameBox.Text;
-        //    temp.SDT = p.SDTBox.Text;
-        //    temp.DIACHI = p.AddressBox.Text;
-        //    temp.GIOITINH = p.GTBox.Text;
-        //    temp.NGSINH = (DateTime)p.DateBox.SelectedDate;
-        //    temp.MAIL = p.Mail.Text;
-        //    string rd = StringGenerator();
-        //    if (User.AVA != Ava)
-        //        temp.AVA = "/Resource/Ava/" + rd + (Ava.Contains(".jpg") ? ".jpg" : ".png").ToString();
-        //    DataProvider.Ins.DB.SaveChanges();
-        //    try
-        //    {
-        //        if (User.AVA != Ava)
-        //            File.Copy(Ava, Const._localLink + @"Resource/Ava/" + rd + (Ava.Contains(".jpg") ? ".jpg" : ".png").ToString(), true);
-        //    }
-        //    catch { }
-        //    MessageBox.Show("Cập nhật thành công!", "Thông báo");
-        //}
+            var temp = DataProvider.Ins.DB.NGUOIDUNGs.Where(pa => pa.USERNAME == TenTK).FirstOrDefault();
+            temp.TENND = p.NameBox.Text;
+            temp.SDT = p.SDTBox.Text;
+            temp.DIACHI = p.AddressBox.Text;
+            temp.GIOITINH = p.GTBox.Text;
+            temp.NGSINH = p.DateBox.SelectedDate.ToString();
+            temp.MAIL = p.Mail.Text;
+            string rd = StringGenerator();
+            if (User.AVA != Ava)
+                temp.AVA = "/Resource/Ava/" + rd + (Ava.Contains(".jpg") ? ".jpg" : ".png").ToString();
+            DataProvider.Ins.DB.SaveChanges();
+            try
+            {
+                if (User.AVA != Ava)
+                    File.Copy(Ava, Const._localLink + @"Resource/Ava/" + rd + (Ava.Contains(".jpg") ? ".jpg" : ".png").ToString(), true);
+            }
+            catch { }
+            MessageBox.Show("Cập nhật thành công!", "Thông báo");
+        }
         static string StringGenerator()
         {
             Random rd = new Random();
@@ -134,6 +138,12 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                 str_build.Append(letter);
             }
             return str_build.ToString();
+        }
+        void _AddND(CaiDatView parameter)
+        {
+            TaoTaiKhoanView addNDView = new TaoTaiKhoanView();
+            MainViewModel.MainFrame.Content = addNDView;
+
         }
     }
 }
