@@ -161,6 +161,7 @@
                             <RadioButton
                                       Style="{StaticResource ThanhToan}"
                                       Uid="3"
+                                    Visibility="{Binding SetNhanVien}"
                                       FontFamily="{StaticResource Custom}" 
                                       x:Name="ThanhToan"
                                       Command="{Binding ThanhToanCM}" Width="185"/>

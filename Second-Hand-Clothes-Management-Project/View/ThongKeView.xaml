@@ -38,35 +38,26 @@
                        Text="THỐNG KÊ">
 
             </TextBlock>
-            <Border Grid.Row="1"  Background="#D7BEA2" Margin="20 0 20 20">
-                <Border CornerRadius="15">
-                    <Border.Effect>
-                        <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.2" BlurRadius="20"/>
-                    </Border.Effect>
+            <Border Grid.Row="1" Background="#D7BEA2" Margin="20 0 20 20" CornerRadius="5">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.5" BlurRadius="20"/>
+                </Border.Effect>
 
-                    <StackPanel 
-                         Orientation="Horizontal">
-                        <Border CornerRadius="10" >
-                            <Border.Effect>
-                                <DropShadowEffect ShadowDepth="2" Color="Gray" BlurRadius="5" Opacity="0.5"/>
-                            </Border.Effect>
-                            <TextBlock  
-                                 Background="#986639"
-                                     x:Name="btnMain" 
-                                     Margin="15,4,4,4" 
-                                TextAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontSize="22"
-                                Height="50"
-                                     Width="300"
-                                FontFamily="Roboto Mono"
-                                 Text="Tổng quan"  Foreground="White" >
-                            
-                            </TextBlock>
-                        </Border>
-            
-                </StackPanel>
-                </Border>
+                <Grid>
+                    <Border CornerRadius="15">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                        </Border.Effect>
+
+                        <DockPanel HorizontalAlignment="Left" Margin="10,0,0,0" >
+                            <Border Background="#986639" Margin="0,4,4,4" CornerRadius="15">
+                                <TextBlock x:Name="btnMain" TextAlignment="Center" VerticalAlignment="Center"
+                               FontSize="22" Height="45" Width="300" FontFamily="Roboto Mono"
+                               Text="Tổng quan" Foreground="White"/>
+                            </Border>
+                        </DockPanel>
+                    </Border>
+                </Grid>
             </Border>
             <Grid Margin="10,0,10,0" Grid.Row="2" Background="#EDE2D0">
                 <!-- Donut Chart Border -->
