@@ -45,6 +45,8 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 
         private Visibility _SetQuanLy;
         public Visibility SetQuanLy { get => _SetQuanLy; set { _SetQuanLy = value; OnPropertyChanged(); } }
+        private Visibility _SetNhanVien;
+        public Visibility SetNhanVien { get => _SetNhanVien; set { _SetNhanVien = value; OnPropertyChanged(); } }
 
         public MainViewModel()
         {
@@ -114,9 +116,13 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                 User = DataProvider.Ins.DB.NGUOIDUNGs.Where(x => x.USERNAME == a).FirstOrDefault();
                 Const.ND = User;
                 if (User.QTV == true)
-                { SetQuanLy = Visibility.Visible; }
+                { SetQuanLy = Visibility.Visible;
+                    SetNhanVien = Visibility.Collapsed;
+                }
                 else
-                { SetQuanLy = Visibility.Collapsed; }
+                { SetQuanLy = Visibility.Collapsed;
+                    SetNhanVien = Visibility.Visible;
+                }
                 Ava = User.AVA;
                 _LoadUsername(p);
             }
