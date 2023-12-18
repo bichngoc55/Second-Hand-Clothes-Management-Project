@@ -38,29 +38,36 @@
                        Text="THỐNG KÊ">
 
             </TextBlock>
-            <Grid Grid.Row="1" >
-                <Border   CornerRadius="5" Background="#D7BEA2" Margin="20 0 20 20" >
+            <Border Grid.Row="1"  Background="#D7BEA2" Margin="20 0 20 20">
+                <Border CornerRadius="15">
                     <Border.Effect>
-                        <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.5" BlurRadius="20"/>
+                        <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.2" BlurRadius="20"/>
                     </Border.Effect>
-                    <DockPanel>
-                        <Border CornerRadius="15" Width="250" Background="#986639" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,15,10 " Height="50">
+
+                    <StackPanel 
+                         Orientation="Horizontal">
+                        <Border CornerRadius="10" >
                             <Border.Effect>
-                                <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.2" BlurRadius="20"/>
+                                <DropShadowEffect ShadowDepth="2" Color="Gray" BlurRadius="5" Opacity="0.5"/>
                             </Border.Effect>
-                            <TextBlock Text="Tổng Quan"
-       FontFamily="Roboto Mono"
-       Foreground =" White"
-       FontSize="22"
-       TextAlignment="Center"
-       VerticalAlignment="Center"
-       FontWeight="Thin"></TextBlock>
+                            <TextBlock  
+                                 Background="#986639"
+                                     x:Name="btnMain" 
+                                     Margin="15,4,4,4" 
+                                TextAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="22"
+                                Height="50"
+                                     Width="300"
+                                FontFamily="Roboto Mono"
+                                 Text="Tổng quan"  Foreground="White" >
+                            
+                            </TextBlock>
                         </Border>
-                    </DockPanel>
-
+            
+                </StackPanel>
                 </Border>
-
-            </Grid>
+            </Border>
             <Grid Margin="10,0,10,0" Grid.Row="2" Background="#EDE2D0">
                 <!-- Donut Chart Border -->
                 <Border x:Name="DonutChart" Height="290"
@@ -243,37 +250,39 @@
                             <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.5" BlurRadius="20"/>
                         </Border.Effect>
                     </Border>
-                    <TextBlock Text="Khách hàng mua hàng nhiều nhất:"
+                    <TextBlock Text="Doanh thu so với tháng trước:"
                                FontFamily="Roboto Mono"
                                FontSize="16"
                                            Margin="10,10,0,0"
                                Foreground="Black" TextWrapping="Wrap" Height="50" VerticalAlignment="Top"/>
-                    <DockPanel> 
-                    <materialDesign:PackIcon Kind="Crown"
+                    <DockPanel>
+                        <materialDesign:PackIcon  x:Name="IconUp" Kind="ArrowUpBold" Visibility="{Binding Up}"
                         Foreground="Black"
                         Margin="10,-10,0,7"
                         Height="40" VerticalAlignment="Bottom"
                         Width="40"/>
-                    <TextBlock x:Name="MaxKH"
-                               Text="Mã"
-                               FontWeight="Bold"
-                               FontSize="25" Foreground="Black"
-                               FontFamily="Roboto Mono" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="30" Width="Auto">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Loaded">
-                                <i:InvokeCommandAction Command="{Binding LoadKH}"
-                                                       CommandParameter="{Binding ElementName=Reportwd}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                                            </TextBlock>
-                                <TextBlock x:Name="KHName" 
-                               Text="Tên" FontSize="24"
+                        <materialDesign:PackIcon  x:Name="IconDown" Kind="ArrowDownBold" Visibility="{Binding Down}"
+                         Foreground="Black"
+                         Margin="10,-10,0,7"
+                         Height="40" VerticalAlignment="Bottom"
+                         Width="40"/>
+
+                        <TextBlock x:Name="DTTrend" 
+                               FontSize="24"
                                Foreground="Black"
                                FontFamily="Roboto Mono" 
                                VerticalAlignment="Bottom"
+                                   TextWrapping="Wrap"
                                  Width="Auto"
                                Margin="10,0,0,7"
-                               Height="Auto"/>
+                               Height="Auto">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadDT}"
+                                                       CommandParameter="{Binding ElementName=Reportwd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        </TextBlock>
                     </DockPanel>
                 </Grid>
         </Grid>

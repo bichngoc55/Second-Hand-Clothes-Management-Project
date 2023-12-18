@@ -143,7 +143,7 @@
                                     IsChecked="True" 
                                     FontFamily="{StaticResource Custom}"
                                     Uid="0"
-                                    Command="{Binding HomeCM}" Width="161" />
+                                    Command="{Binding HomeCM}" Width="185" />
 
 
                             <RadioButton
@@ -151,40 +151,40 @@
                                     Uid="1"
                                     FontFamily="{StaticResource Custom}"
                                     x:Name="GiamGia"
-                                    Command="{Binding GiamGiaCM}" Width="161"/>
+                                    Command="{Binding GiamGiaCM}" Width="185"/>
                             <RadioButton
                                     Style="{StaticResource NhapKho}"
                                     Uid="2"
                                     FontFamily="{StaticResource Custom}"
                                     x:Name="NhapKho"
-                                    Command="{Binding NhapKhoCM}" Width="161"/>
+                                    Command="{Binding NhapKhoCM}" Width="185"/>
                             <RadioButton
                                       Style="{StaticResource ThanhToan}"
                                       Uid="3"
                                       FontFamily="{StaticResource Custom}" 
                                       x:Name="ThanhToan"
-                                      Command="{Binding ThanhToanCM}" Width="174"/>
+                                      Command="{Binding ThanhToanCM}" Width="185"/>
                             <RadioButton
                                     Style="{StaticResource NhanVien}"
                                     Uid="4"
                                     Visibility="{Binding SetQuanLy}"
                                     FontFamily="{StaticResource Custom}"
                                     x:Name="NhanVien"
-                                    Command="{Binding NhanVienCM}" Width="161"/>
+                                    Command="{Binding NhanVienCM}" Width="185"/>
                             <RadioButton
                                     Visibility="{Binding SetQuanLy}"
                                     Style="{StaticResource CaiDat}"
                                     Uid="5"
                                     FontFamily="{StaticResource Custom}"
                                     x:Name="CaiDat"
-                                    Command="{Binding CaiDatCM}" Width="161"/>
+                                    Command="{Binding CaiDatCM}" Width="185"/>
                             <RadioButton
                                      Style="{StaticResource ThongKe}"
                                      Uid="6"
                                      FontFamily="{StaticResource Custom}"
                                      Visibility="{Binding SetQuanLy}"
                                      x:Name="ThongKe"
-                                     Command="{Binding ThongKeCM}" Width="161"/>
+                                     Command="{Binding ThongKeCM}" Width="185"/>
 
                         </StackPanel>
                     </Grid>

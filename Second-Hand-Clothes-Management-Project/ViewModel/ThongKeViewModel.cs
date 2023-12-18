@@ -34,11 +34,16 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public DateTime Ngay { get; set; }
         public string TenSP { get; set; }
         public string MaSP { get; set; }
+        public long ThisMonth { get; set; }
+        public long LastMonth { get; set; }
+        private Visibility _Up;
+        public Visibility Up { get => _Up; set { _Up = value; OnPropertyChanged(); } }
+        private Visibility _Down;
+        public Visibility Down { get => _Down; set { _Down = value; OnPropertyChanged(); } }
         public int SL { get; set; }
         public int MaxSell { get; set; }
         public string BestKH { get; set; }
-
-        public string KHName { get; set; }
+        public ICommand LoadDT { get; set; } 
         public int MaxNV { get; set; }
         public string NVName { get; set; }
         public string NVBest { get; set; }
@@ -59,30 +64,43 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             LoadPie = new RelayCommand<ThongKeView>((p) => true, (p) => PieChart(p));
             Loadwd = new RelayCommand<ThongKeView>((p) => true, (p) => _loadwd(p));
             LoadNV = new RelayCommand<ThongKeView>((p) => true, (p) => NVCount(p));
-            LoadKH = new RelayCommand<ThongKeView>((p) => true, (p) => KHCount(p));
+            LoadDT= new RelayCommand<ThongKeView>((p) => true, (p) => DoanhThu(p));
             //listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
         }
 
-        private void KHCount(ThongKeView p)
+        private void DoanhThu(ThongKeView p)
         {
-            MaxSell = 0;
-            foreach (MUAHANG hd in DataProvider.Ins.DB.MUAHANGs.Where(x => x.NGAYBAN.Month == DateTime.Now.Month))
+            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.NGAYBAN.Month == DateTime.Now.Month).Count() == 0)
             {
-                int temp = DataProvider.Ins.DB.MUAHANGs.Where(x => x.MAKH == hd.MAKH).Count();
-                if (MaxSell < temp)
-                {
-                    MaxSell = temp;
-                    BestKH = hd.MAKH;
-                    KHName = hd.KHACHHANG.TENKH;
-                }
+                ThisMonth = 0;
             }
-            if (MaxSell == 0)
+            else
             {
-                BestKH = "";
-                KHName = "(chưa có)";
+                ThisMonth = (long)DataProvider.Ins.DB.MUAHANGs.Where(x => x.NGAYBAN.Month == DateTime.Now.Month).Sum(x => x.SANPHAM.GIA);
             }
-            p.MaxKH.Text = BestKH;
-            p.KHName.Text = string.Join(" ", KHName.Split().Reverse().Take(2).Reverse());
+            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.NGAYBAN.Month == DateTime.Now.Month - 1).Count() == 0)
+            {
+                LastMonth = 0;
+            }
+            else
+            {
+                LastMonth = (long)DataProvider.Ins.DB.MUAHANGs.Where(x => x.NGAYBAN.Month == DateTime.Now.Month - 1).Sum(x => x.SANPHAM.GIA);
+            }
+            long temp = ThisMonth - LastMonth;
+            if (temp >= 0)
+            {
+                p.DTTrend.Text = temp.ToString("#,###");
+                p.DTTrend.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                Up = Visibility.Visible;
+                Down = Visibility.Collapsed;
+            }
+            else
+            {
+                p.DTTrend.Text = temp.ToString("#,###");
+                p.DTTrend.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                Up = Visibility.Collapsed;
+                Down = Visibility.Visible;
+            }
         }
 
         private void NVCount(ThongKeView p)
