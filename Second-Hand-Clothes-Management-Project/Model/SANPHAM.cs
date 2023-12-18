@@ -13,7 +13,6 @@ namespace Second_Hand_Clothes_Management_Project.Model
         public SANPHAM()
         {
             MUAHANGs = new HashSet<MUAHANG>();
-            NHAPs = new HashSet<NHAP>();
         }
 
         [Key]
@@ -35,7 +34,6 @@ namespace Second_Hand_Clothes_Management_Project.Model
         [StringLength(5)]
         public string SIZE { get; set; }
 
-        [StringLength(100)]
         public string MOTA { get; set; }
 
         public string HINHSP { get; set; }
@@ -47,8 +45,5 @@ namespace Second_Hand_Clothes_Management_Project.Model
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MUAHANG> MUAHANGs { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NHAP> NHAPs { get; set; }
     }
 }

@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Second_Hand_Clothes_Management_Project.View
@@ -18,7 +17,7 @@ namespace Second_Hand_Clothes_Management_Project.View
     /// <summary>
     /// Interaction logic for ChiTietSanPham.xaml
     /// </summary>
-    public partial class ChiTietSanPham : Page
+    public partial class ChiTietSanPham : Window
     {
         public ChiTietSanPham()
         {

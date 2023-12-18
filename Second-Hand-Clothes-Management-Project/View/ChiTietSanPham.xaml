@@ -1,18 +1,23 @@
-﻿<Page x:Class="Second_Hand_Clothes_Management_Project.View.ChiTietSanPham"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Second_Hand_Clothes_Management_Project.View"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-      mc:Ignorable="d" 
-      x:Name="ChiTietSanPhamwd"
-      DataContext="{StaticResource ChiTietSanPhamVM}"
-      d:DesignHeight="500" d:DesignWidth="600"
-      Title="ChiTietSanPham">
-    <Page.Triggers>
-        <EventTrigger RoutedEvent="Page.Loaded">
+﻿<Window x:Class="Second_Hand_Clothes_Management_Project.View.ChiTietSanPham"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:Second_Hand_Clothes_Management_Project.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d" 
+        x:Name="ChiTietSanPhamwd"
+        DataContext="{StaticResource ChiTietSanPhamVM}"
+        Height="500"
+        Width="600"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Title="ChiTietSanPham">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
             <BeginStoryboard>
                 <Storyboard>
                     <ThicknessAnimation Storyboard.TargetName="ChiTietSanPhamwd"
@@ -23,7 +28,7 @@
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
-    </Page.Triggers>
+    </Window.Triggers>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding Loadwd}"
@@ -52,20 +57,62 @@
             </i:EventTrigger>
         </i:Interaction.Triggers>
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="350"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Image Grid.Row="0"
-                    x:Name="HinhAnh"
-                    VerticalAlignment="Center"/>
-                <Canvas Grid.Row="1">
-                    <Button Content="CẬP NHẬT"
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel
+                    Orientation="Horizontal" 
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    >
+                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="Gray" Height="24" Width="24" Margin="0,0,8,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding Minimizewd}"
+                                                       CommandParameter="{Binding ElementName=ChiTietSanPhamwd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </materialDesign:PackIcon>
+                    <materialDesign:PackIcon Kind="CloseThick" Foreground="gray" Height="24" Width="24">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding Closewd}"
+                                                       CommandParameter="{Binding ElementName=ChiTietSanPhamwd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </materialDesign:PackIcon>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="350"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border
+                        Grid.Row="0"
+                        BorderBrush="Gray" 
+                        BorderThickness="10" 
+                        Margin="10"
+                        CornerRadius="10"
+                        Padding="10"
+                        Width="240">
+                        <Image Grid.Row="0"
+                               x:Name="HinhAnh"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Width="240"/>
+                    </Border>
+                    <Canvas Grid.Row="1">
+                        <StackPanel Orientation="Horizontal"
+                                Margin="0 35 0 0">
+                            <Button Content="CẬP NHẬT"
                                 Width="125"
                                 Height="30"
                                 materialDesign:ButtonAssist.CornerRadius = "15"
@@ -73,137 +120,142 @@
                                 x:Name="btncapnhat"
                                 Background="#986639"
                                 Foreground="White"
-                                
-                                HorizontalAlignment="Left" Canvas.Left="46" Canvas.Top="26"
-                                >
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding UpdateProduct}"
+                                HorizontalAlignment="Left" 
+                                Margin="10 10 0 0">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding UpdateProduct}"
                                                        CommandParameter="{Binding ElementName=ChiTietSanPhamwd}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </Button>
-                    <Button Content="XÓA"
-                                Width="85"
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <Button Content="XÓA"
+                                Width="125"
                                 Height="30"
                                 BorderThickness="0"
                                 x:Name="btnxoa"
                                 Background="#986639"
                                 Foreground="White"
                                 materialDesign:ButtonAssist.CornerRadius="15"
-                                HorizontalAlignment="Left" Canvas.Left="203" Canvas.Top="26"
-                                >
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding DeleteProduct}"
+                                HorizontalAlignment="Left" 
+                                Margin="25 10 0 0">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding DeleteProduct}"
                                                        CommandParameter="{Binding ElementName=ChiTietSanPhamwd}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </Button>
-                </Canvas>
-            </Grid>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition Height="50"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="1">
-                    <Button
-                        Height="30"
-                        Width="100" 
-                        Margin="23,10,10,10"
-                        Content="Quay lại"
-                        Foreground="White"
-                        Background="#986639"
-                        
-                        >
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding Back}"
-                                                       CommandParameter="{Binding ElementName=ChiTietSanPhamwd}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </Button>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+
+                    </Canvas>
                 </Grid>
-                <Grid Grid.Row="0" Background="Transparent">
-                    <StackPanel Orientation="Vertical"
-                                Margin="15,20,0,0"
+                <Grid Grid.Column="1">
+                    <Grid Grid.Row="0" Background="Transparent">
+                        <StackPanel 
+                            Orientation="Vertical"
+                            Margin="15,20,0,0"
                                 >
-                        <TextBox 
-                                    HorizontalAlignment="Left"
-                                   FontSize="28"
-                                   materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                   BorderThickness="0"
-                                   FontFamily="Roboto Mono"
-                                   
-                                   x:Name="TenSP"
-                                   />
-                        <TextBlock 
+                            <TextBox 
+                                FontSize="28"
+                                materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                BorderThickness="0"
+                                FontFamily="Roboto Mono"
+                                x:Name="TenSP"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>   
+                            <TextBlock 
                                    FontSize="20"
                                    FontFamily="Roboto Mono"
                                    x:Name="GiaSP"
-                                   />
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" 
+                                        Margin="0,60,0,0">
+                                <TextBlock
                                 FontFamily="Roboto Mono"
-                                FontSize="14"
+                                FontSize="16"
                                 VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
                                 Text="Loại sản phẩm: "
+                                    Margin="5,5,10,5"
                                 />
-                            <TextBlock
+                                <TextBlock
                                 VerticalAlignment="Center"
-                                   FontSize="14"
+                                   FontSize="16"
                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                    FontFamily="Roboto Mono"
                                    x:Name="LoaiSP"
+                                    Margin="5"
                                    />
-                        </StackPanel>
-                        <TextBlock 
-                                   FontSize="14"
+                            </StackPanel>
+                            <TextBlock 
+                                   FontSize="16"
                                    FontFamily="Roboto Mono"
-                                   Margin="0,0,0,10"
+                                   Margin="5"
                                    x:Name="SLSP"
                                    />
-                        <StackPanel>
-                            <TextBlock  
-                                        Margin="0,-10,0,0"
-                                        FontSize="14"
+                            <StackPanel Orientation="Horizontal" 
+                                        Margin="0 5 0 0">
+                                <TextBlock
+                                FontFamily="Roboto Mono"
+                                FontSize="16"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Text="Chương trình giảm giá: "
+                                    Margin="5,5,10,5"
+                                />
+                                <TextBlock
+                                VerticalAlignment="Center"
+                                   FontSize="16"
+                                   materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                   FontFamily="Roboto Mono"
+                                   x:Name="VoucherSP"
+                                    Margin="5"
+                                   />
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock  
+                                        Margin="5"
+                                        FontSize="16"
                                         FontFamily="Roboto Mono"
                                         x:Name="Size"
                                         Text="Kích cỡ"
                                    />
-                            <ItemsControl x:Name="kichco">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border
-                                        Margin="2"
+                                <ItemsControl x:Name="kichco">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border
+                                        Margin="5"
                                         Height="20"
                                         Width="50"
-                                        Background="White"
+                                        Background="#986639"
                                         CornerRadius="10"
                                         >
-                                            <TextBlock Text="{Binding SIZE}"
+                                                <TextBlock Text="{Binding SIZE}"
                                                        FontFamily="Roboto Mono"
                                                        VerticalAlignment="Center"
                                                        HorizontalAlignment="Center"
+                                                       Foreground="White"
                                                        />
-                                        </Border>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <WrapPanel/>
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-                            </ItemsControl>
-                        </StackPanel>
-                        <Expander
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </StackPanel>
+                            
+                            <Expander
                             x:Name="Info"
                             Background="Transparent"
                             Header="Chi tiết sản phẩm"
                             FontFamily="Roboto Mono"
                             >
-                            <TextBox x:Name="Mota"
+                                <TextBox x:Name="Mota"
                                      Height="80"
                                      TextWrapping="Wrap"
                                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
@@ -211,10 +263,11 @@
                                      AcceptsReturn="True"
                                      VerticalScrollBarVisibility="Visible"
                                      />
-                        </Expander>
-                    </StackPanel>
+                            </Expander>
+                        </StackPanel>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>
     </Border>
-</Page>
+</Window>

@@ -78,10 +78,6 @@ namespace Second_Hand_Clothes_Management_Project.Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<NGUOIDUNG>()
-                .Property(e => e.NGSINH)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<NGUOIDUNG>()
                 .Property(e => e.SDT)
                 .IsFixedLength()
                 .IsUnicode(false);
@@ -155,11 +151,6 @@ namespace Second_Hand_Clothes_Management_Project.Model
 
             modelBuilder.Entity<SANPHAM>()
                 .HasMany(e => e.MUAHANGs)
-                .WithRequired(e => e.SANPHAM)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<SANPHAM>()
-                .HasMany(e => e.NHAPs)
                 .WithRequired(e => e.SANPHAM)
                 .WillCascadeOnDelete(false);
         }

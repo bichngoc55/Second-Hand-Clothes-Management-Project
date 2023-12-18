@@ -23,9 +23,10 @@
             </BeginStoryboard>
         </EventTrigger>
     </Page.Triggers>
-    <Grid>
+    <Grid
+        Name="mainSanPham">
         <!--BACKGROUND-->
-        <Border Background="#D7BEA2">
+        <Border Background="#EDE2D0">
         </Border>
         <Grid>
             <Grid.RowDefinitions>
@@ -49,6 +50,9 @@
                     CornerRadius="5" 
                     Background="#CAA88A" 
                     Margin="20 0 20 20">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.5" BlurRadius="20"></DropShadowEffect>
+                    </Border.Effect>
                     <StackPanel Orientation="Horizontal">
                         <!--Combox1-->
                         <ComboBox
@@ -120,7 +124,9 @@
                             AcceptsReturn="True"
                             TextWrapping="Wrap"
                             MaxWidth="400"
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
                             materialDesign:HintAssist.Hint="Tìm Kiếm"
+                            materialDesign:TextFieldAssist.UnderlineBrush="#F5E9D9"
                             Padding="70 15 15 15">
                             <i:Interaction.Triggers >
                                 <i:EventTrigger EventName = "TextChanged" >
@@ -138,7 +144,8 @@
                             Height="50"
                             Width="125"
                             Margin="15 0 0 0"
-                            Background="#986639">
+                            Background="#986639"
+                            Foreground="White">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding AddPdPdCommand}"
@@ -154,7 +161,7 @@
             <Grid 
                 Grid.Row="2"
                 Margin="0 0 0 0"
-                Background="#E2D5BF">
+                Background="#EDE2D0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="339*"/>
                     <ColumnDefinition Width="11*"/>
@@ -163,6 +170,7 @@
                         ItemsSource="{Binding listSP}"
                         x:Name="ListViewProduct"
                         SelectionMode="Single"
+                        ScrollViewer.CanContentScroll="False"
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                         ScrollViewer.VerticalScrollBarVisibility="Hidden" Grid.ColumnSpan="2">
                     <ListView.ItemTemplate>

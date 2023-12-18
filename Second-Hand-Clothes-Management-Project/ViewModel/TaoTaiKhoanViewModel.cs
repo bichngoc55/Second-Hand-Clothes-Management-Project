@@ -119,7 +119,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                     temp.DIACHI = addNDView.DC.Text;
                     temp.GIOITINH = addNDView.GT.Text;
                     temp.MAIL = addNDView.Mail.Text;
-                    temp.NGSINH = addNDView.NS.SelectedDate.ToString();
+                    temp.NGSINH = (DateTime)addNDView.NS.SelectedDate;
                     if (addNDView.QTV.Text == "Quản lý")
                         temp.QTV = true;
                     else

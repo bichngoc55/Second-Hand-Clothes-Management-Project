@@ -23,8 +23,8 @@ namespace Second_Hand_Clothes_Management_Project.Model
         [StringLength(50)]
         public string TENND { get; set; }
 
-        [StringLength(50)]
-        public string NGSINH { get; set; }
+        [Column(TypeName = "smalldatetime")]
+        public System.DateTime NGSINH { get; set; }
 
         [StringLength(5)]
         public string GIOITINH { get; set; }

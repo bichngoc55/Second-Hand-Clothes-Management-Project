@@ -26,6 +26,9 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         //public Button LoginButton { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
         public ICommand LoadLoginPageCM { get; set; }
+        public ICommand CloseLogin { get; set; }
+        public ICommand MinimizeLogin { get; set; }
+        public ICommand MoveLogin { get; set; }
         public Button LoginButton { get; set; }
 
         //public ICommand ForgotPassCM { get; set; }
@@ -37,6 +40,10 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             IsLogin = false;
             Password = "";
             Username = "";
+            CloseLogin = new RelayCommand<LoginView>((p) => true, (p) => Close());
+            MinimizeLogin = new RelayCommand<LoginView>((p) => true, (p) => Minimize(p));
+            MoveLogin = new RelayCommand<LoginView>((p) => true, (p) => Move(p));
+
 
             //LoadLoginPageCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             //{
@@ -84,7 +91,19 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             });
 
         }
-  
+        public void Close()
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+        public void Minimize(LoginView p)
+        {
+            p.WindowState = WindowState.Minimized;
+        }
+        public void Move(LoginView p)
+        {
+            //p.DragMove();
+        }
+
         public string ErrorMessage
         {
             get
