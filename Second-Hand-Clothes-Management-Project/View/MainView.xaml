@@ -215,8 +215,21 @@
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Right"
                                 Margin="10 20 30 0">
-                            <materialDesign:PackIcon Kind="WindowMinimize" Foreground="#7E542E" Height="24" Width="24" MouseDown='PackIcon_MouseDown' Margin="0,0,15,0" />
-                            <materialDesign:PackIcon Kind="CloseThick" Foreground="#7E542E" Height="24" Width="24" MouseDown="PackIcon_MouseDown_1">
+                            <materialDesign:PackIcon Kind="WindowMinimize" Foreground="#7E542E" Height="24" Width="24" Margin="0,0,8,0">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding MinimizeLogin}"
+                                                       CommandParameter="{Binding ElementName=Mainview}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </materialDesign:PackIcon>
+                            <materialDesign:PackIcon Kind="CloseThick" Foreground="#7E542E" Height="24" Width="24">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding CloseLogin}"
+                                                       CommandParameter="{Binding ElementName=Mainview}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                             </materialDesign:PackIcon>
                         </StackPanel>
                     </Border>

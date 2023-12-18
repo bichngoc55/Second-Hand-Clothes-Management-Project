@@ -1,4 +1,5 @@
-﻿using Second_Hand_Clothes_Management_Project.Model;
+﻿using MaterialDesignThemes.Wpf;
+using Second_Hand_Clothes_Management_Project.Model;
 using Second_Hand_Clothes_Management_Project.View;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -16,8 +19,14 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
         private ObservableCollection<SANPHAM> _listSP;
         public ObservableCollection<SANPHAM> listSP { get => _listSP; set { _listSP = value; /*OnPropertyChanged();*/ } }
+
         private ObservableCollection<SANPHAM> _listSP1;
         public ObservableCollection<SANPHAM> listSP1 { get => _listSP1; set { _listSP1 = value; /*OnPropertyChanged();*/ } }
+        private ObservableCollection<GIAMGIA> _listVoucher;
+        public ObservableCollection<GIAMGIA> listVoucher { get => _listVoucher; set { _listVoucher = value; } }
+        private ObservableCollection<string> _listVC;
+        public ObservableCollection<string> listVC { get => _listVC; set { _listVC = value; OnPropertyChanged(); } }
+
         public ICommand SearchCommand { get; set; }
         public ICommand DetailPdCommand { get; set; }
         public ICommand AddPdPdCommand { get; set; }
@@ -157,6 +166,14 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             detailProduct.SLSP.Text = "Số lượng: " + SL;
             detailProduct.kichco.ItemsSource = new ObservableCollection<SANPHAM>(listSP1.Where(p => p.TENSP == temp.TENSP && p.SL >= 0));
             detailProduct.Mota.Text = temp.MOTA;
+            if(temp.MAGIAMGIA == null)
+            {
+                detailProduct.VoucherSP.Text = "None";
+            }
+            else
+            {
+                detailProduct.VoucherSP.Text = temp.MAGIAMGIA;
+            }
             Uri fileUri = new Uri(temp.HINHSP, UriKind.Relative);
             detailProduct.HinhAnh.Source = new BitmapImage(fileUri);
             listSP1 = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL > 0));
@@ -164,7 +181,8 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             paramater.ListViewProduct.SelectedItem = null;
             _Filter(paramater);
             _SearchCommand(paramater);
-            MainViewModel.MainFrame.Content = detailProduct;
+            //MainViewModel.MainFrame.Content = detailProduct;
+            detailProduct.ShowDialog();
         }
         bool check(string m)
         {
@@ -194,7 +212,14 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             _SearchCommand(paramater);
             paramater.ListViewProduct.ItemsSource = listSP1;
             paramater.ListViewProduct.Items.Refresh();
-            MainViewModel.MainFrame.Content = themSanPhamView;
+            listVoucher = new ObservableCollection<GIAMGIA>(DataProvider.Ins.DB.GIAMGIAs);
+            listVC = new ObservableCollection<string> { };
+            foreach (GIAMGIA p in listVoucher)
+            {
+                listVC.Add(p.MAGIAMGIA.ToString());
+            }
+            themSanPhamView.Voucher.ItemsSource= listVC;
+            themSanPhamView.ShowDialog();
         }
     }
 }

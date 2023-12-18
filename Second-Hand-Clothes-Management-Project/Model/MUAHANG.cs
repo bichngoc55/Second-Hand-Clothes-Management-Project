@@ -27,7 +27,7 @@ namespace Second_Hand_Clothes_Management_Project.Model
         public int? SL { get; set; }
 
         [Column(TypeName = "smalldatetime")]
-        public System.DateTime  NGAYBAN { get; set; }
+        public System.DateTime NGAYBAN { get; set; }
 
         public virtual KHACHHANG KHACHHANG { get; set; }
 

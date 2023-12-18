@@ -13,7 +13,9 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 {
     public class ChiTietNhanVienViewModel : BaseViewModel
     {
-        public ICommand Back { get; set; }
+        public ICommand Closewd { get; set; }
+        public ICommand Minimizewd { get; set; }
+        public ICommand MoveWindow { get; set; }
         public ICommand UpdateProduct { get; set; }
         public ICommand GetName { get; set; }
         private string TenND1;
@@ -21,11 +23,25 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public ICommand DeleteProduct { get; set; }
         public ChiTietNhanVienViewModel()
         {
+            Closewd = new RelayCommand<ChiTietNhanVien>((p) => true, (p) => Close(p));
+            Minimizewd = new RelayCommand<ChiTietNhanVien>((p) => true, (p) => Minimize(p));
+            MoveWindow = new RelayCommand<ChiTietNhanVien>((p) => true, (p) => moveWindow(p));
             GetName = new RelayCommand<ChiTietNhanVien>((p) => true, (p) => _GetName(p));
-            Back = new RelayCommand<ChiTietNhanVien>((p) => true, (p) => _Back(p));
             UpdateProduct = new RelayCommand<ChiTietNhanVien>((p) => true, (p) => _UpdateProduct(p));
             Loadwd = new RelayCommand<ChiTietNhanVien>((p) => true, (p) => _Loadwd(p));
             DeleteProduct = new RelayCommand<ChiTietNhanVien>((p) => true, (p) => _DeleteProduct(p));
+        }
+        void moveWindow(ChiTietNhanVien p)
+        {
+            p.DragMove();
+        }
+        void Close(ChiTietNhanVien p)
+        {
+            p.Close();
+        }
+        void Minimize(ChiTietNhanVien p)
+        {
+            p.WindowState = WindowState.Minimized;
         }
         void _Loadwd(ChiTietNhanVien parmater)
         {
@@ -38,11 +54,6 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                 parmater.btncapnhatnd.Visibility = Visibility.Visible;
                 parmater.btnxoand.Visibility = Visibility.Visible;
             }
-        }
-        void _Back(ChiTietNhanVien p)
-        {
-            NhanVienView productViewPage = new NhanVienView();
-            MainViewModel.MainFrame.Content = productViewPage;
         }
         void _DeleteProduct(ChiTietNhanVien parameter)
         {

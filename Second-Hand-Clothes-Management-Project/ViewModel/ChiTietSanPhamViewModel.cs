@@ -13,7 +13,9 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 {
     public class ChiTietSanPhamViewModel : BaseViewModel
     {
-        public ICommand Back { get; set; }
+        public ICommand Closewd { get; set; }
+        public ICommand Minimizewd { get; set; }
+        public ICommand MoveWindow { get; set; }
         public ICommand UpdateProduct { get; set; }
         public ICommand GetName { get; set; }
         private string TenSP1;
@@ -21,11 +23,26 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public ICommand DeleteProduct { get; set; }
         public ChiTietSanPhamViewModel()
         {
+            Closewd = new RelayCommand<ChiTietSanPham>((p) => true, (p) => Close(p));
+            Minimizewd = new RelayCommand<ChiTietSanPham>((p) => true, (p) => Minimize(p));
+            MoveWindow = new RelayCommand<ChiTietSanPham>((p) => true, (p) => moveWindow(p));
             GetName = new RelayCommand<ChiTietSanPham>((p) => true, (p) => _GetName(p));
-            Back = new RelayCommand<ChiTietSanPham>((p) => true, (p) => _Back(p));
             UpdateProduct = new RelayCommand<ChiTietSanPham>((p) => true, (p) => _UpdateProduct(p));
             Loadwd = new RelayCommand<ChiTietSanPham>((p) => true, (p) => _Loadwd(p));
             DeleteProduct = new RelayCommand<ChiTietSanPham>((p) => true, (p) => _DeleteProduct(p));
+
+        }
+        void moveWindow(ChiTietSanPham p)
+        {
+            p.DragMove();
+        }
+        void Close(ChiTietSanPham p)
+        {
+            p.Close();
+        }
+        void Minimize(ChiTietSanPham p)
+        {
+            p.WindowState = WindowState.Minimized;
         }
         void _Loadwd(ChiTietSanPham parmater)
         {
@@ -42,11 +59,6 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                 parmater.Mota.IsEnabled = false;
                 parmater.Mota.Height = 200;
             }
-        }
-        void _Back(ChiTietSanPham p)
-        {
-            SanPhamView productViewPage = new SanPhamView();
-            MainViewModel.MainFrame.Content = productViewPage;
         }
         void _DeleteProduct(ChiTietSanPham parameter)
         {

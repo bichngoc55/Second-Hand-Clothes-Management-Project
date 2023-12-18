@@ -21,6 +21,9 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         private string _Ava;
         public static Frame MainFrame { get; set; }
         //Command 
+        public ICommand CloseLogin { get; set; }
+        public ICommand MinimizeLogin { get; set; }
+        public ICommand MoveWindow { get; set; }
         public ICommand ThongKeCM { get; set; }
         public ICommand GiamGiaCM { get; set; }
         public ICommand NhapKhoCM { get; set; }
@@ -48,6 +51,9 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 
         public MainViewModel()
         {
+            CloseLogin = new RelayCommand<MainView>((p) => true, (p) => Close(p));
+            MinimizeLogin = new RelayCommand<MainView>((p) => true, (p) => Minimize(p));
+            MoveWindow = new RelayCommand<MainView>((p) => true, (p) => moveWindow(p));
             Quyen_Loaded = new RelayCommand<MainView>((p) => true, (p) => _LoadQuyen(p));
             Username_Loaded = new RelayCommand<MainView>((p) => true, (p) => _LoadUsername(p));
             Loadwd = new RelayCommand<MainView>((p) => true, (p) => _Loadwd(p));
@@ -121,7 +127,18 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                 _LoadUsername(p);
             }
         }
-
+        public void moveWindow(MainView p)
+        {
+            p.DragMove();
+        }
+        public void Close(MainView p)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+        public void Minimize(MainView p)
+        {
+            p.WindowState = WindowState.Minimized;
+        }
         private void _LoadUsername(MainView p)
         { 
             p.TenDangNhap.Text = string.Join(" ", User.TENND.Split().Reverse().Take(2).Reverse());

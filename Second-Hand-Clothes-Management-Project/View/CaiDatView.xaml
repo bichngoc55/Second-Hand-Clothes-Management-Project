@@ -27,7 +27,7 @@
     </Page.Triggers>
     <Grid>
         <!--BACKGROUND-->
-        <Border Background="#D7BEA2">
+        <Border Background="#EDE2D0">
         </Border>
         <Grid>
             <Grid.RowDefinitions>
@@ -47,7 +47,7 @@
             <!--THÔNG TIN TÀI KHOẢN-->
             <Grid Grid.Row="1"
                   Margin="20 0 0 0"
-                  Background="#CAA88A">
+                  Background="#EDE2D0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"></ColumnDefinition>
                     <ColumnDefinition Width="4*"></ColumnDefinition>
@@ -55,11 +55,11 @@
                 <Grid Grid.Column="0">
                     <StackPanel Orientation="Vertical">
                         <Border 
-                            Margin="0,50,0,0" 
+                            Margin="0,80,0,0" 
                             Grid.RowSpan="2">
                             <Ellipse 
-                                Height="150" 
-                                Width="150" 
+                                Height="180" 
+                                Width="180" 
                                 VerticalAlignment="Top" 
                                 HorizontalAlignment="Center"
                                 Margin="30" 
@@ -78,7 +78,7 @@
                         </Border>
                         <Button 
                             HorizontalAlignment="Center" 
-                            Margin="0,90,0,0" 
+                            Margin="0,60,0,0" 
                             VerticalAlignment="Center"
                             Style="{StaticResource MaterialDesignFlatMidBgButton}"
                             Content="Thay đổi ảnh" 
@@ -100,20 +100,22 @@
                 </Grid>
 
                 <Grid Grid.Column="1">
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel 
+                        Orientation="Vertical">
                         
                         <TextBox
                             x:Name="NameBox"
                             Width="250"
                             Height="35"
-                            Margin="50 50 50 0"
+                            Margin="50,80,50,0"
                             Background="White"
                             materialDesign:HintAssist.Hint="Họ tên"
                             Padding="10"
                             FontFamily="Roboto Mono"
                             HorizontalAlignment="Center"
                             materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                            Text ="{Binding Name}"/>
+                            Text ="{Binding Name}"
+                            />
                         <TextBox
                             x:Name="AddressBox"
                             Width="250"
@@ -163,7 +165,6 @@
                                 Height="35"
                                 Width="120"
                                 Margin="10 0 0 0"
-                                BorderBrush="Transparent"
                                 materialDesign:HintAssist.Hint="Ngày sinh"
                                 Padding="5"
                                 materialDesign:TextFieldAssist.TextFieldCornerRadius="5"

@@ -32,7 +32,7 @@
     </i:Interaction.Triggers>
     <Grid>
         <!--BACKGROUND-->
-        <Border Background="#D7BEA2">
+        <Border Background="#EDE2D0">
         </Border>
         <Grid>
             <Grid.RowDefinitions>
@@ -56,6 +56,9 @@
                     CornerRadius="5" 
                     Background="#CAA88A" 
                     Margin="20 0 20 20">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.5" BlurRadius="20"></DropShadowEffect>
+                    </Border.Effect>
                     <StackPanel Orientation="Horizontal">
                         <!--ComboBox2-->
                         <ComboBox
@@ -96,6 +99,7 @@
                             TextWrapping="Wrap"
                             MaxWidth="400"
                             materialDesign:HintAssist.Hint="Tìm Kiếm"
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
                             Padding="70 15 15 15">
                             <i:Interaction.Triggers >
                                 <i:EventTrigger EventName = "TextChanged" >
@@ -129,7 +133,7 @@
             <Grid 
                 Grid.Row="2"
                 Margin="0 0 0 0"
-                Background="#E2D5BF">
+                Background="#EDE2D0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="339*"/>
                     <ColumnDefinition Width="11*"/>

@@ -109,16 +109,16 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             temp.SDT = p.SDTBox.Text;
             temp.DIACHI = p.AddressBox.Text;
             temp.GIOITINH = p.GTBox.Text;
-            temp.NGSINH = p.DateBox.SelectedDate.ToString();
+            temp.NGSINH = (DateTime)p.DateBox.SelectedDate;
             temp.MAIL = p.Mail.Text;
             string rd = StringGenerator();
             if (User.AVA != Ava)
-                temp.AVA = "/Resource/Ava/" + rd + (Ava.Contains(".jpg") ? ".jpg" : ".png").ToString();
+                temp.AVA = "/ResourceXAML/Avatar/" + rd + (Ava.Contains(".jpg") ? ".jpg" : ".png").ToString();
             DataProvider.Ins.DB.SaveChanges();
             try
             {
                 if (User.AVA != Ava)
-                    File.Copy(Ava, Const._localLink + @"Resource/Ava/" + rd + (Ava.Contains(".jpg") ? ".jpg" : ".png").ToString(), true);
+                    File.Copy(Ava, Const._localLink + @"ResourceXAML/Avatar/" + rd + (Ava.Contains(".jpg") ? ".jpg" : ".png").ToString(), true);
             }
             catch { }
             MessageBox.Show("Cập nhật thành công!", "Thông báo");

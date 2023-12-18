@@ -18,6 +18,9 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
     public class ThemNhanVienViewModel : BaseViewModel
     {
         private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
+        public ICommand Closewd { get; set; }
+        public ICommand Minimizewd { get; set; }
+        public ICommand MoveWindow { get; set; }
         public ICommand AddImage { get; set; }
         public ICommand Back { get; set; }
         private string _linkimage;
@@ -31,6 +34,21 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             Back = new RelayCommand<ThemNhanVienView>((p) => true, (p) => _Back(p));
             AddProduct = new RelayCommand<ThemNhanVienView>((p) => true, (p) => _AddProduct(p));
             Loadwd = new RelayCommand<ThemNhanVienView>((p) => true, (p) => _Loadwd(p));
+            Closewd = new RelayCommand<ThemNhanVienView>((p) => true, (p) => Close(p));
+            Minimizewd = new RelayCommand<ThemNhanVienView>((p) => true, (p) => Minimize(p));
+            MoveWindow = new RelayCommand<ThemNhanVienView>((p) => true, (p) => moveWindow(p));
+        }
+        void moveWindow(ThemNhanVienView p)
+        {
+            p.DragMove();
+        }
+        void Close(ThemNhanVienView p)
+        {
+            p.Close();
+        }
+        void Minimize(ThemNhanVienView p)
+        {
+            p.WindowState = WindowState.Minimized;
         }
         void _Loadwd(ThemNhanVienView paramater)
         {
@@ -100,7 +118,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                         a.MAND = paramater.MaNd.Text;
                         a.TENND = paramater.TenNd.Text;
                         a.DIACHI = paramater.DiaChiNd.Text;
-                        a.NGSINH = paramater.NgaySinhNd.Text;
+                        a.NGSINH = (DateTime)paramater.NgaySinhNd.SelectedDate;
                         a.GIOITINH = paramater.NgaySinhNd.Text;
                         a.SDT = paramater.SdtNd.Text;
                         a.AVA = "/ResourceXAML/Avatar/" + paramater.MaNd.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
@@ -108,7 +126,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                         DataProvider.Ins.DB.NGUOIDUNGs.Add(a);
                         DataProvider.Ins.DB.SaveChanges();
                         paramater.TenNd.Clear();
-                        paramater.NgaySinhNd.SelectedItem = null;
+                        paramater.NgaySinhNd.SelectedDate = null;
                         paramater.DiaChiNd.Clear();
                         paramater.SdtNd.Clear();
                         SanPhamView productViewPage = new SanPhamView();

@@ -1,14 +1,14 @@
-﻿using Second_Hand_Clothes_Management_Project.Model;
+﻿using MaterialDesignThemes.Wpf;
+using Second_Hand_Clothes_Management_Project.Model;
 using Second_Hand_Clothes_Management_Project.View;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-
 namespace Second_Hand_Clothes_Management_Project.ViewModel
 {
     public class NhanVienViewModel : BaseViewModel
@@ -144,7 +144,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             NGUOIDUNG temp = (NGUOIDUNG)paramater.ListViewNhanVien.SelectedItem;
             detailProduct.TenND.Text = temp.TENND;
             detailProduct.DiaChiND.Text = temp.DIACHI;
-            detailProduct.NgSinhND.Text = temp.NGSINH;
+            detailProduct.NgSinhND.Text = temp.NGSINH.ToString();
             detailProduct.SDTND.Text = temp.SDT;
             detailProduct.gioitinh.Text = temp.GIOITINH;
             detailProduct.Email.Text = temp.MAIL;
@@ -157,7 +157,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             paramater.ListViewNhanVien.SelectedItem = null;
             //_Filter(paramater);
             _SearchCommand(paramater);
-            MainViewModel.MainFrame.Content = detailProduct;
+            detailProduct.ShowDialog();
         }
         bool check(string m)
         {
@@ -178,6 +178,24 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             } while (check(ma));
             return ma;
         }
+        public static string MD5Hash(string value)
+        {
+            StringBuilder hash = new StringBuilder();
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] bytes = md5provider.ComputeHash(Encoding.UTF8.GetBytes(value));
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                hash.Append(bytes[i].ToString("x2"));
+            }
+            return hash.ToString();
+        }
+
+        public static string Base64Encode(string password)
+        {
+            var plainTextBytes = Encoding.UTF8.GetBytes(password);
+            return Convert.ToBase64String(plainTextBytes);
+        }
         void _AddPdCommand(NhanVienView paramater)
         {
             ThemNhanVienView themSanPhamView = new ThemNhanVienView();
@@ -187,7 +205,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             _SearchCommand(paramater);
             paramater.ListViewNhanVien.ItemsSource = listND1;
             paramater.ListViewNhanVien.Items.Refresh();
-            MainViewModel.MainFrame.Content = themSanPhamView;
+            themSanPhamView.ShowDialog();
         }
     }
 }
