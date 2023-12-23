@@ -13,6 +13,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 {
     public class ChiTietSanPhamViewModel : BaseViewModel
     {
+        private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
         public ICommand Closewd { get; set; }
         public ICommand Minimizewd { get; set; }
         public ICommand MoveWindow { get; set; }

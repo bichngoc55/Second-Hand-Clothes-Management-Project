@@ -6,40 +6,35 @@ namespace Second_Hand_Clothes_Management_Project.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("KHACHHANG")]
-    public partial class KHACHHANG
+    [Table("HOADON")]
+    public partial class HOADON
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public KHACHHANG()
+        public HOADON()
         {
-            HOADONs = new HashSet<HOADON>();
+            CTHDs = new HashSet<CTHD>();
         }
 
         [Key]
         [StringLength(20)]
+        public string SOHD { get; set; }
+
+        [StringLength(50)]
+        public string MAND { get; set; }
+
+        [StringLength(20)]
         public string MAKH { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string TENKH { get; set; }
+        [Column(TypeName = "smalldatetime")]
+        public DateTime? NGAYBAN { get; set; }
 
-        [StringLength(5)]
-        public string GIOITINH { get; set; }
-
-        [StringLength(200)]
-        public string DIACHI { get; set; }
-
-        [StringLength(20)]
-        public string SDT { get; set; }
-
-        [StringLength(50)]
-        public string EMAIL { get; set; }
-
-        [Required]
-        [StringLength(20)]
-        public string LOAIKH { get; set; }
+        public int TRIGIA { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HOADON> HOADONs { get; set; }
+        public virtual ICollection<CTHD> CTHDs { get; set; }
+
+        public virtual KHACHHANG KHACHHANG { get; set; }
+
+        public virtual NGUOIDUNG NGUOIDUNG { get; set; }
     }
 }

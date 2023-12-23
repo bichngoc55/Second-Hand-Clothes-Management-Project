@@ -12,7 +12,7 @@ namespace Second_Hand_Clothes_Management_Project.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SANPHAM()
         {
-            MUAHANGs = new HashSet<MUAHANG>();
+            CTHDs = new HashSet<CTHD>();
         }
 
         [Key]
@@ -41,9 +41,9 @@ namespace Second_Hand_Clothes_Management_Project.Model
         [StringLength(20)]
         public string MAGIAMGIA { get; set; }
 
-        public virtual GIAMGIA GIAMGIA { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MUAHANG> MUAHANGs { get; set; }
+        public virtual ICollection<CTHD> CTHDs { get; set; }
+
+        public virtual GIAMGIA GIAMGIA { get; set; }
     }
 }
