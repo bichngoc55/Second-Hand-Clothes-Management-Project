@@ -12,7 +12,7 @@ namespace Second_Hand_Clothes_Management_Project.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NGUOIDUNG()
         {
-            MUAHANGs = new HashSet<MUAHANG>();
+            HOADONs = new HashSet<HOADON>();
         }
 
         [Key]
@@ -24,7 +24,7 @@ namespace Second_Hand_Clothes_Management_Project.Model
         public string TENND { get; set; }
 
         [Column(TypeName = "smalldatetime")]
-        public System.DateTime NGSINH { get; set; }
+        public DateTime? NGSINH { get; set; }
 
         [StringLength(5)]
         public string GIOITINH { get; set; }
@@ -51,6 +51,6 @@ namespace Second_Hand_Clothes_Management_Project.Model
         public string MAIL { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MUAHANG> MUAHANGs { get; set; }
+        public virtual ICollection<HOADON> HOADONs { get; set; }
     }
 }
