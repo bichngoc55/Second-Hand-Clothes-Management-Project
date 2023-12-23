@@ -39,10 +39,6 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             listTK = new ObservableCollection<string>() { "Tên SP", "Giá SP" };
             listSP1 = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL >= 0));
             listSP = new ObservableCollection<SANPHAM>(listSP1.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
-            foreach(SANPHAM temp in listSP)
-            {
-                temp.HINHSP = _localLink + temp.HINHSP;
-            }
             AddPdPdCommand = new RelayCommand<SanPhamView>((p) => { return p == null ? false : true; }, (p) => _AddPdCommand(p));
             SearchCommand = new RelayCommand<SanPhamView>((p) => { return p == null ? false : true; }, (p) => _SearchCommand(p));
             DetailPdCommand = new RelayCommand<SanPhamView>((p) => { return p.ListViewProduct.SelectedItem == null ? false : true; }, (p) => _DetailPd(p));
