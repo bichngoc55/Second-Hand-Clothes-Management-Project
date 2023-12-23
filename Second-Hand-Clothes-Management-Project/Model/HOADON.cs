@@ -26,7 +26,7 @@ namespace Second_Hand_Clothes_Management_Project.Model
         public string MAKH { get; set; }
 
         [Column(TypeName = "smalldatetime")]
-        public DateTime? NGAYBAN { get; set; }
+        public System.DateTime NGAYBAN { get; set; }
 
         public int TRIGIA { get; set; }
 
