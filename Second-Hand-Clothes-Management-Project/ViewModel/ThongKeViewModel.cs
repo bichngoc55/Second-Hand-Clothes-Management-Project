@@ -42,7 +42,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public Visibility Down { get => _Down; set { _Down = value; OnPropertyChanged(); } }
         public int SL { get; set; }
         public int MaxSell { get; set; }
-        public string BestKH { get; set; }
+        public string BestKH { get; set; } 
         public ICommand LoadDT { get; set; } 
         public int MaxNV { get; set; }
         public string NVName { get; set; }
@@ -70,21 +70,21 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 
         private void DoanhThu(ThongKeView p)
         {
-            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.NGAYBAN.Month == DateTime.Now.Month).Count() == 0)
+            if (DataProvider.Ins.DB.HOADONs.Where(x => x.NGAYBAN.Month == DateTime.Now.Month).Count() == 0)
             {
                 ThisMonth = 0;
             }
             else
             {
-                ThisMonth = (long)DataProvider.Ins.DB.MUAHANGs.Where(x => x.NGAYBAN.Month == DateTime.Now.Month).Sum(x => x.SANPHAM.GIA);
+                ThisMonth = DataProvider.Ins.DB.HOADONs.Where(x => x.NGAYBAN.Month == DateTime.Now.Month).Sum(x => x.TRIGIA);
             }
-            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.NGAYBAN.Month == DateTime.Now.Month - 1).Count() == 0)
+            if (DataProvider.Ins.DB.HOADONs.Where(x => x.NGAYBAN.Month == DateTime.Now.Month - 1).Count() == 0)
             {
                 LastMonth = 0;
             }
             else
             {
-                LastMonth = (long)DataProvider.Ins.DB.MUAHANGs.Where(x => x.NGAYBAN.Month == DateTime.Now.Month - 1).Sum(x => x.SANPHAM.GIA);
+                LastMonth = DataProvider.Ins.DB.HOADONs.Where(x => x.NGAYBAN.Month == DateTime.Now.Month - 1).Sum(x => x.TRIGIA);
             }
             long temp = ThisMonth - LastMonth;
             if (temp >= 0)
@@ -106,9 +106,9 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         private void NVCount(ThongKeView p)
         {
             MaxNV = int.MinValue;
-            foreach (MUAHANG hd in DataProvider.Ins.DB.MUAHANGs)
+            foreach (HOADON hd in DataProvider.Ins.DB.HOADONs)
             {
-                int temp = DataProvider.Ins.DB.MUAHANGs.Where(x => x.MAND == hd.MAND).Count();
+                int temp = DataProvider.Ins.DB.HOADONs.Where(x => x.MAND == hd.MAND).Count();
                 if (MaxNV < temp)
                 {
                     MaxNV = temp;
@@ -128,20 +128,20 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         private void PieChart(ThongKeView p)
         {
             int hoodie = 0, vay = 0, at = 0, yem = 0, sh = 0, quan = 0, sw = 0;
-            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Hoodie").Count() > 0)
-                hoodie = DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Hoodie").Sum(x => x.SANPHAM.SL);
-            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Váy").Count() > 0)
-                vay = DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Váy").Sum(x => x.SANPHAM.SL);
-            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Áo Thun").Count() > 0)
-                at = DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Áo Thun").Sum(x => x.SANPHAM.SL);
-            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Yếm").Count() > 0)
-                yem = DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Yếm").Sum(x => x.SANPHAM.SL);
-            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Sơ mi").Count() > 0)
-                sh = DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Sơ mi").Sum(x => x.SANPHAM.SL);
-            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Trackpant").Count() > 0)
-                quan = DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Trackpant").Sum(x => x.SANPHAM.SL);
-            if (DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Sweater").Count() > 0)
-                sw = DataProvider.Ins.DB.MUAHANGs.Where(x => x.SANPHAM.LOAISP == "Sweater").Sum(x => x.SANPHAM.SL);
+            if (DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Hoodie").Count() > 0)
+                hoodie = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Hoodie").Sum(x => x.SANPHAM.SL);
+            if (DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Váy").Count() > 0)
+                vay = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Váy").Sum(x => x.SANPHAM.SL);
+            if (DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Áo Thun").Count() > 0)
+                at = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Áo Thun").Sum(x => x.SANPHAM.SL);
+            if (DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Yếm").Count() > 0)
+                yem = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Yếm").Sum(x => x.SANPHAM.SL);
+            if (DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Sơ mi").Count() > 0)
+                sh = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Sơ mi").Sum(x => x.SANPHAM.SL);
+            if (DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Trackpant").Count() > 0)
+                quan = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Trackpant").Sum(x => x.SANPHAM.SL);
+            if (DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Sweater").Count() > 0)
+                sw = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Sweater").Sum(x => x.SANPHAM.SL);
             Reviews = new List<Review>();
             Review r1 = new Review()
             {
@@ -196,15 +196,15 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 
         private void DonutChart(ThongKeView p)
         {
-            var query = from a in DataProvider.Ins.DB.MUAHANGs
+            var query = from a in DataProvider.Ins.DB.CTHDs
                         join b in DataProvider.Ins.DB.SANPHAMs on a.MASP equals b.MASP
-                        where a.MASP == b.MASP && a.NGAYBAN.Month == DateTime.Now.Month && a.NGAYBAN.Year == DateTime.Now.Year
+                        where a.MASP == b.MASP && a.HOADON.NGAYBAN.Month == DateTime.Now.Month && a.HOADON.NGAYBAN.Year == DateTime.Now.Year
                         select new ThongKeViewModel()
                         {
-                            SL = b.SL,
+                            SL = a.SL,
                             MaSP = a.MASP,
                             TenSP = b.TENSP,
-                            Ngay = a.NGAYBAN
+                            Ngay = a.HOADON.NGAYBAN
                         };
             string sp1 = "", sp2 = "", sp3 = "", sp4 = "", sp5 = "";
             int max1 = 0;
@@ -229,7 +229,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                 }
             }
             int max3 = 0;
-            foreach( ThongKeViewModel obj in query)
+            foreach (ThongKeViewModel obj in query)
             {
                 if (obj.TenSP == sp1 || obj.TenSP == sp2) continue;
                 int temp = query.Where(x => x.TenSP == obj.TenSP && x.Ngay.Month == DateTime.Now.Month && x.Ngay.Year == DateTime.Now.Year).Sum(x => x.SL);
