@@ -19,8 +19,8 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         private ObservableCollection<NGUOIDUNG> _listND1;
         public ObservableCollection<NGUOIDUNG> listND1 { get => _listND1; set { _listND1 = value; /*OnPropertyChanged();*/ } }
         public ICommand SearchCommand { get; set; }
-        public ICommand DetailPdCommand { get; set; }
-        public ICommand AddPdPdCommand { get; set; }
+        public ICommand DetailNDCommand { get; set; }
+        public ICommand AddNDCommand { get; set; }
         public ICommand LoadCsCommand { get; set; }
         private ObservableCollection<string> _listTK;
         public ObservableCollection<string> listTK { get => _listTK; set { _listTK = value; OnPropertyChanged(); } }
@@ -30,9 +30,9 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             listTK = new ObservableCollection<string>() { "Mã NV", "Tên NV", "SDT" };
             listND1 = new ObservableCollection<NGUOIDUNG>(DataProvider.Ins.DB.NGUOIDUNGs.Where(p => p.QTV == false));
             listND = new ObservableCollection<NGUOIDUNG>(listND1.GroupBy(p => p.TENND).Select(grp => grp.FirstOrDefault()));
-            AddPdPdCommand = new RelayCommand<NhanVienView>((p) => { return p == null ? false : true; }, (p) => _AddPdCommand(p));
+            AddNDCommand = new RelayCommand<NhanVienView>((p) => { return p == null ? false : true; }, (p) => _AddNDCommand(p));
             SearchCommand = new RelayCommand<NhanVienView>((p) => { return p == null ? false : true; }, (p) => _SearchCommand(p));
-            DetailPdCommand = new RelayCommand<NhanVienView>((p) => { return p.ListViewNhanVien.SelectedItem == null ? false : true; }, (p) => _DetailPd(p));
+            DetailNDCommand = new RelayCommand<NhanVienView>((p) => { return p.ListViewNhanVien.SelectedItem == null ? false : true; }, (p) => _DetailND(p));
             LoadCsCommand = new RelayCommand<NhanVienView>((p) => true, (p) => _LoadCsCommand(p));
             //Filter = new RelayCommand<NhanVienView>((p) => true, (p) => _Filter(p));
         }
@@ -138,7 +138,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             else
                 paramater.ListViewNhanVien.ItemsSource = listND;
         }
-        void _DetailPd(NhanVienView paramater)
+        void _DetailND(NhanVienView paramater)
         {
             ChiTietNhanVien detailProduct = new ChiTietNhanVien();
             NGUOIDUNG temp = (NGUOIDUNG)paramater.ListViewNhanVien.SelectedItem;
@@ -196,7 +196,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             var plainTextBytes = Encoding.UTF8.GetBytes(password);
             return Convert.ToBase64String(plainTextBytes);
         }
-        void _AddPdCommand(NhanVienView paramater)
+        void _AddNDCommand(NhanVienView paramater)
         {
             ThemNhanVienView themSanPhamView = new ThemNhanVienView();
             themSanPhamView.MaNd.Text = rdma();

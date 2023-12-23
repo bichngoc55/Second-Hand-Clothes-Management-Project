@@ -120,7 +120,7 @@
                             Background="#986639">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding AddPdPdCommand}"
+                                    <i:InvokeCommandAction Command="{Binding AddNDCommand}"
                                                        CommandParameter="{Binding ElementName=NhanVienwd}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
@@ -183,7 +183,7 @@
                     </ListView.ItemsPanel>
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding DetailPdCommand}"
+                            <i:InvokeCommandAction Command="{Binding DetailNDCommand}"
                                                        CommandParameter="{Binding ElementName=NhanVienwd}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>

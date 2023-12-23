@@ -184,7 +184,7 @@
                 BorderBrush="Transparent">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding AddProduct}"
+                                <i:InvokeCommandAction Command="{Binding AddND}"
                                                        CommandParameter="{Binding ElementName=ThemNhanVienwd}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>

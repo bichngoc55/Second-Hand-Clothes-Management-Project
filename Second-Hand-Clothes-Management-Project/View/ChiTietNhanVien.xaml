@@ -125,7 +125,7 @@
                                 >
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction Command="{Binding UpdateProduct}"
+                                        <i:InvokeCommandAction Command="{Binding UpdateNhanVien}"
                                                        CommandParameter="{Binding ElementName=ChiTietNhanVienwd}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
@@ -142,7 +142,7 @@
                                 Margin="25 10 0 0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction Command="{Binding DeleteProduct}"
+                                        <i:InvokeCommandAction Command="{Binding DeleteNhanVien}"
                                                        CommandParameter="{Binding ElementName=ChiTietNhanVienwd}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>

@@ -25,14 +25,14 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public ICommand Back { get; set; }
         private string _linkimage;
         public string linkimage { get => _linkimage; set { _linkimage = value; OnPropertyChanged(); } }
-        public ICommand AddProduct { get; set; }
+        public ICommand AddND { get; set; }
         public ICommand Loadwd { get; set; }
         public ThemNhanVienViewModel()
         {
             linkimage = "/ResourceXAML/Image/add.png";
             AddImage = new RelayCommand<Image>((p) => true, (p) => _AddImage(p));
             Back = new RelayCommand<ThemNhanVienView>((p) => true, (p) => _Back(p));
-            AddProduct = new RelayCommand<ThemNhanVienView>((p) => true, (p) => _AddProduct(p));
+            AddND = new RelayCommand<ThemNhanVienView>((p) => true, (p) => _AddND(p));
             Loadwd = new RelayCommand<ThemNhanVienView>((p) => true, (p) => _Loadwd(p));
             Closewd = new RelayCommand<ThemNhanVienView>((p) => true, (p) => Close(p));
             Minimizewd = new RelayCommand<ThemNhanVienView>((p) => true, (p) => Minimize(p));
@@ -97,7 +97,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             } while (check(ma));
             return ma;
         }
-        void _AddProduct(ThemNhanVienView paramater)
+        void _AddND(ThemNhanVienView paramater)
         {
             if (string.IsNullOrEmpty(paramater.MaNd.Text) || string.IsNullOrEmpty(paramater.TenNd.Text) || string.IsNullOrEmpty(paramater.NgaySinhNd.Text) || string.IsNullOrEmpty(paramater.SdtNd.Text) || string.IsNullOrEmpty(paramater.DiaChiNd.Text) || linkimage == "/Resource/Image/add.png")
             {
