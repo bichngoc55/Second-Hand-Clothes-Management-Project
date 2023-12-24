@@ -89,15 +89,13 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             long temp = ThisMonth - LastMonth;
             if (temp >= 0)
             {
-                p.DTTrend.Text = temp.ToString("#,###");
-                p.DTTrend.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                p.DoanhThu.Text = temp.ToString("#,###"); 
                 Up = Visibility.Visible;
                 Down = Visibility.Collapsed;
             }
             else
             {
-                p.DTTrend.Text = temp.ToString("#,###");
-                p.DTTrend.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                p.DoanhThu.Text = temp.ToString("#,###"); 
                 Up = Visibility.Collapsed;
                 Down = Visibility.Visible;
             }
@@ -129,19 +127,19 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         {
             int hoodie = 0, vay = 0, at = 0, yem = 0, sh = 0, quan = 0, sw = 0;
             if (DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Hoodie").Count() > 0)
-                hoodie = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Hoodie").Sum(x => x.SANPHAM.SL);
+                hoodie = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Hoodie").Sum(x => x.SL);
             if (DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Váy").Count() > 0)
-                vay = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Váy").Sum(x => x.SANPHAM.SL);
+                vay = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Váy").Sum(x => x.SL);
             if (DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Áo Thun").Count() > 0)
-                at = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Áo Thun").Sum(x => x.SANPHAM.SL);
+                at = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Áo Thun").Sum(x => x.SL);
             if (DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Yếm").Count() > 0)
-                yem = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Yếm").Sum(x => x.SANPHAM.SL);
+                yem = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Yếm").Sum(x => x.SL);
             if (DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Sơ mi").Count() > 0)
-                sh = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Sơ mi").Sum(x => x.SANPHAM.SL);
+                sh = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Sơ mi").Sum(x => x.SL);
             if (DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Trackpant").Count() > 0)
-                quan = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Trackpant").Sum(x => x.SANPHAM.SL);
+                quan = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Trackpant").Sum(x => x.SL);
             if (DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Sweater").Count() > 0)
-                sw = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Sweater").Sum(x => x.SANPHAM.SL);
+                sw = DataProvider.Ins.DB.CTHDs.Where(x => x.SANPHAM.LOAISP == "Sweater").Sum(x => x.SL);
             Reviews = new List<Review>();
             Review r1 = new Review()
             {
