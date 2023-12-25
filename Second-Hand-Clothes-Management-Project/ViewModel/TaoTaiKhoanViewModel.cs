@@ -14,6 +14,7 @@ using Second_Hand_Clothes_Management_Project.View;
 using Second_Hand_Clothes_Management_Project.Model;
 using System;
 using System.Windows.Controls;
+using System.Security.Cryptography;
 
 namespace Second_Hand_Clothes_Management_Project.ViewModel
 {
@@ -121,20 +122,25 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                     temp.MAIL = addNDView.Mail.Text;
                     temp.NGSINH = (DateTime)addNDView.NS.SelectedDate;
                     if (addNDView.QTV.Text == "Quản lý")
+                    {
                         temp.QTV = true;
+                        temp.USERNAME = "admin" + addNDView.MaND.Text;
+                    }
                     else
+                    {
                         temp.QTV = false;
+                        temp.USERNAME = "user" + addNDView.MaND.Text;
+                    }
                     temp.TTND = true;
-                    temp.USERNAME = addNDView.MaND.Text;
-                    temp.PASS = LoginViewModel.MD5Hash(LoginViewModel.Base64Encode(addNDView.MaND.Text));
-                    if (linkaddimage == "/Resource/Image/addava.png")
-                        temp.AVA = "/Resource/Image/addava.png";
+                    temp.PASS = LoginViewModel.MD5Hash(LoginViewModel.Base64Encode(addNDView.PassWord.Text));
+                    if (linkaddimage == "/ResourceXAML/Image/addava.png")
+                        temp.AVA = "/ResourceXAML/Image/addava.png";
                     else
-                        temp.AVA = "/Resource/Ava/" + addNDView.MaND.Text + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                        temp.AVA = "/ResourceXAML/Avatar/" + Path.GetFileNameWithoutExtension(linkaddimage) + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
                     DataProvider.Ins.DB.NGUOIDUNGs.Add(temp);
                     try
                     {
-                        File.Copy(linkaddimage, Const._localLink + @"Resource\Ava\" + temp.MAND + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+                        File.Copy(linkaddimage, Const._localLink + @"ResourceXAML\Avatar\" + temp.MAND + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
                     }
                     catch { }
                     DataProvider.Ins.DB.SaveChanges();
@@ -149,7 +155,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                     addNDView.SDT.Clear();
                     addNDView.DC.Clear();
                     addNDView.Mail.Clear();
-                    linkaddimage = Const._localLink + "/Resource/Image/addava.png";
+                    linkaddimage = Const._localLink + "/ResourceXAML/Image/addava.png";
                     Uri fileUri = new Uri(linkaddimage);
                     addNDView.HinhAnh1.ImageSource = new BitmapImage(fileUri);
                     CaiDatView qLNVView = new CaiDatView();

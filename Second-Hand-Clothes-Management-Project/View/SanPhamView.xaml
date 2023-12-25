@@ -25,6 +25,11 @@
     </Page.Triggers>
     <Grid
         Name="mainSanPham">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding LoadCsCommand}" CommandParameter="{Binding ElementName=SanPhamwd}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
         <!--BACKGROUND-->
         <Border Background="#EDE2D0">
         </Border>

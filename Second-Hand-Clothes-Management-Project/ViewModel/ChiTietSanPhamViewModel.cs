@@ -68,13 +68,14 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             {
                 foreach (SANPHAM a in DataProvider.Ins.DB.SANPHAMs.Where(pa => (pa.TENSP == TenSP1 && pa.SL >= 0)))
                 {
-                    a.SL = -1;
+                    DataProvider.Ins.DB.SANPHAMs.Remove(a);
                 }
                 DataProvider.Ins.DB.SaveChanges();
                 MessageBox.Show("Xóa sản phẩm thành công !", "THÔNG BÁO");
                 SanPhamView productView = new SanPhamView();
-                productView.ListViewProduct.ItemsSource = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL > 0));
+                //productView.ListViewProduct.ItemsSource = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL > 0));
                 MainViewModel.MainFrame.Content = productView;
+                parameter.Close();
             }
         }
         void _GetName(ChiTietSanPham p)

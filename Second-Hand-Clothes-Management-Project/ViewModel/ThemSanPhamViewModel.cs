@@ -12,11 +12,18 @@ using System.Windows;
 using Microsoft.Win32;
 using System.IO;
 using System.Collections.ObjectModel;
+using System.Windows.Media.Imaging;
 
 namespace Second_Hand_Clothes_Management_Project.ViewModel
 {
     public class ThemSanPhamViewModel : BaseViewModel
     {
+        private ObservableCollection<SANPHAM> _listSP;
+        public ObservableCollection<SANPHAM> listSP { get => _listSP; set { _listSP = value; /*OnPropertyChanged();*/ } }
+
+        private ObservableCollection<SANPHAM> _listSP1;
+        public ObservableCollection<SANPHAM> listSP1 { get => _listSP1; set { _listSP1 = value; /*OnPropertyChanged();*/ } }
+
         private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
         public ICommand Closewd { get; set; }
         public ICommand Minimizewd { get; set; }
@@ -111,7 +118,8 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                         a.MASP = paramater.MaSp.Text;
                         a.TENSP = paramater.TenSp.Text;
                         a.SIZE = paramater.SizeSp.Text;
-                        a.MAGIAMGIA = paramater.Voucher.Text;
+                        if(paramater.Voucher.Text != "NULL")
+                            a.MAGIAMGIA = paramater.Voucher.Text;
                         try
                         {
                             a.GIA = int.Parse(paramater.GiaSp.Text);
@@ -142,15 +150,20 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                             return;
                         }
                         a.MOTA = paramater.MotaSp.Text;
-                        a.HINHSP = "/ResourceXAML/ImageProduct/" + "product_" + paramater.MaSp.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                        string imageFileName = Path.GetFileNameWithoutExtension(linkimage) + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                        a.HINHSP = "/ResourceXAML/ImageProduct/" + imageFileName;
+                        //a.HINHSP = "/ResourceXAML/ImageProduct/" + Path.GetFileNameWithoutExtension(linkimage) + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
                         try
                         {
-                            File.Copy(linkimage, _localLink + @"ResourceXAML\ImageProduct\" + "product_" + paramater.MaSp.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+                            File.Copy(linkimage, Path.Combine(_localLink, "ResourceXAML", "ImageProduct", imageFileName), true);
+                            //File.Copy(linkimage, _localLink + @"ResourceXAML\ImageProduct\" + Path.GetFileNameWithoutExtension(linkimage) + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
                         }
                         catch { }
                         MessageBox.Show("Thêm sản phẩm mới thành công !", "THÔNG BÁO");
                         DataProvider.Ins.DB.SANPHAMs.Add(a);
                         DataProvider.Ins.DB.SaveChanges();
+                        listSP1 = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL >= 0));
+                        listSP = new ObservableCollection<SANPHAM>(listSP1.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
                         paramater.TenSp.Clear();
                         paramater.LoaiSp.SelectedItem = null;
                         paramater.GiaSp.Clear();
@@ -159,7 +172,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                         Uri fileUri = new Uri(Const._localLink + "/ResourceXAML/Image/add.png");
                         paramater.HinhAnh.Source = new BitmapImage(fileUri);
                         SanPhamView productViewPage = new SanPhamView();
-                        productViewPage.ListViewProduct.ItemsSource = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL >= 0));
+                        paramater.Close();
                         MainViewModel.MainFrame.Content = productViewPage;
                     }
                 }

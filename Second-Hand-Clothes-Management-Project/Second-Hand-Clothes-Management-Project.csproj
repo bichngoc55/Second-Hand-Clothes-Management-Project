@@ -110,12 +110,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\Const.cs" />
+    <Compile Include="Model\CTHD.cs" />
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\GIAMGIA.cs" />
+    <Compile Include="Model\HOADON.cs" />
     <Compile Include="Model\KHACHHANG.cs" />
     <Compile Include="Model\KHO.cs" />
     <Compile Include="Model\Model1.cs" />
-    <Compile Include="Model\MUAHANG.cs" />
     <Compile Include="Model\NGUOIDUNG.cs" />
     <Compile Include="Model\NHACUNGCAP.cs" />
     <Compile Include="Model\NHAP.cs" />
@@ -379,48 +380,141 @@
     <Resource Include="ResourceXAML\Image\addava.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ResourceXAML\ImageProduct\ao.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\blessing.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\cap1.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\chaotic_jacket.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\comic_shirt.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\cross_jacket.png" />
-    <Resource Include="ResourceXAML\ImageProduct\excited.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\full_rabbit.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\good_rabbit.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\good_student.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\Hoodie1.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\Hoodie2.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\Hoodie3.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\Hoodie4.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\Jacket1.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\Jacket2.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\Jacket3.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\lucky_you.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\mechabit.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\non1.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\over_print.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\pagoda.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\painful.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\pattern_shirt.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\quan1.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\quan2.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\quan3.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\quan4.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\quan5.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\rabbit_cardigan.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\rabbit_cyber.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\rabbit_gile.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\ruby_tie_dye.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\sample.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\striped_shirt.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\suy_sweater.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\Sweater1.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\Sweater2.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\Sweater3.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\Sweater4.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\tui1.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\tui2.jpg" />
+    <Resource Include="ResourceXAML\ImageProduct\ao.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\blessing.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\cap1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\chaotic_jacket.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\comic_shirt.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\cross_jacket.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\excited.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\full_rabbit.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\good_rabbit.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\good_student.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Hoodie1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Hoodie2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Hoodie3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Hoodie4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Jacket1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Jacket2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Jacket3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\lucky_you.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\mechabit.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\non1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\over_print.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\pagoda.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\painful.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\pattern_shirt.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\quan1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\quan2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\quan3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\quan4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\quan5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\rabbit_cardigan.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\rabbit_cyber.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\rabbit_gile.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\ruby_tie_dye.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\sample.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\striped_shirt.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\suy_sweater.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Sweater1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Sweater2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Sweater3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Sweater4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\tui1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\tui2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\ImageProduct\Yem.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\ImageProduct\Vay.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\Avatar\trantanh.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

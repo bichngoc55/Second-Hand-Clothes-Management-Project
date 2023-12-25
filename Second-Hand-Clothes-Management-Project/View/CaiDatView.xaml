@@ -26,6 +26,12 @@
         </EventTrigger>
     </Page.Triggers>
     <Grid>
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding GetName}"
+                                       CommandParameter="{Binding ElementName=CaiDat}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
         <!--BACKGROUND-->
         <Border Background="#EDE2D0">
         </Border>
@@ -154,8 +160,8 @@
                                 BorderThickness="0"
                                 SelectedIndex="0"
                                 materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"
-                                materialDesign:TextFieldAssist.TextFieldCornerRadius="5">
-                                <ComboBoxItem Content="Giới Tính"/>
+                                materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                                Text="{Binding GioiTinh}">
                                 <ComboBoxItem Content="Nam"/>
                                 <ComboBoxItem Content="Nữ"/>
                             </ComboBox>
@@ -212,7 +218,7 @@
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding AddNDCommand}"
-                                                       CommandParameter="{Binding ElementName=CaiDatView}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=CaiDat}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
@@ -227,7 +233,7 @@
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding UpdateInfo}"
-                                                       CommandParameter="{Binding ElementName=CaiDatView}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=CaiDat}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
@@ -238,7 +244,7 @@
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Loaded">
                     <i:InvokeCommandAction  Command="{Binding Loadwd}"
-                        CommandParameter="{Binding ElementName=CaiDatView}">
+                        CommandParameter="{Binding ElementName=CaiDat}">
                     </i:InvokeCommandAction>
                 </i:EventTrigger>
             </i:Interaction.Triggers>

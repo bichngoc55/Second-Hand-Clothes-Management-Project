@@ -107,7 +107,8 @@
                                x:Name="HinhAnh"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
-                               Width="240"/>
+                               Width="240"
+                               Source="/ResourceXAML/ImageProduct/Vay.jpg"/>
                     </Border>
                     <Canvas Grid.Row="1">
                         <StackPanel Orientation="Horizontal"

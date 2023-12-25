@@ -56,8 +56,8 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         }
         void _Back(ThemNhanVienView p)
         {
-            NhanVienView productViewPage = new NhanVienView();
-            MainViewModel.MainFrame.Content = productViewPage;
+            NhanVienView nhanvienViewPage = new NhanVienView();
+            MainViewModel.MainFrame.Content = nhanvienViewPage;
         }
         void _AddImage(Image img)
         {
@@ -105,12 +105,12 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             }
             else
             {
-                MessageBoxResult h = System.Windows.MessageBox.Show("Bạn muốn thêm sản phẩm mới ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                MessageBoxResult h = System.Windows.MessageBox.Show("Bạn muốn thêm nhân viên mới ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
                 if (h == MessageBoxResult.Yes)
                 {
                     if (DataProvider.Ins.DB.NGUOIDUNGs.Where(p => p.MAND == paramater.MaNd.Text).Count() > 0)
                     {
-                        MessageBox.Show("Mã sản phẩm đã tồn tại.", "Thông Báo");
+                        MessageBox.Show("Mã nhân viên đã tồn tại.", "Thông Báo");
                     }
                     else
                     {
@@ -119,19 +119,19 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                         a.TENND = paramater.TenNd.Text;
                         a.DIACHI = paramater.DiaChiNd.Text;
                         a.NGSINH = (DateTime)paramater.NgaySinhNd.SelectedDate;
-                        a.GIOITINH = paramater.NgaySinhNd.Text;
+                        a.GIOITINH = paramater.GioiTinhNd.Text;
                         a.SDT = paramater.SdtNd.Text;
                         a.AVA = "/ResourceXAML/Avatar/" + paramater.MaNd.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
-                        MessageBox.Show("Thêm sản phẩm mới thành công !", "THÔNG BÁO");
+                        MessageBox.Show("Thêm nhân viên mới thành công !", "THÔNG BÁO");
                         DataProvider.Ins.DB.NGUOIDUNGs.Add(a);
                         DataProvider.Ins.DB.SaveChanges();
                         paramater.TenNd.Clear();
                         paramater.NgaySinhNd.SelectedDate = null;
                         paramater.DiaChiNd.Clear();
                         paramater.SdtNd.Clear();
-                        SanPhamView productViewPage = new SanPhamView();
-                        productViewPage.ListViewProduct.ItemsSource = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL >= 0));
-                        MainViewModel.MainFrame.Content = productViewPage;
+                        NhanVienView NhanVienViewPage = new NhanVienView();
+                        NhanVienViewPage.ListViewNhanVien.ItemsSource = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL >= 0));
+                        MainViewModel.MainFrame.Content = NhanVienViewPage;
                     }
                 }
             }
