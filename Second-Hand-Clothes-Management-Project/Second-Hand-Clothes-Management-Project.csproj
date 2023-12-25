@@ -120,19 +120,30 @@
     <Compile Include="Model\NHACUNGCAP.cs" />
     <Compile Include="Model\NHAP.cs" />
     <Compile Include="Model\SANPHAM.cs" />
+    <Compile Include="Model\sysdiagram.cs" />
+    <Compile Include="ViewModel\AddGiamGiaViewModel.cs" />
+    <Compile Include="ViewModel\AddNhapKhoViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CaiDatViewModel.cs" />
     <Compile Include="ViewModel\ChiTietNhanVienViewModel.cs" />
     <Compile Include="ViewModel\ChiTietSanPhamViewModel.cs" />
+    <Compile Include="ViewModel\GiamGiaViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\NhanVienViewModel.cs" />
+    <Compile Include="ViewModel\NhapKhoViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\SanPhamViewModel.cs" />
     <Compile Include="ViewModel\TaoTaiKhoanViewModel.cs" />
     <Compile Include="ViewModel\ThemNhanVienViewModel.cs" />
     <Compile Include="ViewModel\ThemSanPhamViewModel.cs" />
     <Compile Include="ViewModel\ThongKeViewModel.cs" />
+    <Compile Include="View\AddGiamGiaView.xaml.cs">
+      <DependentUpon>AddGiamGiaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddNhapKhoView.xaml.cs">
+      <DependentUpon>AddNhapKhoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CaiDatView.xaml.cs">
       <DependentUpon>CaiDatView.xaml</DependentUpon>
     </Compile>
@@ -153,6 +164,9 @@
     </Compile>
     <Compile Include="View\NhanVienView.xaml.cs">
       <DependentUpon>NhanVienView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NhapKhoView.xaml.cs">
+      <DependentUpon>NhapKhoView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SanPhamView.xaml.cs">
       <DependentUpon>SanPhamView.xaml</DependentUpon>
@@ -189,6 +203,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddGiamGiaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddNhapKhoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CaiDatView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -214,6 +236,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\NhanVienView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NhapKhoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
