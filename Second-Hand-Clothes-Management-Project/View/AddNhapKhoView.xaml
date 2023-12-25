@@ -1,0 +1,125 @@
+﻿<Page x:Class="Second_Hand_Clothes_Management_Project.View.AddNhapKhoView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Second_Hand_Clothes_Management_Project.View"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="605" d:DesignWidth="700"
+      DataContext="{StaticResource AddNhapKhoVM}"
+      x:Name="AddNhapKhoViewpage"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      Title="AddNhapKhoView">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="\ResourceXAML\Image\clothesImg.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1">
+            <StackPanel>
+                <!-- Mục 1: Nhập mã sản phẩm -->
+                <Border CornerRadius="10" Margin="10 15 10 10" Height="50" Background="White">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBox x:Name="MASP" 
+                                 TextAlignment="Left"
+                                 FontFamily="Roboto Mono"
+                                 FontWeight="Thin"
+                                 Padding="20 15 0 0"
+                                 VerticalAlignment="Bottom"
+                                 FontSize="15"
+                                 materialDesign:HintAssist.Hint="Nhập mã sản phẩm"
+                                 Height="50"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Mục 2: Nhập mã nhà cung cấp -->
+                <Border CornerRadius="10" Margin="10 15 10 10" Height="50" Background="White">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBox x:Name="MANCC" 
+                                 materialDesign:HintAssist.Hint="Nhập mã nhà cung cấp"
+                                 TextAlignment="Left"
+                                 FontFamily="Roboto Mono"
+                                 FontWeight="Thin"
+                                 Padding="20 15 0 0"
+                                 VerticalAlignment="Bottom"
+                                 FontSize="15"
+                                 Height="50"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Mục 3: Nhập số lượng sản phẩm -->
+                <Border CornerRadius="10" Margin="10 15 10 10" Height="50" Background="White">
+                    <DockPanel VerticalAlignment="Center">
+                        <TextBox x:Name="SLSP" 
+                                 materialDesign:HintAssist.Hint="Nhập số lượng sản phẩm"
+                                 TextAlignment="Left"
+                                 FontFamily="Roboto Mono"
+                                 FontWeight="Thin"
+                                 Padding="20 15 0 0"
+                                 VerticalAlignment="Bottom"
+                                 FontSize="15"
+                                 Height="50"/>
+                    </DockPanel>
+                </Border>
+
+                <!-- Mục 4: Nhập ngày nhập -->
+                <Border CornerRadius="10" Margin="10 15 10 10" Height="50" Background="White">
+                    <DockPanel VerticalAlignment="Center">
+                        <TextBox x:Name="NgayNhap" 
+                                 materialDesign:HintAssist.Hint="Ngày nhập"
+                                 TextAlignment="Left"
+                                 FontFamily="Roboto Mono"
+                                 FontWeight="Thin"
+                                 Padding="20 15 0 0"
+                                 VerticalAlignment="Bottom"
+                                 FontSize="15"
+                                 Height="50"/>
+                    </DockPanel>
+                </Border>
+
+                <!-- Mục 5: Nhập vào mã kho -->
+                <Border CornerRadius="10" Margin="10 10 10 10" Height="50" Background="White">
+                    <DockPanel VerticalAlignment="Center">
+                        <TextBox x:Name="makho" 
+                                 materialDesign:HintAssist.Hint="Nhập vào mã kho"
+                                 TextAlignment="Left"
+                                 FontFamily="Roboto Mono"
+                                 FontWeight="Thin"
+                                 Padding="20 15 0 0"
+                                 VerticalAlignment="Bottom"
+                                 FontSize="15"
+                                 Height="50"/>
+                    </DockPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <!-- Nút thêm sản phẩm -->
+        <Grid Grid.Row="2">
+            <Border CornerRadius="5" Margin="10 20 10 10" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Height="50" Background="#986639">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button FontSize="20"
+                            FontFamily="Roboto Mono"
+                            FontWeight="Thin"
+                            Content="THÊM "
+                            Background="Transparent"
+                            Foreground="White"
+                            BorderThickness="0" Width="180">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding AddSP}" CommandParameter="{Binding ElementName=AddNhapKhoViewpage}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>

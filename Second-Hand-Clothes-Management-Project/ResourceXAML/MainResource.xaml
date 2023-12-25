@@ -12,4 +12,8 @@
     <viewmodel:ChiTietNhanVienViewModel x:Key="ChiTietNhanVienVM"></viewmodel:ChiTietNhanVienViewModel>
     <viewmodel:CaiDatViewModel x:Key="CaiDatVM"></viewmodel:CaiDatViewModel>
     <viewmodel:TaoTaiKhoanViewModel x:Key="TaoTaiKhoanVM"></viewmodel:TaoTaiKhoanViewModel>
+    <viewmodel:AddGiamGiaViewModel x:Key="AddGiamGiaVM"></viewmodel:AddGiamGiaViewModel>
+    <viewmodel:GiamGiaViewModel x:Key="GiamGiaVM"></viewmodel:GiamGiaViewModel>
+    <viewmodel:NhapKhoViewModel x:Key="NhapKhoVM"></viewmodel:NhapKhoViewModel>
+    <viewmodel:AddNhapKhoViewModel x:Key="AddNhapKhoVM"></viewmodel:AddNhapKhoViewModel>
 </ResourceDictionary>
