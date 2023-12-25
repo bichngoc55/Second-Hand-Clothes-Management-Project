@@ -139,7 +139,7 @@
                 Width="250"
                 Height="30">
                     <ComboBox
-                    x:Name="NgSinhNd"
+                    x:Name="GioiTinhNd"
                     Width="120"
                     Height="30"
                     Background="White"
@@ -148,6 +148,8 @@
                     Padding="5"
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Top">
+                        <ComboBoxItem Content="Nam"></ComboBoxItem>
+                        <ComboBoxItem Content="Nữ"></ComboBoxItem>
                     </ComboBox>
                     <TextBox
                     x:Name="SdtNd"
@@ -177,7 +179,7 @@
                 x:Name="btnaddNd"
                 Width="105"
                 Height="20"
-                Content="THÊM SẢN PHẨM"
+                Content="THÊM NHÂN VIÊN"
                 FontSize="9"
                 Background="#986639" HorizontalAlignment="Right" 
                 Margin="190,0,0, 0"

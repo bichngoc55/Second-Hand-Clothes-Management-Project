@@ -178,24 +178,6 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             } while (check(ma));
             return ma;
         }
-        public static string MD5Hash(string value)
-        {
-            StringBuilder hash = new StringBuilder();
-            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
-            byte[] bytes = md5provider.ComputeHash(Encoding.UTF8.GetBytes(value));
-
-            for (int i = 0; i < bytes.Length; i++)
-            {
-                hash.Append(bytes[i].ToString("x2"));
-            }
-            return hash.ToString();
-        }
-
-        public static string Base64Encode(string password)
-        {
-            var plainTextBytes = Encoding.UTF8.GetBytes(password);
-            return Convert.ToBase64String(plainTextBytes);
-        }
         void _AddNDCommand(NhanVienView paramater)
         {
             ThemNhanVienView themSanPhamView = new ThemNhanVienView();

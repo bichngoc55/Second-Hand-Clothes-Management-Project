@@ -194,6 +194,17 @@
                             FontFamily="Roboto Mono"
                             HorizontalAlignment="Center"
                             materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
+                        <TextBox
+                            x:Name="PassWord"
+                            Width="250"
+                            Height="35"
+                            Margin="50 15 50 0"
+                            Background="White"
+                            materialDesign:HintAssist.Hint="Password"
+                            Padding="10"
+                            FontFamily="Roboto Mono"
+                            HorizontalAlignment="Center"
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"/>
                         <StackPanel Orientation="Horizontal">
                             <Button
                                 Background="#986639"

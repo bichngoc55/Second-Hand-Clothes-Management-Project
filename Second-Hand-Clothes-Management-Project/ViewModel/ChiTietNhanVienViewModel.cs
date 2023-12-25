@@ -62,13 +62,14 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             {
                 foreach (NGUOIDUNG a in DataProvider.Ins.DB.NGUOIDUNGs.Where(pa => (pa.TENND == TenND1 && pa.TTND == true)))
                 {
-                    a.TTND = false;
+                    DataProvider.Ins.DB.NGUOIDUNGs.Remove(a);
                 }
                 DataProvider.Ins.DB.SaveChanges();
                 MessageBox.Show("Xóa nhân viên thành công !", "THÔNG BÁO");
                 NhanVienView nhanvienView = new NhanVienView();
                 nhanvienView.ListViewNhanVien.ItemsSource = new ObservableCollection<NGUOIDUNG>(DataProvider.Ins.DB.NGUOIDUNGs.Where(p => (p.QTV == false && p.TTND == true)));
                 MainViewModel.MainFrame.Content = nhanvienView;
+                parameter.Close();
             }
         }
         void _GetName(ChiTietNhanVien p)
@@ -80,7 +81,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             MessageBoxResult h = System.Windows.MessageBox.Show("Bạn muốn cập nhật nhân viên ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             if (h == MessageBoxResult.Yes)
             {
-                if (string.IsNullOrEmpty(p.TenND.Text) || string.IsNullOrEmpty(p.Email.Text))
+                if (string.IsNullOrEmpty(p.TenND.Text) || string.IsNullOrEmpty(p.Email.Text) || string.IsNullOrEmpty(p.SDTND.Text) || string.IsNullOrEmpty(p.NgSinhND.Text) || string.IsNullOrEmpty(p.gioitinh.Text) || string.IsNullOrEmpty(p.DiaChiND.Text))
                 {
                     MessageBox.Show("Thông tin chưa đầy đủ !", "THÔNG BÁO");
                 }
@@ -90,12 +91,17 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                     {
                         a.TENND = p.TenND.Text;
                         a.MAIL = p.Email.Text;
+                        a.SDT = p.SDTND.Text;
+                        a.NGSINH = (DateTime)p.NgSinhND.SelectedDate;
+                        a.DIACHI = p.DiaChiND.Text;
+                        a.GIOITINH = p.gioitinh.Text;
                     }
                     DataProvider.Ins.DB.SaveChanges();
                     MessageBox.Show("Cập nhật nhân viên thành công !", "THÔNG BÁO");
                     NhanVienView nhanvienView = new NhanVienView();
                     nhanvienView.ListViewNhanVien.ItemsSource = new ObservableCollection<NGUOIDUNG>(DataProvider.Ins.DB.NGUOIDUNGs);
                     MainViewModel.MainFrame.Content = nhanvienView;
+                    p.Close();
                 }
             }
         }

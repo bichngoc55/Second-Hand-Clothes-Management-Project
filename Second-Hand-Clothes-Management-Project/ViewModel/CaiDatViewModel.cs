@@ -20,6 +20,8 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 {
     public class CaiDatViewModel : BaseViewModel
     {
+        private string _Code;
+        public string Code { get => _Code; set { _Code = value; OnPropertyChanged(); } }
         private string _Ava;
         public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
         private string _Name;
@@ -30,8 +32,8 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public string DiaChi { get => _DiaChi; set { _DiaChi = value; OnPropertyChanged(); } }
         private string _Mail;
         public string Mail { get => _Mail; set { _Mail = value; OnPropertyChanged(); } }
-        private int _GioiTinh;
-        public int GioiTinh { get => _GioiTinh; set { _GioiTinh = value; OnPropertyChanged(); } }
+        private string _GioiTinh;
+        public string GioiTinh { get => _GioiTinh; set { _GioiTinh = value; OnPropertyChanged(); } }
         private string _SDT;
         public string SDT { get => _SDT; set { _SDT = value; OnPropertyChanged(); } }
         private string _TenTK;
@@ -46,12 +48,15 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public ICommand AddImage { get; set; }
         public ICommand ChangePass { get; set; }
         public ICommand AddNDCommand { get; set; }
+        public ICommand GetName { get; set; }
+        private string TenND1;
         public CaiDatViewModel()
         {
             Loadwd = new RelayCommand<CaiDatView>((p) => true, (p) => _Loadwd(p));
             AddImage = new RelayCommand<ImageBrush>((p) => true, (p) => _AddImage(p));
             AddNDCommand = new RelayCommand<CaiDatView>((p) => true, (p) => _AddND(p));
-            //UpdateInfo = new RelayCommand<CaiDatView>((p) => true, (p) => _UdpateInfo(p));
+            UpdateInfo = new RelayCommand<CaiDatView>((p) => true, (p) => _UdpateInfo(p));
+            GetName = new RelayCommand<CaiDatView>((p) => true, (p) => _GetName(p));
             //ChangePass = new RelayCommand<CaiDatView>((p) => true, (p) => _ChangePass());
         }
         //void _ChangePass()
@@ -59,6 +64,10 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         //    ChangePassword change = new ChangePassword();
         //    MainViewModel.MainFrame.Content = change;
         //}
+        void _GetName(CaiDatView p)
+        {
+            TenND1 = p.NameBox.Text;
+        }
         void _AddImage(ImageBrush p)
         {
             OpenFileDialog open = new OpenFileDialog();
@@ -75,11 +84,12 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             {
                 string a = Const.TenDangNhap;
                 User = DataProvider.Ins.DB.NGUOIDUNGs.Where(x => x.USERNAME == a).FirstOrDefault();
+                Code = User.MAND;
                 Ava = User.AVA;
                 Name = User.TENND;
                 DoB = User.NGSINH.ToString();
                 DiaChi = User.DIACHI;
-                GioiTinh = (User.GIOITINH == "Nam") ? 0 : 1;
+                GioiTinh = User.GIOITINH;
                 SDT = User.SDT;
                 TenTK = User.USERNAME;
                 Mail = User.MAIL;
@@ -88,62 +98,52 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         }
         void _UdpateInfo(CaiDatView p)
         {
-            foreach (NGUOIDUNG temp2 in DataProvider.Ins.DB.NGUOIDUNGs)
+            MessageBoxResult h = System.Windows.MessageBox.Show("Bạn muốn cập nhật nhân viên ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if (h == MessageBoxResult.Yes)
             {
-                if (temp2.MAIL == p.Mail.Text && p.Mail.Text != Const.ND.MAIL)
+                if (string.IsNullOrEmpty(p.NameBox.Text) || string.IsNullOrEmpty(p.Mail.Text) || string.IsNullOrEmpty(p.SDTBox.Text) || string.IsNullOrEmpty(p.DateBox.Text) || string.IsNullOrEmpty(p.GTBox.Text) || string.IsNullOrEmpty(p.AddressBox.Text))
                 {
-                    MessageBox.Show("Email này đã được sử dụng !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
+                    MessageBox.Show("Thông tin chưa đầy đủ !", "THÔNG BÁO");
+                }
+                else
+                {
+                    foreach (NGUOIDUNG a in DataProvider.Ins.DB.NGUOIDUNGs.Where(pa => (pa.MAND == Code)))
+                    {
+                        a.TENND = p.NameBox.Text;
+                        a.MAIL = p.Mail.Text;
+                        a.SDT = p.SDTBox.Text;
+                        a.NGSINH = (DateTime)p.DateBox.SelectedDate;
+                        a.DIACHI = p.AddressBox.Text;
+                        a.GIOITINH = p.GTBox.Text;
+                        break;
+                    }
+                    DataProvider.Ins.DB.SaveChanges();
+                    MessageBox.Show("Cập nhật nhân viên thành công !", "THÔNG BÁO");
                 }
             }
-            string match = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
-            Regex reg = new Regex(match);
-            if (!reg.IsMatch(p.Mail.Text))
-            {
-                MessageBox.Show("Email không hợp lệ !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            var temp = DataProvider.Ins.DB.NGUOIDUNGs.Where(pa => pa.USERNAME == TenTK).FirstOrDefault();
-            temp.TENND = p.NameBox.Text;
-            temp.SDT = p.SDTBox.Text;
-            temp.DIACHI = p.AddressBox.Text;
-            temp.GIOITINH = p.GTBox.Text;
-            temp.NGSINH = (DateTime)p.DateBox.SelectedDate;
-            temp.MAIL = p.Mail.Text;
-            string rd = StringGenerator();
-            if (User.AVA != Ava)
-                temp.AVA = "/ResourceXAML/Avatar/" + rd + (Ava.Contains(".jpg") ? ".jpg" : ".png").ToString();
-            DataProvider.Ins.DB.SaveChanges();
-            try
-            {
-                if (User.AVA != Ava)
-                    File.Copy(Ava, Const._localLink + @"ResourceXAML/Avatar/" + rd + (Ava.Contains(".jpg") ? ".jpg" : ".png").ToString(), true);
-            }
-            catch { }
-            MessageBox.Show("Cập nhật thành công!", "Thông báo");
+            CaiDatView temp = new CaiDatView();
+            MainViewModel.MainFrame.Content = temp;
         }
-        static string StringGenerator()
-        {
-            Random rd = new Random();
-            int length = rd.Next(5, 20);
-            StringBuilder str_build = new StringBuilder();
-            Random random = new Random();
-            char letter;
-            for (int i = 0; i < length; i++)
-            {
-                double flt = random.NextDouble();
-                int shift = Convert.ToInt32(Math.Floor(25 * flt));
-                letter = Convert.ToChar(shift + 65);
-                str_build.Append(letter);
-            }
-            return str_build.ToString();
-        }
+        //static string StringGenerator()
+        //{
+        //    Random rd = new Random();
+        //    int length = rd.Next(5, 20);
+        //    StringBuilder str_build = new StringBuilder();
+        //    Random random = new Random();
+        //    char letter;
+        //    for (int i = 0; i < length; i++)
+        //    {
+        //        double flt = random.NextDouble();
+        //        int shift = Convert.ToInt32(Math.Floor(25 * flt));
+        //        letter = Convert.ToChar(shift + 65);
+        //        str_build.Append(letter);
+        //    }
+        //    return str_build.ToString();
+        //}
         void _AddND(CaiDatView parameter)
         {
             TaoTaiKhoanView addNDView = new TaoTaiKhoanView();
             MainViewModel.MainFrame.Content = addNDView;
-
         }
     }
 }
