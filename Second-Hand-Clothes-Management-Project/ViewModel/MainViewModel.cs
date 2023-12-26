@@ -68,6 +68,10 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             {
                 MainFrame.Content =  new SanPhamView();
             });
+            ThanhToanCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
+            {
+                MainFrame.Content = new ThanhToanView();
+            });
             ThongKeCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
                 MainFrame.Content = new ThongKeView();

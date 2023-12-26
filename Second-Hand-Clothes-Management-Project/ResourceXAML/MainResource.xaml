@@ -10,7 +10,10 @@
     <viewmodel:NhanVienViewModel x:Key="NhanVienVM"></viewmodel:NhanVienViewModel>
     <viewmodel:ThemNhanVienViewModel x:Key="ThemNhanVienVM"></viewmodel:ThemNhanVienViewModel>
     <viewmodel:ChiTietNhanVienViewModel x:Key="ChiTietNhanVienVM"></viewmodel:ChiTietNhanVienViewModel>
+    <viewmodel:ChiTietHoaDonViewModel x:Key="ChiTietHoaDonVM"></viewmodel:ChiTietHoaDonViewModel>
     <viewmodel:CaiDatViewModel x:Key="CaiDatVM"></viewmodel:CaiDatViewModel>
+    <viewmodel:ThanhToanViewModel x:Key="ThanhToanVM"></viewmodel:ThanhToanViewModel>
+    <viewmodel:AddHoaDonViewModel x:Key="AddHoaDonVM"></viewmodel:AddHoaDonViewModel>
     <viewmodel:TaoTaiKhoanViewModel x:Key="TaoTaiKhoanVM"></viewmodel:TaoTaiKhoanViewModel>
     <viewmodel:AddGiamGiaViewModel x:Key="AddGiamGiaVM"></viewmodel:AddGiamGiaViewModel>
     <viewmodel:GiamGiaViewModel x:Key="GiamGiaVM"></viewmodel:GiamGiaViewModel>

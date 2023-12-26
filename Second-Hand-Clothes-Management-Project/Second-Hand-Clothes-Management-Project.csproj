@@ -123,9 +123,11 @@
     <Compile Include="Model\SANPHAM.cs" />
     <Compile Include="Model\sysdiagram.cs" />
     <Compile Include="ViewModel\AddGiamGiaViewModel.cs" />
+    <Compile Include="ViewModel\AddHoaDonViewModel.cs" />
     <Compile Include="ViewModel\AddNhapKhoViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CaiDatViewModel.cs" />
+    <Compile Include="ViewModel\ChiTietHoaDonViewModel.cs" />
     <Compile Include="ViewModel\ChiTietNhanVienViewModel.cs" />
     <Compile Include="ViewModel\ChiTietSanPhamViewModel.cs" />
     <Compile Include="ViewModel\GiamGiaViewModel.cs" />
@@ -136,17 +138,24 @@
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\SanPhamViewModel.cs" />
     <Compile Include="ViewModel\TaoTaiKhoanViewModel.cs" />
+    <Compile Include="ViewModel\ThanhToanViewModel.cs" />
     <Compile Include="ViewModel\ThemNhanVienViewModel.cs" />
     <Compile Include="ViewModel\ThemSanPhamViewModel.cs" />
     <Compile Include="ViewModel\ThongKeViewModel.cs" />
     <Compile Include="View\AddGiamGiaView.xaml.cs">
       <DependentUpon>AddGiamGiaView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AddHoaDon.xaml.cs">
+      <DependentUpon>AddHoaDon.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddNhapKhoView.xaml.cs">
       <DependentUpon>AddNhapKhoView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CaiDatView.xaml.cs">
       <DependentUpon>CaiDatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChiTietHoaDonView.xaml.cs">
+      <DependentUpon>ChiTietHoaDonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ChiTietNhanVien.xaml.cs">
       <DependentUpon>ChiTietNhanVien.xaml</DependentUpon>
@@ -174,6 +183,9 @@
     </Compile>
     <Compile Include="View\TaoTaiKhoanView.xaml.cs">
       <DependentUpon>TaoTaiKhoanView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ThanhToanView.xaml.cs">
+      <DependentUpon>ThanhToanView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ThemNhanVienView.xaml.cs">
       <DependentUpon>ThemNhanVienView.xaml</DependentUpon>
@@ -208,11 +220,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddHoaDon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AddNhapKhoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CaiDatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChiTietHoaDonView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -249,6 +269,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\TaoTaiKhoanView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ThanhToanView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
