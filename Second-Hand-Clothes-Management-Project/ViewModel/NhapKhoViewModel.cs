@@ -15,7 +15,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
     public class NhapKhoViewModel : BaseViewModel
     {
         private ObservableCollection<NHAP> _listSP;
-        public ObservableCollection<NHAP> listSP { get => _listSP; set { _listSP = value; /*OnPropertyChanged();*/ } }
+        public ObservableCollection<NHAP> listSP { get => _listSP; set { _listSP = value; OnPropertyChanged();} }
 
         public ICommand SearchCommand { get; set; }
         public ICommand AddCommand { get; set; }
@@ -34,7 +34,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         void _LoadCsCommand(NhapKhoView parameter)
         {
             listSP = new ObservableCollection<NHAP>(DataProvider.Ins.DB.NHAPs);
-            _DeleteCommand(parameter);
+            
             _AddCommand(parameter);
             _SearchCommand(parameter);
         }
@@ -65,21 +65,22 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             MainViewModel.MainFrame.Content = addNhapKhoView;
         }
 
-        void _DeleteCommand(object selectedItem)
+        void _DeleteCommand(NHAP selectedItem)
         {
-            if (selectedItem is NHAP selectedNhap)
-            {
-                if (selectedNhap != null)
+          
+                if (selectedItem != null)
                 {
                     // Xóa mục được chọn khỏi danh sách
-                    listSP.Remove(selectedNhap);
+                    listSP.Remove(selectedItem);
                     // Remove the item from the database
-                    DataProvider.Ins.DB.NHAPs.Remove(selectedNhap);
+                    DataProvider.Ins.DB.NHAPs.Remove(selectedItem);
 
                     // Save changes to the database
                     DataProvider.Ins.DB.SaveChanges();
+
+                   
                 }
-            }
+            
         }
 
 

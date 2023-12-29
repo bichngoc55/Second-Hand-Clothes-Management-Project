@@ -67,7 +67,7 @@
                             <!-- Nút Delete -->
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <Border CornerRadius="5" Background="Transparent" Width="150">
-                                    <Button BorderBrush="Transparent" Background="#986639" Height="50" Width="120" Content="Delete" HorizontalAlignment="Right" Margin="0 0 10 0 ">
+                                    <Button Click="DeleteButton_Click" BorderBrush="Transparent" Background="#986639" Height="50" Width="120" Content="Delete" HorizontalAlignment="Right" Margin="0 0 10 0 ">
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <i:InvokeCommandAction CommandParameter="{Binding SelectedItem, ElementName=ListViewNK}" Command="{Binding DeleteCommand}" />

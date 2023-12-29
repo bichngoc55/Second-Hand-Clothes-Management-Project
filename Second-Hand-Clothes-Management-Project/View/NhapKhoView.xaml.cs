@@ -15,6 +15,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Xamarin.Forms;
+using Page = System.Windows.Controls.Page;
+using SelectionChangedEventArgs = System.Windows.Controls.SelectionChangedEventArgs;
 
 namespace Second_Hand_Clothes_Management_Project.View
 {
@@ -27,6 +30,35 @@ namespace Second_Hand_Clothes_Management_Project.View
         {
             InitializeComponent();
             Loaded += NhapKhoView_Loaded;
+        }
+
+        private void ListViewNK_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+            {
+                // Assuming NHAP is the type of your items in the ListViewNK
+                var selectedNhapKho = e.AddedItems[0] as NHAP;
+
+            }
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is NhapKhoViewModel viewModel)
+            {
+                // Lấy đối tượng NHAP từ ListViewNK
+                var selectedNhapKho = ListViewNK.SelectedItem as NHAP;
+
+                // Kiểm tra xem selectedNhapKho có tồn tại không
+                if (selectedNhapKho != null)
+                {
+                    // Gọi hàm xóa từ ViewModel và truyền đối tượng cần xóa
+                    viewModel.DeleteCommand.Execute(selectedNhapKho);
+
+                    // Update the ListViewNK's item source if needed
+                    ListViewNK.ItemsSource = new ObservableCollection<NHAP>(DataProvider.Ins.DB.NHAPs);
+                }
+            }
         }
 
         private void NhapKhoView_Loaded(object sender, RoutedEventArgs e)
