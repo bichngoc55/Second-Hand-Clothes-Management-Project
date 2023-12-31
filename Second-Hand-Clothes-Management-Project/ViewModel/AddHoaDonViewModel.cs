@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
+using System.Windows.Documents;
 
 namespace Second_Hand_Clothes_Management_Project.ViewModel
 {
@@ -16,6 +17,11 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
     {
         private List<SANPHAM> _LSP;
         public List<SANPHAM> LSP { get => _LSP; set { _LSP = value; OnPropertyChanged(); } }
+        private List<GIAMGIA> _LVC;
+        public List<GIAMGIA> LVC { get => _LVC; set { _LVC = value; OnPropertyChanged(); } }
+        private ObservableCollection<GIAMGIA> _listVoucher;
+        public ObservableCollection<GIAMGIA> listVoucher { get => _listVoucher; set { _listVoucher = value; } }
+       
 
         private List<KHACHHANG> _LKH;
         public List<KHACHHANG> LKH { get => _LKH; set { _LKH = value; OnPropertyChanged(); } }
@@ -25,12 +31,16 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public ObservableCollection<SANPHAM> LSPSelected { get => _LSPSelected; set { _LSPSelected = value; OnPropertyChanged(); } }
         private ObservableCollection<CTHD> _LCTHD;
         public ObservableCollection<CTHD> LCTHD { get => _LCTHD; set { _LCTHD = value; OnPropertyChanged(); } }
+
+     
         public ICommand Loadwd { get; set; }
         public ICommand AddSP { get; set; }
         public ICommand DeleteSP { get; set; }
 
         public ICommand SavePN { get; set; }
         public ICommand Choose { get; set; }
+        public ICommand ChooseKH { get; set; }
+        public ICommand ChooseVC { get; set; }
         public int tongtien { get; set; }
         public AddHoaDonViewModel()
         {
@@ -39,6 +49,8 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             LHT = new ObservableCollection<Display>();
             LCTHD = new ObservableCollection<CTHD>();
             Choose = new RelayCommand<AddHoaDon>((p) => true, (p) => _Choose(p));
+            ChooseKH = new RelayCommand<AddHoaDon>((p) => true, (p) => _ChooseKH(p));
+            ChooseVC = new RelayCommand<AddHoaDon>((p) => true, (p) => _ChooseVC(p));
             Loadwd = new RelayCommand<AddHoaDon>((p) => true, (p) => _Loadwd(p));
             AddSP = new RelayCommand<AddHoaDon>((p) => true, (p) => _AddSP(p));
             DeleteSP = new RelayCommand<AddHoaDon>((p) => true, (p) => _DeleteSP(p));
@@ -121,17 +133,29 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             LCTHD.Add(CTHD);
             LHT.Add(b);
         There:
-            tongtien += int.Parse(paramater.SL.Text) * (int)(a.GIA);
+            tongtien += int.Parse(paramater.SL.Text) * (int)(a.GIA) ;
             paramater.ListViewSP.ItemsSource = LHT;
             paramater.ListViewSP.Items.Refresh();
             paramater.SP.ItemsSource = LSP;
             paramater.SP.Items.Refresh();
             paramater.SP.SelectedItem = null;
             paramater.SL.Text = "";
-            paramater.Voucher.Text = "Giảm giá " + paramater.KM.Text + "%";
-            int tiensaukhigiam;
-            tiensaukhigiam = tongtien - tongtien * int.Parse(paramater.KM.Text) / 100;
-            paramater.TT.Text = "Thành tiền " + tiensaukhigiam.ToString("#,### VNĐ");
+           
+            int tiensaukhigiam,phantram=0;
+            int tiendagiam = 0;
+            string voucherText = paramater.voucherperc.Text;
+
+            string numericPart = new string(voucherText.Where(char.IsDigit).ToArray());
+
+            // Chuyển đổi sang kiểu int
+            if (int.TryParse(numericPart, out phantram))
+            {
+                tiendagiam = tongtien * phantram/100;
+            }
+            tiensaukhigiam = tongtien - tiendagiam;
+            paramater.discountmoney.Text = "Tiền đã giảm: " + tiendagiam.ToString("#,### VNĐ");
+            paramater.summoney.Text = "Thành tiền " + tiensaukhigiam.ToString("#,### VNĐ");
+            tiendagiam = tiensaukhigiam = phantram = 0;
 
         }
         void _DeleteSP(AddHoaDon paramater)
@@ -145,8 +169,27 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             if (h == MessageBoxResult.Yes)
             {
                 Display a = (Display)paramater.ListViewSP.SelectedItem;
-                tongtien = 0;
-                paramater.TT.Text = String.Format("{0:0,0}", tongtien) + " VND";
+
+                int tiensaukhigiam, phantram = 0;
+                int tiendagiam = 0;
+                string voucherText = paramater.voucherperc.Text;
+
+                string numericPart = new string(voucherText.Where(char.IsDigit).ToArray());
+
+                // Chuyển đổi sang kiểu int
+                if (int.TryParse(numericPart, out phantram))
+                {
+                    tiendagiam = tongtien * phantram / 100;
+                }
+                tiensaukhigiam = tongtien - tiendagiam;
+                int tiengiamsauxoa = 0;
+                int tientongsauxoa = 0;
+                tiengiamsauxoa = tiendagiam - a.Dongia*a.SL*phantram/100;
+                tientongsauxoa = tongtien -a.Dongia*a.SL - tiengiamsauxoa;
+                tongtien-= a.Dongia*a.SL;
+                paramater.discountmoney.Text = "Tiền đã giảm: " + tiengiamsauxoa.ToString("#,### VNĐ");
+                paramater.summoney.Text = "Thành tiền " + tientongsauxoa.ToString("#,### VNĐ");
+               
                 LHT.Remove(a);
                 foreach (SANPHAM b in LSPSelected)
                 {
@@ -180,28 +223,57 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             MessageBoxResult h = System.Windows.MessageBox.Show("Xác nhận nhập hàng?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             if (h == MessageBoxResult.Yes)
             {
-
-                HOADON temp = new HOADON()
+                if (paramater.cbxKH.SelectedItem is KHACHHANG selectedKH)
                 {
-                    SOHD = paramater.SoHD.Text,
-                    TRIGIA = tongtien,
-                    MAKH = paramater.MaKH.Text,
-                    MAND = Const.ND.MAND,
-                    NGAYBAN = DateTime.Now,
-                    CTHDs = new ObservableCollection<CTHD>(LCTHD),
-                };
+                    string tempMAKH = selectedKH.MAKH;
+                 
 
-                foreach (CTHD s in LCTHD)
-                {
-                    foreach (SANPHAM x in DataProvider.Ins.DB.SANPHAMs)
+                    HOADON temp = new HOADON()
                     {
-                        if (x.MASP == s.SANPHAM.MASP)
+                        SOHD = paramater.SoHD.Text,
+                        //TRIGIA = tongtien,
+                        MAKH = tempMAKH,
+                        MAND = Const.ND.MAND,
+                        NGAYBAN = DateTime.Now,
+                        MAGIAMGIA=paramater.Voucher.Text,
+                        CTHDs = new ObservableCollection<CTHD>(LCTHD),
+                    };
+
+                    ThanhToanView thanhToanView = new ThanhToanView();
+
+                    GIAMGIA c = null;
+                    listVoucher = new ObservableCollection<GIAMGIA>(DataProvider.Ins.DB.GIAMGIAs);
+                    foreach (GIAMGIA b in listVoucher)
+                    {
+                        if (temp.MAGIAMGIA == b.MAGIAMGIA)
                         {
-                            x.SL += s.SL;
+                            c = b;
+                            break;
                         }
                     }
+                    string voucherText = c.PHANTRAM;
+
+                    string numericPart = new string(voucherText.Where(char.IsDigit).ToArray());
+                    int phantram;
+
+                    // Chuyển đổi sang kiểu int
+                    if (int.TryParse(numericPart, out phantram))
+                    {
+                        tongtien = tongtien * (100 - phantram) / 100;
+                    }
+                    temp.TRIGIA = tongtien;
+                    foreach (CTHD s in LCTHD)
+                    {
+                        foreach (SANPHAM x in DataProvider.Ins.DB.SANPHAMs)
+                        {
+                            if (x.MASP == s.SANPHAM.MASP)
+                            {
+                                x.SL += s.SL;
+                            }
+                        }
+                    }
+                    DataProvider.Ins.DB.HOADONs.Add(temp);
                 }
-                DataProvider.Ins.DB.HOADONs.Add(temp);
                 DataProvider.Ins.DB.SaveChanges();
                 System.Windows.MessageBox.Show("Nhập hàng thành công", "THÔNG BÁO");
                 LHT = new ObservableCollection<Display>();
@@ -216,6 +288,41 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             }
             else
                 return;
+        }
+
+        void _ChooseKH(AddHoaDon parameter)
+        {
+            //KHACHHANG temp = (KHACHHANG)parameter.cbxKH.SelectedItem;
+            //if (temp != null)
+            //{
+            //    int doanhso = 0;
+            //    foreach (HOADON a in DataProvider.Ins.DB.HOADONs)
+            //    {
+            //        if (a.MAKH == temp.MAKH)
+            //            doanhso += a.TRIGIA;
+            //    }
+            //}
+        }
+
+        void _ChooseVC(AddHoaDon parameter)
+        {
+            GIAMGIA temp=null ;
+            listVoucher = new ObservableCollection<GIAMGIA>(DataProvider.Ins.DB.GIAMGIAs);
+            foreach (GIAMGIA p in listVoucher)
+            {
+                if (parameter.Voucher.SelectedItem == p.MAGIAMGIA.ToString())
+                {
+                    temp= p;
+                    break;
+                }
+               
+            }
+           
+            if (temp != null)
+            {
+                parameter.voucherperc.Text = "Voucher: "+ temp.PHANTRAM;
+               
+            }
         }
 
     }

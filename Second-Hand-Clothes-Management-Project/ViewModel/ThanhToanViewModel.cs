@@ -36,6 +36,14 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
     {
         private ObservableCollection<HOADON> _listHD;
         public ObservableCollection<HOADON> listHD { get => _listHD; set { _listHD = value; /*OnPropertyChanged();*/ } }
+
+
+        private ObservableCollection<GIAMGIA> _listVoucher;
+        public ObservableCollection<GIAMGIA> listVoucher { get => _listVoucher; set { _listVoucher = value; } }
+
+
+        private ObservableCollection<string> _listVC;
+        public ObservableCollection<string> listVC { get => _listVC; set { _listVC = value; OnPropertyChanged(); } }
         private object _selectedItem;
         public object SelectedItem
         {
@@ -152,15 +160,36 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             HOADON temp = (HOADON)p.ListViewProduct.SelectedItem;
             detailImport.MaND.Text = temp.NGUOIDUNG.MAND;
             detailImport.TenND.Text = temp.NGUOIDUNG.TENND;
-            detailImport.KM.Text = addHoaDon.KM.Text;
+            detailImport.MaKH.Text = temp.MAKH;
             detailImport.Ngay.Text = temp.NGAYBAN.ToString("dd/MM/yyyy hh:mm tt");
             detailImport.SoHD.Text = temp.SOHD.ToString();
+            detailImport.KM.Text=temp.MAGIAMGIA;
             List<Display> list = new List<Display>();
             int tong = 0;
             foreach (CTHD a in temp.CTHDs)
             {
-                list.Add(new Display(a.MASP, a.SANPHAM.TENSP, a.SANPHAM.SIZE, (int)((float)a.SANPHAM.GIA * 5 / 6), a.SL, (int)((float)(a.SL * a.SANPHAM.GIA) * 5 / 6)));
-                tong += (int)((float)(a.SL * a.SANPHAM.GIA) * 5 / 6);
+                list.Add(new Display(a.MASP, a.SANPHAM.TENSP, a.SANPHAM.SIZE, (int)((float)a.SANPHAM.GIA), a.SL, (int)((float)(a.SL * a.SANPHAM.GIA) )));
+                tong += (int)((float)(a.SL * a.SANPHAM.GIA));
+            }
+            GIAMGIA c = null;
+            listVoucher = new ObservableCollection<GIAMGIA>(DataProvider.Ins.DB.GIAMGIAs);
+            foreach (GIAMGIA b in listVoucher)
+            {
+                if (temp.MAGIAMGIA == b.MAGIAMGIA)
+                {
+                    c=b;
+                    break;
+                }
+            }
+            string voucherText = c.PHANTRAM;
+
+            string numericPart = new string(voucherText.Where(char.IsDigit).ToArray());
+            int phantram ;
+
+            // Chuyển đổi sang kiểu int
+            if (int.TryParse(numericPart, out phantram))
+            {
+                tong = tong * (100-phantram) / 100;
             }
             detailImport.thanhtien.Text = String.Format("Thành tiền " + "{0:0,0}", tong) + " VND";
             detailImport.ListViewSP.ItemsSource = list;
@@ -174,6 +203,14 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         {
 
             AddHoaDon addHoaDonView = new AddHoaDon();
+            listVoucher = new ObservableCollection<GIAMGIA>(DataProvider.Ins.DB.GIAMGIAs);
+            listVC = new ObservableCollection<string> { };
+            foreach (GIAMGIA p in listVoucher)
+            {
+                listVC.Add(p.MAGIAMGIA.ToString());
+            }
+            listVC.Add("NULL");
+            addHoaDonView.Voucher.ItemsSource = listVC;
             MainViewModel.MainFrame.Content = addHoaDonView;
         }
     }

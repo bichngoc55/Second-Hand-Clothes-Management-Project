@@ -46,7 +46,7 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="220"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="120"/>
+                <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <StackPanel 
@@ -76,7 +76,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
+                <Grid Grid.Column="0" Height="230">
                     <Border
                      Margin="10,0,0,0"
                      Background="#E0D3BE"
@@ -139,7 +139,7 @@
              materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
              materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
              IsEnabled="False"
-             materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
 
                                     </DockPanel>
                                 </Border>
@@ -168,98 +168,78 @@
             IsEnabled="False"
             materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                                         <TextBox
-            Text="|"
-            HorizontalAlignment="Left"
-            FontFamily="Roboto Mono"
-            BorderThickness="0"
-            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-            materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-            IsEnabled="False"
-            materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                        Text="|"
+                                        HorizontalAlignment="Left"
+                                        FontFamily="Roboto Mono"
+                                        BorderThickness="0"
+                                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                        materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                                        IsEnabled="False"
+                                        materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                                         <TextBox
-            x:Name="TenND"
-            HorizontalAlignment="Left"
-            FontFamily="Roboto Mono"
-            BorderThickness="0"
-            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-            materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-            IsEnabled="False"
-            materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                        x:Name="TenND"
+                                        HorizontalAlignment="Left"
+                                        FontFamily="Roboto Mono"
+                                        BorderThickness="0"
+                                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                        materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                                        IsEnabled="False"
+                                        materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
-                            <StackPanel Margin="0 10 0 0" Orientation="Horizontal">
-
-                                <TextBlock
-Margin="8,0,0,0"
-Text="Mã KH"
-FontFamily="Roboto Mono"
-       VerticalAlignment="Center"
-       FontWeight="Bold"
-/>
-
-
-                                <Border Margin="40 0 0 0" Width="210" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                    <StackPanel Margin="15 0 0 0" Orientation="Horizontal">
-                                        <TextBox
-       x:Name="MaKH"
-       FontFamily="Roboto Mono"
-       BorderThickness="0"
-       materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-       materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-       
-       materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0" Width="202">
-
-                                        </TextBox>
-
-                                    </StackPanel>
-                                </Border>
-                            </StackPanel>
-
-                            <!--<StackPanel Margin="0 10 0 0" Orientation="Horizontal">
-                                <TextBlock
-     Margin="8,0,10,0"
-     Text="Mã KH | Tên"
-                                    VerticalAlignment="Center"
-                                    
-     FontFamily="Roboto Mono"
-        FontWeight="Bold"
- />
-                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
+                            <StackPanel Margin="0,10,0,0">
+                                <StackPanel Orientation="Horizontal" >
+                                    <TextBlock
+                                    Margin="8,0,0,0"
+                                    Text="MÃ KH"
+                                     FontWeight="Bold"
+                                    FontFamily="Roboto Mono "
+                                    />
+                                    <TextBlock
+Margin="2,0,0,0"
+                                    Text="|"
+                                    FontFamily="Roboto Mono "
+                                    />
+                                    <TextBlock
+                                    Margin="2,0,0,0"
+                                    Text="HỌ TÊN KHÁCH HÀNG"
+                                        FontWeight="Bold"
+                                    FontFamily="Roboto Mono "
+                                    />
+                                </StackPanel>
+                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0,5,0,0">
                                     <ComboBox
-         Margin="5,0,0,0" Width="200"
-         x:Name="MaKH"
-                                        VerticalAlignment="Center"
-         FontFamily="Roboto Mono"
-         BorderThickness="0"
-         materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-         ItemsSource="{Binding LKH}"
-         >
+                                      
+                                        Margin="13,0,0,0"
+                                        x:Name="cbxKH"
+                                        FontFamily="Roboto Mono "
+                                        BorderThickness="0"
+                                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                        ItemsSource="{Binding LKH}"
+                                        >
                                         <ComboBox.ItemTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
                                                     <TextBlock Text="{Binding MAKH}"/>
-                                                    -->
-                            <!--<TextBlock
-                         Text="|"
-                         Margin="4,0,4,0"
-                         />
-                                                    
+                                                    <TextBlock
+                                                        Text="|"
+                                                        Margin="4,0,4,0"
+                                                        />
                                                     <TextBlock 
-                         Text="{Binding TENKH}"/>-->
-                            <!--
+                                                        Text="{Binding TENKH}"/>
                                                 </StackPanel>
                                             </DataTemplate>
                                         </ComboBox.ItemTemplate>
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="SelectionChanged">
-                                                <i:InvokeCommandAction Command="{Binding Choose}"
-CommandParameter="{Binding ElementName=AddHoaDonwd}"></i:InvokeCommandAction>
+                                                <i:InvokeCommandAction Command="{Binding chooseKH}"
+                                                       CommandParameter="{Binding ElementName=AddHoaDonwd}"></i:InvokeCommandAction>
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
                                     </ComboBox>
                                 </Border>
-                            </StackPanel>-->
+                            </StackPanel>
                         </StackPanel>
                     </Border>
                 </Grid>
@@ -271,7 +251,7 @@ CommandParameter="{Binding ElementName=AddHoaDonwd}"></i:InvokeCommandAction>
                      >
                         <StackPanel
                          Margin="10"
-                         >
+>
                             <TextBlock
                              Margin="0,5,0,5"
                              Text="CHI TIẾT HÓA ĐƠN"
@@ -370,30 +350,49 @@ FontFamily="Roboto Mono"
                                          BorderThickness="0"
                                          materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                          materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                         materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0" Width="60"/>
+                                         materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"  Width="60"/>
                                     </Border>
                                 </StackPanel>
-                                <StackPanel
-                                  Orientation="Horizontal"
-                                 >
-                                    <TextBlock
-                                     Margin="10,0,10,0"
-                                     Text="KHUYẾN MÃI"
-                                        FontWeight="Bold"
-                                     FontFamily="Roboto Mono" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                 />
-                                    <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10"
-                                         Margin="5">
-                                        <TextBox
-                                         x:Name="KM" 
-                                         HorizontalAlignment="Left"
-                                         FontFamily="Roboto Mono"
-                                         BorderThickness="0"
-                                         materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                         materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                         materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0" Width="60"/>
-                                    </Border>
+                                <StackPanel VerticalAlignment="Center" Margin="10,0,0,0">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <StackPanel Orientation="Horizontal" >
+                                            <TextBlock VerticalAlignment="Center"
+                                    Margin="0,0,5,0"
+                                    Text="GIẢM GIÁ"
+                                                       FontWeight="Bold"
+                                    FontFamily="Roboto Mono "
+                                    />
+
+                                        </StackPanel>
+                                        <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Width="95" Margin="0,0,0,0">
+                                            <ComboBox
+                                                 x:Name="Voucher"
+                                                 Width="85"
+                                                 Height="25"
+                                                 Background="Transparent"
+                                                 materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                                                    BorderThickness="0"
+                                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                                  Margin="0,0,1,0"
+                                                    >
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="{Binding}"/>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="SelectionChanged">
+                                                        <i:InvokeCommandAction Command="{Binding ChooseVC}"
+               CommandParameter="{Binding ElementName=AddHoaDonwd}"></i:InvokeCommandAction>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </ComboBox>
+                                        </Border>
+                                    </StackPanel>
                                 </StackPanel>
+
                             </StackPanel>
                             <StackPanel
                              Width="270"
@@ -459,7 +458,7 @@ FontFamily="Roboto Mono"
                             <Grid Grid.Column="1">
                                 <TextBlock
                      Margin="32,10,0,0"
-                     HorizontalAlignment="Left"
+HorizontalAlignment="Left"
                      Text="TÊN SP"
                      VerticalAlignment="Top"
                      FontFamily="Roboto Mono"
@@ -499,7 +498,7 @@ FontFamily="Roboto Mono"
                     </Border>
                     <ListView x:Name="ListViewSP" 
            SelectionMode="Single"
-           ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="220" Width="680" d:ItemsSource="{d:SampleData ItemCount=5}"
+           ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="150" Width="680" d:ItemsSource="{d:SampleData ItemCount=5}"
          >
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -582,33 +581,42 @@ FontFamily="Roboto Mono"
             </Grid>
             <Grid Grid.Row="4">
 
-                <StackPanel HorizontalAlignment="Right">
-                    <WrapPanel>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="2" HorizontalAlignment="Right">
+                    <StackPanel>
                         <TextBlock
-                            x:Name="Voucher"
-                         FontFamily="Roboto Family"
-                            VerticalAlignment="Center"
-                            Text="Giảm giá"/>
-
-                    </WrapPanel>
-                    <WrapPanel>
+                     Foreground="Black"
+                     Text="Voucher: "
+                     FontFamily="Roboto Mono"
+                     FontSize="16"
+                            x:Name="voucherperc"
+                     />
                         <TextBlock
-       FontFamily="Roboto Family"
-                            x:Name="Giasaukhigiam"
-          VerticalAlignment="Center"
-          Text="Giá sau khi giảm"/>
-                    </WrapPanel>
-                    <WrapPanel>
+                     Foreground="Black"
+                     Text="Số tiền đã giảm: "
+                     FontFamily="Roboto Mono"
+                     FontSize="16"
+                            x:Name="discountmoney"
+                     />
                         <TextBlock
-       FontFamily="Roboto Family"
-          VerticalAlignment="Center"
-                            x:Name="TT"
-          Text="Thành tiền"/>
-
-                    </WrapPanel>
+                        Foreground="Black"
+                        Text="Thành tiền: "
+                        FontFamily="Roboto Mono"
+                        FontSize="16"
+                            x:Name="summoney"
+                        />
+                    </StackPanel>
+                </Grid>
+               
+                <Grid Grid.Column="4">
                     <DockPanel HorizontalAlignment="Right">
                         <Border CornerRadius="5" Background="Transparent" Width="150" >
-                            <Button BorderBrush="Transparent" Background="#986639" Height="30" Width="150" Content="THANH TOÁN" HorizontalAlignment="Right" Margin="0,10,5,0">
+                            <Button BorderBrush="Transparent" Background="#986639" Height="30" Width="150" Content="THANH TOÁN" HorizontalAlignment="Right" Margin="0,50,5,0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction     
@@ -621,9 +629,7 @@ FontFamily="Roboto Mono"
                     </DockPanel>
 
 
-                </StackPanel>
-
-
+                </Grid>
 
             </Grid>
         </Grid>

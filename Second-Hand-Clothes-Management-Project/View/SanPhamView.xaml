@@ -177,7 +177,7 @@
                         SelectionMode="Single"
                         ScrollViewer.CanContentScroll="False"
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                        ScrollViewer.VerticalScrollBarVisibility="Hidden" Grid.ColumnSpan="2">
+                        ScrollViewer.VerticalScrollBarVisibility="Hidden" Grid.ColumnSpan="2" d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Border
