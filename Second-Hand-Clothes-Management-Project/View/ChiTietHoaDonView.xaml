@@ -175,6 +175,7 @@ materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
      />
                                     <Border Margin="14 0 15 0" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
                                         <TextBox
+                                            IsEnabled="False"
              x:Name="KM"
              HorizontalAlignment="Left"
              FontFamily="Roboto Mono"
@@ -371,8 +372,11 @@ materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                         <TextBlock
        FontFamily="Roboto Family"
           VerticalAlignment="Center"
+                            Margin="0 0 50 0"
                             x:Name="thanhtien"
-          Text="Thành tiền"/>
+                            
+                            FontSize="16"
+          Text="Thành tiền: "/>
 
                     </WrapPanel>
 

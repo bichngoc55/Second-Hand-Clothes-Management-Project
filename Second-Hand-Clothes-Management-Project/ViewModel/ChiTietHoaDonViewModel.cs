@@ -16,15 +16,24 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public ICommand Loadwd { get; set; }
         public ICommand Back { get; set; }
         public ICommand Delete { get; set; }
+        
         public ChiTietHoaDonViewModel()
         {
             Back = new RelayCommand<ChiTietHoaDonView>((p) => true, (p) => _Back(p));
             Delete = new RelayCommand<ChiTietHoaDonView>((p) => true, (p) => _Delete(p));
+            Loadwd = new RelayCommand<ThanhToanView>((p) => true, (p) => _Loadwd(p));
         }
         void _Back(ChiTietHoaDonView p)
         {
             ThanhToanView importView = new ThanhToanView();
             MainViewModel.MainFrame.Content = importView;
+        }
+
+        void _Loadwd(ThanhToanView p)
+        {
+            AddHoaDon addHoaDon = new AddHoaDon();
+            ChiTietHoaDonView detailImport = new ChiTietHoaDonView();
+            detailImport.KM.Text = addHoaDon.Voucher.SelectedItem.ToString();
         }
         void _Delete(ChiTietHoaDonView parameter)
         {
