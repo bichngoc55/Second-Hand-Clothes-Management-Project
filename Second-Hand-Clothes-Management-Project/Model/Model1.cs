@@ -53,6 +53,10 @@ namespace Second_Hand_Clothes_Management_Project.Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<HOADON>()
+                .Property(e => e.MAGIAMGIA)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<HOADON>()
                 .HasMany(e => e.CTHDs)
                 .WithRequired(e => e.HOADON)
                 .WillCascadeOnDelete(false);
@@ -150,11 +154,12 @@ namespace Second_Hand_Clothes_Management_Project.Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<SANPHAM>()
-                .Property(e => e.MAGIAMGIA)
-                .IsUnicode(false);
+                .HasMany(e => e.CTHDs)
+                .WithRequired(e => e.SANPHAM)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SANPHAM>()
-                .HasMany(e => e.CTHDs)
+                .HasMany(e => e.NHAPs)
                 .WithRequired(e => e.SANPHAM)
                 .WillCascadeOnDelete(false);
         }

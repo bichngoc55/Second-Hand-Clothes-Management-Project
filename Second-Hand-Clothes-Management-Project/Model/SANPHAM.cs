@@ -13,6 +13,7 @@ namespace Second_Hand_Clothes_Management_Project.Model
         public SANPHAM()
         {
             CTHDs = new HashSet<CTHD>();
+            NHAPs = new HashSet<NHAP>();
         }
 
         [Key]
@@ -38,12 +39,10 @@ namespace Second_Hand_Clothes_Management_Project.Model
 
         public string HINHSP { get; set; }
 
-        [StringLength(20)]
-        public string MAGIAMGIA { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHD> CTHDs { get; set; }
 
-        public virtual GIAMGIA GIAMGIA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NHAP> NHAPs { get; set; }
     }
 }

@@ -166,14 +166,6 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             detailProduct.SLSP.Text = "Số lượng: " + SL;
             detailProduct.kichco.ItemsSource = new ObservableCollection<SANPHAM>(listSP1.Where(p => p.TENSP == temp.TENSP && p.SL >= 0));
             detailProduct.Mota.Text = temp.MOTA;
-            if(temp.MAGIAMGIA == null)
-            {
-                detailProduct.VoucherSP.Text = "None";
-            }
-            else
-            {
-                detailProduct.VoucherSP.Text = temp.MAGIAMGIA;
-            }
             Uri fileUri = new Uri(temp.HINHSP, UriKind.Relative);
             detailProduct.HinhAnh.Source = new BitmapImage(fileUri);
             listSP1 = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL > 0));
@@ -218,7 +210,6 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             {
                 listVC.Add(p.MAGIAMGIA.ToString());
             }
-            listVC.Add("NULL");
             themSanPhamView.Voucher.ItemsSource= listVC;
             themSanPhamView.ShowDialog();
         }
