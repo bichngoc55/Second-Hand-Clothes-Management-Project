@@ -221,7 +221,8 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             {
                 listVC.Add(p.MAGIAMGIA.ToString());
             }
-            themSanPhamView.Voucher.ItemsSource= listVC;
+            listVC.Add("NULL");
+            //themSanPhamView.Voucher.ItemsSource= listVC;
             themSanPhamView.ShowDialog();
         }
     }
