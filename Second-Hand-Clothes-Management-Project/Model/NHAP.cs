@@ -32,5 +32,7 @@ namespace Second_Hand_Clothes_Management_Project.Model
         public virtual KHO KHO { get; set; }
 
         public virtual NHACUNGCAP NHACUNGCAP { get; set; }
+
+        public virtual SANPHAM SANPHAM { get; set; }
     }
 }

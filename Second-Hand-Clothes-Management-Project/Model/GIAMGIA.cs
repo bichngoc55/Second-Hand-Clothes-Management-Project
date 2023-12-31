@@ -12,7 +12,7 @@ namespace Second_Hand_Clothes_Management_Project.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public GIAMGIA()
         {
-            SANPHAMs = new HashSet<SANPHAM>();
+            HOADONs = new HashSet<HOADON>();
         }
 
         [Key]
@@ -29,6 +29,6 @@ namespace Second_Hand_Clothes_Management_Project.Model
         public DateTime? NGKT { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SANPHAM> SANPHAMs { get; set; }
+        public virtual ICollection<HOADON> HOADONs { get; set; }
     }
 }

@@ -30,8 +30,13 @@ namespace Second_Hand_Clothes_Management_Project.Model
 
         public int TRIGIA { get; set; }
 
+        [StringLength(20)]
+        public string MAGIAMGIA { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHD> CTHDs { get; set; }
+
+        public virtual GIAMGIA GIAMGIA { get; set; }
 
         public virtual KHACHHANG KHACHHANG { get; set; }
 

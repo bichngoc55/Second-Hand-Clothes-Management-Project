@@ -8,7 +8,7 @@ namespace Second_Hand_Clothes_Management_Project.Model
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=QLBHEntities")
+            : base("name=Model1")
         {
         }
 
@@ -50,6 +50,10 @@ namespace Second_Hand_Clothes_Management_Project.Model
 
             modelBuilder.Entity<HOADON>()
                 .Property(e => e.MAKH)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<HOADON>()
+                .Property(e => e.MAGIAMGIA)
                 .IsUnicode(false);
 
             modelBuilder.Entity<HOADON>()
@@ -150,11 +154,12 @@ namespace Second_Hand_Clothes_Management_Project.Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<SANPHAM>()
-                .Property(e => e.MAGIAMGIA)
-                .IsUnicode(false);
+                .HasMany(e => e.CTHDs)
+                .WithRequired(e => e.SANPHAM)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SANPHAM>()
-                .HasMany(e => e.CTHDs)
+                .HasMany(e => e.NHAPs)
                 .WithRequired(e => e.SANPHAM)
                 .WillCascadeOnDelete(false);
         }
