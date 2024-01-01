@@ -118,7 +118,10 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                         a.MASP = paramater.MaSp.Text;
                         a.TENSP = paramater.TenSp.Text;
                         a.SIZE = paramater.SizeSp.Text;
-                        if(paramater.Voucher.Text != "NULL")
+
+
+                        //if(paramater.Voucher.Text != "NULL")
+
                             //a.MAGIAMGIA = paramater.Voucher.Text;
                         try
                         {

@@ -106,14 +106,32 @@ FontFamily="Roboto Mono"
                                 <Border Margin="16 0 0 0"  Width="570" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
                                     <DockPanel HorizontalAlignment="Left" Margin="15 0 0 0">
                                         <TextBox
-        x:Name="MaKH" 
+                                            x:Name="MaKH" 
         
-        FontFamily="Roboto Mono"
-        BorderThickness="0"
-        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-        materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-        IsEnabled="False"
-        materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                            FontFamily="Roboto Mono"
+                                            BorderThickness="0"
+                                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                            materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                                            IsEnabled="False"
+                                            materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                        <TextBox
+Text="|"
+HorizontalAlignment="Left"
+FontFamily="Roboto Mono"
+BorderThickness="0"
+materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+IsEnabled="False"
+materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                        <TextBox
+x:Name="TenKH"
+HorizontalAlignment="Left"
+FontFamily="Roboto Mono"
+BorderThickness="0"
+materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+IsEnabled="False"
+materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
 
                                     </DockPanel>
                                 </Border>
@@ -180,9 +198,10 @@ materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
              HorizontalAlignment="Left"
              FontFamily="Roboto Mono"
              BorderThickness="0"
+                                            
              materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
              materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-             materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0" Width="230"/>
+             materialDesign:TextFieldAssist.TextBoxViewMargin="25,0,0,0" Width="230"/>
                                     </Border>
                                 </StackPanel>
                                 <StackPanel Margin="0 10 0 0"
@@ -242,10 +261,10 @@ materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                             </Grid>
                             <Grid Grid.Column="1">
                                 <TextBlock
-                                 Margin="32,10,0,0"
-                                 HorizontalAlignment="Left"
+                                 
+                                 HorizontalAlignment="Center"
                                  Text="TÊN SP"
-                                 VerticalAlignment="Top"
+                                 VerticalAlignment="Center"
                                  FontFamily="Roboto Mono"
                                  FontSize="12"
                              />
@@ -263,10 +282,10 @@ materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                                 <TextBlock
                                  Text="SL"
                                  HorizontalAlignment="Center"
-                                 VerticalAlignment="Top"
+                                 VerticalAlignment="Center"
                                  MaxWidth="150"
                                  FontFamily="Roboto Mono"
-                                 FontSize="12" Margin="45,10,0,0"
+                                 FontSize="12" 
                              />
                             </Grid>
                             <Grid Grid.Column="4">
@@ -274,7 +293,7 @@ materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                                  Text="TRỊ GIÁ"
                                  HorizontalAlignment="Center"
                                  VerticalAlignment="Center"
-                                 MaxWidth="150"
+                                 
                                  FontFamily="Roboto Mono"
                                  FontSize="12"
                              />
@@ -283,39 +302,39 @@ materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                     </Border>
                     <ListView x:Name="ListViewSP" 
                        SelectionMode="Single"
-                       ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="220" Width="680" d:ItemsSource="{d:SampleData ItemCount=5}"
+                       ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="175" Width="700" d:ItemsSource="{d:SampleData ItemCount=5}"
                      >
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Border
                                  
-                                 Width="650"
+                                 Width="680"
                                  Height="40"
                                  CornerRadius="10"
                                  Background="White"
                      >
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="120"/>
+                                            <ColumnDefinition Width="100"/>
                                             <ColumnDefinition Width="150"/>
-                                            <ColumnDefinition Width="130"/>
-                                            <ColumnDefinition Width="110"/>
+                                            <ColumnDefinition Width="80"/>
+                                            <ColumnDefinition Width="125"/>
                                             <ColumnDefinition/>
                                         </Grid.ColumnDefinitions>
                                         <Grid Grid.Column="0">
                                             <TextBlock
                              Text="{Binding MaSp}"
-                             HorizontalAlignment="Left"
+                             HorizontalAlignment="Center"
                              VerticalAlignment="Center"
                              FontFamily="Roboto Mono"
-                                                Margin="25 0 0 0"
+                                                
                              FontSize="12"
                              />
                                         </Grid>
                                         <Grid Grid.Column="1">
                                             <TextBlock
-                                             Margin="5,0,0,0"
-                                             HorizontalAlignment="Left"
+                                             
+                                             HorizontalAlignment="Center"
                                              Text="{Binding TenSP}"
                                              VerticalAlignment="Center"
                                              FontFamily="Roboto Mono"
@@ -325,7 +344,7 @@ materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                                         <Grid Grid.Column="2">
                                             <TextBlock
                                              Text="{Binding Size}"
-                                             HorizontalAlignment="Left"
+                                             HorizontalAlignment="Center"
                                              VerticalAlignment="Center"
                                              FontFamily="Roboto Mono"
                                              FontSize="12"
@@ -334,7 +353,7 @@ materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                                         <Grid Grid.Column="3">
                                             <TextBlock
                                              Text="{Binding SL}"
-                                             HorizontalAlignment="Left"
+                                             HorizontalAlignment="Center"
                                              VerticalAlignment="Center"
                                              MaxWidth="100"
                                              FontFamily="Roboto Mono"
@@ -343,11 +362,11 @@ materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                                         </Grid>
                                         <Grid Grid.Column="4">
                                             <TextBlock
-                                             Text="{Binding Tiennhap, StringFormat={}{0:# ###} VNĐ}"
-                                             HorizontalAlignment="Left"
+                                             Text="{Binding Tiennhap, StringFormat={}{0:N0} VND}"
+                                             HorizontalAlignment="Center"
                                              VerticalAlignment="Center"
-                                             MaxWidth="150"
-                                                Margin="15 0 0 0"
+                                             
+                                               
                                              FontFamily="Roboto Mono"
                                              FontSize="12"
                                          />

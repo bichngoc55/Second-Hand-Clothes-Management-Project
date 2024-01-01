@@ -11,10 +11,23 @@
       DataContext="{StaticResource NhapKhoVM}"
       x:Name="NhapKhoViewpage"
       Title="NhapKhoView">
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ThicknessAnimation Storyboard.TargetName="NhapKhoViewpage"
+                              Storyboard.TargetProperty="Margin"
+                              From="426,0,0,0"
+                              To="0"
+                              Duration="0:0:0.2" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
 
     <Grid>
         <!-- BACKGROUND -->
-        <Border Background="#D7BEA2" />
+        <Border Background="#EDE2D0" />
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>

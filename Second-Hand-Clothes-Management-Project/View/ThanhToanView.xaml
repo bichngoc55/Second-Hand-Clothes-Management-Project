@@ -15,9 +15,22 @@
       DataContext="{StaticResource ThanhToanVM}"
       Title="ThanhToanView">
 
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ThicknessAnimation Storyboard.TargetName="ThanhToanwd"
+                              Storyboard.TargetProperty="Margin"
+                              From="426,0,0,0"
+                              To="0"
+                              Duration="0:0:0.2" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
     <Grid>
         <!-- BACKGROUND -->
-        <Border  Background="#D7BEA2" >
+        <Border  Background="#EDE2D0" >
         </Border>
         <Grid >
             <Grid.RowDefinitions>
@@ -174,7 +187,7 @@ Background="#BDAB97"
                         ItemsSource="{Binding listHD}" 
                         Margin="20 0 0 0"
                         Padding="20 20"
-                        Background="#E2D5BF"
+                        Background="#D8CBB7"
                          
                          SelectionMode="Single"
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -218,12 +231,13 @@ Background="#BDAB97"
                                     </Grid>
                                     <Grid Grid.Column="2">
                                         <TextBlock
-                                                Text="{Binding TRIGIA }" 
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
-                                                FontFamily= "Roboto Mono"
-                                FontSize="15"
-                                />
+                                            Text="{Binding TRIGIA, StringFormat={}{0:N0} VND}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Roboto Mono"
+                                            FontSize="15"
+                                        />
+
                                     </Grid>
                                     <Grid Grid.Column="3">
                                         <TextBlock

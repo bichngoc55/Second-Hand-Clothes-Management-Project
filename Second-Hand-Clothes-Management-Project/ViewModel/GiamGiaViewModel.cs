@@ -67,10 +67,18 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 
         void _AddCommand(GiamGiaView parameter)
         {
-
             AddGiamGiaView addGiamGiaView = new AddGiamGiaView();
-            MainViewModel.MainFrame.Content = addGiamGiaView;
+            double mainWindowRightEdge = Application.Current.MainWindow.Left + Application.Current.MainWindow.Width;
+            double dialogWidth = addGiamGiaView.Width; // Điều chỉnh theo kích thước thực tế của dialog
+            double dialogLeft = mainWindowRightEdge - dialogWidth;
+
+            // Thiết lập vị trí và khởi chạy cửa sổ dialog
+            addGiamGiaView.Left = dialogLeft;
+            addGiamGiaView.Top = Application.Current.MainWindow.Top+72;
+            addGiamGiaView.WindowStartupLocation = WindowStartupLocation.Manual;
+            addGiamGiaView.ShowDialog();
         }
+
 
         void _DeleteCommand(GIAMGIA selectedItem)
         {
