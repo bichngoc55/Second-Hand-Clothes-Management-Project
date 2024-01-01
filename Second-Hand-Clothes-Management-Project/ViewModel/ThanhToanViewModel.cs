@@ -164,6 +164,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             detailImport.Ngay.Text = temp.NGAYBAN.ToString("dd/MM/yyyy hh:mm tt");
             detailImport.SoHD.Text = temp.SOHD.ToString();
             detailImport.KM.Text=temp.MAGIAMGIA;
+            detailImport.TenKH.Text = temp.KHACHHANG.TENKH;
             List<Display> list = new List<Display>();
             int tong = 0;
             foreach (CTHD a in temp.CTHDs)
@@ -191,7 +192,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             {
                 tong = tong * (100-phantram) / 100;
             }
-            detailImport.thanhtien.Text = String.Format("Thành tiền " + "{0:0,0}", tong) + " VND";
+            detailImport.thanhtien.Text = String.Format("Thành tiền: " + "{0:0,0}", tong) + " VND";
             detailImport.ListViewSP.ItemsSource = list;
             p.ListViewProduct.SelectedItem = null;
             listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);

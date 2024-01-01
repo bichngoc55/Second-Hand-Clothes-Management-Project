@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
 using System.Windows.Documents;
+using System.Windows.Controls;
 
 namespace Second_Hand_Clothes_Management_Project.ViewModel
 {
@@ -36,7 +37,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public ICommand Loadwd { get; set; }
         public ICommand AddSP { get; set; }
         public ICommand DeleteSP { get; set; }
-
+        public ICommand Back { get; set; }
         public ICommand SavePN { get; set; }
         public ICommand Choose { get; set; }
         public ICommand ChooseKH { get; set; }
@@ -55,6 +56,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             AddSP = new RelayCommand<AddHoaDon>((p) => true, (p) => _AddSP(p));
             DeleteSP = new RelayCommand<AddHoaDon>((p) => true, (p) => _DeleteSP(p));
             SavePN = new RelayCommand<AddHoaDon>((p) => true, (p) => _SavePN(p));
+            Back = new RelayCommand<AddHoaDon>((p) => true, (p) => _Back(p));
         }
         void _Loadwd(AddHoaDon paramater)
         {
@@ -79,26 +81,31 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             }
 
         }
+        void _Back(AddHoaDon p)
+        {
+            ThanhToanView importView = new ThanhToanView();
+            MainViewModel.MainFrame.Content = importView;
+        }
         void _AddSP(AddHoaDon paramater)
         {
             if (paramater.SoHD.Text == "")
             {
-                System.Windows.MessageBox.Show("Bạn chưa nhập mã phiếu nhập!", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("Bạn chưa nhập mã hóa đơn!", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             foreach (HOADON s in DataProvider.Ins.DB.HOADONs)
             {
                 if (paramater.SoHD.Text == s.SOHD)
                 {
-                    System.Windows.MessageBox.Show("Mã phiếu nhập đã tồn tại !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show("Mã hóa đơn đã tồn tại !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }
             try
             {
-                if (int.Parse(paramater.SL.Text) < 10)
+                if (int.Parse(paramater.SL.Text) < 1)
                 {
-                    System.Windows.MessageBox.Show("Số lượng nhập không được nhỏ hơn 10!", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show("Số lượng nhập không được nhỏ hơn 1!", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }
@@ -215,9 +222,10 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 
         void _SavePN(AddHoaDon paramater)
         {
+            ChiTietHoaDonView hoadontoPrint = new ChiTietHoaDonView();
             if (paramater.ListViewSP.Items.Count == 0)
             {
-                System.Windows.MessageBox.Show("Thông tin phiếu nhập chưa đầy đủ !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("Thông tin hóa đơn chưa đầy đủ !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             MessageBoxResult h = System.Windows.MessageBox.Show("Xác nhận nhập hàng?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
@@ -226,7 +234,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                 if (paramater.cbxKH.SelectedItem is KHACHHANG selectedKH)
                 {
                     string tempMAKH = selectedKH.MAKH;
-                 
+
 
                     HOADON temp = new HOADON()
                     {
@@ -235,7 +243,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                         MAKH = tempMAKH,
                         MAND = Const.ND.MAND,
                         NGAYBAN = DateTime.Now,
-                        MAGIAMGIA=paramater.Voucher.Text,
+                        MAGIAMGIA = paramater.Voucher.Text,
                         CTHDs = new ObservableCollection<CTHD>(LCTHD),
                     };
 
@@ -273,9 +281,27 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                         }
                     }
                     DataProvider.Ins.DB.HOADONs.Add(temp);
+                    
+                    hoadontoPrint.SoHD.Text = paramater.SoHD.Text;
+                    hoadontoPrint.MaKH.Text = tempMAKH;
+                    hoadontoPrint.MaND.Text = Const.ND.MAND;
+                    hoadontoPrint.Ngay.Text = temp.NGAYBAN.ToString("dd/MM/yyyy hh:mm tt");
+                    hoadontoPrint.TenND.Text = temp.NGUOIDUNG.TENND;
+                    hoadontoPrint.thanhtien.Text= String.Format("Thành tiền: " + "{0:0,0}", tongtien) + " VND";
+                    hoadontoPrint.KM.Text = paramater.Voucher.Text;
+                    hoadontoPrint.ListViewSP.ItemsSource = LHT;
+                    hoadontoPrint.TenKH.Text = temp.KHACHHANG.TENKH;
+
                 }
                 DataProvider.Ins.DB.SaveChanges();
                 System.Windows.MessageBox.Show("Nhập hàng thành công", "THÔNG BÁO");
+                MessageBoxResult printResult = System.Windows.MessageBox.Show("Bạn có muốn in hóa đơn không?", "THÔNG BÁO", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                
+                if (printResult == MessageBoxResult.Yes)
+                {
+                    // Gọi hàm in hóa đơn và truyền đối tượng hoadonToPrint
+                    InHoaDon(hoadontoPrint);
+                }
                 LHT = new ObservableCollection<Display>();
                 paramater.SoHD.Clear();
                 LCTHD = new ObservableCollection<CTHD>();
@@ -290,18 +316,10 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                 return;
         }
 
+
         void _ChooseKH(AddHoaDon parameter)
         {
-            //KHACHHANG temp = (KHACHHANG)parameter.cbxKH.SelectedItem;
-            //if (temp != null)
-            //{
-            //    int doanhso = 0;
-            //    foreach (HOADON a in DataProvider.Ins.DB.HOADONs)
-            //    {
-            //        if (a.MAKH == temp.MAKH)
-            //            doanhso += a.TRIGIA;
-            //    }
-            //}
+      
         }
 
         void _ChooseVC(AddHoaDon parameter)
@@ -322,6 +340,24 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             {
                 parameter.voucherperc.Text = "Voucher: "+ temp.PHANTRAM;
                
+            }
+            else
+                parameter.voucherperc.Text = "Voucher: 0%";
+        }
+        void InHoaDon(ChiTietHoaDonView parameter)
+        {
+            try
+            {
+                parameter.IsEnabled = false;
+                PrintDialog printDialog = new PrintDialog();
+                if (printDialog.ShowDialog() == true)
+                {
+                    printDialog.PrintVisual(parameter.ChiTietHoaDonwd, "Hóa đơn");
+                }
+            }
+            finally
+            {
+                parameter.IsEnabled = true;
             }
         }
 

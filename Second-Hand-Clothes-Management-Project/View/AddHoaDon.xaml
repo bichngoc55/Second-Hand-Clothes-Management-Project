@@ -78,7 +78,7 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0" Height="230">
                     <Border
-                     Margin="10,0,0,0"
+                     Margin="10,0,0,10"
                      Background="#E0D3BE"
                      CornerRadius="15"
                      >
@@ -558,7 +558,7 @@ HorizontalAlignment="Left"
                                         </Grid>
                                         <Grid Grid.Column="4">
                                             <TextBlock
-                                 Text="{Binding Tiennhap, StringFormat={}{0:# ###} VNĐ}"
+                                 Text="{Binding Tiennhap,StringFormat={}{0:N0} VND}"
                                  HorizontalAlignment="Left"
                                  VerticalAlignment="Center"
                                  MaxWidth="150"
@@ -614,19 +614,28 @@ HorizontalAlignment="Left"
                 </Grid>
                
                 <Grid Grid.Column="4">
-                    <DockPanel HorizontalAlignment="Right">
+                    <StackPanel HorizontalAlignment="Right">
                         <Border CornerRadius="5" Background="Transparent" Width="150" >
-                            <Button BorderBrush="Transparent" Background="#986639" Height="30" Width="150" Content="THANH TOÁN" HorizontalAlignment="Right" Margin="0,50,5,0">
+                            <Button  BorderBrush="Transparent" Background="#986639" Height="30" Width="150" Content="QUAY LẠI" HorizontalAlignment="Right" Margin="0,5,5,0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction     
-                        Command="{Binding SavePN}"
+                        Command="{Binding Back}"
                         CommandParameter="{Binding ElementName=AddHoaDonwd}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
                         </Border>
-                    </DockPanel>
+                        <Button BorderBrush="Transparent" Background="#986639" Height="30" Width="150" Content="THANH TOÁN" HorizontalAlignment="Right" Margin="0,20,5,0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction     
+Command="{Binding SavePN}"
+CommandParameter="{Binding ElementName=AddHoaDonwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </StackPanel>
 
 
                 </Grid>

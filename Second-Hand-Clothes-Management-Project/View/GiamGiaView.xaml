@@ -12,10 +12,23 @@
       x:Name="GiamGiaViewpage"
       DataContext="{StaticResource GiamGiaVM}"
       Title="GiamGiaView">
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ThicknessAnimation Storyboard.TargetName="GiamGiaViewpage"
+                                 Storyboard.TargetProperty="Margin"
+                                 From="426,0,0,0"
+                                 To="0"
+                                 Duration="0:0:0.2" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
 
     <Grid>
         <!-- Background -->
-        <Border Background="#D7BEA2"></Border>
+        <Border Background="#EDE2D0"></Border>
 
         <Grid>
             <Grid.RowDefinitions>
@@ -83,7 +96,7 @@
             <Grid Grid.Row="2">
                 <ListView x:Name="ListViewGG"
                           ItemsSource="{Binding listVC1}"                     
-                          Padding="20 20"
+                          
                           Background="#E2D5BF"
                           SelectionMode="Single"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -91,7 +104,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Border Background="#BDAB97" 
-                                    Margin="20 0 0 0"
+                                    
                                     CornerRadius="10"
                                     Width="260"
                                     Height="170"
@@ -100,8 +113,8 @@
                                     <DropShadowEffect ShadowDepth="0" Opacity="0.8" BlurRadius="10" Color="Black"/>
                                 </Border.Effect>
 
-                                <StackPanel>
-                                    <Button ToolTip="Remove selected item"
+                                <StackPanel >
+                                    <Button ToolTip="Xóa voucher"
                                             Background="Transparent"
                                             BorderBrush="Transparent"
                                             HorizontalAlignment="Right"
@@ -117,11 +130,12 @@
 
                                     <TextBlock FontFamily="Roboto Mono"
                                                FontSize="25"
-                                               FontWeight="SemiBold"                                 
+                                               FontWeight="SemiBold"  
+                                               Margin="30 0 0 0"
                                                Width="160"
                                                Height="30"
                                                Text="{Binding MAGIAMGIA}"
-                                               HorizontalAlignment="Center"/>
+                                               />
                                     <StackPanel Margin="10 0 0 0">
                                         <WrapPanel VerticalAlignment="Top" HorizontalAlignment="Left">
                                             <Image Source="\ResourceXAML\Icon\coupon (1).png"
@@ -183,6 +197,7 @@
                         <Style TargetType="ListViewItem">
                             <Setter Property="Margin" Value="20" />
                             <Setter Property="DataContext" Value="{Binding}" />
+                           
                         </Style>
                     </ListView.ItemContainerStyle>
                 </ListView>
