@@ -104,6 +104,7 @@
                                  FontSize="17"
                                  FontFamily="Roboto Mono"
                                  x:Name="FloatingPasswordBox"
+                                 KeyDown="FloatingPasswordBox_KeyDown"
                                   
                                  materialDesign:HintAssist.Hint="Password" 
                                  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
@@ -130,6 +131,7 @@
 
                     <Button Grid.Row="7"
                                 Command="{Binding LoginCommand}"
+                            KeyDown="Button_KeyDown"
                         materialDesign:ButtonAssist.CornerRadius="25"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
@@ -137,7 +139,7 @@
                                     Background="#845831" HorizontalAlignment="Center" VerticalContentAlignment="Center" >
                         <TextBlock
                           Text="Đăng nhập" x:Name="LoginButton" VerticalAlignment="Center" FontWeight="Bold" FontSize="18"
-                            FontFamily="Josefin Sans"/>
+                            FontFamily="Roboto Mono"/>
                     </Button>
                 </Grid>
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Second_Hand_Clothes_Management_Project.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,26 +25,28 @@ namespace Second_Hand_Clothes_Management_Project.View
             InitializeComponent();
         }
 
- 
-
-        private void Window_MouseDown_1(object sender, MouseButtonEventArgs e)
+        private void Button_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
+            if (e.Key == Key.Enter)
             {
-                DragMove();
+                // Trigger the login command
+                if (DataContext is LoginViewModel viewModel)
+                {
+                    viewModel.LoginCommand.Execute(null);
+                }
             }
         }
 
-        private void PackIcon_MouseDown(object sender, MouseButtonEventArgs e)
+        private void FloatingPasswordBox_KeyDown(object sender, KeyEventArgs e)
         {
-            WindowState = WindowState.Minimized;
-        }
-
-        private void PackIcon_MouseDown_1(object sender, MouseButtonEventArgs e)
-        {
-
-            WindowState = WindowState.Minimized;
-            Close();
+            if (e.Key == Key.Enter)
+            {
+                // Trigger the login command
+                if (DataContext is LoginViewModel viewModel)
+                {
+                    viewModel.LoginCommand.Execute(null);
+                }
+            }
         }
     }
 }

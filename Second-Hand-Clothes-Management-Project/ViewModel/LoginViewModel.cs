@@ -60,7 +60,10 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                 try
                 {
                     string PassEncode = MD5Hash(Base64Encode(Password));
-                    var accCount = DataProvider.Ins.DB.NGUOIDUNGs.Where(x => x.USERNAME == Username && x.PASS == PassEncode ).Count();
+                    var accCount = DataProvider.Ins.DB.NGUOIDUNGs
+                        .Where(x => x.USERNAME == Username && x.PASS == PassEncode && x.USERNAME.Equals(Username, StringComparison.Ordinal))
+                        .Count();
+
                     if (accCount > 0)
                     {
                         IsLogin = true;
@@ -74,7 +77,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                     }
                     else
                     {
-                        MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo", MessageBoxButton.OK);
+                        ErrorMessage = "Tên đăng nhập hoặc mật khẩu không đúng!";
                     }
                 }
                 catch
