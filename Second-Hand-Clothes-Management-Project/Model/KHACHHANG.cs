@@ -12,7 +12,7 @@ namespace Second_Hand_Clothes_Management_Project.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KHACHHANG()
         {
-            MUAHANGs = new HashSet<MUAHANG>();
+            HOADONs = new HashSet<HOADON>();
         }
 
         [Key]
@@ -40,6 +40,6 @@ namespace Second_Hand_Clothes_Management_Project.Model
         public string LOAIKH { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MUAHANG> MUAHANGs { get; set; }
+        public virtual ICollection<HOADON> HOADONs { get; set; }
     }
 }

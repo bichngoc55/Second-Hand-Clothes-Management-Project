@@ -8,14 +8,15 @@ namespace Second_Hand_Clothes_Management_Project.Model
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=QLBHEntities")
+            : base("name=Model1")
         {
         }
 
+        public virtual DbSet<CTHD> CTHDs { get; set; }
         public virtual DbSet<GIAMGIA> GIAMGIAs { get; set; }
+        public virtual DbSet<HOADON> HOADONs { get; set; }
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
         public virtual DbSet<KHO> KHOes { get; set; }
-        public virtual DbSet<MUAHANG> MUAHANGs { get; set; }
         public virtual DbSet<NGUOIDUNG> NGUOIDUNGs { get; set; }
         public virtual DbSet<NHACUNGCAP> NHACUNGCAPs { get; set; }
         public virtual DbSet<NHAP> NHAPs { get; set; }
@@ -23,6 +24,14 @@ namespace Second_Hand_Clothes_Management_Project.Model
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<CTHD>()
+                .Property(e => e.SOHD)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CTHD>()
+                .Property(e => e.MASP)
+                .IsUnicode(false);
+
             modelBuilder.Entity<GIAMGIA>()
                 .Property(e => e.MAGIAMGIA)
                 .IsUnicode(false);
@@ -30,6 +39,27 @@ namespace Second_Hand_Clothes_Management_Project.Model
             modelBuilder.Entity<GIAMGIA>()
                 .Property(e => e.PHANTRAM)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<HOADON>()
+                .Property(e => e.SOHD)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<HOADON>()
+                .Property(e => e.MAND)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<HOADON>()
+                .Property(e => e.MAKH)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<HOADON>()
+                .Property(e => e.MAGIAMGIA)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<HOADON>()
+                .HasMany(e => e.CTHDs)
+                .WithRequired(e => e.HOADON)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<KHACHHANG>()
                 .Property(e => e.MAKH)
@@ -47,11 +77,6 @@ namespace Second_Hand_Clothes_Management_Project.Model
                 .Property(e => e.LOAIKH)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<KHACHHANG>()
-                .HasMany(e => e.MUAHANGs)
-                .WithRequired(e => e.KHACHHANG)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<KHO>()
                 .Property(e => e.MAKHO)
                 .IsUnicode(false);
@@ -61,24 +86,8 @@ namespace Second_Hand_Clothes_Management_Project.Model
                 .WithRequired(e => e.KHO)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<MUAHANG>()
-                .Property(e => e.MAND)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<MUAHANG>()
-                .Property(e => e.MASP)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<MUAHANG>()
-                .Property(e => e.MAKH)
-                .IsUnicode(false);
-
             modelBuilder.Entity<NGUOIDUNG>()
                 .Property(e => e.MAND)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<NGUOIDUNG>()
-                .Property(e => e.NGSINH)
                 .IsUnicode(false);
 
             modelBuilder.Entity<NGUOIDUNG>()
@@ -98,11 +107,6 @@ namespace Second_Hand_Clothes_Management_Project.Model
             modelBuilder.Entity<NGUOIDUNG>()
                 .Property(e => e.MAIL)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<NGUOIDUNG>()
-                .HasMany(e => e.MUAHANGs)
-                .WithRequired(e => e.NGUOIDUNG)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<NHACUNGCAP>()
                 .Property(e => e.MANHACUNGCAP)
@@ -150,11 +154,7 @@ namespace Second_Hand_Clothes_Management_Project.Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<SANPHAM>()
-                .Property(e => e.MAGIAMGIA)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SANPHAM>()
-                .HasMany(e => e.MUAHANGs)
+                .HasMany(e => e.CTHDs)
                 .WithRequired(e => e.SANPHAM)
                 .WillCascadeOnDelete(false);
 

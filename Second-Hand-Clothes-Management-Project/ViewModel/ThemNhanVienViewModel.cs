@@ -18,19 +18,37 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
     public class ThemNhanVienViewModel : BaseViewModel
     {
         private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
+        public ICommand Closewd { get; set; }
+        public ICommand Minimizewd { get; set; }
+        public ICommand MoveWindow { get; set; }
         public ICommand AddImage { get; set; }
         public ICommand Back { get; set; }
         private string _linkimage;
         public string linkimage { get => _linkimage; set { _linkimage = value; OnPropertyChanged(); } }
-        public ICommand AddProduct { get; set; }
+        public ICommand AddND { get; set; }
         public ICommand Loadwd { get; set; }
         public ThemNhanVienViewModel()
         {
             linkimage = "/ResourceXAML/Image/add.png";
             AddImage = new RelayCommand<Image>((p) => true, (p) => _AddImage(p));
             Back = new RelayCommand<ThemNhanVienView>((p) => true, (p) => _Back(p));
-            AddProduct = new RelayCommand<ThemNhanVienView>((p) => true, (p) => _AddProduct(p));
+            AddND = new RelayCommand<ThemNhanVienView>((p) => true, (p) => _AddND(p));
             Loadwd = new RelayCommand<ThemNhanVienView>((p) => true, (p) => _Loadwd(p));
+            Closewd = new RelayCommand<ThemNhanVienView>((p) => true, (p) => Close(p));
+            Minimizewd = new RelayCommand<ThemNhanVienView>((p) => true, (p) => Minimize(p));
+            MoveWindow = new RelayCommand<ThemNhanVienView>((p) => true, (p) => moveWindow(p));
+        }
+        void moveWindow(ThemNhanVienView p)
+        {
+            p.DragMove();
+        }
+        void Close(ThemNhanVienView p)
+        {
+            p.Close();
+        }
+        void Minimize(ThemNhanVienView p)
+        {
+            p.WindowState = WindowState.Minimized;
         }
         void _Loadwd(ThemNhanVienView paramater)
         {
@@ -38,8 +56,8 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         }
         void _Back(ThemNhanVienView p)
         {
-            NhanVienView productViewPage = new NhanVienView();
-            MainViewModel.MainFrame.Content = productViewPage;
+            NhanVienView nhanvienViewPage = new NhanVienView();
+            MainViewModel.MainFrame.Content = nhanvienViewPage;
         }
         void _AddImage(Image img)
         {
@@ -79,7 +97,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             } while (check(ma));
             return ma;
         }
-        void _AddProduct(ThemNhanVienView paramater)
+        void _AddND(ThemNhanVienView paramater)
         {
             if (string.IsNullOrEmpty(paramater.MaNd.Text) || string.IsNullOrEmpty(paramater.TenNd.Text) || string.IsNullOrEmpty(paramater.NgaySinhNd.Text) || string.IsNullOrEmpty(paramater.SdtNd.Text) || string.IsNullOrEmpty(paramater.DiaChiNd.Text) || linkimage == "/Resource/Image/add.png")
             {
@@ -87,12 +105,12 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             }
             else
             {
-                MessageBoxResult h = System.Windows.MessageBox.Show("Bạn muốn thêm sản phẩm mới ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                MessageBoxResult h = System.Windows.MessageBox.Show("Bạn muốn thêm nhân viên mới ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
                 if (h == MessageBoxResult.Yes)
                 {
                     if (DataProvider.Ins.DB.NGUOIDUNGs.Where(p => p.MAND == paramater.MaNd.Text).Count() > 0)
                     {
-                        MessageBox.Show("Mã sản phẩm đã tồn tại.", "Thông Báo");
+                        MessageBox.Show("Mã nhân viên đã tồn tại.", "Thông Báo");
                     }
                     else
                     {
@@ -100,20 +118,20 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                         a.MAND = paramater.MaNd.Text;
                         a.TENND = paramater.TenNd.Text;
                         a.DIACHI = paramater.DiaChiNd.Text;
-                        a.NGSINH = paramater.NgaySinhNd.Text;
-                        a.GIOITINH = paramater.NgaySinhNd.Text;
+                        a.NGSINH = (DateTime)paramater.NgaySinhNd.SelectedDate;
+                        a.GIOITINH = paramater.GioiTinhNd.Text;
                         a.SDT = paramater.SdtNd.Text;
                         a.AVA = "/ResourceXAML/Avatar/" + paramater.MaNd.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
-                        MessageBox.Show("Thêm sản phẩm mới thành công !", "THÔNG BÁO");
+                        MessageBox.Show("Thêm nhân viên mới thành công !", "THÔNG BÁO");
                         DataProvider.Ins.DB.NGUOIDUNGs.Add(a);
                         DataProvider.Ins.DB.SaveChanges();
                         paramater.TenNd.Clear();
-                        paramater.NgaySinhNd.SelectedItem = null;
+                        paramater.NgaySinhNd.SelectedDate = null;
                         paramater.DiaChiNd.Clear();
                         paramater.SdtNd.Clear();
-                        SanPhamView productViewPage = new SanPhamView();
-                        productViewPage.ListViewProduct.ItemsSource = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL >= 0));
-                        MainViewModel.MainFrame.Content = productViewPage;
+                        NhanVienView NhanVienViewPage = new NhanVienView();
+                        NhanVienViewPage.ListViewNhanVien.ItemsSource = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL >= 0));
+                        MainViewModel.MainFrame.Content = NhanVienViewPage;
                     }
                 }
             }

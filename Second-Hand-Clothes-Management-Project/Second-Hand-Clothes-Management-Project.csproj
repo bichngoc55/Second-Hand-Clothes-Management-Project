@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Xamarin.Forms.5.0.0.2622\build\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.5.0.0.2622\build\Xamarin.Forms.props')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -29,6 +30,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,6 +54,15 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=4.9.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.4.9.0\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.Base, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.Base.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.UserSecrets, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.77\lib\net462\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
@@ -68,6 +79,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -80,6 +94,15 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.5.0.0.2622\lib\netstandard2.0\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.5.0.0.2622\lib\netstandard2.0\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.5.0.0.2622\lib\netstandard2.0\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -87,32 +110,52 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\Const.cs" />
+    <Compile Include="Model\CTHD.cs" />
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\GIAMGIA.cs" />
+    <Compile Include="Model\HOADON.cs" />
     <Compile Include="Model\KHACHHANG.cs" />
     <Compile Include="Model\KHO.cs" />
     <Compile Include="Model\Model1.cs" />
-    <Compile Include="Model\MUAHANG.cs" />
     <Compile Include="Model\NGUOIDUNG.cs" />
     <Compile Include="Model\NHACUNGCAP.cs" />
     <Compile Include="Model\NHAP.cs" />
     <Compile Include="Model\SANPHAM.cs" />
     <Compile Include="Model\sysdiagram.cs" />
+    <Compile Include="ViewModel\AddGiamGiaViewModel.cs" />
+    <Compile Include="ViewModel\AddHoaDonViewModel.cs" />
+    <Compile Include="ViewModel\AddNhapKhoViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CaiDatViewModel.cs" />
+    <Compile Include="ViewModel\ChiTietHoaDonViewModel.cs" />
     <Compile Include="ViewModel\ChiTietNhanVienViewModel.cs" />
     <Compile Include="ViewModel\ChiTietSanPhamViewModel.cs" />
+    <Compile Include="ViewModel\GiamGiaViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\NhanVienViewModel.cs" />
+    <Compile Include="ViewModel\NhapKhoViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\SanPhamViewModel.cs" />
     <Compile Include="ViewModel\TaoTaiKhoanViewModel.cs" />
+    <Compile Include="ViewModel\ThanhToanViewModel.cs" />
     <Compile Include="ViewModel\ThemNhanVienViewModel.cs" />
     <Compile Include="ViewModel\ThemSanPhamViewModel.cs" />
     <Compile Include="ViewModel\ThongKeViewModel.cs" />
+    <Compile Include="View\AddGiamGiaView.xaml.cs">
+      <DependentUpon>AddGiamGiaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddHoaDon.xaml.cs">
+      <DependentUpon>AddHoaDon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddNhapKhoView.xaml.cs">
+      <DependentUpon>AddNhapKhoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CaiDatView.xaml.cs">
       <DependentUpon>CaiDatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChiTietHoaDonView.xaml.cs">
+      <DependentUpon>ChiTietHoaDonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ChiTietNhanVien.xaml.cs">
       <DependentUpon>ChiTietNhanVien.xaml</DependentUpon>
@@ -132,11 +175,17 @@
     <Compile Include="View\NhanVienView.xaml.cs">
       <DependentUpon>NhanVienView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\NhapKhoView.xaml.cs">
+      <DependentUpon>NhapKhoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SanPhamView.xaml.cs">
       <DependentUpon>SanPhamView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TaoTaiKhoanView.xaml.cs">
       <DependentUpon>TaoTaiKhoanView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ThanhToanView.xaml.cs">
+      <DependentUpon>ThanhToanView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ThemNhanVienView.xaml.cs">
       <DependentUpon>ThemNhanVienView.xaml</DependentUpon>
@@ -167,7 +216,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddGiamGiaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddHoaDon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddNhapKhoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CaiDatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChiTietHoaDonView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -195,11 +260,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\NhapKhoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SanPhamView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\TaoTaiKhoanView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ThanhToanView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -248,9 +321,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ResourceXAML\ImageProduct\Yem.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ResourceXAML\Avatar\mck.jpg" />
@@ -336,21 +406,9 @@
     <Resource Include="ResourceXAML\Image\Rectangle3.png" />
     <Resource Include="ResourceXAML\Image\Rectangle2.png" />
     <Resource Include="ResourceXAML\Image\Rectangle 1.png" />
-    <Resource Include="ResourceXAML\ImageProduct\Trackpant.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\Sweater.jpg" />
-    <Resource Include="ResourceXAML\ImageProduct\AoThun.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ResourceXAML\ImageProduct\SoMi.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ResourceXAML\ImageProduct\Hoodie.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ResourceXAML\ImageProduct\Vay.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ResourceXAML\Avatar\anhtu.jpg" />
@@ -371,6 +429,143 @@
   <ItemGroup>
     <Resource Include="ResourceXAML\Image\addava.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\ImageProduct\ao.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\blessing.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\cap1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\chaotic_jacket.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\comic_shirt.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\cross_jacket.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\excited.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\full_rabbit.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\good_rabbit.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\good_student.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Hoodie1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Hoodie2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Hoodie3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Hoodie4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Jacket1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Jacket2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Jacket3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\lucky_you.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\mechabit.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\non1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\over_print.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\pagoda.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\painful.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\pattern_shirt.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\quan1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\quan2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\quan3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\quan4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\quan5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\rabbit_cardigan.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\rabbit_cyber.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\rabbit_gile.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\ruby_tie_dye.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\sample.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\striped_shirt.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\suy_sweater.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Sweater1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Sweater2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Sweater3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\Sweater4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\tui1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceXAML\ImageProduct\tui2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\ImageProduct\Yem.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\ImageProduct\Vay.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\Avatar\trantanh.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -379,7 +574,10 @@
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
     <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.Forms.5.0.0.2622\build\Xamarin.Forms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.5.0.0.2622\build\Xamarin.Forms.props'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.Forms.5.0.0.2622\build\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.5.0.0.2622\build\Xamarin.Forms.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />
+  <Import Project="..\packages\Xamarin.Forms.5.0.0.2622\build\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.5.0.0.2622\build\Xamarin.Forms.targets')" />
 </Project>

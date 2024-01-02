@@ -31,8 +31,13 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding LoadCsCommand}" CommandParameter="{Binding ElementName=NhanVienwd}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
         <!--BACKGROUND-->
-        <Border Background="#D7BEA2">
+        <Border Background="#EDE2D0">
         </Border>
         <Grid>
             <Grid.RowDefinitions>
@@ -56,6 +61,9 @@
                     CornerRadius="5" 
                     Background="#CAA88A" 
                     Margin="20 0 20 20">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.5" BlurRadius="20"></DropShadowEffect>
+                    </Border.Effect>
                     <StackPanel Orientation="Horizontal">
                         <!--ComboBox2-->
                         <ComboBox
@@ -96,6 +104,7 @@
                             TextWrapping="Wrap"
                             MaxWidth="400"
                             materialDesign:HintAssist.Hint="Tìm Kiếm"
+                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
                             Padding="70 15 15 15">
                             <i:Interaction.Triggers >
                                 <i:EventTrigger EventName = "TextChanged" >
@@ -107,20 +116,6 @@
                         <Button Style="{DynamicResource MaterialDesignToolForegroundButton}" Margin="-25 -6 8 -6" HorizontalAlignment="Right" RenderTransformOrigin="-0.792,0.586">
                             <materialDesign:PackIcon Kind="Magnify" />
                         </Button>
-                        <Button 
-                            x:Name="btnAddNhanVien"
-                            Content="ADD+"
-                            Height="50"
-                            Width="125"
-                            Margin="100 0 0 0"
-                            Background="#986639">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding AddPdPdCommand}"
-                                                       CommandParameter="{Binding ElementName=NhanVienwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </Button>
                     </StackPanel>
                 </Border>
             </Grid>
@@ -129,7 +124,7 @@
             <Grid 
                 Grid.Row="2"
                 Margin="0 0 0 0"
-                Background="#E2D5BF">
+                Background="#EDE2D0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="339*"/>
                     <ColumnDefinition Width="11*"/>
@@ -179,7 +174,7 @@
                     </ListView.ItemsPanel>
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding DetailPdCommand}"
+                            <i:InvokeCommandAction Command="{Binding DetailNDCommand}"
                                                        CommandParameter="{Binding ElementName=NhanVienwd}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>

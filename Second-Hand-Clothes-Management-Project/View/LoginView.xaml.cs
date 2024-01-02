@@ -24,7 +24,6 @@ namespace Second_Hand_Clothes_Management_Project.View
         {
             InitializeComponent();
         }
-
         private void Button_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)

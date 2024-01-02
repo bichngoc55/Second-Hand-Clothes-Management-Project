@@ -12,13 +12,22 @@ using System.Windows;
 using Microsoft.Win32;
 using System.IO;
 using System.Collections.ObjectModel;
+using System.Windows.Media.Imaging;
 
 namespace Second_Hand_Clothes_Management_Project.ViewModel
 {
     public class ThemSanPhamViewModel : BaseViewModel
     {
+        private ObservableCollection<SANPHAM> _listSP;
+        public ObservableCollection<SANPHAM> listSP { get => _listSP; set { _listSP = value; /*OnPropertyChanged();*/ } }
+
+        private ObservableCollection<SANPHAM> _listSP1;
+        public ObservableCollection<SANPHAM> listSP1 { get => _listSP1; set { _listSP1 = value; /*OnPropertyChanged();*/ } }
+
         private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
-        public ICommand Back { get; set; }
+        public ICommand Closewd { get; set; }
+        public ICommand Minimizewd { get; set; }
+        public ICommand MoveWindow { get; set; }
         public ICommand AddImage { get; set; }
         private string _linkimage;
         public string linkimage { get => _linkimage; set { _linkimage = value; OnPropertyChanged(); } }
@@ -27,19 +36,28 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public ThemSanPhamViewModel()
         {
             linkimage = "/ResourceXAML/Image/add.png";
-            Back = new RelayCommand<ThemSanPhamView>((p) => true, (p) => _Back(p));
             AddImage = new RelayCommand<Image>((p) => true, (p) => _AddImage(p));
             AddProduct = new RelayCommand<ThemSanPhamView>((p) => true, (p) => _AddProduct(p));
             Loadwd = new RelayCommand<ThemSanPhamView>((p) => true, (p) => _Loadwd(p));
+            Closewd = new RelayCommand<ThemSanPhamView>((p) => true, (p) => Close(p));
+            Minimizewd = new RelayCommand<ThemSanPhamView>((p) => true, (p) => Minimize(p));
+            MoveWindow = new RelayCommand<ThemSanPhamView>((p) => true, (p) => moveWindow(p));
+        }
+        void moveWindow(ThemSanPhamView p)
+        {
+            p.DragMove();
+        }
+        void Close(ThemSanPhamView p)
+        {
+            p.Close();
+        }
+        void Minimize(ThemSanPhamView p)
+        {
+            p.WindowState = WindowState.Minimized;
         }
         void _Loadwd(ThemSanPhamView paramater)
         {
             linkimage = "/ResourceXAML/Image/add.png";
-        }
-        void _Back(ThemSanPhamView p)
-        {
-            SanPhamView productViewPage = new SanPhamView();
-            MainViewModel.MainFrame.Content = productViewPage;
         }
         void _AddImage(Image img)
         {
@@ -99,6 +117,12 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                         SANPHAM a = new SANPHAM();
                         a.MASP = paramater.MaSp.Text;
                         a.TENSP = paramater.TenSp.Text;
+                        a.SIZE = paramater.SizeSp.Text;
+
+
+                        //if(paramater.Voucher.Text != "NULL")
+
+                            //a.MAGIAMGIA = paramater.Voucher.Text;
                         try
                         {
                             a.GIA = int.Parse(paramater.GiaSp.Text);
@@ -129,21 +153,29 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                             return;
                         }
                         a.MOTA = paramater.MotaSp.Text;
-                        a.HINHSP = "/Resource/ImgProduct/" + "product_" + paramater.MaSp.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                        string imageFileName = Path.GetFileNameWithoutExtension(linkimage) + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                        a.HINHSP = "/ResourceXAML/ImageProduct/" + imageFileName;
+                        //a.HINHSP = "/ResourceXAML/ImageProduct/" + Path.GetFileNameWithoutExtension(linkimage) + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
                         try
                         {
-                            File.Copy(linkimage, _localLink + @"ResourceXAML\ImageProduct\" + "product_" + paramater.MaSp.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+                            File.Copy(linkimage, Path.Combine(_localLink, "ResourceXAML", "ImageProduct", imageFileName), true);
+                            //File.Copy(linkimage, _localLink + @"ResourceXAML\ImageProduct\" + Path.GetFileNameWithoutExtension(linkimage) + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
                         }
                         catch { }
                         MessageBox.Show("Thêm sản phẩm mới thành công !", "THÔNG BÁO");
                         DataProvider.Ins.DB.SANPHAMs.Add(a);
                         DataProvider.Ins.DB.SaveChanges();
+                        listSP1 = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL >= 0));
+                        listSP = new ObservableCollection<SANPHAM>(listSP1.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
                         paramater.TenSp.Clear();
                         paramater.LoaiSp.SelectedItem = null;
                         paramater.GiaSp.Clear();
                         paramater.SlSp.Clear();
+                        paramater.SizeSp.SelectedItem = null;
+                        Uri fileUri = new Uri(Const._localLink + "/ResourceXAML/Image/add.png");
+                        paramater.HinhAnh.Source = new BitmapImage(fileUri);
                         SanPhamView productViewPage = new SanPhamView();
-                        productViewPage.ListViewProduct.ItemsSource = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL >= 0));
+                        paramater.Close();
                         MainViewModel.MainFrame.Content = productViewPage;
                     }
                 }

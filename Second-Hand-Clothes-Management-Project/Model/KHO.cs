@@ -25,8 +25,6 @@ namespace Second_Hand_Clothes_Management_Project.Model
         [StringLength(200)]
         public string DIADIEM { get; set; }
 
-        public int? SLTONKHO { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NHAP> NHAPs { get; set; }
     }
