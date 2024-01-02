@@ -180,14 +180,14 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         }
         void _AddNDCommand(NhanVienView paramater)
         {
-            ThemNhanVienView themSanPhamView = new ThemNhanVienView();
-            themSanPhamView.MaNd.Text = rdma();
+            ThemNhanVienView themNhanVienView = new ThemNhanVienView();
+            themNhanVienView.MaNd.Text = rdma();
             listND1 = new ObservableCollection<NGUOIDUNG>(DataProvider.Ins.DB.NGUOIDUNGs.Where(p => p.QTV == false));
             //_Filter(paramater);
             _SearchCommand(paramater);
             paramater.ListViewNhanVien.ItemsSource = listND1;
             paramater.ListViewNhanVien.Items.Refresh();
-            themSanPhamView.ShowDialog();
+            themNhanVienView.ShowDialog();
         }
     }
 }
