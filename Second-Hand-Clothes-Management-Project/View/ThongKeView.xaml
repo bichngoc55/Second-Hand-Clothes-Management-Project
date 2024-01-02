@@ -50,10 +50,10 @@
                         </Border.Effect>
 
                         <DockPanel HorizontalAlignment="Left" Margin="10,0,0,0"  >
-                            <Border Background="#986639" Margin="0,4,4,4" CornerRadius="15" Height="50" Width="300">
+                            <Border Background="#986639" Margin="0,5,5,5" CornerRadius="15" Height="50" Width="300">
                                 <TextBlock x:Name="btnMain" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"
-                               FontSize="22" Height="45" Width="300" FontFamily="Roboto Mono"
-                               Text="Tổng quan" Margin="0,10,0,0" Foreground="White"/>
+                               FontSize="22"  Width="300" FontFamily="Roboto Mono"
+                               Text="Tổng quan" Margin="0,10,0,0" Foreground="White" Height="45"/>
                             </Border>
                         </DockPanel>
                     </Border>
@@ -231,7 +231,7 @@
                    FontFamily="Roboto Mono"
                    VerticalAlignment="Bottom"
                                Width="Auto"
-                   Margin="140,0,0,8"
+                   Margin="140,0,0,10"
                    Height="Auto"/>
                 </Grid>
 
