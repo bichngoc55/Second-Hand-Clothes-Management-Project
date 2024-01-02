@@ -158,7 +158,7 @@ x:Key="NhapKho">
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                    Width="175"
+                    Width="195"
                     Height="70"
                     CornerRadius="10"
                     HorizontalAlignment="Stretch"

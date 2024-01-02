@@ -210,7 +210,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             {
                 listVC.Add(p.MAGIAMGIA.ToString());
             }
-            listVC.Add("NULL");
+          
             addHoaDonView.Voucher.ItemsSource = listVC;
             MainViewModel.MainFrame.Content = addHoaDonView;
         }

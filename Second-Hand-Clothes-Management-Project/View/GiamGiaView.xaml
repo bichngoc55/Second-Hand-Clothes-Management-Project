@@ -54,6 +54,9 @@
                         <DockPanel>
                             <!-- TextBox và Button tìm kiếm -->
                             <Border CornerRadius="5" Width="250" Background="White" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15 " Height="50">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                                </Border.Effect>
                                 <Grid>
                                     <TextBox x:Name="txbSearch"
                                              TextAlignment="Left"
@@ -65,6 +68,8 @@
                                              FontFamily="Roboto Mono"
                                              FontWeight="Thin"
                                              materialDesign:HintAssist.Hint="Tìm kiếm">
+                                        
+                                       
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="TextChanged">
                                                 <i:InvokeCommandAction Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=GiamGiaViewpage}"/>
@@ -81,6 +86,9 @@
                             <!-- Nút Add -->
                             <Border CornerRadius="5" Background="Transparent" Width="150" HorizontalAlignment="Right">
                                 <Button BorderBrush="Transparent" Background="#986639" Height="50" Width="120" Content="Add+" HorizontalAlignment="Right" Margin="0 0 10 0">
+                                    <Button.Effect>
+                                        <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                                    </Button.Effect>
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=GiamGiaViewpage}"/>

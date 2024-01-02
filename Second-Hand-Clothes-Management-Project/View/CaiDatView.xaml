@@ -95,6 +95,9 @@
                             Background="#986639" 
                             Foreground="White"
                             Grid.Row="1" >
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                            </Button.Effect>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding AddImage}"
@@ -215,6 +218,9 @@
                                 Content="TẠO TÀI KHOẢN"
                                 FontSize="10"
                                 BorderBrush="Transparent">
+                                <Button.Effect>
+                                    <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                                </Button.Effect>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding AddNDCommand}"
@@ -230,6 +236,9 @@
                                 Content="CẬP NHẬP"
                                 FontSize="10"
                                 BorderBrush="Transparent">
+                                <Button.Effect>
+                                    <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                                </Button.Effect>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding UpdateInfo}"

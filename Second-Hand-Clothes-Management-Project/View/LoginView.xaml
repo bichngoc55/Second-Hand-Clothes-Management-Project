@@ -140,7 +140,7 @@
 
                     <!-- Sixth Row: Log in Button -->
 
-                    <Button Grid.Row="7"
+                    <Button Grid.Row="7" BorderBrush="Transparent"
                                 Command="{Binding LoginCommand}"
                             KeyDown="Button_KeyDown"
                         materialDesign:ButtonAssist.CornerRadius="25"

@@ -156,6 +156,9 @@
         <!-- Nút thêm voucher -->
         <Grid Grid.Row="3">
             <Border CornerRadius="5" Margin="10 20 20 10" HorizontalAlignment="Right" VerticalAlignment="Top" Width="170" Height="50" Background="#986639">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                </Border.Effect>
                 <StackPanel Width="180" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Button FontSize="20"
                             FontFamily="Roboto Mono"
@@ -164,6 +167,7 @@
                             Background="Transparent"
                             Foreground="White"
                             BorderThickness="0" Width="185">
+                        
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding AddVC}" CommandParameter="{Binding ElementName=AddGiamGiaViewPage}"/>

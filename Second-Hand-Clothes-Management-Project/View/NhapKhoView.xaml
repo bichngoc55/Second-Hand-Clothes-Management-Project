@@ -81,6 +81,9 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <Border CornerRadius="5" Background="Transparent" Width="150">
                                     <Button Click="DeleteButton_Click" BorderBrush="Transparent" Background="#986639" Height="50" Width="120" Content="Delete" HorizontalAlignment="Right" Margin="0 0 10 0 ">
+                                        <Button.Effect>
+                                            <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                                        </Button.Effect>
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <i:InvokeCommandAction CommandParameter="{Binding SelectedItem, ElementName=ListViewNK}" Command="{Binding DeleteCommand}" />
@@ -91,6 +94,9 @@
                                 <!-- Nút Add -->
                                 <Border CornerRadius="5" Background="Transparent" Width="150">
                                     <Button BorderBrush="Transparent" Background="#986639" Height="50" Width="120" Content="Add+" HorizontalAlignment="Right" Margin="0 0 10 0 ">
+                                        <Button.Effect>
+                                            <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                                        </Button.Effect>
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <i:InvokeCommandAction Command="{Binding AddCommand}"
