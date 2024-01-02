@@ -26,7 +26,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 
         public ICommand DeleteCommand { get; set; }
         public ICommand SearchCommand { get; set; }
-        public GiamGiaViewModel()
+        public GiamGiaViewModel() 
         {
             listVC1 = new ObservableCollection<GIAMGIA>(DataProvider.Ins.DB.GIAMGIAs);
 
