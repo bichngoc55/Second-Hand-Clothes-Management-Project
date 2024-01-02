@@ -139,7 +139,7 @@
 
                     <!-- Sixth Row: Log in Button -->
 
-                    <Button Grid.Row="7"
+                    <Button Grid.Row="7" BorderBrush="Transparent"
                                 Command="{Binding LoginCommand}"
                         materialDesign:ButtonAssist.CornerRadius="25"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"

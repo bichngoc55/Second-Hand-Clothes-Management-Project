@@ -410,6 +410,9 @@ materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
 
                 <WrapPanel HorizontalAlignment="Right">
                     <Button BorderBrush="Transparent" Background="#986639" Height="30" Width="100" Content="QUAY LẠI" HorizontalAlignment="Right" Margin="0,10,5,0">
+                        <Button.Effect>
+                            <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                        </Button.Effect>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction     
@@ -424,6 +427,9 @@ materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                         <Border CornerRadius="5" Background="Transparent" Width="150" >
 
                             <Button BorderBrush="Transparent" Background="#986639" Height="30" Width="100" Content="XÓA" HorizontalAlignment="Right" Margin="0,10,5,0">
+                                <Button.Effect>
+                                    <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                                </Button.Effect>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction     

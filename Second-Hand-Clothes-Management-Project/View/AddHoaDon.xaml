@@ -402,6 +402,9 @@ FontFamily="Roboto Mono"
                              >
                                 <Border CornerRadius="5" Background="Transparent" Width="150" >
                                     <Button BorderBrush="Transparent" Background="#986639" Height="30" Width="100" Content="Thêm" HorizontalAlignment="Center"  Margin="0 0 10 0 ">
+                                        <Button.Effect>
+                                            <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                                        </Button.Effect>
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <i:InvokeCommandAction     
@@ -414,7 +417,9 @@ FontFamily="Roboto Mono"
                                 </Border>
                                 <Border CornerRadius="5" Background="Transparent" Width="150" >
                                     <Button BorderBrush="Transparent" Background="#986639" Height="30" Width="100" Content="Xóa" HorizontalAlignment="Center" Margin="0 0 10 0 ">
-
+                                        <Button.Effect>
+                                            <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                                        </Button.Effect>
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <i:InvokeCommandAction     
@@ -617,6 +622,9 @@ HorizontalAlignment="Left"
                     <StackPanel HorizontalAlignment="Right">
                         <Border CornerRadius="5" Background="Transparent" Width="150" >
                             <Button  BorderBrush="Transparent" Background="#986639" Height="30" Width="150" Content="QUAY LẠI" HorizontalAlignment="Right" Margin="0,5,5,0">
+                                <Button.Effect>
+                                    <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                                </Button.Effect>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction     
@@ -627,6 +635,9 @@ HorizontalAlignment="Left"
                             </Button>
                         </Border>
                         <Button BorderBrush="Transparent" Background="#986639" Height="30" Width="150" Content="THANH TOÁN" HorizontalAlignment="Right" Margin="0,20,5,0">
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                            </Button.Effect>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction     

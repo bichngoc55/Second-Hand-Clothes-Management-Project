@@ -184,6 +184,9 @@
                 Background="#986639" HorizontalAlignment="Right" 
                 Margin="190,0,0, 0"
                 BorderBrush="Transparent">
+                        <Button.Effect>
+                            <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                        </Button.Effect>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding AddND}"

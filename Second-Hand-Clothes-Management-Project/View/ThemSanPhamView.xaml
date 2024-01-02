@@ -190,6 +190,9 @@
                 FontSize="9"
                 Background="#986639" HorizontalAlignment="Right"
                 BorderBrush="Transparent" Margin="190,30,0,0">
+                        <Button.Effect>
+                            <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                        </Button.Effect>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding AddProduct}"

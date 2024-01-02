@@ -84,6 +84,9 @@
                             <ComboBoxItem Content="Yếm"/>
                             <ComboBoxItem Content="Váy"/>
                             <ComboBoxItem Content="Trackpant"/>
+                            <ComboBox.Effect>
+                                <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                            </ComboBox.Effect>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged">
                                     <i:InvokeCommandAction Command="{Binding Filter}"
@@ -110,6 +113,9 @@
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Center"
                             ItemsSource="{Binding listTK}">
+                            <ComboBox.Effect>
+                                <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                            </ComboBox.Effect>
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -133,6 +139,9 @@
                             materialDesign:HintAssist.Hint="Tìm Kiếm"
                             materialDesign:TextFieldAssist.UnderlineBrush="#F5E9D9"
                             Padding="70 15 15 15">
+                            <TextBox.Effect>
+                                <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                            </TextBox.Effect>
                             <i:Interaction.Triggers >
                                 <i:EventTrigger EventName = "TextChanged" >
                                     <i:InvokeCommandAction Command = "{Binding SearchCommand}"
@@ -149,8 +158,12 @@
                             Height="50"
                             Width="125"
                             Margin="15 0 0 0"
+                            BorderBrush="Transparent"
                             Background="#986639"
                             Foreground="White">
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                            </Button.Effect>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding AddPdPdCommand}"

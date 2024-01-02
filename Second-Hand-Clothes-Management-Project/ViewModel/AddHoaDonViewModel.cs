@@ -259,9 +259,13 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                             break;
                         }
                     }
+                   
                     string voucherText = c.PHANTRAM;
 
-                    string numericPart = new string(voucherText.Where(char.IsDigit).ToArray());
+                    
+                   
+                        string numericPart = new string(voucherText.Where(char.IsDigit).ToArray());
+                         
                     int phantram;
 
                     // Chuyển đổi sang kiểu int
@@ -276,7 +280,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                         {
                             if (x.MASP == s.SANPHAM.MASP)
                             {
-                                x.SL += s.SL;
+                                x.SL -= s.SL;
                             }
                         }
                     }

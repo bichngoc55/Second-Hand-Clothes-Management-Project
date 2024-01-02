@@ -55,6 +55,10 @@
             <Grid Grid.Row="1">
 
                 <Border CornerRadius="5" Background="#CAA88A" Margin="20 0 20 20">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                    </Border.Effect>
+
                     <Grid>
                         <DockPanel>
                             <ComboBox
@@ -82,10 +86,14 @@
                                 <ComboBoxItem Content="THÀNH TIỀN"/>
                                 <ComboBoxItem Content="NGÀY THANH TOÁN"/>
 
-
+                                <ComboBox.Effect>
+                                    <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                                </ComboBox.Effect>
                             </ComboBox>
                             <!-- TextBox và Button tìm kiếm -->
                             <Border CornerRadius="5" Width="250" Background="White" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15 " Height="50">
+                                
+
                                 <Grid>
                                     <TextBox
                                         x:Name = "tbxTimKiem"
@@ -117,6 +125,9 @@
 
                                 <Border CornerRadius="5" Background="Transparent" Width="180" >
                                     <Button BorderBrush="Transparent" Background="#986639" Height="50" Width="160" Content="TẠO HÓA ĐƠN" HorizontalAlignment="Right" Margin="0 0 10 0 ">
+                                        <Button.Effect>
+                                            <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                                        </Button.Effect>
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <i:InvokeCommandAction Command="{Binding AddCommand}"

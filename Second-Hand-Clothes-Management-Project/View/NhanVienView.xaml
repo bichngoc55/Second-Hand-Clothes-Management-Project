@@ -84,6 +84,9 @@
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Center"
                             ItemsSource="{Binding listTK}">
+                            <ComboBox.Effect>
+                                <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                            </ComboBox.Effect>
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -106,6 +109,9 @@
                             materialDesign:HintAssist.Hint="Tìm Kiếm"
                             materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
                             Padding="70 15 15 15">
+                            <TextBox.Effect>
+                                <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                            </TextBox.Effect>
                             <i:Interaction.Triggers >
                                 <i:EventTrigger EventName = "TextChanged" >
                                     <i:InvokeCommandAction Command = "{Binding SearchCommand}"
@@ -134,7 +140,7 @@
                         x:Name="ListViewNhanVien"
                         SelectionMode="Single"
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                        ScrollViewer.VerticalScrollBarVisibility="Hidden" Grid.ColumnSpan="2">
+                        ScrollViewer.VerticalScrollBarVisibility="Hidden" Grid.ColumnSpan="2" d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Border

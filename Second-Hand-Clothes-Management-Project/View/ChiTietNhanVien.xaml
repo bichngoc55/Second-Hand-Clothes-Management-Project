@@ -123,6 +123,9 @@
                                 Margin="10 10 0 0"
                                 HorizontalAlignment="Left" Canvas.Left="46" Canvas.Top="26"
                                 >
+                                <Button.Effect>
+                                    <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                                </Button.Effect>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding UpdateNhanVien}"
@@ -140,6 +143,9 @@
                                 materialDesign:ButtonAssist.CornerRadius="15"
                                 HorizontalAlignment="Left" 
                                 Margin="25 10 0 0">
+                                <Button.Effect>
+                                    <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                                </Button.Effect>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding DeleteNhanVien}"
