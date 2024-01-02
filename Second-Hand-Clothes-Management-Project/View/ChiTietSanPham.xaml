@@ -263,6 +263,7 @@
                             FontFamily="Roboto Mono"
                             >
                                 <TextBox x:Name="Mota"
+                                         FontSize="14"
                                      Height="80"
                                      TextWrapping="Wrap"
                                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
