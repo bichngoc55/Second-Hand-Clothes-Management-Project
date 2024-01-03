@@ -249,6 +249,7 @@
                             FontFamily="Roboto Mono"
                             >
                                 <TextBox x:Name="Mota"
+                                         FontSize="14"
                                      Height="80"
                                          FontSize="13"
                                      TextWrapping="Wrap"

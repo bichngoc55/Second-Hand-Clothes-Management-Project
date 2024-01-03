@@ -252,15 +252,18 @@
                                      BorderThickness="0"
                                      AcceptsReturn="True"
                                      VerticalScrollBarVisibility="Visible"
+                                             FontSize="14"
                                      />
                                     <TextBlock x:Name="TaiKhoanND"
                                      Height="30"
+                                               FontSize="14"
                                      TextWrapping="Wrap"
                                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                      />
                                     <TextBlock x:Name="MatKhauND"
                                      Height="30"
                                      TextWrapping="Wrap"
+                                               FontSize="14"
                                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                      />
                                 </StackPanel>
