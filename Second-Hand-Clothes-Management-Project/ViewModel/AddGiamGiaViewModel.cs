@@ -50,32 +50,61 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                 MessageBoxResult h = System.Windows.MessageBox.Show("Bạn muốn thêm voucher mới ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
                 if (h == MessageBoxResult.Yes)
                 {
-                    if (DataProvider.Ins.DB.GIAMGIAs.Where(p => p.MAGIAMGIA == paramater.MAVC.Text).Count() > 0)
+                    if (DataProvider.Ins.DB.GIAMGIAs.Any(p => p.MAGIAMGIA == paramater.MAVC.Text))
                     {
                         MessageBox.Show("Mã giảm giá đã tồn tại.", "Thông Báo");
                     }
                     else
                     {
-                        GIAMGIA a = new GIAMGIA();
-                        a.MAGIAMGIA = paramater.MAVC.Text;
-                        a.PHANTRAM = paramater.PTGG.Text;
-                        a.NGBD= (DateTime)paramater.NgBD.SelectedDate;
-                        a.NGKT= (DateTime)paramater.NgKT.SelectedDate;
+                        // Kiểm tra nếu người dùng nhập số thì tự động thêm ký tự '%'
+                        if (IsNumeric(paramater.PTGG.Text))
+                        {
+                            GIAMGIA a = new GIAMGIA();
+                            a.MAGIAMGIA = paramater.MAVC.Text;
+                            a.PHANTRAM = paramater.PTGG.Text + "%";
 
+                            if (paramater.NgBD.SelectedDate.HasValue && paramater.NgKT.SelectedDate.HasValue)
+                            {
+                                if (paramater.NgBD.SelectedDate.Value < paramater.NgKT.SelectedDate.Value)
+                                {
+                                    a.NGBD = (DateTime)paramater.NgBD.SelectedDate;
+                                    a.NGKT = (DateTime)paramater.NgKT.SelectedDate;
 
+                                    MessageBox.Show("Thêm voucher mới thành công !", "THÔNG BÁO");
+                                    DataProvider.Ins.DB.GIAMGIAs.Add(a);
+                                    DataProvider.Ins.DB.SaveChanges();
+                                    paramater.MAVC.Clear();
+                                    paramater.PTGG.Clear();
 
-                        MessageBox.Show("Thêm voucher mới thành công !", "THÔNG BÁO");
-                        DataProvider.Ins.DB.GIAMGIAs.Add(a);
-                        DataProvider.Ins.DB.SaveChanges();
-                        paramater.MAVC.Clear();
-                        paramater.PTGG.Clear();
-                       
-                        GiamGiaView giamGiaView = new GiamGiaView();
-                        giamGiaView.ListViewGG.ItemsSource = new ObservableCollection<GIAMGIA>(DataProvider.Ins.DB.GIAMGIAs);
-                        MainViewModel.MainFrame.Content = giamGiaView;
+                                    GiamGiaView giamGiaView = new GiamGiaView();
+                                    giamGiaView.ListViewGG.ItemsSource = new ObservableCollection<GIAMGIA>(DataProvider.Ins.DB.GIAMGIAs);
+                                    MainViewModel.MainFrame.Content = giamGiaView;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Vui lòng chọn ngày bắt đầu và ngày kết thúc.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Phần trăm giảm giá phải là số.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
                 }
             }
         }
+
+
+        // Hàm kiểm tra xem một chuỗi có phải là số hay không
+        bool IsNumeric(string input)
+        {
+            return decimal.TryParse(input, out _);
+        }
+
     }
 }
