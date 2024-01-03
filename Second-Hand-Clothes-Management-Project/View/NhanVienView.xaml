@@ -122,19 +122,7 @@
                         <Button Style="{DynamicResource MaterialDesignToolForegroundButton}" Margin="-25 -6 8 -6" HorizontalAlignment="Right" RenderTransformOrigin="-0.792,0.586">
                             <materialDesign:PackIcon Kind="Magnify" />
                         </Button>
-                        <Border HorizontalAlignment="Right" Margin="55 0 0 0" CornerRadius="5" Background="Transparent" Width="180" >
-                            <Button BorderBrush="Transparent" Background="#986639" Height="50" Width="160" Content="THÊM" HorizontalAlignment="Right" Margin="0 0 10 0 ">
-                                <Button.Effect>
-                                    <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
-                                </Button.Effect>
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction Command="{Binding AddNDCommand}"
-                CommandParameter="{Binding ElementName=NhanVienwd}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </Button>
-                        </Border>
+                        
                     </StackPanel>
                 </Border>
             </Grid>
