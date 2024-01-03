@@ -77,7 +77,9 @@
                             Margin="0 30 0 0"
                             Background="#986639"
                             Content="Thêm ảnh"
-                            FontSize="13"
+
+                            FontSize="15"
+
                             BorderBrush="Transparent">
                             <Button.Effect>
                                 <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>

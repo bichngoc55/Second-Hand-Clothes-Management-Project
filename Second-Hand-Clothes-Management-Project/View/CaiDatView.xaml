@@ -82,7 +82,7 @@
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Border>
-                        <Button 
+                        <!--<Button 
                             HorizontalAlignment="Center" 
                             Margin="0,60,0,0" 
                             VerticalAlignment="Center"
@@ -105,7 +105,7 @@
                                                    CommandParameter="{Binding ElementName=ProfilePicture}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
-                        </Button>
+                        </Button>-->
                     </StackPanel>
                 </Grid>
 

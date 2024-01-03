@@ -191,7 +191,7 @@
                     </Grid>
                     <Grid Grid.Row="3" >
                         <Button
-                                    Width="161"
+                                    Width="195"
                                     x:Name="btnLogOut"
                                     Style="{StaticResource BtnLogOut}"
                                     FontFamily="{StaticResource Custom}"  
