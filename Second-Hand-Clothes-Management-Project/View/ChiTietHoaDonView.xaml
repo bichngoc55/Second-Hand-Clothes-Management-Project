@@ -4,23 +4,18 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Second_Hand_Clothes_Management_Project.View"
-       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
       x:Name="ChiTietHoaDonwd"
       d:DesignHeight="605" d:DesignWidth="700"
       DataContext="{StaticResource ChiTietHoaDonVM}"
       Title="ChiTietHoaDonView">
 
+    <!-- Phần Layout Chính -->
+    <Border x:Name="xx" CornerRadius="15" Background="#FFFFFFFF">
 
-
-
-    <Border
-     x:Name="xx"
-     CornerRadius="15"
-     Background="#FFFFFFFF"
-     >
-
+        <!-- Header -->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
@@ -31,217 +26,75 @@
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <StackPanel 
-                             Orientation="Horizontal" 
-                             HorizontalAlignment="Right" 
-                             VerticalAlignment="Center"
-                             Margin="0,0,10,0"
-                             >
-                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="White" Height="24" Width="24" Margin="0,0,8,0">
-
-                    </materialDesign:PackIcon>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="White" Height="24" Width="24" Margin="0,0,8,0"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">
-                <TextBlock
-                 Text="CHI TIẾT HÓA ĐƠN"
-                 FontWeight="Bold"
-                 Foreground="#000000"
-                 FontFamily="Roboto Mono"
-                 FontSize="30"
-                 HorizontalAlignment="Center"
-                 VerticalAlignment="Center"
-                 />
+                <!-- Tiêu đề trang -->
+                <TextBlock Text="CHI TIẾT HÓA ĐƠN" FontWeight="Bold" Foreground="#000000" FontFamily="Roboto Mono" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
             <Grid Grid.Row="2">
-
-                <Grid >
-                    <Border
-                     Margin="10,0,10,0"
-                     Background="#E0D3BE"
-                     CornerRadius="15"
-                     >
-                        <StackPanel
-                         Margin="10"
-                         >
-
+                <!-- Thông tin Hóa đơn -->
+                <Grid>
+                    <Border Margin="10,0,10,0" Background="#E0D3BE" CornerRadius="15">
+                        <StackPanel Margin="10">
+                            <!-- Số Hóa đơn -->
                             <StackPanel Margin="0 10 0 0" Orientation="Horizontal">
-
-                                <TextBlock
-                                 Margin="10,0,0,0"
-                                 Text="Số HD"
-                                 FontFamily="Roboto Mono"
-                                        VerticalAlignment="Center"
-                                        FontWeight="Bold"
-                                 />
-
-
-                                <Border Margin="43 0 0 0"  Width="570" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
+                                <TextBlock Margin="10,0,0,0" Text="Số HD" FontFamily="Roboto Mono" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <Border Margin="43 0 0 0" Width="570" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
                                     <DockPanel HorizontalAlignment="Left" Margin="15 0 0 0">
-                                        <TextBox
-                                         x:Name="SoHD"
-                                         
-                                         FontFamily="Roboto Mono"
-                                         BorderThickness="0"
-                                         materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                         materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                         IsEnabled="False"
-                                         materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-
+                                        <TextBox x:Name="SoHD" FontFamily="Roboto Mono" BorderThickness="0" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" materialDesign:TextFieldAssist.TextFieldCornerRadius="10" IsEnabled="False" materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                                     </DockPanel>
                                 </Border>
                             </StackPanel>
-
+                            <!-- Mã và Tên Khách hàng -->
                             <StackPanel Margin="0 10 0 0" Orientation="Horizontal">
-
-                                <TextBlock
-Margin="8,0,0,0"
-Text="Mã KH|Tên"
-FontFamily="Roboto Mono"
-       VerticalAlignment="Center"
-       FontWeight="Bold"
-/>
-
-
-                                <Border Margin="16 0 0 0"  Width="570" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
+                                <TextBlock Margin="8,0,0,0" Text="Mã KH|Tên" FontFamily="Roboto Mono" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <Border Margin="16 0 0 0" Width="570" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
                                     <DockPanel HorizontalAlignment="Left" Margin="15 0 0 0">
-                                        <TextBox
-                                            x:Name="MaKH" 
-        
-                                            FontFamily="Roboto Mono"
-                                            BorderThickness="0"
-                                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                            materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                            IsEnabled="False"
-                                            materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-                                        <TextBox
-Text="|"
-HorizontalAlignment="Left"
-FontFamily="Roboto Mono"
-BorderThickness="0"
-materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-IsEnabled="False"
-materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-                                        <TextBox
-x:Name="TenKH"
-HorizontalAlignment="Left"
-FontFamily="Roboto Mono"
-BorderThickness="0"
-materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-IsEnabled="False"
-materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-
+                                        <TextBox x:Name="MaKH" FontFamily="Roboto Mono" BorderThickness="0" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" materialDesign:TextFieldAssist.TextFieldCornerRadius="10" IsEnabled="False" materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                        <TextBox Text="|" HorizontalAlignment="Left" FontFamily="Roboto Mono" BorderThickness="0" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" materialDesign:TextFieldAssist.TextFieldCornerRadius="10" IsEnabled="False" materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                        <TextBox x:Name="TenKH" HorizontalAlignment="Left" FontFamily="Roboto Mono" BorderThickness="0" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" materialDesign:TextFieldAssist.TextFieldCornerRadius="10" IsEnabled="False" materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                                     </DockPanel>
                                 </Border>
                             </StackPanel>
-
+                            <!-- Mã và Tên Nhân viên -->
                             <StackPanel Margin="0 10 0 0" Orientation="Horizontal">
-
-                                <TextBlock
-     Margin="8,0,0,0"
-     Text="Mã NV|Tên"
-     FontFamily="Roboto Mono"
-            VerticalAlignment="Center"
-            FontWeight="Bold"
-     />
-
-
-                                <Border Margin="16 0 0 0"  Width="570" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
+                                <TextBlock Margin="8,0,0,0" Text="Mã NV|Tên" FontFamily="Roboto Mono" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <Border Margin="16 0 0 0" Width="570" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
                                     <DockPanel HorizontalAlignment="Left" Margin="15 0 0 0">
-                                        <TextBox
-x:Name="MaND" 
-HorizontalAlignment="Left"
-FontFamily="Roboto Mono"
-BorderThickness="0"
-materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-IsEnabled="False"
-materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-                                        <TextBox
-Text="|"
-HorizontalAlignment="Left"
-FontFamily="Roboto Mono"
-BorderThickness="0"
-materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-IsEnabled="False"
-materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-                                        <TextBox
-x:Name="TenND"
-HorizontalAlignment="Left"
-FontFamily="Roboto Mono"
-BorderThickness="0"
-materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-IsEnabled="False"
-materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                        <TextBox x:Name="MaND" HorizontalAlignment="Left" FontFamily="Roboto Mono" BorderThickness="0" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" materialDesign:TextFieldAssist.TextFieldCornerRadius="10" IsEnabled="False" materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                        <TextBox Text="|" HorizontalAlignment="Left" FontFamily="Roboto Mono" BorderThickness="0" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" materialDesign:TextFieldAssist.TextFieldCornerRadius="10" IsEnabled="False" materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                        <TextBox x:Name="TenND" HorizontalAlignment="Left" FontFamily="Roboto Mono" BorderThickness="0" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" materialDesign:TextFieldAssist.TextFieldCornerRadius="10" IsEnabled="False" materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                                     </DockPanel>
                                 </Border>
                             </StackPanel>
+                            <!-- Khuyến mãi và Ngày lập -->
                             <StackPanel Orientation="Horizontal">
-                                <StackPanel Margin="0 10 0 0" Orientation="Horizontal"
-     
-     >
-                                    <TextBlock
-     Margin="5,0,0,0"
-     Text="Khuyến mãi"
-            VerticalAlignment="Center"
-     FontFamily="Roboto Mono"
-            FontWeight="Bold"
-     />
+                                <!-- Khuyến mãi -->
+                                <StackPanel Margin="0 10 0 0" Orientation="Horizontal">
+                                    <TextBlock Margin="5,0,0,0" Text="Khuyến mãi" VerticalAlignment="Center" FontFamily="Roboto Mono" FontWeight="Bold"/>
                                     <Border Margin="14 0 15 0" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBox
-                                            IsEnabled="False"
-             x:Name="KM"
-             HorizontalAlignment="Left"
-             FontFamily="Roboto Mono"
-             BorderThickness="0"
-                                            
-             materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-             materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-             materialDesign:TextFieldAssist.TextBoxViewMargin="25,0,0,0" Width="230"/>
+                                        <TextBox IsEnabled="False" x:Name="KM" HorizontalAlignment="Left" FontFamily="Roboto Mono" BorderThickness="0" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" materialDesign:TextFieldAssist.TextFieldCornerRadius="10" materialDesign:TextFieldAssist.TextBoxViewMargin="25,0,0,0" Width="230"/>
                                     </Border>
                                 </StackPanel>
-                                <StackPanel Margin="0 10 0 0"
-      Orientation="Horizontal"
-     >
-                                    <TextBlock
-         Margin="10,0,10,0"
-         Text="Ngày lập"
-            FontWeight="Bold"
-         FontFamily="Roboto Mono" HorizontalAlignment="Center" VerticalAlignment="Center"
-     />
-                                    <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10"
-             Margin="8 0 10 0">
-                                        <TextBox Margin="15 0 0 0"
-             x:Name="Ngay" IsEnabled="False"
-             HorizontalAlignment="Left"
-             FontFamily="Roboto Mono"
-             BorderThickness="0"
-             materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-             materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-             materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0" Width="225"/>
+                                <!-- Ngày lập -->
+                                <StackPanel Margin="0 10 0 0" Orientation="Horizontal">
+                                    <TextBlock Margin="10,0,10,0" Text="Ngày lập" FontWeight="Bold" FontFamily="Roboto Mono" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="8 0 10 0">
+                                        <TextBox Margin="15 0 0 0" x:Name="Ngay" IsEnabled="False" HorizontalAlignment="Left" FontFamily="Roboto Mono" BorderThickness="0" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" materialDesign:TextFieldAssist.TextFieldCornerRadius="10" materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0" Width="225"/>
                                     </Border>
                                 </StackPanel>
                             </StackPanel>
-
-
                         </StackPanel>
                     </Border>
                 </Grid>
-
             </Grid>
             <Grid Grid.Row="3">
+                <!-- Danh sách sản phẩm trong Hóa đơn -->
                 <StackPanel>
-                    <Border
-                     Margin="10,10,10,0"
-                     
-                     Height="40"
-                     CornerRadius="10"
-                     Background="#D8CBB7"
-                     >
+                    <Border Margin="10,10,10,0" Height="40" CornerRadius="10" Background="#D8CBB7">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>
@@ -251,68 +104,26 @@ materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
-                                <TextBlock
-                                 Text="MÃ SP"
-                                 HorizontalAlignment="Center"
-                                 VerticalAlignment="Center"
-                                 FontFamily="Roboto Mono"
-                                 FontSize="12"
-                             />
+                                <TextBlock Text="MÃ SP" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Roboto Mono" FontSize="12"/>
                             </Grid>
                             <Grid Grid.Column="1">
-                                <TextBlock
-                                 
-                                 HorizontalAlignment="Center"
-                                 Text="TÊN SP"
-                                 VerticalAlignment="Center"
-                                 FontFamily="Roboto Mono"
-                                 FontSize="12"
-                             />
+                                <TextBlock HorizontalAlignment="Center" Text="TÊN SP" VerticalAlignment="Center" FontFamily="Roboto Mono" FontSize="12"/>
                             </Grid>
                             <Grid Grid.Column="2">
-                                <TextBlock
-                                 Text="SIZE"
-                                 HorizontalAlignment="Center"
-                                 VerticalAlignment="Center"
-                                 FontFamily="Roboto Mono"
-                                 FontSize="12"
-                             />
+                                <TextBlock Text="SIZE" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Roboto Mono" FontSize="12"/>
                             </Grid>
                             <Grid Grid.Column="3">
-                                <TextBlock
-                                 Text="SL"
-                                 HorizontalAlignment="Center"
-                                 VerticalAlignment="Center"
-                                 MaxWidth="150"
-                                 FontFamily="Roboto Mono"
-                                 FontSize="12" 
-                             />
+                                <TextBlock Text="SL" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="150" FontFamily="Roboto Mono" FontSize="12"/>
                             </Grid>
                             <Grid Grid.Column="4">
-                                <TextBlock
-                                 Text="TRỊ GIÁ"
-                                 HorizontalAlignment="Center"
-                                 VerticalAlignment="Center"
-                                 
-                                 FontFamily="Roboto Mono"
-                                 FontSize="12"
-                             />
+                                <TextBlock Text="TRỊ GIÁ" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Roboto Mono" FontSize="12"/>
                             </Grid>
                         </Grid>
                     </Border>
-                    <ListView x:Name="ListViewSP" 
-                       SelectionMode="Single"
-                       ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="175" Width="700" d:ItemsSource="{d:SampleData ItemCount=5}"
-                     >
+                    <ListView x:Name="ListViewSP" SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="175" Width="700" d:ItemsSource="{d:SampleData ItemCount=5}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Border
-                                 
-                                 Width="680"
-                                 Height="40"
-                                 CornerRadius="10"
-                                 Background="White"
-                     >
+                                <Border Width="680" Height="40" CornerRadius="10" Background="White">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="100"/>
@@ -322,54 +133,19 @@ materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                                             <ColumnDefinition/>
                                         </Grid.ColumnDefinitions>
                                         <Grid Grid.Column="0">
-                                            <TextBlock
-                             Text="{Binding MaSp}"
-                             HorizontalAlignment="Center"
-                             VerticalAlignment="Center"
-                             FontFamily="Roboto Mono"
-                                                
-                             FontSize="12"
-                             />
+                                            <TextBlock Text="{Binding MaSp}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Roboto Mono" FontSize="12"/>
                                         </Grid>
                                         <Grid Grid.Column="1">
-                                            <TextBlock
-                                             
-                                             HorizontalAlignment="Center"
-                                             Text="{Binding TenSP}"
-                                             VerticalAlignment="Center"
-                                             FontFamily="Roboto Mono"
-                                             FontSize="12"
-                                         />
+                                            <TextBlock HorizontalAlignment="Center" Text="{Binding TenSP}" VerticalAlignment="Center" FontFamily="Roboto Mono" FontSize="12"/>
                                         </Grid>
                                         <Grid Grid.Column="2">
-                                            <TextBlock
-                                             Text="{Binding Size}"
-                                             HorizontalAlignment="Center"
-                                             VerticalAlignment="Center"
-                                             FontFamily="Roboto Mono"
-                                             FontSize="12"
-                                         />
+                                            <TextBlock Text="{Binding Size}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Roboto Mono" FontSize="12"/>
                                         </Grid>
                                         <Grid Grid.Column="3">
-                                            <TextBlock
-                                             Text="{Binding SL}"
-                                             HorizontalAlignment="Center"
-                                             VerticalAlignment="Center"
-                                             MaxWidth="100"
-                                             FontFamily="Roboto Mono"
-                                             FontSize="12"
-                                         />
+                                            <TextBlock Text="{Binding SL}" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="100" FontFamily="Roboto Mono" FontSize="12"/>
                                         </Grid>
                                         <Grid Grid.Column="4">
-                                            <TextBlock
-                                             Text="{Binding Tiennhap, StringFormat={}{0:N0} VND}"
-                                             HorizontalAlignment="Center"
-                                             VerticalAlignment="Center"
-                                             
-                                               
-                                             FontFamily="Roboto Mono"
-                                             FontSize="12"
-                                         />
+                                            <TextBlock Text="{Binding Tiennhap, StringFormat={}{0:N0} VND}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Roboto Mono" FontSize="12"/>
                                         </Grid>
                                     </Grid>
                                 </Border>
@@ -384,68 +160,43 @@ materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="4">
-
+                <!-- Thành tiền -->
                 <StackPanel HorizontalAlignment="Right">
-
                     <WrapPanel>
-                        <TextBlock
-       FontFamily="Roboto Family"
-          VerticalAlignment="Center"
-                            Margin="0 0 50 0"
-                            x:Name="thanhtien"
-                            
-                            FontSize="16"
-          Text="Thành tiền: "/>
-
+                        <TextBlock FontFamily="Roboto Family" VerticalAlignment="Center" Margin="0 0 50 0" x:Name="thanhtien" FontSize="16" Text="Thành tiền: "/>
                     </WrapPanel>
-
-
-
                 </StackPanel>
-
-
-
             </Grid>
             <Grid Grid.Row="5">
-
+                <!-- Các nút chức năng -->
                 <WrapPanel HorizontalAlignment="Right">
+                    <!-- Nút QUAY LẠI -->
                     <Button BorderBrush="Transparent" Background="#986639" Height="30" Width="100" Content="QUAY LẠI" HorizontalAlignment="Right" Margin="0,10,5,0">
                         <Button.Effect>
                             <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
                         </Button.Effect>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction     
- Command="{Binding Back}"
- CommandParameter="{Binding ElementName=ChiTietHoaDonwd}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction Command="{Binding Back}" CommandParameter="{Binding ElementName=ChiTietHoaDonwd}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>
-
+                    <!-- Nút XÓA -->
                     <WrapPanel HorizontalAlignment="Right">
-
-                        <Border CornerRadius="5" Background="Transparent" Width="150" >
-
+                        <Border CornerRadius="5" Background="Transparent" Width="150">
                             <Button BorderBrush="Transparent" Background="#986639" Height="30" Width="100" Content="XÓA" HorizontalAlignment="Right" Margin="0,10,5,0">
                                 <Button.Effect>
                                     <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
                                 </Button.Effect>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction     
-                             Command="{Binding Delete}"
-                             CommandParameter="{Binding ElementName=ChiTietHoaDonwd}"></i:InvokeCommandAction>
+                                        <i:InvokeCommandAction Command="{Binding Delete}" CommandParameter="{Binding ElementName=ChiTietHoaDonwd}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
                         </Border>
                     </WrapPanel>
-
-
                 </WrapPanel>
-
-
-
             </Grid>
         </Grid>
     </Border>

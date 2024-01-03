@@ -44,17 +44,6 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 
         private ObservableCollection<string> _listVC;
         public ObservableCollection<string> listVC { get => _listVC; set { _listVC = value; OnPropertyChanged(); } }
-        private object _selectedItem;
-        public object SelectedItem
-        {
-            get { return _selectedItem; }
-            set
-            {
-                _selectedItem = value;
-                OnPropertyChanged(nameof(SelectedItem)); // Đảm bảo cập nhật giao diện khi giá trị thay đổi
-            }
-        }
-
 
         public ICommand SearchCommand { get; set; }
         public ICommand AddCommand { get; set; }

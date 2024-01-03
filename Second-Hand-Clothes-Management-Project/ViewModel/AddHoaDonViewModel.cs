@@ -40,7 +40,6 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         public ICommand Back { get; set; }
         public ICommand SavePN { get; set; }
         public ICommand Choose { get; set; }
-        public ICommand ChooseKH { get; set; }
         public ICommand ChooseVC { get; set; }
         public int tongtien { get; set; }
         public AddHoaDonViewModel()
@@ -50,7 +49,6 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             LHT = new ObservableCollection<Display>();
             LCTHD = new ObservableCollection<CTHD>();
             Choose = new RelayCommand<AddHoaDon>((p) => true, (p) => _Choose(p));
-            ChooseKH = new RelayCommand<AddHoaDon>((p) => true, (p) => _ChooseKH(p));
             ChooseVC = new RelayCommand<AddHoaDon>((p) => true, (p) => _ChooseVC(p));
             Loadwd = new RelayCommand<AddHoaDon>((p) => true, (p) => _Loadwd(p));
             AddSP = new RelayCommand<AddHoaDon>((p) => true, (p) => _AddSP(p));
@@ -239,7 +237,6 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                     HOADON temp = new HOADON()
                     {
                         SOHD = paramater.SoHD.Text,
-                        //TRIGIA = tongtien,
                         MAKH = tempMAKH,
                         MAND = Const.ND.MAND,
                         NGAYBAN = DateTime.Now,
@@ -320,11 +317,6 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                 return;
         }
 
-
-        void _ChooseKH(AddHoaDon parameter)
-        {
-      
-        }
 
         void _ChooseVC(AddHoaDon parameter)
         {

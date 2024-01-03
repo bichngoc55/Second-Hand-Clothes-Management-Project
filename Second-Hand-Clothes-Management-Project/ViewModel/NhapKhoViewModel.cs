@@ -47,8 +47,6 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             if (!string.IsNullOrEmpty(paramater.txbSearch.Text))
             {
                 string searchKeyword = paramater.txbSearch.Text.ToLower();
-
-                // Lọc các mục chứa MAGIAMGIA tương ứng trên danh sách gốc (listVC1)
                 temp = new ObservableCollection<NHAP>(listSP.Where(s => s.MASP.ToLower().Contains(searchKeyword)));
             }
             else
