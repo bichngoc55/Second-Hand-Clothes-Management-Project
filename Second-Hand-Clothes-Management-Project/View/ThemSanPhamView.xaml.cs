@@ -22,7 +22,7 @@ namespace Second_Hand_Clothes_Management_Project.View
         public ThemSanPhamView()
         {
             InitializeComponent();
-            this.Left = SystemParameters.PrimaryScreenWidth / 2 + 500;
+            this.Left = SystemParameters.PrimaryScreenWidth / 2 + (500 - 350);
             this.Top = SystemParameters.PrimaryScreenHeight / 2 - this.Height / 2;
         }
     }
