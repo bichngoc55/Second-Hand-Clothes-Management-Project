@@ -60,7 +60,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                     a.MASP = paramater.MASP.Text;
                     a.MANHACUNGCAP = paramater.cbxNCC.Text;
                     a.MAKHO = paramater.cbxkho.Text;
-                                 
+
                     a.NGNHAP = (DateTime)paramater.NgayNhap.SelectedDate;
 
                     try
@@ -84,18 +84,18 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                         MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
-                  
+
 
                     MessageBox.Show("Thêm sản phẩm nhập kho mới thành công !", "THÔNG BÁO");
                     DataProvider.Ins.DB.NHAPs.Add(a);
                     DataProvider.Ins.DB.SaveChanges();
                     // Xóa thông tin các TextBox
                     paramater.MASP.Clear();
-                    paramater.cbxNCC.SelectedIndex=-1;
-                    paramater.cbxkho.SelectedIndex=-1;
+                    paramater.cbxNCC.SelectedIndex = -1;
+                    paramater.cbxkho.SelectedIndex = -1;
                     paramater.SLSP.Clear();
-                   
-                    
+
+
                     NhapKhoView nhapKhoView = new NhapKhoView();
                     nhapKhoView.ListViewNK.ItemsSource = new ObservableCollection<NHAP>(DataProvider.Ins.DB.NHAPs);
                     MainViewModel.MainFrame.Content = nhapKhoView;
@@ -103,5 +103,6 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
 
             }
         }
+
     }
 }
