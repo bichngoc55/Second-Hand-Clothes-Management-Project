@@ -139,23 +139,7 @@
                     <ComboBoxItem Content="Váy"/>
                     <ComboBoxItem Content="Trackpant"/>
                 </ComboBox>
-                <ComboBox
-  x:Name="Voucher"
-  Width="250"
-  Height="30"
-  Background="White"
-  materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-  materialDesign:HintAssist.Hint="Chọn voucher"
-  Padding="5"
-  Margin="0,0,0,15">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
+             
                 <StackPanel 
                 Orientation="Horizontal"
                 Width="250"
@@ -201,12 +185,12 @@
                 <StackPanel Orientation="Horizontal">
                     <Button
                 x:Name="btnadd"
-                Width="105"
-                Height="20"
+                Width="115"
+                Height="30"
                 Content="THÊM SẢN PHẨM"
-                FontSize="9"
+                FontSize="10"
                 Background="#986639" HorizontalAlignment="Right"
-                BorderBrush="Transparent" Margin="190,30,0,0">
+                BorderBrush="Transparent" Margin="180,20,0,0">
                         <Button.Effect>
                             <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
                         </Button.Effect>

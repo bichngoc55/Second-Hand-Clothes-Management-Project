@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -223,6 +224,14 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             }
             listVC.Add("NULL");
             //themSanPhamView.Voucher.ItemsSource= listVC;
+            double mainWindowRightEdge = Application.Current.MainWindow.Left + Application.Current.MainWindow.Width;
+            double dialogWidth = themSanPhamView.Width; // Điều chỉnh theo kích thước thực tế của dialog
+            double dialogLeft = mainWindowRightEdge - dialogWidth;
+
+            // Thiết lập vị trí và khởi chạy cửa sổ dialog
+            themSanPhamView.Left = dialogLeft;
+            themSanPhamView.Top = Application.Current.MainWindow.Top + 72;
+            themSanPhamView.WindowStartupLocation = WindowStartupLocation.Manual;
             themSanPhamView.ShowDialog();
         }
     }
