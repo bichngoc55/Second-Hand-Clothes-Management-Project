@@ -37,7 +37,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         }
         void _Delete(ChiTietHoaDonView parameter)
         {
-            MessageBoxResult h = System.Windows.MessageBox.Show("Bạn muốn xóa phiếu nhập này?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            MessageBoxResult h = System.Windows.MessageBox.Show("Bạn muốn xóa hóa đơn này?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             if (h == MessageBoxResult.Yes)
             {
                 foreach (HOADON temp in DataProvider.Ins.DB.HOADONs)
@@ -52,7 +52,7 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                                 {
                                     if (temp2.SL - temp1.SL < 0)
                                     {
-                                        MessageBox.Show("Không thể xóa phiếu nhập vì sản phẩm nhập đã được bán !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                                        MessageBox.Show("Không thể xóa hóa đơn vì sản phẩm nhập đã được bán !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
                                         return;
                                     }
                                     else
