@@ -123,18 +123,20 @@
                 Margin="0,0,0,10">
 
                 </TextBox>
-                <TextBox
+                <ComboBox
                     x:Name="nhacungcap"
                     Width="250"
                     Height="30"
                     Background="White"
                     materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                    materialDesign:HintAssist.Hint="Nhập mã nhà cung cấp"
+                    materialDesign:HintAssist.Hint="Chọn mã nhà cung cấp"
                     Padding="5"
                     Margin="0,0,0,10">
+                    <ComboBoxItem Content="P001"/>
+                    <ComboBoxItem Content="P002"/>
 
-                </TextBox>
-                <TextBox
+                </ComboBox>
+                <ComboBox
                     x:Name="kho"
                     Width="250"
                     Height="30"
@@ -143,8 +145,9 @@
                     materialDesign:HintAssist.Hint="Nhập mã kho"
                     Padding="5"
                     Margin="0,0,0,10">
-
-                </TextBox>
+                    <ComboBoxItem Content="K001"/>
+                    <ComboBoxItem Content="K002"/>
+                </ComboBox>
                 <ComboBox
                 x:Name="LoaiSp"
                 Width="250"

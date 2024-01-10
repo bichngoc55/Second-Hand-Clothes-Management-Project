@@ -177,6 +177,8 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                         listSP1 = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL >= 0));
                         listSP = new ObservableCollection<SANPHAM>(listSP1.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
                         paramater.TenSp.Clear();
+                        paramater.nhacungcap.SelectedItem = null;
+                        paramater.kho.SelectedItem = null;
                         paramater.LoaiSp.SelectedItem = null;
                         paramater.GiaSp.Clear();
                         paramater.SlSp.Clear();
