@@ -140,9 +140,29 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
         //    }
         //    return str_build.ToString();
         //}
+        bool check(string m)
+        {
+            foreach (NGUOIDUNG temp in DataProvider.Ins.DB.NGUOIDUNGs)
+            {
+                if (temp.MAND == m)
+                    return true;
+            }
+            return false;
+        }
+        string rdma()
+        {
+            string ma;
+            do
+            {
+                Random rand = new Random();
+                ma = "NV" + rand.Next(0, 100).ToString();
+            } while (check(ma));
+            return ma;
+        }
         void _AddND(CaiDatView parameter)
         {
             TaoTaiKhoanView addNDView = new TaoTaiKhoanView();
+            addNDView.MaND.Text = rdma();
             MainViewModel.MainFrame.Content = addNDView;
         }
     }
