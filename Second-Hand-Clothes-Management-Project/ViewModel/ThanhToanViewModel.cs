@@ -189,10 +189,30 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             _SearchCommand(p);
             MainViewModel.MainFrame.Content = detailImport;
         }
+        bool check(string m)
+        {
+            foreach (HOADON temp in DataProvider.Ins.DB.HOADONs)
+            {
+                if (temp.SOHD == m)
+                    return true;
+            }
+            return false;
+        }
+        string rdma()
+        {
+            string ma;
+            do
+            {
+                Random rand = new Random();
+                ma = "HD" + rand.Next(0, 100).ToString();
+            } while (check(ma));
+            return ma;
+        }
         void _AddCommand(ThanhToanView parameter)
         {
 
             AddHoaDon addHoaDonView = new AddHoaDon();
+            addHoaDonView.SoHD.Text = rdma();
             listVoucher = new ObservableCollection<GIAMGIA>(DataProvider.Ins.DB.GIAMGIAs);
             listVC = new ObservableCollection<string> { };
             DateTime dateTime = DateTime.Now;
