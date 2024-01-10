@@ -80,7 +80,7 @@
                 x:Name="HinhAnh"
                 Height="150"
                 Width="200"
-                Margin="30,30,30,15" 
+                Margin="30,0,30,15" 
                 VerticalAlignment="Top">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
@@ -98,7 +98,7 @@
                 materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
                 materialDesign:HintAssist.Hint="Nhập mã sản phẩm"
                 Padding="5" 
-                Margin="0,0,0,15">
+                Margin="0,0,0,10">
 
                 </TextBox>
                 <TextBox
@@ -109,7 +109,7 @@
                 materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
                 materialDesign:HintAssist.Hint="Nhập tên sản phẩm"
                 Padding="5"
-                Margin="0,0,0,15">
+                Margin="0,0,0,10">
 
                 </TextBox>
                 <TextBox
@@ -120,7 +120,29 @@
                 materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
                 materialDesign:HintAssist.Hint="Nhập giá sản phẩm"
                 Padding="5"
-                Margin="0,0,0,15">
+                Margin="0,0,0,10">
+
+                </TextBox>
+                <TextBox
+                    x:Name="nhacungcap"
+                    Width="250"
+                    Height="30"
+                    Background="White"
+                    materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                    materialDesign:HintAssist.Hint="Nhập mã nhà cung cấp"
+                    Padding="5"
+                    Margin="0,0,0,10">
+
+                </TextBox>
+                <TextBox
+                    x:Name="kho"
+                    Width="250"
+                    Height="30"
+                    Background="White"
+                    materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                    materialDesign:HintAssist.Hint="Nhập mã kho"
+                    Padding="5"
+                    Margin="0,0,0,10">
 
                 </TextBox>
                 <ComboBox
@@ -131,7 +153,7 @@
                 materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
                 materialDesign:HintAssist.Hint="Chọn loại sản phẩm"
                 Padding="5"
-                Margin="0,0,0,15">
+                Margin="0,0,0,10">
                     <ComboBoxItem Content="Sơ mi"/>
                     <ComboBoxItem Content="Thun"/>
                     <ComboBoxItem Content="Hoodie"/>
@@ -190,7 +212,7 @@
                 Content="THÊM SẢN PHẨM"
                 FontSize="10"
                 Background="#986639" HorizontalAlignment="Right"
-                BorderBrush="Transparent" Margin="180,20,0,0">
+                BorderBrush="Transparent" Margin="180,0,0,0">
                         <Button.Effect>
                             <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
                         </Button.Effect>
