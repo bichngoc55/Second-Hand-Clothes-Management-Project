@@ -73,15 +73,16 @@
                               Margin="0,0,0,0">
                         <TextBlock 
                             Foreground="#000000"
+                            Opacity="0.75"
                             FontFamily="{StaticResource Custom}"
-                            FontSize="28"
+                            FontSize="40"
                             Margin="0,10,0,0"
                             Padding="15 15"
                             TextAlignment="Center" 
                             FontWeight="Bold"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"
-                            Panel.ZIndex="1" Text="TEN SHOP"></TextBlock>
+                            Panel.ZIndex="1" Text="OGGY"></TextBlock>
                         <Image Source="\ResourceXAML\Image\yellowleaf.png"
                             Stretch="UniformToFill" 
                             Opacity="0.5"
