@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Second_Hand_Clothes_Management_Project.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,29 @@ namespace Second_Hand_Clothes_Management_Project.View
         public LoginView()
         {
             InitializeComponent();
+        }
+        private void Button_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                // Trigger the login command
+                if (DataContext is LoginViewModel viewModel)
+                {
+                    viewModel.LoginCommand.Execute(null);
+                }
+            }
+        }
+
+        private void FloatingPasswordBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                // Trigger the login command
+                if (DataContext is LoginViewModel viewModel)
+                {
+                    viewModel.LoginCommand.Execute(null);
+                }
+            }
         }
     }
 }

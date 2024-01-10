@@ -22,8 +22,10 @@ namespace Second_Hand_Clothes_Management_Project.View
         public ThemSanPhamView()
         {
             InitializeComponent();
+
          
            
+
         }
     }
 }

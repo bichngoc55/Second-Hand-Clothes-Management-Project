@@ -53,7 +53,7 @@
             <!--THÔNG TIN TÀI KHOẢN-->
             <Grid Grid.Row="1"
                   Margin="20 0 0 0"
-                  Background="#EDE2D0">
+                  Background="#D7BEA2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"></ColumnDefinition>
                     <ColumnDefinition Width="4*"></ColumnDefinition>
@@ -61,11 +61,11 @@
                 <Grid Grid.Column="0">
                     <StackPanel Orientation="Vertical">
                         <Border 
-                            Margin="0,80,0,0" 
+                            Margin="0,30,0,0" 
                             Grid.RowSpan="2">
                             <Ellipse 
-                                Height="180" 
-                                Width="180" 
+                                Height="230" 
+                                Width="200" 
                                 VerticalAlignment="Top" 
                                 HorizontalAlignment="Center"
                                 Margin="30" 
@@ -94,7 +94,8 @@
                             Height="40" 
                             Background="#986639" 
                             Foreground="White"
-                            Grid.Row="1" >
+                            Grid.Row="1" 
+                            FontSize="15">
                             <Button.Effect>
                                 <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
                             </Button.Effect>
@@ -114,21 +115,22 @@
                         
                         <TextBox
                             x:Name="NameBox"
-                            Width="250"
-                            Height="35"
-                            Margin="50,80,50,0"
+                            Width="280"
+                            Height="40"
+                            Margin="50,50,50,0"
                             Background="White"
                             materialDesign:HintAssist.Hint="Họ tên"
                             Padding="10"
                             FontFamily="Roboto Mono"
                             HorizontalAlignment="Center"
                             materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                            Text ="{Binding Name}"
+                            Text ="{Binding Name}" 
+                            FontSize="15"
                             />
                         <TextBox
                             x:Name="AddressBox"
-                            Width="250"
-                            Height="35"
+                            Width="280"
+                            Height="40"
                             Margin="50 15 50 0"
                             Background="White"
                             materialDesign:HintAssist.Hint="Địa chỉ"
@@ -136,11 +138,12 @@
                             FontFamily="Roboto Mono"
                             HorizontalAlignment="Center"
                             materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                            Text="{Binding DiaChi}"/>
+                            Text="{Binding DiaChi}"
+                            FontSize="15"/>
                         <TextBox
                             x:Name="SDTBox"
-                            Width="250"
-                            Height="35"
+                            Width="280"
+                            Height="40"
                             Margin="50 15 50 0"
                             Background="White"
                             materialDesign:HintAssist.Hint="Số điện thoại"
@@ -148,17 +151,19 @@
                             FontFamily="Roboto Mono"
                             HorizontalAlignment="Center"
                             materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
-                            Text="{Binding SDT}"/>
+                            Text="{Binding SDT}"
+                            FontSize="15"/>
                         <StackPanel 
                             Orientation="Horizontal"
                             Margin="50 15 50 0"
-                            Width="250"
+                            Width="280"
                             Height="35">
                             <ComboBox
                                 x:Name="GTBox"
                                 Background="White"
-                                Height="35"
-                                Width="120"
+                                Height="40"
+                                Width="130"
+                                FontSize="15"
                                 BorderBrush="Transparent"
                                 BorderThickness="0"
                                 SelectedIndex="0"
@@ -171,9 +176,10 @@
                             <DatePicker
                                 x:Name="DateBox"
                                 Background="White"
-                                Height="35"
-                                Width="120"
-                                Margin="10 0 0 0"
+                                Height="40"
+                                FontSize="15"
+                                Width="130"
+                                Margin="20 0 0 0"
                                 materialDesign:HintAssist.Hint="Ngày sinh"
                                 Padding="5"
                                 materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
@@ -184,8 +190,9 @@
                         </StackPanel>
                         <TextBox
                             x:Name="Mail"
-                            Width="250"
-                            Height="35"
+                            Width="280"
+                            Height="40"
+                            FontSize="15"
                             Margin="50 15 50 0"
                             Background="White"
                             materialDesign:HintAssist.Hint="Email"
@@ -196,8 +203,9 @@
                             Text="{Binding Mail}"/>
                         <TextBox
                             x:Name="Password"
-                            Width="250"
-                            Height="35"
+                            Width="280"
+                            Height="40"
+                            FontSize="15"
                             Margin="50 15 50 0"
                             Background="White"
                             materialDesign:HintAssist.Hint="Password"
@@ -209,14 +217,14 @@
                         <StackPanel
                             Orientation="Horizontal"
                             Margin="50 15 50 0"
-                            Width="250"
-                            Height="35">
+                            Width="280"
+                            Height="40">
                             <Button
                                 Background="#986639"
                                 Height="35"
                                 Width="130"
+                                FontSize="13"
                                 Content="TẠO TÀI KHOẢN"
-                                FontSize="10"
                                 BorderBrush="Transparent">
                                 <Button.Effect>
                                     <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>
@@ -230,11 +238,11 @@
                             </Button>
                             <Button
                                 Background="#986639"
-                                Height="35"
-                                Width="100"
+                                Height="40"
+                                Width="130"
                                 Margin="20 0 0 0"
                                 Content="CẬP NHẬP"
-                                FontSize="10"
+                                FontSize="13"
                                 BorderBrush="Transparent">
                                 <Button.Effect>
                                     <DropShadowEffect ShadowDepth="6" Color="Black" Opacity="0.3" BlurRadius="20"/>

@@ -22,8 +22,8 @@ namespace Second_Hand_Clothes_Management_Project.View
         public ThemNhanVienView()
         {
             InitializeComponent();
-            this.Left = SystemParameters.PrimaryScreenWidth - this.Width;
-            this.Top = SystemParameters.PrimaryScreenHeight - this.Height;
+            this.Left = SystemParameters.PrimaryScreenWidth / 2 + (500 - 350);
+            this.Top = SystemParameters.PrimaryScreenHeight / 2 - this.Height / 2;
         }
     }
 }
