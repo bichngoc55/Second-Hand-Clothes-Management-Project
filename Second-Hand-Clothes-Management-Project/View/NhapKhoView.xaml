@@ -78,7 +78,7 @@
                             </Border>
 
                             <!-- Nút Delete -->
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <Border CornerRadius="5" Background="Transparent" Width="150">
                                     <Button Click="DeleteButton_Click" BorderBrush="Transparent" Background="#986639" Height="50" Width="120" Content="Delete" HorizontalAlignment="Right" Margin="0 0 10 0 ">
                                         <Button.Effect>
@@ -91,7 +91,7 @@
                                         </i:Interaction.Triggers>
                                     </Button>
                                 </Border>
-                                <!-- Nút Add -->
+                                --><!-- Nút Add --><!--
                                 <Border CornerRadius="5" Background="Transparent" Width="150">
                                     <Button BorderBrush="Transparent" Background="#986639" Height="50" Width="120" Content="Add+" HorizontalAlignment="Right" Margin="0 0 10 0 ">
                                         <Button.Effect>
@@ -105,7 +105,7 @@
                                         </i:Interaction.Triggers>
                                     </Button>
                                 </Border>
-                            </StackPanel>
+                            </StackPanel>-->
                         </DockPanel>
                     </Grid>
                 </Border>

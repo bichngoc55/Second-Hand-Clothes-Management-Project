@@ -165,6 +165,15 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
                         MessageBox.Show("Thêm sản phẩm mới thành công !", "THÔNG BÁO");
                         DataProvider.Ins.DB.SANPHAMs.Add(a);
                         DataProvider.Ins.DB.SaveChanges();
+                        NHAP b = new NHAP();
+                        b.MAKHO = paramater.kho.Text;
+                        b.MANHACUNGCAP = paramater.nhacungcap.Text;
+                        b.MASP = paramater.MaSp.Text;
+                        b.SL = int.Parse(paramater.SlSp.Text);
+                        DateTime dateTime = DateTime.Now.Date;
+                        b.NGNHAP = dateTime;
+                        DataProvider.Ins.DB.NHAPs.Add(b);
+                        DataProvider.Ins.DB.SaveChanges();
                         listSP1 = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL >= 0));
                         listSP = new ObservableCollection<SANPHAM>(listSP1.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
                         paramater.TenSp.Clear();

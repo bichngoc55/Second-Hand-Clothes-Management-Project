@@ -195,9 +195,11 @@ namespace Second_Hand_Clothes_Management_Project.ViewModel
             AddHoaDon addHoaDonView = new AddHoaDon();
             listVoucher = new ObservableCollection<GIAMGIA>(DataProvider.Ins.DB.GIAMGIAs);
             listVC = new ObservableCollection<string> { };
+            DateTime dateTime = DateTime.Now;
             foreach (GIAMGIA p in listVoucher)
             {
-                listVC.Add(p.MAGIAMGIA.ToString());
+                if(p.NGBD < dateTime && p.NGKT > dateTime)
+                    listVC.Add(p.MAGIAMGIA.ToString());
             }
           
             addHoaDonView.Voucher.ItemsSource = listVC;
